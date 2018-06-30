@@ -1,2 +1,2 @@
-# work_in_progress
-wip
+# Personal WebPage (in progress)
+
