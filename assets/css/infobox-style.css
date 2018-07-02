@@ -29,3 +29,14 @@
     transform: rotatey(0deg);
   }
 }
+
+
+.info-head {
+  font-weight: 700;
+  margin-bottom: 25px!important;
+  word-wrap: break-word;
+}
+
+.info-prompt {
+  color: #fff!important;
+}

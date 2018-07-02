@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
 * {
-  font-family: 'Ubuntu';
+  font-family: 'Courier new', Courier;
   color: rgb(106, 136, 70);
 }
 html {
@@ -13,11 +12,21 @@ body {
   background-color: #353535;
 }
 
+ul { list-style-type: none; }
+
+code {
+  background-color: red;
+  border-radius: 3px;
+  color: white!important;
+  padding: 5px;
+}
+
 /* blinking effect for text */
 .blinking {
   animation: blinking-text 2s infinite;
 }
-@keyframes blinking-text{
+
+@keyframes blinking-text {
     0% { color: #fff; }
     25% { color: transparent; }
     50% { color: #fff; }
@@ -25,9 +34,47 @@ body {
     100% { color: #fff; }
 }
 
-.title {
-  color: #fff!important;
+
+/* Loading */
+.loader-wrapper {
+  display: flex;
+}
+
+.loader-wrapper * {
+  align-self: center;
+}
+
+.loader {
+  border: .2rem solid rgb(106, 136, 70);
+  border-top: .2rem solid #00E640;
+  border-radius: 50%;
+  background-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.loader + span {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 25px!important;
-  word-wrap: break-word;
+}
+
+.loader-sm {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+
+.loader-md {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.loader-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+@keyframes spin {
+  0% { transform : rotate(0deg); }
+  100% { transform : rotate(360deg); }
 }

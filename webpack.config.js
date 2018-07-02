@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const entry = './src';
 
 module.exports = {
-  entry: path.resolve(entry, 'index.jsx'),
+  entry: ['babel-polyfill', path.resolve(entry, 'index.jsx')],
 
   module: {
     rules: [
@@ -16,6 +16,7 @@ module.exports = {
             options: {
               presets: ['env', 'react'],
               plugins: [
+                'transform-async-to-generator',
                 'transform-object-rest-spread',
                 'syntax-dynamic-import',
                 'transform-class-properties'
