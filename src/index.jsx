@@ -17,7 +17,7 @@ const GitModal = (props) => {
     <ModalBox show={props.show} closeFunc={props.closeFunc}>
 
       <InfoBox style={{ height: '250px' }}
-        title={<a target='_blank' href={USER_GITHUB}>{'github'}</a>}>
+        title={<a target='_blank' href={USER_GITHUB}>{'https://github.com/abhishek-kdm'}</a>}>
 
         <Loader size='sm' show={props.loaderShow}>
           <span className="blinking">{'Loading github repos...'}</span>
@@ -64,11 +64,13 @@ class App extends Component {
 
   showUserRepos = () => {
     const { ok, json } = this.state.userRepos;
-    if (!ok) return <center><code>{json.message}</code></center>;
+    if (!ok) return <center><code className='danger'>{json.message}</code></center>;
 
     return (
       <ul>{json.map((o, i) => (
-        <li key={i}>{o.html_url}</li>
+        <li key={i}>
+          <a href={o.html_url} target='_blank'>{o.name}</a>
+        </li>
       ))}</ul>
     );
   }
@@ -116,7 +118,6 @@ class App extends Component {
 
           <FloatButton onClick={this.openGitModal} />
         </div>
-        
 
         <GitModal show={gitModalShow} loaderShow={loaders.gitLoader}
           closeFunc={() => this.setState({ gitModalShow: false })}>
