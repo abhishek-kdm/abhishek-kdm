@@ -6,30 +6,15 @@ import FloatButton from './components/floatButton';
 import ModalBox from './components/modalBox';
 import Loader from './components/loader';
 
+// created modals
+import { GitModal, PageLoadingModal } from './components/modals';
+
+import { Provider } from './context';
+
 import {
   USER_GITHUB,
   REPO_LIST_URL,
 } from './configs/contants';
-
-
-const GitModal = (props) => {
-  return (
-    <ModalBox show={props.show} closeFunc={props.closeFunc}>
-
-      <InfoBox style={{ height: '250px' }}
-        title={<a target='_blank' href={USER_GITHUB}>{'https://github.com/abhishek-kdm'}</a>}>
-
-        <Loader size='sm' show={props.loaderShow}>
-          <span className="blinking">{'Loading github repos...'}</span>
-        </Loader>
-
-        {props.children}
-
-      </InfoBox>
-
-    </ModalBox>
-  )
-}
 
 
 class App extends Component {
@@ -38,19 +23,47 @@ class App extends Component {
     this.state = {
       loaders: {
         gitLoader: false,
+        pageLoader: true,
       },
 
+      pageModalShow: true,
       gitModalShow: false,
-      userRepoList: [],
+      
+      user: {},
       userRepos: { ok: true, json: [] },
     };
     this.fetchErrHandled = this.fetchErrHandled.bind(this);
-    this.openGitModal = this.openGitModal.bind(this);
+    this.fetchGithubDetails = this.fetchGithubDetails.bind(this);
     this.showUserRepos = this.showUserRepos.bind(this);
 
     this.showLoaders = this.showLoaders.bind(this);
     this.hideLoaders = this.hideLoaders.bind(this);
   }
+
+  componentWillMount() {
+    $("html").mousemove(function (event) {
+      var eye = $(".eye");
+      var x = (eye.offset().left) + (eye.width() / 2);
+      var y = (eye.offset().top) + (eye.height() / 2);
+      var rad = Math.atan2(event.pageX - x, event.pageY - y);
+      var rot = (rad * (180 / Math.PI) * -1) + 180;
+      eye.css({
+        '-webkit-transform': 'rotate(' + rot + 'deg)',
+        '-moz-transform': 'rotate(' + rot + 'deg)',
+        '-ms-transform': 'rotate(' + rot + 'deg)',
+        'transform': 'rotate(' + rot + 'deg)'
+      });
+    });
+  }
+
+  componentDidMount() {
+    this.fetchErrHandled(USER_GITHUB)
+    .then((user) => this.setState(
+      { user },
+      () => this.setState({ pageModalShow: !this.state.pageModalShow })
+    ));
+  }
+
 
   showLoaders(names) {
     var loaders = Object.assign({}, ...names.map((n) => ({ [n]: true })));
@@ -64,7 +77,12 @@ class App extends Component {
 
   showUserRepos = () => {
     const { ok, json } = this.state.userRepos;
-    if (!ok) return <center><code className='danger'>{json.message}</code></center>;
+    if (!ok) return (
+      <center>
+        <code className='danger'>{json.message}</code>
+      </center>
+    );
+
 
     return (
       <ul>{json.map((o, i) => (
@@ -75,7 +93,7 @@ class App extends Component {
     );
   }
 
-  openGitModal() {
+  fetchGithubDetails() {
     this.setState({ userRepos: { ok: true, json: [] } },
       () => {
 
@@ -109,22 +127,33 @@ class App extends Component {
 
 
   render() {
-    const { gitModalShow, loaders } = this.state;
+    const { user, gitModalShow, loaders, pageModalShow } = this.state;
+
+    const value = {
+      state: this.state,
+      setState: (s1) => this.setState((s) => Object.assign({}, s, s1)),
+    }
 
     return (
-      <React.Fragment>
-        <div className="container">
+      <Provider value={value}>
+        <React.Fragment>
+          <div className="container">
 
+            <h3>{`I am ${user.name || '...'}`}</h3>
 
-          <FloatButton onClick={this.openGitModal} />
-        </div>
+            <FloatButton onClick={this.fetchGithubDetails} tooltip='Github..' />
+          </div>
 
-        <GitModal show={gitModalShow} loaderShow={loaders.gitLoader}
-          closeFunc={() => this.setState({ gitModalShow: false })}>
-          {this.showUserRepos()}
-        </GitModal>
+          <GitModal show={gitModalShow} loaderShow={loaders.gitLoader}
+            closeFunc={() => this.setState({ gitModalShow: false })}
+            githubUserLink={user.html_url}>
+            {this.showUserRepos()}
+          </GitModal>
 
-      </React.Fragment>
+          <PageLoadingModal dimmness={'1'} show={pageModalShow} loaderShow={loaders.pageLoader} />
+
+        </React.Fragment>
+      </Provider>
     )
   }
 }

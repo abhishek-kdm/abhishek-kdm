@@ -6,14 +6,18 @@ export default class ModalBox extends Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-  handleClose(e) {
-    if (e.target === e.currentTarget) this.props.closeFunc();
-  }
+  handleClose = (e) => (e.target === e.currentTarget) && this.props.closeFunc()
 
   render() {
+
+    const style = Object.assign(
+      {},
+      { backgroundColor: `rgba(0, 0, 0, ${this.props.dimmness || '.6'})` },
+      { display: this.props.show ? 'block' : 'none' }
+    );
+
     return (
-      <div onClick={this.handleClose}
-        className="modal" style={{ display: this.props.show ? 'block' : 'none' }}>
+      <div onClick={this.handleClose} style={style} className="modal">
 
         <div className="modal-content">
           {this.props.children}

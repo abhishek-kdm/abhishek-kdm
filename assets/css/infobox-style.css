@@ -1,33 +1,15 @@
 .info-box {
   padding: 5px;
   overflow: hidden;
+  overflow-y: scroll;
   border: 1px solid #00E640;
   color: #00E640;
   border-radius: 5px;
   background-color: #000;
-  animation: 1s ease-out 0s 1 info-box-animation;
 }
 
 .info-box * {
   color: #00E640;
-}
-
-@keyframes info-box-animation {
-  0% {
-    padding: 1px;
-    height: 3px;
-    transform: rotatey(90deg);
-  }
-  50% {
-    padding: 1px;
-    height: 3px;
-    transform: rotatey(0deg);
-  }
-  100% {
-    padding: 5px;
-    height: 250px;
-    transform: rotatey(0deg);
-  }
 }
 
 

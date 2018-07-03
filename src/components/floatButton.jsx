@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class FloatButton extends Component {
-  render() {
-    return (
-      <button onClick={this.props.onClick} className='float'>
-        <i style={{ color: '#fff' }} className="fa fa-3x fa-github"></i>
-        <span className="eye-container">
-          <span className="eye"></span>
-          <span className="eye"></span>
-        </span>
-      </button>
-    )
-  }
+const FloatButton = (props) =>  {
+  return (
+    <button onClick={props.onClick} className='float tooltip-parent'>
+      { props.tooltip && 
+        <span className='tooltip-text'>{props.tooltip}</span>
+      }
+      <i style={{ color: '#00E640' }} className="fa fa-3x fa-github"></i>
+      <span className="eye-container">
+        <span className="eye"></span>
+        <span className="eye"></span>
+      </span>
+    </button>
+  )
 }
+
+export default FloatButton;
