@@ -9,7 +9,7 @@ export const GitModal = (props) => {
     <ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
 
       <InfoBox animate={true} style={{ height: '250px' }}
-        title={<a target='_blank' href={props.githubUserLink}>{'https://github.com/abhishek-kdm'}</a>}>
+        title={<a target='_blank' href={props.githubUserLink}>{ props.githubUserLink }</a>}>
 
         <Loader size='sm' show={props.loaderShow}>
           <span className="blinking">{'Loading github repos...'}</span>

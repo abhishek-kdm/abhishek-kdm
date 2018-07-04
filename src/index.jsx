@@ -17,16 +17,35 @@ import {
 } from './configs/contants';
 
 
+const Neutron = (props) => (
+  <div className={'neutron'}>
+    <span className={'neutron-atom'}></span>
+    <div style={{ transform: 'scale(.4, 1.6)', position: 'absolute' }}>
+      <div className='orbit-reversed'></div>
+    </div>
+    <div style={{ transform: 'scale(2, .4)', position: 'absolute' }}>
+      <div className='orbit'></div>
+    </div>
+    <div style={{ transform: 'skewX(45deg)', position: 'absolute' }}>
+      <div className='orbit'></div>
+    </div>
+    <div style={{ transform: 'skewX(-45deg)', position: 'absolute' }}>
+      <div className='orbit-reversed'></div>
+    </div>
+  </div>
+);
+
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loaders: {
         gitLoader: false,
-        pageLoader: true,
+        pageLoader: false,
       },
 
-      pageModalShow: true,
+      pageModalShow: false,
       gitModalShow: false,
       
       user: {},
@@ -57,11 +76,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchErrHandled(USER_GITHUB)
-    .then((user) => this.setState(
-      { user },
-      () => this.setState({ pageModalShow: !this.state.pageModalShow })
-    ));
+    // this.fetchErrHandled(USER_GITHUB)
+    // .then((user) => this.setState(
+    //   { user },
+    //   () => this.setState({ pageModalShow: !this.state.pageModalShow })
+    // ));
   }
 
 
@@ -94,25 +113,22 @@ class App extends Component {
   }
 
   fetchGithubDetails() {
-    this.setState({ userRepos: { ok: true, json: [] } },
-      () => {
+    this.setState({ gitModalShow: true });
 
-        this.showLoaders(['gitLoader']);
-        const { gitModalShow } = this.state;
-        this.setState({ gitModalShow: !gitModalShow });
+    if (this.state.userRepos.json.length) return;
+    
+    this.showLoaders(['gitLoader']);
 
-        this.fetchErrHandled(REPO_LIST_URL)
-        .then((json) => this.setState(
-          { userRepos: { ok: true, json } },
-          this.hideLoaders(['gitLoader'])
-        ))
-        .catch((json) => this.setState(
-          { userRepos: { ok: false, json } },
-          this.hideLoaders(['gitLoader'])
-        ));
+    this.fetchErrHandled(REPO_LIST_URL)
+    .then((json) => this.setState(
+      { userRepos: { ok: true, json } },
+      this.hideLoaders(['gitLoader'])
+    ))
+    .catch((json) => this.setState(
+      { userRepos: { ok: false, json } },
+      this.hideLoaders(['gitLoader'])
+    ));
 
-      }
-    );
   }
 
 
@@ -137,12 +153,16 @@ class App extends Component {
     return (
       <Provider value={value}>
         <React.Fragment>
+
+
           <div className="container">
 
-            <h3>{`I am ${user.name || '...'}`}</h3>
+            <Neutron />
 
-            <FloatButton onClick={this.fetchGithubDetails} tooltip='Github..' />
+
           </div>
+
+
 
           <GitModal show={gitModalShow} loaderShow={loaders.gitLoader}
             closeFunc={() => this.setState({ gitModalShow: false })}
@@ -151,6 +171,8 @@ class App extends Component {
           </GitModal>
 
           <PageLoadingModal dimmness={'1'} show={pageModalShow} loaderShow={loaders.pageLoader} />
+
+          <FloatButton onClick={this.fetchGithubDetails} tooltip='Github..' />
 
         </React.Fragment>
       </Provider>

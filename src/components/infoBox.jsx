@@ -11,7 +11,7 @@ const InfoBox = (props) => {
     <div style={style} className="info-box">
       <span className='info-head'>
         <span className='info-prompt'>
-          {'> root@root~:'}&nbsp;
+          {'root@root~:'}&nbsp;
         </span>
         
         <span className='info-title'>{ props.title } </span>
