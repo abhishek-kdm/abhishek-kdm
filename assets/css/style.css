@@ -3,27 +3,43 @@
 @import 'floatButton-style.css';
 @import 'modalBox-style.css';
 
+#app {
+  padding-top: 2rem;
+  min-height: 100%;
+}
+
 * {
   font-family: Courier;
   color: rgb(106, 136, 70);
 }
-html {
+
+html, body {
   height: 100%;
-  padding: 0!important;
-  margin: 0!important;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  min-height: 100%;
-  margin: 0;
-  padding: 2rem;
   background-color: #353535;
 }
+
+hr {
+  border-top: 1px dashed rgb(106, 136, 70);
+  width: 100%;
+}
+hr.vertical {
+  width: 1px;
+  height: 100%;
+  margin: 0;
+  border-left: 1px dashed rgb(106, 136, 70);
+}
+
 
 ul {
   -webkit-padding-start: 1rem!important;
   list-style-type: none;
 }
+
 li::before { content: '$  '; color: red!important; }
 li:hover:before { color: white!important; }
 

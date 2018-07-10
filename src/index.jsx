@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import InfoBox from './components/infoBox';
 import FloatButton from './components/floatButton';
-import ModalBox from './components/modalBox';
-import Loader from './components/loader';
+import Footer from './components/footer';
+import PageHeader from './components/header';
 
 // created modals
 import { GitModal, PageLoadingModal } from './components/modals';
 
 import { Provider } from './context';
 
-import {
-  USER_GITHUB,
-  REPO_LIST_URL,
-} from './configs/contants';
+import { USER_GITHUB } from './configs/contants';
 
 
 const Neutron = (props) => (
@@ -42,10 +38,9 @@ class App extends Component {
     this.state = {
       loaders: {
         gitLoader: false,
-        pageLoader: false,
       },
 
-      pageModalShow: false,
+      pageModalShow: true,
       gitModalShow: false,
       
       user: {},
@@ -76,11 +71,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.fetchErrHandled(USER_GITHUB)
-    // .then((user) => this.setState(
-    //   { user },
-    //   () => this.setState({ pageModalShow: !this.state.pageModalShow })
-    // ));
+    this.fetchErrHandled(USER_GITHUB)
+    .then((user) => this.setState(
+      { user },
+      () => this.setState({ pageModalShow: !this.state.pageModalShow })
+    ));
   }
 
 
@@ -119,7 +114,7 @@ class App extends Component {
     
     this.showLoaders(['gitLoader']);
 
-    this.fetchErrHandled(REPO_LIST_URL)
+    this.fetchErrHandled(this.state.user.repos_url)
     .then((json) => this.setState(
       { userRepos: { ok: true, json } },
       this.hideLoaders(['gitLoader'])
@@ -153,20 +148,17 @@ class App extends Component {
     return (
       <Provider value={value}>
         <React.Fragment>
-
-
           <div className="container">
 
-            <Neutron />
-
+            <PageHeader />
+            <hr />
 
           </div>
 
 
 
-          <GitModal show={gitModalShow} loaderShow={loaders.gitLoader}
-            closeFunc={() => this.setState({ gitModalShow: false })}
-            githubUserLink={user.html_url}>
+          <GitModal show={gitModalShow} githubUserLink={user.html_url}
+            closeFunc={() => this.setState({ gitModalShow: false })}>
             {this.showUserRepos()}
           </GitModal>
 

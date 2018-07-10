@@ -26,8 +26,8 @@ export const GitModal = (props) => {
 export const PageLoadingModal = (props) => {
   return (
     <ModalBox dimmness={props.dimmness} show={props.show}>
-      <Loader size='lg' show={props.loaderShow}>
-        <span className="blinking">{'Fetching User Data...'}</span>
+      <Loader size='lg' show={true}>
+        <span className="blinking">{'Loading...'}</span>
       </Loader>
     </ModalBox>
   )
