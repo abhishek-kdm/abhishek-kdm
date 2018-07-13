@@ -2,34 +2,19 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import FloatButton from './components/floatButton';
-import Footer from './components/footer';
+
+import HyperDrive from './components/hyperdrive';
+import PageTitle from './components/title';
 import PageHeader from './components/header';
+import PageFooter from './components/footer';
 
 // created modals
 import { GitModal, PageLoadingModal } from './components/modals';
 
 import { Provider } from './context';
 
-import { USER_GITHUB } from './configs/contants';
-
-
-const Neutron = (props) => (
-  <div className={'neutron'}>
-    <span className={'neutron-atom'}></span>
-    <div style={{ transform: 'scale(.4, 1.6)', position: 'absolute' }}>
-      <div className='orbit-reversed'></div>
-    </div>
-    <div style={{ transform: 'scale(2, .4)', position: 'absolute' }}>
-      <div className='orbit'></div>
-    </div>
-    <div style={{ transform: 'skewX(45deg)', position: 'absolute' }}>
-      <div className='orbit'></div>
-    </div>
-    <div style={{ transform: 'skewX(-45deg)', position: 'absolute' }}>
-      <div className='orbit-reversed'></div>
-    </div>
-  </div>
-);
+import { USER_GITHUB, particleStyle, particleParams } from './configs/contants';
+import InfoBox from './components/infoBox';
 
 
 class App extends Component {
@@ -45,6 +30,8 @@ class App extends Component {
       
       user: {},
       userRepos: { ok: true, json: [] },
+
+      hyperdrive: false,
     };
     this.fetchErrHandled = this.fetchErrHandled.bind(this);
     this.fetchGithubDetails = this.fetchGithubDetails.bind(this);
@@ -147,13 +134,16 @@ class App extends Component {
 
     return (
       <Provider value={value}>
-        <React.Fragment>
-          <div className="container">
+        <HyperDrive style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '-999' }} />
+        
+        <div id="wrapper">
+          <PageTitle />
+          <button className='btn btn-success' onClick={() => this.setState({ hyperdrive: !this.state.hyperdrive })}>
+            { 'Toggle Hyperdrive' }
+          </button>
+          <PageHeader />
 
-            <PageHeader />
-            <hr />
-
-          </div>
+          {/* <InfoBox style={{ width: '250px', height: '250px' }} animation={true} /> */}
 
 
 
@@ -166,7 +156,7 @@ class App extends Component {
 
           <FloatButton onClick={this.fetchGithubDetails} tooltip='Github..' />
 
-        </React.Fragment>
+        </div>
       </Provider>
     )
   }

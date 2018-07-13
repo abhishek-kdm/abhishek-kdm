@@ -4,13 +4,12 @@
 @import 'modalBox-style.css';
 
 #app {
-  padding-top: 2rem;
   min-height: 100%;
 }
 
 * {
   font-family: Courier;
-  color: rgb(106, 136, 70);
+  color: #00E640; /* rgb(106, 136, 70); */
 }
 
 html, body {
@@ -19,8 +18,9 @@ html, body {
   margin: 0;
 }
 
-body {
-  background-color: #353535;
+#wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to right, rgba(136, 147, 156, .2), rgba(0, 0, 0, .2), rgba(136, 147, 156, .2));
 }
 
 hr {
