@@ -18,14 +18,26 @@
 /* vintage-display */
 @keyframes vintage-display {
   0% {
-    background: #00E640;
+    background: var(--g1);
     transform: rotatey(90deg) scaleY(.01);
   }
   50% {
-    background-color: #00E640;
+    background-color: var(--g1);
     transform: rotatey(0deg) scaleY(.01);
   }
   100% {
     transform: rotatey(0deg) scaleY(1);
+  }
+}
+
+
+/* Sonar Waves */
+@keyframes sonarWave {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }

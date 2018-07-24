@@ -2,14 +2,14 @@
   padding: 5px;
   overflow: hidden;
   overflow-y: scroll;
-  border: 1px solid #00E640;
-  color: #00E640;
+  border: 1px solid var(--g1);
+  color: var(--g1);
   border-radius: 5px;
   background-color: #000;
 }
 
 .info-box * {
-  color: #00E640;
+  color: var(--g1);
 }
 
 

@@ -7,13 +7,14 @@ import HyperDrive from './components/hyperdrive';
 import PageTitle from './components/title';
 import PageHeader from './components/header';
 import PageFooter from './components/footer';
+// import Neutron from './components/neutron';
 
 // created modals
 import { GitModal, PageLoadingModal } from './components/modals';
 
 import { Provider } from './context';
 
-import { USER_GITHUB, particleStyle, particleParams } from './configs/contants';
+import { USER_GITHUB, BASIC_AUTHENTICATION_CREDS } from './configs/contants';
 import InfoBox from './components/infoBox';
 
 
@@ -58,7 +59,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchErrHandled(USER_GITHUB)
+    console.log(BASIC_AUTHENTICATION_CREDS);
+    const headers = {
+      Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
+    };
+    this.fetchErrHandled(USER_GITHUB, { headers })
     .then((user) => this.setState(
       { user },
       () => this.setState({ pageModalShow: !this.state.pageModalShow })
@@ -114,8 +119,8 @@ class App extends Component {
   }
 
 
-  async fetchErrHandled(url) {
-    let response = await fetch(url);
+  async fetchErrHandled(url, options={}) {
+    let response = await fetch(url, options);
     if (!response.ok) {
       throw Error(`${response.status} ${response.statusText}`);
     }
@@ -132,22 +137,39 @@ class App extends Component {
       setState: (s1) => this.setState((s) => Object.assign({}, s, s1)),
     }
 
+    const gitImageStyle = {
+      borderRadius: '50%',
+      width: '10rem',
+      height: '10rem',
+    }
+
     return (
       <Provider value={value}>
-        <HyperDrive style={{ height: '100vh', width: '100vw', position: 'absolute', zIndex: '-999' }} />
+        {/* <HyperDrive style={{ height: '100px', width: '100px', position: 'absolute', zIndex: '-999' }} /> */}
         
-        <div id="wrapper">
+        <div id="wrapper" className="container">
           <PageTitle />
-          <button className='btn btn-success' onClick={() => this.setState({ hyperdrive: !this.state.hyperdrive })}>
+          {/* <button className='btn btn-success' onClick={() => this.setState({ hyperdrive: !this.state.hyperdrive })}>
             { 'Toggle Hyperdrive' }
-          </button>
+          </button> */}
+
           <PageHeader />
+          {
+            user.avatar_url &&
+            <div className='sonar-wave'>
+              <a target='_blank' href={user.html_url}>
+                <img style={gitImageStyle} src={user.avatar_url} />
+              </a>
+            </div>
+          }
+          
 
           {/* <InfoBox style={{ width: '250px', height: '250px' }} animation={true} /> */}
 
 
 
           <GitModal show={gitModalShow} githubUserLink={user.html_url}
+            loaderShow={this.state.loaders.gitLoader}
             closeFunc={() => this.setState({ gitModalShow: false })}>
             {this.showUserRepos()}
           </GitModal>

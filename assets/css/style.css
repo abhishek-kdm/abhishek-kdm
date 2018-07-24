@@ -3,35 +3,44 @@
 @import 'floatButton-style.css';
 @import 'modalBox-style.css';
 
-#app {
-  min-height: 100%;
+
+:root {
+  --g1: #00E640;
+  --g2: rgb(106, 136, 70);
+  --main-bg: #353535;
 }
 
 * {
   font-family: Courier;
-  color: #00E640; /* rgb(106, 136, 70); */
+  color: var(--g1);
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
   padding: 0;
   margin: 0;
 }
 
+body {
+  background-color: var(--main-bg);
+}
+
 #wrapper {
+  padding-top: 3vh;
   min-height: 100vh;
-  background: linear-gradient(to right, rgba(136, 147, 156, .2), rgba(0, 0, 0, .2), rgba(136, 147, 156, .2));
+  background-color: rgba(0, 0, 0, 0);
+  /* background: linear-gradient(to right, rgba(136, 147, 156, .2), rgba(0, 0, 0, .2), rgba(136, 147, 156, .2)); */
 }
 
 hr {
-  border-top: 1px dashed rgb(106, 136, 70);
+  border-top: 1px dashed var(--g2);
   width: 100%;
 }
 hr.vertical {
   width: 1px;
   height: 100%;
   margin: 0;
-  border-left: 1px dashed rgb(106, 136, 70);
+  border-left: 1px dashed var(--g2);
 }
 
 
@@ -46,7 +55,7 @@ li:hover:before { color: white!important; }
 a:hover { text-decoration-color: none; }
 
 code {
-  background-color: #00E640;
+  background-color: var(--g1);
   border-radius: 3px;
   color: black!important;
   padding: 5px;
@@ -66,10 +75,10 @@ code.danger {
 
 /* scroller */
 ::-webkit-scrollbar-thumb {
-  background: #00E640;
+  background: var(--g1);
 }
 
-::-webkit-scrollbar-thumb:hover { background: rgb(106, 136, 70); }
+::-webkit-scrollbar-thumb:hover { background: var(--g2); }
 
 
 
@@ -90,8 +99,8 @@ code.danger {
 }
 
 .loader {
-  border: .2rem solid rgb(106, 136, 70);
-  border-top: .2rem solid white/* #00E640 */;
+  border: .2rem solid var(--g2);
+  border-top: .2rem solid white;
   border-radius: 50%;
   background-color: transparent;
   animation: spin 1s linear infinite;
@@ -130,7 +139,7 @@ code.danger {
     padding: 5px 0;
     font-size: .8rem;
     border-radius: 4px;
-    border: 2px solid #00E640;
+    border: 2px solid var(--g1);
 
     position: absolute;
     z-index: 1;
@@ -151,7 +160,7 @@ code.danger {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #00E640 transparent transparent transparent;
+    border-color: var(--g1) transparent transparent transparent;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -176,11 +185,11 @@ code.danger {
   height: 14px;
   border-radius: 50%;
   border: 1.5px groove white;
-  background-color: #00E640;
+  background-color: var(--g1);
 }
 
 .neutron .orbit, .neutron .orbit-reversed {
-  border: 1.3px inset #00E640;
+  border: 1.3px inset var(--g1);
   border-radius: 50%;
   background-color: transparent;
   animation: spin 1s linear infinite;
@@ -207,3 +216,25 @@ code.danger {
   margin-top: 35px;
 }
 
+
+/* Sonar wave */
+.sonar-wave {
+  width: 10rem;
+  height: 10rem;
+}
+
+.sonar-wave::before {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: var(--g1);
+  opacity: 0;
+  z-index: -1;
+  content: '';
+  pointer-events: none;
+}
+
+.sonar-wave::before {
+  animation: sonarWave 2s linear infinite;
+}
