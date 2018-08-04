@@ -8,6 +8,10 @@
   --g1: #00E640;
   --g2: rgb(106, 136, 70);
   --main-bg: #353535;
+  --pre-bg: #252525;
+
+  --pc-width: 50vw;
+  --pc-height: calc(var(--pc-width) * 9/16);
 }
 
 * {
@@ -22,6 +26,11 @@ html, body {
 }
 
 body {
+  /* background-image: url('https://wallpaper-house.com/data/out/8/wallpaper2you_248933.jpg'); */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: var(--main-bg);
 }
 
@@ -54,6 +63,15 @@ li:hover:before { color: white!important; }
 
 a:hover { text-decoration-color: none; }
 
+pre {
+  tab-size: 4;
+  padding: 1rem;
+  border-radius: 4px;
+  background: var(--pre-bg);
+  color: var(--g1);
+}
+
+
 code {
   background-color: var(--g1);
   border-radius: 3px;
@@ -68,7 +86,7 @@ code.danger {
 
 
 /* scrollbar */
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: .3rem; height: .3rem }
 
 /* scrollbar container */
 ::-webkit-scrollbar-track { display: none; }
@@ -219,16 +237,17 @@ code.danger {
 
 /* Sonar wave */
 .sonar-wave {
-  width: 10rem;
-  height: 10rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .sonar-wave::before {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
-  background-color: var(--g1);
+  border: 2px solid var(--g1);
+  background: transparent;
   opacity: 0;
   z-index: -1;
   content: '';
@@ -236,5 +255,32 @@ code.danger {
 }
 
 .sonar-wave::before {
-  animation: sonarWave 2s linear infinite;
+  animation: sonarWave 1.5s linear infinite;
+}
+
+.screen {
+  width: var(--pc-width);
+  height: var(--pc-height);
+  border: .4rem solid var(--g1);
+  border-radius: .4rem;
+  /* position: absolute; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen > pre {
+  color: white;
+  font-weight: 700;
+}
+
+.screen::after {
+  content: '';
+  display: inline-block;
+  width: 50%;
+  height: 1em;
+  top: calc(100% + 1em);
+  background-color: var(--g1);
+  border-radius: 4px;
+  position: relative;
+  left: 25%;
 }

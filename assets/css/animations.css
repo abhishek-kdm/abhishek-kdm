@@ -34,10 +34,10 @@
 /* Sonar Waves */
 @keyframes sonarWave {
   from {
-    opacity: 0.2;
+    opacity: 0.5;
   }
   to {
-    transform: scale(1.5);
+    transform: scale(1.2);
     opacity: 0;
   }
 }

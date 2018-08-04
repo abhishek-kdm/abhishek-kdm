@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom';
 
 import FloatButton from './components/floatButton';
 
-import HyperDrive from './components/hyperdrive';
 import PageTitle from './components/title';
 import PageHeader from './components/header';
-import PageFooter from './components/footer';
-// import Neutron from './components/neutron';
 
 // created modals
 import { GitModal, PageLoadingModal } from './components/modals';
 
 import { Provider } from './context';
 
-import { USER_GITHUB, BASIC_AUTHENTICATION_CREDS } from './configs/contants';
-import InfoBox from './components/infoBox';
+import { USER_GITHUB, BASIC_AUTHENTICATION_CREDS, ABOUT_ME } from './configs/contants';
 
+function sleep(ms) { return new Promise((f) => setTimeout(f, ms)); }
+
+async function typo(el) {
+  for (const i of ABOUT_ME) {
+    el.innerHTML = el.innerHTML + i;
+    await sleep(Math.random() * 100);
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -31,8 +35,6 @@ class App extends Component {
       
       user: {},
       userRepos: { ok: true, json: [] },
-
-      hyperdrive: false,
     };
     this.fetchErrHandled = this.fetchErrHandled.bind(this);
     this.fetchGithubDetails = this.fetchGithubDetails.bind(this);
@@ -59,24 +61,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(BASIC_AUTHENTICATION_CREDS);
     const headers = {
       Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
     };
     this.fetchErrHandled(USER_GITHUB, { headers })
     .then((user) => this.setState(
       { user },
-      () => this.setState({ pageModalShow: !this.state.pageModalShow })
+      this.setState({ pageModalShow: !this.state.pageModalShow }, () => typo(document.querySelector('pre#about')))
     ));
   }
 
 
-  showLoaders(names) {
+  showLoaders = (names) => {
     var loaders = Object.assign({}, ...names.map((n) => ({ [n]: true })));
     this.setState(prevState => ({ loaders: { ...prevState.loaders, ...loaders } }));
   };
 
-  hideLoaders(names) {
+  hideLoaders = (names) =>  {
     var loaders = Object.assign({}, ...names.map((n) => ({ [n]: false })));
     this.setState(prevState => ({ loaders: { ...prevState.loaders, ...loaders } }));
   };
@@ -139,34 +140,36 @@ class App extends Component {
 
     const gitImageStyle = {
       borderRadius: '50%',
-      width: '10rem',
-      height: '10rem',
+      width: '5rem',
+      height: '5rem',
     }
 
     return (
       <Provider value={value}>
-        {/* <HyperDrive style={{ height: '100px', width: '100px', position: 'absolute', zIndex: '-999' }} /> */}
-        
-        <div id="wrapper" className="container">
+        <div id="wrapper">
           <PageTitle />
-          {/* <button className='btn btn-success' onClick={() => this.setState({ hyperdrive: !this.state.hyperdrive })}>
-            { 'Toggle Hyperdrive' }
-          </button> */}
-
+  
           <PageHeader />
-          {
+
+          <div className="container">
+          {/* {
             user.avatar_url &&
             <div className='sonar-wave'>
               <a target='_blank' href={user.html_url}>
                 <img style={gitImageStyle} src={user.avatar_url} />
               </a>
             </div>
-          }
-          
+          } */}
 
-          {/* <InfoBox style={{ width: '250px', height: '250px' }} animation={true} /> */}
+          <div className="screen">
+            <pre id={'about'} style={{ width: '100%', height: '100%' }}></pre>
+          </div>
 
 
+
+          {/* <i class="fa fa-5x fa-lg fa-tv"></i>
+          <pre>kjagsdljbaljsbdljbhjasd</pre> */}
+          </div>
 
           <GitModal show={gitModalShow} githubUserLink={user.html_url}
             loaderShow={this.state.loaders.gitLoader}
@@ -175,7 +178,6 @@ class App extends Component {
           </GitModal>
 
           <PageLoadingModal dimmness={'1'} show={pageModalShow} loaderShow={loaders.pageLoader} />
-
           <FloatButton onClick={this.fetchGithubDetails} tooltip='Github..' />
 
         </div>

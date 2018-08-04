@@ -3,7 +3,7 @@ import React from 'react';
 export default class PageTitle extends React.Component {
   render() {
     return (
-      <div id='page-title'>
+      <div id='page-title' className={'container'}>
       
         {/* <small style={{ color: '#00E640!important' }}>
           <strong>{'milleniumfalcon-hyperspace: '}
