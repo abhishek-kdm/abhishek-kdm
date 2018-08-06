@@ -7,5 +7,5 @@ export const BASIC_AUTHENTICATION_CREDS = btoa('sample');
 
 
 export const ABOUT_ME = "\
-Hey!.\nThis is Abhishek.\nI am a Full-Stack Developer and Script Writer.\nEnjoys coding competitions, puzzles and video games. \
+This is Abhishek.\nFull-Stack Developer, Script Writer.\nEnjoys coding, puzzles and video games.\
 "

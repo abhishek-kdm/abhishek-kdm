@@ -17,10 +17,15 @@ function sleep(ms) { return new Promise((f) => setTimeout(f, ms)); }
 
 async function typo(el) {
   for (const i of ABOUT_ME) {
-    el.innerHTML = el.innerHTML + i;
-    await sleep(Math.random() * 100);
+    const nodeValue = ($(el).contents().filter(function() { return this.nodeType == 3; })[0] || {nodeValue: ''}).nodeValue
+    el.innerHTML = `${nodeValue + i}<span class='blinking'>_</span>`;
+    $(el).animate({ scrollTop: $(el).prop('scrollHeight') }, 0);
+    await sleep(Math.random() * 200);
   }
 }
+const headers = {
+  Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
+};
 
 class App extends Component {
   constructor(props) {
@@ -61,9 +66,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const headers = {
-      Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
-    };
     this.fetchErrHandled(USER_GITHUB, { headers })
     .then((user) => this.setState(
       { user },
@@ -107,7 +109,7 @@ class App extends Component {
     
     this.showLoaders(['gitLoader']);
 
-    this.fetchErrHandled(this.state.user.repos_url)
+    this.fetchErrHandled(this.state.user.repos_url, { headers })
     .then((json) => this.setState(
       { userRepos: { ok: true, json } },
       this.hideLoaders(['gitLoader'])
@@ -162,7 +164,7 @@ class App extends Component {
           } */}
 
           <div className="screen">
-            <pre id={'about'} style={{ width: '100%', height: '100%' }}></pre>
+            <pre className='glow-text' id={'about'} style={{ width: '100%', height: '100%' }}></pre>
           </div>
 
 
