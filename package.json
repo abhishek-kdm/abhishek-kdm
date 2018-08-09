@@ -4,8 +4,9 @@
   "description": "Personal Webpage",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --color --progress -p",
-    "watch": "webpack --color --progress -d --watch"
+    "build": "webpack --color --progress -p --config webpack/prod.config.js",
+    "build:hash": "webpack --color --progress -p --config webpack/prod-hash.config.js",
+    "watch": "webpack --color --progress -d --watch --config webpack/dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,12 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.11",
     "path": "^0.12.7",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "webpack": "^4.11.1",
-    "webpack-cli": "^3.0.2"
+    "webpack-cli": "^3.0.2",
+    "webpack-merge": "^4.1.4"
   }
 }

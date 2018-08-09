@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
 
 const configs = require('./base.config.js');
 const prodConfigs = require('./prod.config.js')
@@ -16,9 +15,4 @@ module.exports = merge(prodConfigs, {
   optimization: {
     splitChunks: { chunks: 'all', name: true }
   },
-  plugins: [
-    new ManifestPlugin({
-      filename: path.join(filePath, 'manifest.bundle.json'),
-    }),
-  ]
 });

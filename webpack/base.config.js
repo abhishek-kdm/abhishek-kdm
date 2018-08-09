@@ -1,8 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
-const entry = '../src';
+const entry = './src';
 
-module.exports = {
+const fileBaseName = 'bio';
+const filePath = '';
+const outputPath = __dirname;
+
+var exports = module.exports = { outputPath, fileBaseName, filePath };
+
+exports.baseConfigs = {
   entry: ['babel-polyfill', path.resolve(entry, 'index.jsx')],
 
   module: {
