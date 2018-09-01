@@ -148,10 +148,11 @@ class App extends Component {
 
     return (
       <Provider value={value}>
-        <div id="wrapper">
-          <PageTitle />
-  
-          <PageHeader />
+        <div id='wrapper'>
+          <div id='head-wrapper'>
+            <PageTitle />
+            <PageHeader />
+          </div>
 
           <div className="container">
           {/* {

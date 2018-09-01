@@ -10,9 +10,26 @@
   --main-bg: #353535;
   --pre-bg: #252525;
 
-  --pc-width: 50vw;
+  --pc-width: 30vw;
   --pc-height: calc(var(--pc-width) * 9/16);
 }
+
+@media only screen and (max-width: 767px) {
+  :root {
+    --pc-width: 45vw;
+  }
+
+  #head-wrapper {
+    height: 17vh!important;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  :root {
+    --pc-width: 25vw;
+  }
+}
+
 
 * {
   font-family: 'Roboto Mono', 'Inconsolata', monospace;
@@ -26,7 +43,6 @@ html, body {
 }
 
 body {
-  /* background-image: url('https://wallpaper-house.com/data/out/8/wallpaper2you_248933.jpg'); */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -35,10 +51,19 @@ body {
 }
 
 #wrapper {
-  padding-top: 3vh;
+  /* padding-top: 3vh; */
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0);
   /* background: linear-gradient(to right, rgba(136, 147, 156, .2), rgba(0, 0, 0, .2), rgba(136, 147, 156, .2)); */
+}
+
+#head-wrapper {
+  height: 25vh;
+  background: black center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 hr {
@@ -104,11 +129,11 @@ code.danger {
 
 
 .glow {
-  box-shadow: 0 0 3px var(--g1);
+  box-shadow: 0 0 2px var(--g1);
 }
 
 .glow-text {
-  text-shadow: 0 0 3px var(--g1);
+  text-shadow: 0 0 2px var(--g1);
 }
 
 
@@ -274,8 +299,11 @@ code.danger {
   width: var(--pc-width);
   height: var(--pc-height);
   border: .4rem solid var(--g1);
+  top: 10vh;
+  left: calc(50vw - (var(--pc-width)/2));
+  position: absolute;
+  z-index: 9999;
   border-radius: .4rem;
-  /* position: absolute; */
   margin-left: auto;
   margin-right: auto;
 }

@@ -7,7 +7,7 @@ export default class PageHeader extends Component {
 
   render() {
     return (
-      <div className={'container'}>
+      <div id='page-header' className={'container'}>
       </div>
     )
   }
