@@ -6,6 +6,9 @@ export const REPO_URL = (repo) => `https://api.github.com/repos/${USER}/${repo}/
 export const BASIC_AUTHENTICATION_CREDS = btoa('sample');
 
 
+// export const ABOUT_ME = "\
+// > This is Abhishek.\n> Full-Stack Developer, Script Writer.\n> Enjoys coding, puzzles and video games.\
+// "
 export const ABOUT_ME = "\
-> This is Abhishek.\n> Full-Stack Developer, Script Writer.\n> Enjoys coding, puzzles and video games.\
+> This site is under construction.\n> Thank You for showing interest.\n> But the developer is very lazy.\
 "
