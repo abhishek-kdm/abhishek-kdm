@@ -8,18 +8,34 @@
   <link rel="icon" href="data:;base64,=">
 
   <style>
+    
     * { font-family: monospace; }
     hr { border: 1px solid lightgray }
     h3.inline, h4, h5, h6 { display: inline; }
     ul { list-style: none; }
     li { margin: 10px; }
     td { padding: 10px; }
-    .container { margin: auto 5vw; }
+    .container { margin: auto 25vw; }
+    
+    @media print {
+      * { font-size: 18px; }
+      h1 { font-size: 24px;}
+      .container {
+        margin: auto 5vw;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      .container {
+        margin: auto 5vw;
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Abhishek S. Kadam</h2>
+    <h1>Abhishek S. Kadam</h1>
     <hr />
     
     <div id="section-info">
@@ -28,6 +44,7 @@
       <strong>Email:</strong> abhishekk19@gmail.com<br /><br />
       <strong>Linkedin:</strong> https://linkedin.com/in/abhishek-kadam-26a06170<br />
       <strong>Github:</strong> https://github.com/abhishek-kdm<br />
+      <strong>Stack Overflow:</strong> https://stackoverflow.com/users/3065657/abhishek-kdm<br />
       <strong>Personal-Webpage:</strong> https://abhishek-kdm.github.io
     </div>
     <br /><hr />
@@ -35,24 +52,33 @@
     <div id="section-pro-summary">
       <h3><u>Summary</u></h3>
       <pre>
-Highly enthusiastic, devoted developer. Loves to solve puzzles, math problems, video games (mostly RPG/MOBA).
-music: (70s/80s rock/metal). Dropped out of college, 2nd Year, Computer Engg. for unjust treatment.
-Being a puzzle solver, also a huge admirer of competitive coding.
-Big fan of Declarative/Functional fashion of Programming, really helped me excessively integrate math and logic in my code
-which helped me become a better programmer.
-And I can say that I have developed a lot as a coder, since I took up Haskell (programming language).
+Highly enthusiastic, devoted developer. Loves to solve puzzles, math problems,
+video games (mostly RPG/MOBA). music: (70s/80s rock/metal). Dropped out of
+college, 2nd Year, Computer Engg. for unjust treatment. Being a puzzle solver,
+also a huge admirer of competitive coding.
+Big fan of Declarative/Functional fashion of Programming, really helped me
+excessively integrate math and logic in my code which helped me become a better
+programmer.
+And I can say that I have developed a lot as a coder, since I took up
+Haskell (programming language).
 
 <strong>Experience</strong>
 <table>
   <tbody>
     <tr>
       <td><strong>Advanced:</strong></td>
-      <td>Python | C/C++ | Javascript | PHP | AngularJs | ReactJs</td>
-      <td> -- (worked with many frameworks/modules)</td>
+      <td>
+Python | C/C++ | Javascript
+PHP | AngularJs | ReactJs
+      </td>
+      <td>-- (worked with many frameworks/modules)</td>
     </tr>
     <tr>
       <td><strong>Significant:</strong></td>
-      <td>Haskell | Golang | Ruby | Java</td>
+      <td>
+Haskell | Golang
+Ruby | Java
+      </td>
       <td> -- (Very comfortable with the language itself)</td>
     </tr>
     <tr>
@@ -117,7 +143,8 @@ Daily/Monthly reports (only numbers) for analysis.
       <ul>
         <li>
           <pre>
-Worked with different languages, in many areas of the market, as required by the contracter.
+Worked with different languages, in many areas of the market, as required by
+the contracter.
           </pre>
         </li>
         <li>

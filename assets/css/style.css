@@ -10,13 +10,13 @@
   --main-bg: #353535;
   --pre-bg: #252525;
 
-  --pc-width: 30vw;
-  --pc-height: calc(var(--pc-width) * 9/16);
+  --screen-width: 30vw;
+  --screen-height: calc(var(--screen-width) * 9/16);
 }
 
 @media only screen and (max-width: 767px) {
   :root {
-    --pc-width: 45vw;
+    --screen-width: 45vw;
   }
 
   #head-wrapper {
@@ -26,13 +26,13 @@
 
 @media only screen and (min-width: 1920px) {
   :root {
-    --pc-width: 25vw;
+    --screen-width: 25vw;
   }
 }
 
 
 * {
-  font-family: 'Inconsolata', monospace;
+  font-family: monospace;
   font-weight: 300;
   color: var(--g1);
 }
@@ -297,11 +297,11 @@ code.danger {
 }
 
 .screen {
-  width: var(--pc-width);
-  height: var(--pc-height);
+  width: var(--screen-width);
+  height: var(--screen-height);
   border: .4rem solid var(--g1);
   top: 10vh;
-  left: calc(50vw - (var(--pc-width)/2));
+  left: calc(50vw - (var(--screen-width)/2));
   position: absolute;
   z-index: 9999;
   border-radius: .4rem;
@@ -324,4 +324,10 @@ code.danger {
   border-radius: 4px;
   position: relative;
   left: 25%;
+}
+
+.screen-seperator {
+  min-height: var(--screen-height);
+  width: 100%;
+  display: block;
 }

@@ -168,10 +168,12 @@ class App extends Component {
             <pre className='glow-text' id={'about'} style={{ width: '100%', height: '100%' }}></pre>
           </div>
 
+          <span className="screen-seperator"></span>
 
 
-          {/* <i class="fa fa-5x fa-lg fa-tv"></i>
-          <pre>kjagsdljbaljsbdljbhjasd</pre> */}
+
+          {/* <i className="fa fa-5x fa-lg fa-tv"></i> */}
+          {/* <pre>kjagsdljbaljsbdljbhjasd</pre> */}
           </div>
 
           <GitModal show={gitModalShow} githubUserLink={user.html_url}

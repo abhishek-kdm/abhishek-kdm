@@ -23,7 +23,7 @@ export default class FloatButton extends Component {
 
   render() {
     return (
-      <button onClick={this.props.onClick} className={`${this.props.className} float tooltip-parent`}>
+      <button onClick={this.props.onClick} className={`${this.props.className || ''} float tooltip-parent`}>
         { this.props.tooltip && 
           <span className='tooltip-text'>{this.props.tooltip}</span>
         }
