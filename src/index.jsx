@@ -5,6 +5,9 @@ import FloatButton from './components/floatButton';
 
 import PageTitle from './components/title';
 import PageHeader from './components/header';
+import LinkContainer from './components/linkContainer';
+import Neutron from './components/neutron';
+
 
 // created modals
 import { GitModal, PageLoadingModal } from './components/modals';
@@ -50,8 +53,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    $("html").mousemove(function (event) {
-      var eye = $(".eye");
+    $('html').mousemove(function (event) {
+      var eye = $('.eye');
       var x = (eye.offset().left) + (eye.width() / 2);
       var y = (eye.offset().top) + (eye.height() / 2);
       var rad = Math.atan2(event.pageX - x, event.pageY - y);
@@ -154,7 +157,8 @@ class App extends Component {
             <PageHeader />
           </div>
 
-          <div className="container">
+          {/* container */}
+          <div className='container'>
           {/* {
             user.avatar_url &&
             <div className='sonar-wave'>
@@ -164,17 +168,16 @@ class App extends Component {
             </div>
           } */}
 
-          <div className="screen">
-            <pre className='glow-text' id={'about'} style={{ width: '100%', height: '100%' }}></pre>
+          <div className='screen'>
+            <pre id={'about'} style={{ width: '100%', height: '100%' }}></pre>
           </div>
+  
+          <span className='screen-seperator'></span>
 
-          <span className="screen-seperator"></span>
 
+          <LinkContainer />
 
-
-          {/* <i className="fa fa-5x fa-lg fa-tv"></i> */}
-          {/* <pre>kjagsdljbaljsbdljbhjasd</pre> */}
-          </div>
+          </div> {/* /container */}
 
           <GitModal show={gitModalShow} githubUserLink={user.html_url}
             loaderShow={this.state.loaders.gitLoader}

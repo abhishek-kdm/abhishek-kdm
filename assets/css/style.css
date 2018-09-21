@@ -2,6 +2,7 @@
 @import 'infobox-style.css';
 @import 'floatButton-style.css';
 @import 'modalBox-style.css';
+@import 'linkContainer-style.css';
 
 
 :root {
@@ -32,7 +33,7 @@
 
 
 * {
-  font-family: monospace;
+  font-family: 'Cantarell'/* 'Inconsolata' */, monospace;
   font-weight: 300;
   color: var(--g1);
 }
@@ -60,7 +61,7 @@ body {
 
 #head-wrapper {
   height: 25vh;
-  background: black center center fixed;
+  background: var(--pre-bg)/* black */ center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -88,7 +89,8 @@ ul {
 li::before { content: '$  '; color: red!important; }
 li:hover:before { color: white!important; }
 
-a:hover { text-decoration-color: none; }
+a { cursor: pointer; }
+a:hover { text-decoration: none; }
 
 pre {
   tab-size: 4;
@@ -186,16 +188,20 @@ code.danger {
 
 
 /* Tooltip */
+.tooltip-parent {
+  position: relative;
+  display: inline-block;
+}
 .tooltip-parent .tooltip-text {
     visibility: hidden;
     width: 120px;
-    background-color: black;
+    background-color: var(--pre-bg) /* black */;
     color: #fff;
     text-align: center;
     padding: 5px 0;
     font-size: .8rem;
     border-radius: 4px;
-    border: 2px solid var(--g1);
+    border: 2px solid var(--pre-bg);
 
     position: absolute;
     z-index: 1;
@@ -205,10 +211,12 @@ code.danger {
 
     opacity: 0;
     transition: opacity 0.3s;
+
+    box-shadow: 0 0 10px var(--g1);
 }
 
 /* Tooltip arrow */
-.tooltip-parent .tooltip-text::after {
+/* .tooltip-parent .tooltip-text::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -216,8 +224,8 @@ code.danger {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: var(--g1) transparent transparent transparent;
-}
+    border-color: var(--pre-bg) transparent transparent transparent;
+} */
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip-parent:hover .tooltip-text {
@@ -228,9 +236,20 @@ code.danger {
 
 /* Neutron */
 
+.neutron-container {
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px black;
+  background-color: var(--pre-bg);
+  display: flex;
+  align-items: center;
+}
 .neutron {
-  height: 36px;
-  width: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 36px!important;
+  width: 36px!important;
 }
 
 .neutron .neutron-atom {
@@ -240,12 +259,11 @@ code.danger {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1.5px groove white;
   background-color: var(--g1);
 }
 
 .neutron .orbit, .neutron .orbit-reversed {
-  border: 1.3px inset var(--g1);
+  border: 1px inset grey/* var(--g1) */;
   border-radius: 50%;
   background-color: transparent;
   animation: spin 1s linear infinite;
@@ -299,6 +317,33 @@ code.danger {
 .screen {
   width: var(--screen-width);
   height: var(--screen-height);
+  box-shadow:  inset 0 0 10px black;
+  top: 10vh;
+  left: calc(50vw - (var(--screen-width)/2));
+  position: absolute;
+  z-index: 9999;
+  border-radius: .4rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .3rem;
+  background-color: var(--pre-bg);
+}
+
+.screen > pre {
+  color: white;
+  font-weight: 700;
+}
+
+.screen-seperator {
+  min-height: var(--screen-height);
+  width: 100%;
+  display: block;
+}
+
+/******************* Old Screen *******************/
+/* .screen {
+  width: var(--screen-width);
+  height: var(--screen-height);
   border: .4rem solid var(--g1);
   top: 10vh;
   left: calc(50vw - (var(--screen-width)/2));
@@ -330,4 +375,5 @@ code.danger {
   min-height: var(--screen-height);
   width: 100%;
   display: block;
-}
+} */
+/******************* /Old Screen *******************/
