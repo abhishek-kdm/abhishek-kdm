@@ -5,11 +5,9 @@ const path = require('path');
 const configs = require('./base.config.js');
 const prodConfigs = require('./prod.config.js')
 
-const filePath = configs.filePath;
-
 module.exports = merge(prodConfigs, {
   output: {
-    filename: path.join(filePath, '[name].[chunkhash].js')
+    filename: path.join(configs.filePath, '[name].[chunkhash].js')
   },
 
   optimization: {

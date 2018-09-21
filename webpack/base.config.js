@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const entry = './src';
 
-const fileBaseName = 'bio';
+const fileBaseName = 'bundle';
 const filePath = '';
 const outputPath = __dirname;
 

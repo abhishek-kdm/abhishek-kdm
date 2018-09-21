@@ -5,14 +5,12 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var CompressionPlugin = require("compression-webpack-plugin");
 
 const configs = require('./base.config.js');
-const filePath = configs.filePath;
-const fileBaseName = configs.fileBaseName;
 
 module.exports = merge(configs.baseConfigs, {
   mode: 'production',
   optimization: { minimize: true },
   output: {
-    filename: path.join(filePath, '[name].' + fileBaseName + '.js')
+    filename: path.join(configs.filePath, '[name].' + configs.fileBaseName + '.js')
   },
   plugins: [
 
