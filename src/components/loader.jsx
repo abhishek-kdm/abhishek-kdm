@@ -1,16 +1,16 @@
 import React from 'react';
 
 const Loader = (props) => {
-  return (
-    <div className="loader-wrapper"
-      style={{ display: props.show ? 'flex' : 'none' }}>
+	return (
+		<div className="loader-wrapper"
+			style={{ display: props.show ? 'flex' : 'none' }}>
 
-      <div className={`loader loader-${props.size || 'sm'}`}></div>
-      &nbsp;&nbsp;&nbsp;
-      <span>{props.children}</span>
+			<div className={`loader loader-${props.size || 'sm'}`}></div>
+			&nbsp;&nbsp;&nbsp;
+			<span>{props.children}</span>
 
-    </div>
-  )
+		</div>
+	)
 }
 
 export default Loader;

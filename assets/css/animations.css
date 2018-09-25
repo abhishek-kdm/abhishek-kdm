@@ -1,43 +1,43 @@
 /* blinking text */
 @keyframes blinking-text {
-    0% { color: #fff; }
-    25% { color: transparent; }
-    50% { color: #fff; }
-    75% { color: transparent; }
-    100% { color: #fff; }
+		0% { color: #fff; }
+		25% { color: transparent; }
+		50% { color: #fff; }
+		75% { color: transparent; }
+		100% { color: #fff; }
 }
 
 
 /* spin: loading */
 @keyframes spin {
-  0% { transform : rotate(0deg); }
-  100% { transform : rotate(360deg); }
+	0% { transform : rotate(0deg); }
+	100% { transform : rotate(360deg); }
 }
 
 
 /* vintage-display */
 @keyframes vintage-display {
-  0% {
-    background: var(--g1);
-    transform: rotatey(90deg) scaleY(.01);
-  }
-  50% {
-    background-color: var(--g1);
-    transform: rotatey(0deg) scaleY(.01);
-  }
-  100% {
-    transform: rotatey(0deg) scaleY(1);
-  }
+	0% {
+		background: var(--g1);
+		transform: rotatey(90deg) scaleY(.01);
+	}
+	50% {
+		background-color: var(--g1);
+		transform: rotatey(0deg) scaleY(.01);
+	}
+	100% {
+		transform: rotatey(0deg) scaleY(1);
+	}
 }
 
 
 /* Sonar Waves */
 @keyframes sonarWave {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    transform: scale(1.2);
-    opacity: 0;
-  }
+	from {
+		opacity: 0.5;
+	}
+	to {
+		transform: scale(1.2);
+		opacity: 0;
+	}
 }

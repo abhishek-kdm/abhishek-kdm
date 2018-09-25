@@ -5,30 +5,30 @@ import ModalBox from './modalBox';
 import Loader from './loader';
 
 export const GitModal = (props) => {
-  return (
-    <ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
+	return (
+		<ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
 
-      <InfoBox animate={true} style={{ height: '250px' }}
-        title={<a target='_blank' href={props.githubUserLink}>{ props.githubUserLink }</a>}>
+			<InfoBox animate={true} style={{ height: '250px' }}
+				title={<a target='_blank' href={props.githubUserLink}>{ props.githubUserLink }</a>}>
 
-        <Loader size='sm' show={props.loaderShow}>
-          <span className="blinking">{'Loading github repos...'}</span>
-        </Loader>
+				<Loader size='sm' show={props.loaderShow}>
+					<span className="blinking">{'Loading github repos...'}</span>
+				</Loader>
 
-        {props.children}
+				{props.children}
 
-      </InfoBox>
+			</InfoBox>
 
-    </ModalBox>
-  )
+		</ModalBox>
+	)
 }
 
 export const PageLoadingModal = (props) => {
-  return (
-    <ModalBox dimmness={props.dimmness} show={props.show}>
-      <Loader size='lg' show={true}>
-        <span className="blinking">{'Loading...'}</span>
-      </Loader>
-    </ModalBox>
-  )
+	return (
+		<ModalBox dimmness={props.dimmness} show={props.show}>
+			<Loader size='lg' show={true}>
+				<span className="blinking">{'Loading...'}</span>
+			</Loader>
+		</ModalBox>
+	)
 }
