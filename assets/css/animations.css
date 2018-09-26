@@ -18,11 +18,9 @@
 /* vintage-display */
 @keyframes vintage-display {
 	0% {
-		background: var(--g1);
 		transform: rotatey(90deg) scaleY(.01);
 	}
 	50% {
-		background-color: var(--g1);
 		transform: rotatey(0deg) scaleY(.01);
 	}
 	100% {

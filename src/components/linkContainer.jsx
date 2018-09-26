@@ -17,13 +17,9 @@ export default class LinkContainer extends Component {
 		return (
 			<div className='link-container'>
 			{this.links().map((link, i) => (
-				<div key={i} className={'tooltip-parent'}>
-					<span className='tooltip-text'>{link.title}</span>
-					<a className={'link'} href={link.href} target='_blank'>
-						{
-							link.title !== 'stack-overflow' ? <i style={{ color: link.icon.color }} className={`fa fa-${link.icon.class}`} />
-							: <img style={{ width: '1.5rem' }} src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.svg?v=f13ebeedfa9e" alt="stack-overflow" />
-						}
+				<div key={i}>
+					<a className={'link'} title={link.title} href={link.href} target='_blank'>
+						<i style={{ color: link.icon.color }} className={`fa fa-3x fa-${link.icon.class}`} />
 					</a>
 				</div>
 			))}

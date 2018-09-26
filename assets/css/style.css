@@ -183,8 +183,9 @@ code.danger {
 
 /* Tooltip */
 .tooltip-parent {
+	z-index: 99999;
 	position: relative;
-	display: inline-block;
+	/* display: inline-block; */
 }
 .tooltip-parent .tooltip-text {
 	visibility: hidden;
@@ -325,7 +326,7 @@ code.danger {
 
 .screen > pre {
 	color: white;
-	font-weight: 700;
+	/* font-weight: 700; */
 }
 
 .screen-seperator {
@@ -371,3 +372,28 @@ code.danger {
 	display: block;
 } */
 /******************* /Old Screen *******************/
+
+
+
+@media only screen and (max-width: 767px) {
+	:root {
+		--screen-width: 45vw;
+	}
+	
+	#head-wrapper {
+		height: 17vh!important;
+	}
+	
+	.link-container { padding: 0; }
+
+	.link {
+		height: 3rem;
+		width: 3rem;
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	:root {
+		--screen-width: 25vw;
+	}
+}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 
 import FloatButton from './components/floatButton';
@@ -6,7 +6,7 @@ import FloatButton from './components/floatButton';
 import PageTitle from './components/title';
 import PageHeader from './components/header';
 import LinkContainer from './components/linkContainer';
-import Neutron from './components/neutron';
+import InfoBox from './components/infoBox';
 
 
 // created modals
@@ -47,6 +47,7 @@ class App extends Component {
 		this.fetchErrHandled = this.fetchErrHandled.bind(this);
 		this.fetchGithubDetails = this.fetchGithubDetails.bind(this);
 		this.showUserRepos = this.showUserRepos.bind(this);
+		this.renderAvatar = this.renderAvatar.bind(this);
 
 		this.showLoaders = this.showLoaders.bind(this);
 		this.hideLoaders = this.hideLoaders.bind(this);
@@ -124,6 +125,14 @@ class App extends Component {
 
 	}
 
+	renderAvatar = ({ html_url, avatar_url }, style) => (
+		<div className='sonar-wave'>
+			<a target='_blank' href={html_url}>
+				<img style={style} src={avatar_url} />
+			</a>
+		</div>
+	)
+
 
 	async fetchErrHandled(url, options={}) {
 		let response = await fetch(url, options);
@@ -149,6 +158,8 @@ class App extends Component {
 			height: '5rem',
 		}
 
+		const avatar = user.avatar_url ? this.renderAvatar(user, gitImageStyle) : <Fragment />;
+
 		return (
 			<Provider value={value}>
 				<div id='wrapper'>
@@ -157,16 +168,12 @@ class App extends Component {
 						<PageHeader />
 					</div>
 
+
+
+
+
 					{/* container */}
 					<div className='container'>
-					{/* {
-						user.avatar_url &&
-						<div className='sonar-wave'>
-							<a target='_blank' href={user.html_url}>
-								<img style={gitImageStyle} src={user.avatar_url} />
-							</a>
-						</div>
-					} */}
 
 					<div className='screen'>
 						<pre id={'about'} style={{ width: '100%', height: '100%' }}></pre>
@@ -175,18 +182,23 @@ class App extends Component {
 					<span className='screen-seperator'></span>
 
 
-					<LinkContainer />
+
+					<InfoBox><LinkContainer /></InfoBox>
 
 					</div> {/* /container */}
 
+
+
+
+
 					<GitModal show={gitModalShow} githubUserLink={user.html_url}
-						loaderShow={this.state.loaders.gitLoader}
+						loaderShow={this.state.loaders.gitLoader} vintage={true}
 						closeFunc={() => this.setState({ gitModalShow: false })}>
 						{this.showUserRepos()}
 					</GitModal>
 
 					<PageLoadingModal dimmness={'1'} show={pageModalShow} loaderShow={loaders.pageLoader} />
-					<FloatButton onClick={this.fetchGithubDetails} tooltip='Github..' />
+					<FloatButton onClick={this.fetchGithubDetails} tooltip='Repositories..' />
 
 				</div>
 			</Provider>

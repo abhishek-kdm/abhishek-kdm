@@ -2,10 +2,13 @@
 	padding: 5px;
 	overflow: hidden;
 	overflow-y: scroll;
-	border: 1px solid var(--g1);
-	color: var(--g1);
+	border: 1px solid var(--pre-bg);
 	border-radius: 5px;
+}
+.info-box.vintage {
+	color: var(--g1);
 	background-color: #000;
+	border: 1px solid var(--g1);
 }
 
 .info-box * {

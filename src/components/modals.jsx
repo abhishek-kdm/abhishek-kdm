@@ -8,7 +8,7 @@ export const GitModal = (props) => {
 	return (
 		<ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
 
-			<InfoBox animate={true} style={{ height: '250px' }}
+			<InfoBox animate={true} style={{ height: '250px' }} vintage={props.vintage}
 				title={<a target='_blank' href={props.githubUserLink}>{ props.githubUserLink }</a>}>
 
 				<Loader size='sm' show={props.loaderShow}>
