@@ -1,6 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 
-const Loader = (props) => {
+interface ILoaderProps {
+	show?: boolean,
+	size?: string,
+	children?: React.ReactNode,
+};
+
+const Loader = (props: ILoaderProps) => {
 	return (
 		<div className="loader-wrapper"
 			style={{ display: props.show ? 'flex' : 'none' }}>

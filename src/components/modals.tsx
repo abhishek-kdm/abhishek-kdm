@@ -1,10 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 
 import InfoBox from './infoBox';
 import ModalBox from './modalBox';
 import Loader from './loader';
 
-export const GitModal = (props) => {
+interface IGitModalProps {
+	dimmness?: string,
+	show: boolean,
+	vintage?: boolean,
+	loaderShow?: boolean,
+	closeFunc?: () => void,
+	githubUserLink?: string,
+	children?: React.ReactNode,
+};
+
+export const GitModal = (props: IGitModalProps) => {
 	return (
 		<ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
 
@@ -23,7 +33,13 @@ export const GitModal = (props) => {
 	)
 }
 
-export const PageLoadingModal = (props) => {
+interface IPageLoadingProps {
+	dimmness?: string,
+	show: boolean,
+	loaderShow?: boolean,
+};
+
+export const PageLoadingModal = (props: IPageLoadingProps) => {
 	return (
 		<ModalBox dimmness={props.dimmness} show={props.show}>
 			<Loader size='lg' show={true}>

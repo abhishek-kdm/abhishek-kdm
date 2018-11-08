@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 import FloatButton from './components/floatButton';
 
@@ -8,17 +8,15 @@ import PageHeader from './components/header';
 import LinkContainer from './components/linkContainer';
 import InfoBox from './components/infoBox';
 
-
 // created modals
 import { GitModal, PageLoadingModal } from './components/modals';
-
+import { USER_GITHUB, BASIC_AUTHENTICATION_CREDS, ABOUT_ME } from './configs/contants';
 import { Provider } from './context';
 
-import { USER_GITHUB, BASIC_AUTHENTICATION_CREDS, ABOUT_ME } from './configs/contants';
 
-function sleep(ms) { return new Promise((f) => setTimeout(f, ms)); }
+function sleep(ms: number) { return new Promise((f) => setTimeout(f, ms)); }
 
-async function typo(el) {
+async function typo(el: HTMLElement) {
 	for (const i of ABOUT_ME) {
 		const nodeValue = ($(el).contents().filter(function() { return this.nodeType == 3; })[0] || {nodeValue: ''}).nodeValue
 		el.innerHTML = `${nodeValue + i}<span class='blinking'>_</span>`;
@@ -26,12 +24,19 @@ async function typo(el) {
 		await sleep(Math.random() * 200);
 	}
 }
+
+
+interface IProps {
+	html_url: string,
+	avatar_url: string
+}
+
 const headers = {
 	Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
 };
 
-class App extends Component {
-	constructor(props) {
+class App extends React.Component<any, any> {
+	constructor(props: any) {
 		super(props);
 		this.state = {
 			loaders: {
@@ -73,32 +78,35 @@ class App extends Component {
 		this.fetchErrHandled(USER_GITHUB, { headers })
 		.then((user) => this.setState(
 			{ user },
-			this.setState({ pageModalShow: !this.state.pageModalShow }, () => typo(document.querySelector('pre#about')))
+			() => this.setState(
+				{ pageModalShow: !this.state.pageModalShow },
+				() => typo(document.querySelector('pre#about'))
+			)
 		));
 	}
 
 
-	showLoaders = (names) => {
-		var loaders = Object.assign({}, ...names.map((n) => ({ [n]: true })));
-		this.setState(prevState => ({ loaders: { ...prevState.loaders, ...loaders } }));
+	showLoaders = (names: [string]) => {
+		var loaders = Object.assign({}, ...names.map((n: string) => ({ [n]: true })));
+		this.setState((prevState: any) => ({ loaders: { ...prevState.loaders, ...loaders } }));
 	};
 
-	hideLoaders = (names) =>  {
-		var loaders = Object.assign({}, ...names.map((n) => ({ [n]: false })));
-		this.setState(prevState => ({ loaders: { ...prevState.loaders, ...loaders } }));
+	hideLoaders = (names: [string]) =>  {
+		var loaders = Object.assign({}, ...names.map((n: string) => ({ [n]: false })));
+		this.setState((prevState: any) => ({ loaders: { ...prevState.loaders, ...loaders } }));
 	};
 
 	showUserRepos = () => {
 		const { ok, json } = this.state.userRepos;
 		if (!ok) return (
-			<center>
+			<div style={{ margin: 'auto' }}>
 				<code className='danger'>{json.message}</code>
-			</center>
+			</div>
 		);
 
 
 		return (
-			<ul>{json.map((o, i) => (
+			<ul>{json.map((o: any, i: number) => (
 				<li key={i}>
 					<a href={o.html_url} target='_blank'>{o.name}</a>
 				</li>
@@ -116,16 +124,16 @@ class App extends Component {
 		this.fetchErrHandled(this.state.user.repos_url, { headers })
 		.then((json) => this.setState(
 			{ userRepos: { ok: true, json } },
-			this.hideLoaders(['gitLoader'])
+			() => this.hideLoaders(['gitLoader'])
 		))
 		.catch((json) => this.setState(
 			{ userRepos: { ok: false, json } },
-			this.hideLoaders(['gitLoader'])
+			() => this.hideLoaders(['gitLoader'])
 		));
 
 	}
 
-	renderAvatar = ({ html_url, avatar_url }, style) => (
+	renderAvatar = ({ html_url, avatar_url }: IProps, style: any) => (
 		<div className='sonar-wave'>
 			<a target='_blank' href={html_url}>
 				<img style={style} src={avatar_url} />
@@ -134,7 +142,7 @@ class App extends Component {
 	)
 
 
-	async fetchErrHandled(url, options={}) {
+	async fetchErrHandled(url: string, options={}) {
 		let response = await fetch(url, options);
 		if (!response.ok) {
 			throw Error(`${response.status} ${response.statusText}`);
@@ -149,7 +157,7 @@ class App extends Component {
 
 		const value = {
 			state: this.state,
-			setState: (s1) => this.setState((s) => Object.assign({}, s, s1)),
+			setState: (s1: any) => this.setState((s: any) => Object.assign({}, s, s1)),
 		}
 
 		const gitImageStyle = {
@@ -158,11 +166,14 @@ class App extends Component {
 			height: '5rem',
 		}
 
-		const avatar = user.avatar_url ? this.renderAvatar(user, gitImageStyle) : <Fragment />;
+		const avatar = user.avatar_url ? this.renderAvatar(user, gitImageStyle) : <React.Fragment />;
 
 		return (
 			<Provider value={value}>
 				<div id='wrapper'>
+					{/* <div className='react-logo-container'>
+						<div className='react-logo'></div>
+					</div> */}
 					<div id='head-wrapper'>
 						<PageTitle />
 						<PageHeader />
@@ -172,7 +183,7 @@ class App extends Component {
 
 
 
-					{/* container */}
+
 					<div className='container'>
 
 					<div className='screen'>
@@ -181,11 +192,9 @@ class App extends Component {
 	
 					<span className='screen-seperator'></span>
 
-
-
 					<InfoBox><LinkContainer /></InfoBox>
 
-					</div> {/* /container */}
+					</div>
 
 
 
@@ -205,7 +214,6 @@ class App extends Component {
 		)
 	}
 }
-
 ReactDOM.render(
 	<App />,
 	document.querySelector('#app')

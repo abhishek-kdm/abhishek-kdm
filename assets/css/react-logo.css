@@ -1,0 +1,47 @@
+.react-logo-container {
+  margin-top: 100px!important;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.react-logo-container > .react-logo,
+.react-logo-container > .react-logo:before,
+.react-logo-container > .react-logo:after {
+  /* outline: 8px solid #40d8f8; */
+  border: 8px solid #40d8f8;
+  border-radius: 50%;
+}
+
+.react-logo-container > .react-logo {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: auto;
+  height: 80%;
+  width: 30%;
+  position: relative;
+  animation: spin 5s linear infinite;
+}
+
+.react-logo-container > .react-logo:before,
+.react-logo-container > .react-logo:after {
+  content: ' ';
+  display: inline-block;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  top: -8px;
+  left: -8px;
+  position: absolute;
+}
+
+.react-logo-container > .react-logo:before {
+  transform: rotate(-60deg);
+}
+
+.react-logo-container > .react-logo:after {
+  transform: rotate(60deg);
+}

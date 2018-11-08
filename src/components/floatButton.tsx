@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-export default class FloatButton extends Component {
-	constructor(props) {
+interface IFloatState {};
+
+export default class FloatButton extends React.Component<any, IFloatState> {
+	constructor(props: any) {
 		super(props);
 	}
 
 	componentWillMount() {
-		$("html").mousemove(function (event) {
+		$("html").mousemove(function (event: any) {
 			var eye = $(".eye");
 			var x = (eye.offset().left) + (eye.width() / 2);
 			var y = (eye.offset().top) + (eye.height() / 2);

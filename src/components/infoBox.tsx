@@ -1,6 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 
-const InfoBox = (props) => {
+interface IInfoboxProps {
+	style?: any,
+	animate?: boolean,
+	vintage?: boolean,
+	title?: string | React.ReactNode,
+	children?: React.ReactNode,
+};
+
+const InfoBox = (props: IInfoboxProps) => {
 	
 	const style = {
 		...props.style,

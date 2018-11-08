@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default (props) => {
+interface IFooterProps {};
+
+export default (props: IFooterProps) => {
 	return (
 		<footer className='container-fluid'>
 		</footer>

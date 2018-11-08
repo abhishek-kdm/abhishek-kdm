@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { LINKS } from '../configs/contants';
 
+interface ILinkProps {};
+interface ILinkState {};
 
-export default class LinkContainer extends Component {
-	constructor(props) { super(props) }
+export default class LinkContainer extends React.Component<ILinkProps, ILinkState> {
+	constructor(props: ILinkProps) { super(props) }
 
 	links = () => [
 		{ title: 'github', href: LINKS.github, icon: { color: 'black', class: 'github' } },

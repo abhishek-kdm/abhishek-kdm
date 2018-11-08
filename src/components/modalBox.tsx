@@ -1,12 +1,22 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-export default class ModalBox extends Component {
-	constructor(props) {
+interface IModalBoxProps {
+	show?: boolean,
+	dimmness?: string,
+	closeFunc?: () => void,
+	children?: React.ReactNode,
+};
+interface IModalBoxState {};
+
+export default class ModalBox extends React.Component<IModalBoxProps, IModalBoxState> {
+	constructor(props: IModalBoxProps) {
 		super(props);
 		this.handleClose = this.handleClose.bind(this);
 	}
 
-	handleClose = (e) => (e.target === e.currentTarget) && this.props.closeFunc()
+	handleClose = (e: React.MouseEvent<HTMLElement>) => (
+		(e.target === e.currentTarget) && this.props.closeFunc()
+	)
 
 	render() {
 
