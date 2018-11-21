@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LINKS } from '../configs/contants';
+import { LINKS } from '../configs';
 
 interface ILinkProps {};
 interface ILinkState {};

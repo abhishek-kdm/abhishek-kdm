@@ -1,8 +1,13 @@
 @import 'animations.css';
+
+@import 'header.css';
+@import 'footer-style.css';
+
 @import 'infobox-style.css';
 @import 'floatButton-style.css';
 @import 'modalBox-style.css';
 @import 'linkContainer-style.css';
+
 @import 'react-logo.css';
 
 :root {
@@ -64,7 +69,6 @@ body {
 #wrapper {
 	min-height: 100vh;
 	background-color: rgba(0, 0, 0, 0);
-	background: linear-gradient(to right, rgba(136, 147, 156, .2), rgba(0, 0, 0, .2), rgba(136, 147, 156, .2));
 }
 
 #head-wrapper {
@@ -334,47 +338,7 @@ code.danger {
 	display: block;
 }
 
-/******************* Old Screen *******************/
-/* .screen {
-	width: var(--screen-width);
-	height: var(--screen-height);
-	border: .4rem solid var(--g1);
-	top: 10vh;
-	left: calc(50vw - (var(--screen-width)/2));
-	position: absolute;
-	z-index: 9999;
-	border-radius: .4rem;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.screen > pre {
-	color: white;
-	font-weight: 700;
-}
-
-.screen::after {
-	content: '';
-	display: inline-block;
-	width: 50%;
-	height: 1em;
-	top: .2rem;
-	background-color: var(--g1);
-	border-radius: 4px;
-	position: relative;
-	left: 25%;
-}
-
-.screen-seperator {
-	min-height: var(--screen-height);
-	width: 100%;
-	display: block;
-} */
-/******************* /Old Screen *******************/
-
-
-
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 680px) {
 	:root {
 		--screen-width: 45vw;
 	}
@@ -383,8 +347,6 @@ code.danger {
 		height: 17vh!important;
 	}
 	
-	.link-container { padding: 0; }
-
 	.link {
 		height: 3rem;
 		width: 3rem;
