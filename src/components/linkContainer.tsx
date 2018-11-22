@@ -8,7 +8,7 @@ export default class LinkContainer extends React.Component<ILinkProps, ILinkStat
 	constructor(props: ILinkProps) { super(props) }
 
 	links = () => [
-		{ title: 'github', href: LINKS.github, icon: { color: 'black', class: 'github' } },
+		{ title: 'github', href: LINKS.github, icon: { color: 'white', class: 'github' } },
 		{ title: 'stack-overflow', href: LINKS.stackoverflow, icon: { color: '#F48024', class: 'stack-overflow' } },
 		{ title: 'linkedin', href: LINKS.linkedin, icon: { color: '#0077BB', class: 'linkedin' } },
 		{ title: 'twitter', href: LINKS.twitter, icon: { color: '#1DA1F2', class: 'twitter' } },

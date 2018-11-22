@@ -6,12 +6,12 @@ export default (props: IFooterProps) => {
 	let footerInlineStyle = {
 		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	};
+	
 	return (
 		<footer>
 			<div className="container">
-
 
 
 				<div style={ footerInlineStyle }>

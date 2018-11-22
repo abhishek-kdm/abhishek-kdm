@@ -16,6 +16,8 @@ import { GitModal, PageLoadingModal } from './components/modals';
 import { BASIC_AUTHENTICATION_CREDS } from './configs';
 import { PageContext } from './context';
 
+import '../assets/css/style.css';
+
 
 const headers = {
 	Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
@@ -114,7 +116,7 @@ class App extends React.Component<any, any> {
 		if (this.state.userRepos.json.length) return;
 		
 		this.showLoaders(['gitLoader']);
-		if (this.state.user.repos_url || false) {
+		if (!(this.state.user.repos_url || false)) {
 			this.hideLoaders(
 				['gitLoader'],
 				() => this.setState({ userRepos: { ok: false, message: 'Unable to fetch' }})

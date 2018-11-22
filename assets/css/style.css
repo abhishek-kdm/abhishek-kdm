@@ -15,6 +15,7 @@
 	--g2: rgb(106, 136, 70);
 	--main-bg: #353535;
 	--pre-bg: #252525;
+	--footer-bg: #161616;
 	
 	--screen-width: 30vw;
 	--screen-height: calc(var(--screen-width) * 9/16);
