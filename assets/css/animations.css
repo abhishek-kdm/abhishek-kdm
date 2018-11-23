@@ -1,10 +1,10 @@
 /* blinking text */
 @keyframes blinking-text {
-		0% { color: #fff; }
-		25% { color: transparent; }
-		50% { color: #fff; }
-		75% { color: transparent; }
-		100% { color: #fff; }
+	0% { color: #fff; }
+	25% { color: transparent; }
+	50% { color: #fff; }
+	75% { color: transparent; }
+	100% { color: #fff; }
 }
 
 
@@ -17,15 +17,9 @@
 
 /* vintage-display */
 @keyframes vintage-display {
-	0% {
-		transform: rotatey(90deg) scaleY(.01);
-	}
-	50% {
-		transform: rotatey(0deg) scaleY(.01);
-	}
-	100% {
-		transform: rotatey(0deg) scaleY(1);
-	}
+	0% { transform: rotatey(90deg) scaleY(.01); }
+	50% { transform: rotatey(0deg) scaleY(.01); }
+	100% { transform: rotatey(0deg) scaleY(1); }
 }
 
 
@@ -42,23 +36,17 @@
 
 /* scale and shake */
 @keyframes scale-shake {
-	0% {
-		transform: scale(1.25) rotate(7deg);
-	}
-	25% {
-		transform: rotate(-14deg);
-	}
-	50% {
-		transform: rotate(14deg);
-	}
-	75% {
-		transform: rotate(-14deg);
-	}
-	100% {
-		transform: rotate(7deg);
-	}
+	0% { transform: scale(1.25) rotate(7deg); }
+	25% { transform: rotate(-14deg); }
+	50% { transform: rotate(14deg); }
+	75% { transform: rotate(-14deg); }
+	100% { transform: rotate(7deg); }
 }
 
 @keyframes heart-beat {
-	
+	20% { transform: scale(1); }
+	40% { transform: scale(1.2); }
+	50% { transform: scale(1); }
+	60% { transform: scale(1.2); }
+	80% { transform: scale(1); }
 }

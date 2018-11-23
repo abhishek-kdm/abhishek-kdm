@@ -359,3 +359,8 @@ code.danger {
 		--screen-width: 25vw;
 	}
 }
+
+
+#heart {
+	animation: heart-beat 2s linear infinite;
+}

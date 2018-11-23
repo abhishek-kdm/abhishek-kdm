@@ -11,16 +11,16 @@ export default (props: IFooterProps) => {
 	
 	return (
 		<footer>
-			<div className="container">
+			<div className='container'>
 
 
 				<div style={ footerInlineStyle }>
 					<small>{'Built with'}</small>&nbsp;
-					<i className="fa fa-lg fa-heart text-danger"></i>&nbsp;
+					<i id='heart' className='fa fa-heart text-danger'></i>&nbsp;
 					<small>{'& '}</small>&nbsp;
 					<div className='react-logo-container'>
 						<div className='react-logo'>
-							<div className="nuclei"></div>
+							<div className='nuclei'></div>
 						</div>
 					</div>
 				</div>
