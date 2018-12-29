@@ -1,31 +1,36 @@
 import * as React from 'react';
 import { LINKS } from '../configs';
 
-interface ILinkProps {};
-interface ILinkState {};
 
-export default class LinkContainer extends React.Component<ILinkProps, ILinkState> {
-	constructor(props: ILinkProps) { super(props) }
+interface Icon {
+  color: string
+  class: string 
+}
+interface ILink {
+  title: string
+  href: string
+  icon: Icon
+}
 
-	links = () => [
-		{ title: 'github', href: LINKS.github, icon: { color: 'white', class: 'github' } },
-		{ title: 'stack-overflow', href: LINKS.stackoverflow, icon: { color: '#F48024', class: 'stack-overflow' } },
-		{ title: 'linkedin', href: LINKS.linkedin, icon: { color: '#0077BB', class: 'linkedin' } },
-		{ title: 'twitter', href: LINKS.twitter, icon: { color: '#1DA1F2', class: 'twitter' } },
-		{ title: 'reddit', href: LINKS.reddit, icon: { color: '#FF4500', class: 'reddit' } },
-	]
+export default (): JSX.Element => {
 
-	render() {
-		return (
-			<div className='link-container'>
-			{this.links().map((link, i) => (
-				<div key={i}>
-					<a className={'link'} title={link.title} href={link.href} target='_blank'>
-						<i style={{ color: link.icon.color }} className={`fa fa-3x fa-${link.icon.class}`} />
-					</a>
-				</div>
-			))}
-			</div>
-		)
-	}
+  const links = (): ILink[] => [
+    { title: 'github', href: LINKS.github, icon: { color: 'white', class: 'github' } },
+    { title: 'stack-overflow', href: LINKS.stackoverflow, icon: { color: '#F48024', class: 'stack-overflow' } },
+    { title: 'linkedin', href: LINKS.linkedin, icon: { color: '#0077BB', class: 'linkedin' } },
+    { title: 'twitter', href: LINKS.twitter, icon: { color: '#1DA1F2', class: 'twitter' } },
+    { title: 'reddit', href: LINKS.reddit, icon: { color: '#FF4500', class: 'reddit' } },
+  ];
+
+  return (
+    <div className='link-container'>
+    {links().map((link, i) => (
+      <div key={i}>
+        <a className={'link'} title={link.title} href={link.href} target='_blank'>
+          <i style={{ color: link.icon.color }} className={`fa fa-3x fa-${link.icon.class}`} />
+        </a>
+      </div>
+    ))}
+    </div>
+  )
 }

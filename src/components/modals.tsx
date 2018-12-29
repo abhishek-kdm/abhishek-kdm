@@ -5,46 +5,49 @@ import ModalBox from './modalBox';
 import Loader from './loader';
 
 interface IGitModalProps {
-	dimmness?: string,
-	show: boolean,
-	vintage?: boolean,
-	loaderShow?: boolean,
-	closeFunc?: () => void,
-	githubUserLink?: string,
-	children?: React.ReactNode,
+  dimmness?: string,
+  show: boolean,
+  vintage?: boolean,
+  loaderShow?: boolean,
+  closeFunc?: () => void,
+  githubUserLink?: string,
+  children?: JSX.Element,
 };
 
-export const GitModal = (props: IGitModalProps) => {
-	return (
-		<ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
+export const GitModal = (props: IGitModalProps): JSX.Element => {
+  return (
+    <ModalBox dimmness={props.dimmness} show={props.show} closeFunc={props.closeFunc}>
 
-			<InfoBox animate={true} style={{ height: '250px' }} vintage={props.vintage}
-				title={<a target='_blank' href={props.githubUserLink}>{ props.githubUserLink }</a>}>
+      <InfoBox
+        animate={true}
+        style={{ height: '250px' }}
+        vintage={props.vintage}
+        title={
+          <a target='_blank' href={props.githubUserLink}>{ props.githubUserLink }</a>
+        }>
+          <Loader size='sm' show={props.loaderShow}>
+            <span className="blinking">{'Loading github repos...'}</span>
+          </Loader>
 
-				<Loader size='sm' show={props.loaderShow}>
-					<span className="blinking">{'Loading github repos...'}</span>
-				</Loader>
+          {props.children}
+      </InfoBox>
 
-				{props.children}
-
-			</InfoBox>
-
-		</ModalBox>
-	)
+    </ModalBox>
+  )
 }
 
 interface IPageLoadingProps {
-	dimmness?: string,
-	show: boolean,
-	loaderShow?: boolean,
+  dimmness?: string,
+  show: boolean,
+  loaderShow?: boolean,
 };
 
-export const PageLoadingModal = (props: IPageLoadingProps) => {
-	return (
-		<ModalBox dimmness={props.dimmness} show={props.show}>
-			<Loader size='lg' show={true}>
-				<span className="blinking">{'Loading...'}</span>
-			</Loader>
-		</ModalBox>
-	)
+export const PageLoadingModal = (props: IPageLoadingProps): JSX.Element => {
+  return (
+    <ModalBox dimmness={props.dimmness} show={props.show}>
+      <Loader size='lg' show={true}>
+        <span className="blinking">{'Loading...'}</span>
+      </Loader>
+    </ModalBox>
+  )
 }

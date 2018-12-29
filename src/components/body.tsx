@@ -1,27 +1,32 @@
 import * as React from 'react';
 
-import { typo, fetchErrHandled } from '../utils';
+import { typo, shortFetch } from '../utils';
 import { USER_GITHUB, BASIC_AUTHENTICATION_CREDS } from '../configs';
 import LinkContainer from './linkContainer';
 import { PageContext } from '../context';
 
-let { useEffect, useContext } = React;
-interface IBodyProps {};
 
+const { useEffect, useContext } = React;
 
-let headers = {
+const headers = {
   Authorization: `Basic ${BASIC_AUTHENTICATION_CREDS}`
 };
 
-export default (props: IBodyProps) => {
-  var ctx: any = useContext(PageContext);
 
-  let hideModal = () => ctx.hideModals(['pageModal'], () => typo(document.querySelector('pre#about')));
+export default (): JSX.Element => {
+  const { hideModals, setState } = useContext<any>(PageContext);
 
+  const hideModal = () => hideModals(
+    ['pageModal'],
+    () => typo(document.querySelector('pre#about'))
+  );
+
+
+  // cDM
   useEffect(() => {
-    fetchErrHandled(USER_GITHUB, { headers })
-		.then((user: any) => ctx.setState({ user }, hideModal()))
-    .catch((err: any) => hideModal());
+    shortFetch(USER_GITHUB, { headers })
+    .then((user: any) => setState({ user }, hideModal()))
+    .catch(() => hideModal());
   }, []);
 
   return (
