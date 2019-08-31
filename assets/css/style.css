@@ -1,0 +1,366 @@
+@import 'animations.css';
+
+@import 'header.css';
+@import 'footer-style.css';
+
+@import 'infobox-style.css';
+@import 'floatButton-style.css';
+@import 'modalBox-style.css';
+@import 'linkContainer-style.css';
+
+@import 'react-logo.css';
+
+:root {
+	--g1: #00E640;
+	--g2: rgb(106, 136, 70);
+	--main-bg: #353535;
+	--pre-bg: #252525;
+	--footer-bg: #161616;
+	
+	--screen-width: 30vw;
+	--screen-height: calc(var(--screen-width) * 9/16);
+}
+
+/* Text Selection */
+::-moz-selection {
+	color: white;
+	background-color: var(--g2);
+}
+
+::selection {
+	color: white;
+	background-color: var(--g2);
+}
+
+
+/* scrollbar */
+::-webkit-scrollbar { width: 3px; height: 3px }
+
+/* scrollbar container */
+::-webkit-scrollbar-track { display: none; }
+
+/* scroller */
+::-webkit-scrollbar-thumb {
+	background: var(--g1);
+}
+
+::-webkit-scrollbar-thumb:hover { background: var(--g2); }
+
+
+* {
+	font-family: 'Cantarell'/* 'Inconsolata' */, monospace;
+	font-weight: 300;
+	color: var(--g1);
+}
+
+html, body {
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: var(--main-bg);
+}
+
+#wrapper {
+	min-height: 100vh;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#head-wrapper {
+	height: 25vh;
+	background: var(--pre-bg)/* black */ center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+hr {
+	border-top: 1px dashed var(--g2);
+	width: 100%;
+}
+hr.vertical {
+	width: 1px;
+	height: 100%;
+	margin: 0;
+	border-left: 1px dashed var(--g2);
+}
+
+
+ul {
+	-webkit-padding-start: 1rem!important;
+	list-style-type: none;
+	font-weight: 700;
+}
+
+li::before { content: '$  '; color: red!important; }
+li:hover:before { color: white!important; }
+
+a { cursor: pointer; }
+a:hover { text-decoration: none; }
+
+pre {
+	tab-size: 4;
+	padding: 1rem;
+	border-radius: 4px;
+	background: var(--pre-bg);
+	color: var(--g1);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+
+code {
+	background-color: var(--g1);
+	border-radius: 3px;
+	color: black!important;
+	padding: 5px;
+}
+
+code.danger {
+	background-color: red;
+	color: white!important;
+}
+
+
+.glow {
+	box-shadow: 0 0 2px var(--g1);
+}
+
+.glow-text {
+	text-shadow: 0 0 2px var(--g1);
+}
+
+
+
+/* blinking effect for text */
+.blinking {
+	animation: blinking-text 2s infinite;
+}
+
+
+/* Loading */
+.loader-wrapper {
+	display: flex;
+}
+
+.loader-wrapper * {
+	align-self: center;
+}
+
+.loader {
+	border: .2rem solid var(--g2);
+	border-top: .2rem solid white;
+	border-radius: 50%;
+	background-color: transparent;
+	animation: spin 1s linear infinite;
+}
+
+.loader + span {
+	line-height: 1.5rem;
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+.loader-sm {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+
+.loader-md {
+	width: 2.3rem;
+	height: 2.3rem;
+}
+
+.loader-lg {
+	width: 3rem;
+	height: 3rem;
+}
+
+
+/* Tooltip */
+.tooltip-parent {
+	z-index: 99999;
+	position: relative;
+	/* display: inline-block; */
+}
+.tooltip-parent .tooltip-text {
+	visibility: hidden;
+	width: 120px;
+	background-color: var(--pre-bg) /* black */;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	font-size: .8rem;
+	border-radius: 4px;
+	border: 2px solid var(--pre-bg);
+	
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	
+	opacity: 0;
+	transition: opacity 0.3s;
+	
+	box-shadow: 0 0 10px var(--g1);
+}
+
+/* Tooltip arrow */
+.tooltip-parent .tooltip-text::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: var(--pre-bg) transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-parent:hover .tooltip-text {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+/* Neutron */
+
+.neutron-container {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 10px black;
+	background-color: var(--pre-bg);
+	display: flex;
+	align-items: center;
+}
+.neutron {
+	margin-left: auto;
+	margin-right: auto;
+	height: 36px!important;
+	width: 36px!important;
+}
+
+.neutron .neutron-atom {
+	position: absolute;
+	margin: 12px;
+	z-index: 9999;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: var(--g1);
+}
+
+.neutron .orbit, .neutron .orbit-reversed {
+	border: 1px inset grey/* var(--g1) */;
+	border-radius: 50%;
+	background-color: transparent;
+	animation: spin 1s linear infinite;
+	width: 38px;
+	height: 38px;
+}
+
+.neutron .orbit::before, .neutron .orbit-reversed::before {
+	content: ' ';
+	margin-left: 15px;
+	border-radius: 50%;
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	display: inline-block;
+	background-color: white;
+}
+
+.neutron .orbit::before {
+	margin-top: -3.8px;
+}
+
+.neutron .orbit-reversed::before {
+	margin-top: 35px;
+}
+
+
+/* Sonar wave */
+.sonar-wave {
+	width: 5rem;
+	height: 5rem;
+}
+
+.sonar-wave::before {
+	position: absolute;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50%;
+	border: 2px solid var(--g1);
+	background: transparent;
+	opacity: 0;
+	z-index: -1;
+	content: '';
+	pointer-events: none;
+}
+
+.sonar-wave::before {
+	animation: sonarWave 1.5s linear infinite;
+}
+
+.screen {
+	width: var(--screen-width);
+	height: var(--screen-height);
+	box-shadow:  inset 0 0 10px black;
+	top: 10vh;
+	left: calc(50vw - (var(--screen-width)/2));
+	position: absolute;
+	z-index: 9999;
+	border-radius: .4rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding: .3rem;
+	background-color: var(--pre-bg);
+}
+
+.screen > pre {
+	color: white;
+	/* font-weight: 700; */
+}
+
+.screen-seperator {
+	min-height: var(--screen-height);
+	width: 100%;
+	display: block;
+}
+
+@media only screen and (max-width: 680px) {
+	:root {
+		--screen-width: 45vw;
+	}
+	
+	#head-wrapper {
+		height: 17vh!important;
+	}
+	
+	.link {
+		height: 3rem;
+		width: 3rem;
+	}
+}
+
+@media only screen and (min-width: 1920px) {
+	:root {
+		--screen-width: 25vw;
+	}
+}
+
+
+#heart {
+	animation: heart-beat 2s linear infinite;
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "module": "esnext",
+    "outDir": "./dist/",
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "target": "es6",
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

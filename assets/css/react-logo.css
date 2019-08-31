@@ -1,0 +1,62 @@
+:root {
+  --border: .5px;
+}
+
+.react-logo-container {
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.react-logo-container > .react-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-logo-container > .react-logo,
+.react-logo-container > .react-logo:before,
+.react-logo-container > .react-logo:after {
+  border: var(--border) solid #40d8f8;
+  border-radius: 50%;
+}
+
+.react-logo-container > .react-logo {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: auto;
+  height: 80%;
+  width: 30%;
+  position: relative;
+  animation: spin 5s linear infinite;
+}
+
+.react-logo-container > .react-logo:before,
+.react-logo-container > .react-logo:after {
+  content: ' ';
+  display: inline-block;
+  width: calc(100% + var(--border) * 2);
+  height: calc(100% + var(--border) * 2);
+  top: calc(-1 * var(--border));
+  left: calc(-1 * var(--border));
+  position: absolute;
+}
+
+.react-logo-container > .react-logo:before {
+  transform: rotate(-60deg);
+}
+
+.react-logo-container > .react-logo:after {
+  transform: rotate(60deg);
+}
+
+.react-logo-container > .react-logo > .nuclei {
+  background-color: #40d8f8;
+  height: 10%;
+  width: 30%;
+  border-radius: 50%;
+}
