@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf ./dist && webpack --color --progress -p --env.production",
-    "watch": "webpack --color --progress -d --watch --env.production"
+    "watch": "webpack --color --progress -d --watch --env.development"
   },
   "repository": {
     "type": "git",

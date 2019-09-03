@@ -1,5 +1,5 @@
 export const USER: string = 'abhishek-kdm';
-export const USER_GITHUB: string = `https://api.github.com/users/${USER}`;
+export const GITHUB_USER_URL: string = `https://api.github.com/users/${USER}`;
 
 export const REPO_URL = (repo: string): string => `https://api.github.com/repos/${USER}/${repo}/branches/master`;
 
@@ -16,7 +16,6 @@ export const LINKS: any = {
 
 
 
-export const ABOUT_ME: string = `
-~ This site is under construction.
+export const ABOUT_ME: string = `~ This site is under construction.
 ~ Thank You for showing interest.
 ~ But the developer is very lazy.`
