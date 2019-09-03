@@ -48,8 +48,8 @@
 
 
 * {
-	font-family: 'Cantarell'/* 'Inconsolata' */, monospace;
-	font-weight: 300;
+	font-family: monospace;
+	font-weight: 500;
 	color: var(--g1);
 }
 
@@ -211,7 +211,7 @@ code.danger {
 	opacity: 0;
 	transition: opacity 0.3s;
 	
-	box-shadow: 0 0 10px var(--g1);
+	box-shadow: 0 0 4px var(--g1);
 }
 
 /* Tooltip arrow */

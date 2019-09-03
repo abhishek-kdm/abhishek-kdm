@@ -1,8 +1,8 @@
 .float {
 	position: fixed!important;
 	z-index: 9999;
-	width: 60px;
-	height: 60px;
+	width: 63px;
+	height: 63px;
 	bottom: 1rem;
 	right: 2rem;
 	background-color: black;
