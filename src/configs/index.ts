@@ -11,7 +11,7 @@ export const LINKS: any = {
   linkedin: 'https://linkedin.com/in/abhishek-kadam-26a06170/',
   twitter: 'https://twitter.com/abhishek_kdm',
   reddit: 'https://www.reddit.com/user/sudo-tux',
-  discord: 'https://www.discordapp.com/channel/~sudo',
+  discord: 'https://www.discordapp.com/channels/~sudo',
 }
 
 

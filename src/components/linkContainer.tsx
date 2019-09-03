@@ -9,7 +9,7 @@ export default (): JSX.Element => {
     { title: 'linkedin', href: LINKS.linkedin, icon: { color: '#0077BB', class: 'linkedin' } },
     { title: 'twitter', href: LINKS.twitter, icon: { color: '#1DA1F2', class: 'twitter' } },
     { title: 'reddit', href: LINKS.reddit, icon: { color: '#FF4500', class: 'reddit' } },
-    { title: 'discord', href: LINKS.reddit, icon: { color: '#7289DA', class: 'discord' } },
+    { title: 'discord', href: LINKS.discord, icon: { color: '#7289DA', class: 'discord' } },
   ];
 
   return (<>

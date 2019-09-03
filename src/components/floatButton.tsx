@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { RollingEyes } from './ui-components';
 
-const { useEffect } = React;
-
-
-
 
 const FloatButton = (props: FloatButtonProps): JSX.Element => {
 
   const Tooltip = ({ text }: { text: string }) => (<>
     <span className='tooltip-text'>{text}</span>
   </>);
-
 
   return (<>
     <button
