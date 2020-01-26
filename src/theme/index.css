@@ -1,0 +1,25 @@
+* {
+  --transition-duration: .25s;
+
+  transition: color var(--transition-duration) ease;
+  transition: background-color var(--transition-duration) ease;
+}
+
+/* dark theme */
+body.dark {
+  --color-primary: #26c281; 
+  --color-secondary: #90c695;
+
+  --color-bg: #1f1f1f;
+  --color-bg--footer: #191919;
+}
+
+
+/* light theme */
+body.light {
+  --color-primary: tomato; 
+  --color-secondary: red;
+
+  --color-bg: whitesmoke;
+  --color-bg--footer: rgb(214, 214, 214);
+}
