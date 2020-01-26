@@ -1,9 +1,28 @@
 * {
-  --transition-duration: .25s;
 
-  transition: color var(--transition-duration) ease;
-  transition: background-color var(--transition-duration) ease;
+  --transition-properties: color, background-color;
+
+  -webkit-transition-property: var(--transition-properties);
+  -moz-transition-property:    var(--transition-properties);
+  -o-transition-property:      var(--transition-properties);
+  transition-property:         var(--transition-properties);
+
+  -webkit-transition-duration: .25s;
+  -moz-transition-duration: .25s;
+  -o-transition-duration: .25s;
+  transition-duration: .25s;
+
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
+
 
 /* dark theme */
 body.dark {
