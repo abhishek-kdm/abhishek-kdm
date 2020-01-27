@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import './toggler.style.css';
 
 
@@ -20,25 +20,15 @@ const Toggler: React.SFC<TogglerProps> = ({
   size,
   onToggle
 }) => {
-  const togglerRef = useRef(null);
 
   const classes = useMemo(() => (
     ['toggler'].concat(active ? ['active'] : [])
   ), [active]);
 
-  useEffect(() => {
-    if (togglerRef.current != null && size != null) {
-      // making this responsive based on provided size;
-      // @ts-ignore
-      togglerRef.current.style.setProperty('--toggler-height', `${size}px`);
-    }
-  }, [togglerRef, size]);
-
   return <span
     style={{ backgroundColor: color || 'transparent' }}
     className={classes.join(' ')}
     onClick={onToggle}
-    ref={togglerRef}
   />
 }
  
