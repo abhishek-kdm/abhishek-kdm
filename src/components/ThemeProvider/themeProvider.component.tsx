@@ -19,8 +19,8 @@ const ThemeProvider: React.SFC<ThemeProviderProps> = () => {
     <div id={'theme-provider'}>
       <Toggler
         active={togglerActive}
-        size={20}
-        color={togglerActive ? 'tomato' : '#26c281'}
+        size={10}
+        color={togglerActive ? 'rgb(29, 161, 242)' : 'rgb(38, 192, 128)'}
         onToggle={() => {
           togglerActive ? setTheme(THEME.dark) : setTheme(THEME.light)
         }}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap');
+
 * {
 
   --transition-properties: color, background-color;
@@ -26,19 +28,29 @@
 
 /* dark theme */
 body.dark {
-  --color-primary: #26c281; 
-  --color-secondary: #90c695;
+  --font-family: "Ubuntu";
 
-  --color-bg: #1f1f1f;
-  --color-bg--footer: #191919;
+  --color-primary: rgb(38, 192, 128); 
+  --color-secondary: rgb(144, 198, 149);
+
+  --color-bg-primary: rgb(31, 31, 31);
+  --color-bg-secondary: rgb(25, 25, 25);
+
+  --hover-bg-primary: rgba(25, 25, 25, .8);
+  --hover-bg-secondary: rgba(31, 31, 31, .8);
 }
 
 
 /* light theme */
 body.light {
-  --color-primary: tomato; 
-  --color-secondary: red;
+  --font-family: "Ubuntu";
 
-  --color-bg: whitesmoke;
-  --color-bg--footer: rgb(214, 214, 214);
+  --color-primary: rgb(29, 161, 242);
+  --color-secondary: rgb(77, 19, 209);
+
+  --color-bg-primary: rgb(255, 255, 255);
+  --color-bg-secondary: rgb(244, 244, 249);
+  
+  --hover-bg-primary: rgba(244, 244, 249, .8);
+  --hover-bg-secondary: rgba(255, 255, 255, .8);
 }

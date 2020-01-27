@@ -1,7 +1,7 @@
 .react-box {
   box-sizing: border-box;
-  --color: #61DAFB;
-  --bg-color: #20232A;
+  --react-logo--color: #61DAFB;
+  --react-logo--bg-color: #20232A;
 
   width: 20px;
   height: 20px;
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: var(--bg-color);
+  background-color: var(--react-logo--bg-color);
 }
 
 .react-atom {
@@ -28,7 +28,7 @@
 .react-atom,
 .react-atom::before,
 .react-atom::after {
-  border: .4px solid var(--color);
+  border: .4px solid var(--react-logo--color);
   border-radius: 50%;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .react-nucleus {
-  background-color: var(--color);
+  background-color: var(--react-logo--color);
   border-radius: 50%;
   height: 26.67%;
   width: 10%;

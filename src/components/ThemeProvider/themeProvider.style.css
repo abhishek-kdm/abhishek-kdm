@@ -2,4 +2,12 @@
   position: fixed;
   top: 25px;
   right: 25px;
+  z-index: 9999;
+}
+
+@media (max-width: 568px) {
+  #theme-provider {
+    top: 20px;
+    right: 20px;
+  }
 }

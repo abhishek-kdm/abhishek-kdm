@@ -7,7 +7,7 @@ interface HeaderProps { }
 const Header: React.SFC<HeaderProps> = () => {
   return (<>
     <header className={'container'}>
-      <h1>{`< QUBITRON />`}</h1>
+      <h1><b>{`$> QUBITRON`}</b></h1>
     </header>
   </>);
 }
