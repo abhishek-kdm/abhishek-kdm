@@ -21,7 +21,7 @@ rules:
   indent:
     - error
     - 2
-  quotes:
+  quotes: 
     - error
     - single
   semi:
@@ -30,3 +30,6 @@ rules:
   eol-last:
     - error
     - always
+
+  'react/prop-types':
+    'off'

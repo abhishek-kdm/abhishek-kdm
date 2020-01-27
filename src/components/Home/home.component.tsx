@@ -14,7 +14,7 @@ const Home: React.SFC<HomeProps> = () => {
           <ul {...ulProps()}>
             {NAVBAR_ITEMS.map((item, key) => (
               <li key={key} {...liProps()}>
-                <a href={item.link} target={'_blank'}>
+                <a href={item.link} target='_blank' rel='noopener noreferrer'>
                   {`./${item.label}`}
                 </a>
               </li>
