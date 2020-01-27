@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { createContext } from 'react';
 
-export const GlobalContext = React.createContext({});
-export const UtilsContext = React.createContext<any>({});
+
+export const AppContext = createContext<any>(null);

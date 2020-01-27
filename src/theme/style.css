@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap');
+
+* {
+
+  --transition-properties: color, background-color;
+
+  -webkit-transition-property: var(--transition-properties);
+  -moz-transition-property:    var(--transition-properties);
+  -o-transition-property:      var(--transition-properties);
+  transition-property:         var(--transition-properties);
+
+  -webkit-transition-duration: .25s;
+  -moz-transition-duration: .25s;
+  -o-transition-duration: .25s;
+  transition-duration: .25s;
+
+  -webkit-transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+
+/* dark theme */
+body.dark {
+  --font-family: "Ubuntu";
+
+  --color-primary: rgb(38, 192, 128); 
+  --color-secondary: rgb(144, 198, 149);
+
+  --color-bg-primary: rgb(31, 31, 31);
+  --color-bg-secondary: rgb(25, 25, 25);
+
+  --hover-bg-primary: rgba(25, 25, 25, .8);
+  --hover-bg-secondary: rgba(31, 31, 31, .8);
+}
+
+
+/* light theme */
+body.light {
+  --font-family: "Ubuntu";
+
+  --color-primary: rgb(29, 161, 242);
+  --color-secondary: rgb(77, 19, 209);
+
+  --color-bg-primary: rgb(255, 255, 255);
+  --color-bg-secondary: rgb(244, 244, 249);
+  
+  --hover-bg-primary: rgba(244, 244, 249, .8);
+  --hover-bg-secondary: rgba(255, 255, 255, .8);
+}

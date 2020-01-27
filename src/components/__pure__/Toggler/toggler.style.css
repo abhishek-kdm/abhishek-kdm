@@ -1,0 +1,39 @@
+.toggler {
+  --toggler--height: 25px;
+
+  --toggler--width: calc(var(--toggler--height) * 1.5);
+  --toggler--offset: 4px;
+
+  cursor: pointer;
+  width: var(--toggler--width);
+  height: var(--toggler--height);
+  border-radius: calc(var(--toggler--height) / 2);
+  background-color: transparent;
+  box-shadow: 1px 1px 4px 2.75px rgba(0, 0, 0, .4) inset;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--toggler--offset);
+}
+
+
+.toggler::before {
+  --toggler--border: calc(var(--toggler--offset) / 2);
+
+  content: '';
+  width: calc(var(--toggler--height) - (3 * var(--toggler--border)));
+  height: calc(var(--toggler--height) - (3 * var(--toggler--border)));
+  border: var(--toggler--border) solid white;
+  transition-duration: .3s;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.toggler.active::before {
+  transform: translateX(var(--toggler--width)) translateX(-100%);
+}
+
+@media (max-width: 568px) {
+  .toggler {
+    --toggler--height: 20px;
+  }
+}

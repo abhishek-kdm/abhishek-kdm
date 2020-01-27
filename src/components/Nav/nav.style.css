@@ -1,0 +1,35 @@
+.nav {
+  --nav--border-radius: 6px;
+
+  width: 100%;
+}
+
+.nav ul {
+  margin: 0;
+  outline: none;
+  background-color: var(--color-bg-secondary);
+  padding: 0;
+  border-radius: var(--nav--border-radius);
+  list-style-type: none;
+  list-style-position: inside;
+  display: flex;
+}
+
+.nav ul li {
+  position: relative;
+  cursor: pointer;
+  margin: 7.5px 7.5px;
+  padding: 7.5px 15px;
+}
+
+.nav ul li:not(:last-child)::after {
+  --nav--divider-height: 65%;
+
+  position: absolute;
+  content: '';
+  height: var(--nav--divider-height);
+  right: -7.5px;
+  top: calc((100% - var(--nav--divider-height)) / 2);
+  width: 1px;
+  background-color: var(--color-secondary);
+}

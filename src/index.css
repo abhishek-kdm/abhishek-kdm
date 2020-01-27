@@ -1,0 +1,53 @@
+@import "./theme/style.css";
+
+* {
+  font-family: var(--font-family);
+  font-weight: 900;
+  /* font-size: 18px; */
+  color: var(--color-primary);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: var(--color-bg-primary);
+}
+
+body {
+  height: 100vh;
+}
+
+a { text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+.container {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}

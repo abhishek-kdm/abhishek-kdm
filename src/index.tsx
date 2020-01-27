@@ -1,21 +1,12 @@
-import * as React from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import App from './app';
-import '../assets/css/style.css';
+ReactDOM.render(<App />, document.getElementById('root'));
 
-
-// import registerServiceWorker from './serviceWorkerRegistration';
-// registerServiceWorker();
-
-
-(async (AppRoot: React.FC<{}>) => {
-  const { render } = await import('react-dom');
-  render(
-    <AppRoot />,
-    document.getElementById('app-root')
-  );
-})(App).then(() => {
-  // @TODO: need to fix this.
-  // @ts-ignore
-  require('./components/hyperdrive');
-});
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
