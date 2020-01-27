@@ -6,6 +6,8 @@ import Home from './components/Home/home.component';
 import Footer from './components/Footer/footer.component';
 
 import { AppContext } from './context';
+import ThemeProvider from './components/ThemeProvider/themeProvider.component';
+import FloatingButton from './components/__pure__/FloatingButton/floatingButton.component';
 
 
 const App: React.FC = () => {
@@ -17,8 +19,10 @@ const App: React.FC = () => {
   return (
     <AppContext.Provider value={{ setTitle }}>
       <div id={'wrapper'}>
+        <ThemeProvider />
         <Header />
         <Home />
+        <FloatingButton>{'Github'}</FloatingButton>
         <Footer />
       </div>
     </AppContext.Provider>
