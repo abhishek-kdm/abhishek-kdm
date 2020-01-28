@@ -5,3 +5,7 @@
   align-items: center;
   flex: auto;
 }
+
+@media (max-width: 576px) {
+  #home { width: 70vw;  }
+}
