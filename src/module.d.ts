@@ -1,6 +1,9 @@
 type Theme = 'dark' | 'light';
 
 interface NavbarItem {
-  link: string
   label: string
+  component: any
 }
+
+// orientation of the warpgate doors.
+type Orientation = 'horizontal' | 'vertical' | undefined;
