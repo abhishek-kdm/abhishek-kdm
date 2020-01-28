@@ -3,7 +3,6 @@
 * {
   font-family: var(--font-family);
   font-weight: 900;
-  /* font-size: 18px; */
   color: var(--color-primary);
 }
 
@@ -21,6 +20,22 @@ body {
 a { text-decoration: none; }
 
 a:hover { text-decoration: underline; }
+
+
+/* scrollbar */
+::-webkit-scrollbar { width: .3rem; }
+
+/* scrollbar container */
+::-webkit-scrollbar-track { display: none; }
+
+/* scroller */
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+	background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:hover { background: var(--color-secondary); }
+
 
 .container {
   text-align: center;
