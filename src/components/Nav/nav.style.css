@@ -16,10 +16,22 @@
 }
 
 .nav ul li {
+  box-sizing: border-box;
   position: relative;
   cursor: pointer;
-  margin: 7.5px 7.5px;
+  margin: 7.5px 15px;
   padding: 7.5px 15px;
+  border-radius: 3px;
+  border: 1.5px outset var(--color-bg-secondary);
+}
+
+.nav ul li:hover {
+  background-color: var(--color-bg-primary);
+}
+
+.nav ul li.active {
+  border: 1.5px inset var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
 }
 
 .nav ul li:not(:last-child)::after {
@@ -28,7 +40,7 @@
   position: absolute;
   content: '';
   height: var(--nav--divider-height);
-  right: -7.5px;
+  right: -16.5px;
   top: calc((100% - var(--nav--divider-height)) / 2);
   width: 1px;
   background-color: var(--color-secondary);
