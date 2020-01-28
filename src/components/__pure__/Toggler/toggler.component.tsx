@@ -14,10 +14,9 @@ interface TogglerProps {
   onToggle: (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
 }
  
-const Toggler: React.SFC<TogglerProps> = ({
+const Toggler: React.FC<TogglerProps> = ({
   active,
   color,
-  size,
   onToggle
 }) => {
 

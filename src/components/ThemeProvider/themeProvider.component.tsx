@@ -7,7 +7,7 @@ import Toggler from '../__pure__/Toggler/toggler.component';
 
 interface ThemeProviderProps { }
  
-const ThemeProvider: React.SFC<ThemeProviderProps> = () => {
+const ThemeProvider: React.FC<ThemeProviderProps> = () => {
   const [theme, setTheme] = useState<Theme>(THEME.dark);
 
   const togglerActive = useMemo(() => theme === THEME.light, [theme]);

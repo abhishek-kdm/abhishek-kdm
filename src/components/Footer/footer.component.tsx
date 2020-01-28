@@ -7,7 +7,7 @@ import Heart from '../__pure__/Heart/heart.component';
 
 interface FooterProps { }
  
-const Footer: React.SFC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = () => {
   return (<>
     <footer>
       {'Built with'}&nbsp;

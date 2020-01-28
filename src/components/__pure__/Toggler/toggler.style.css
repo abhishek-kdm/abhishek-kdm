@@ -32,7 +32,7 @@
   transform: translateX(var(--toggler--width)) translateX(-100%);
 }
 
-@media (max-width: 568px) {
+@media (max-width: 576px) {
   .toggler {
     --toggler--height: 20px;
   }
