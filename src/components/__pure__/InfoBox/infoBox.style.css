@@ -1,0 +1,8 @@
+.info-box {
+  box-sizing: border-box;
+  display: flex;
+  background-color: var(--color-bg-secondary); /* #131313; */
+  padding: 10px;
+  border-radius: 6px;
+  position: relative;
+}
