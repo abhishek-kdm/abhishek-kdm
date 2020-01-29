@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import './home.style.css';
 
 import Nav from '../Nav/nav.component';
@@ -7,22 +7,29 @@ import InfoBox from '../__pure__/InfoBox/infoBox.component';
 import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
 import Social from '../Social/social.component';
+import Projects from '../Projects/projects.component';
+
+
+type ClickedItem = { label: string, done: boolean };
 
 interface HomeProps { }
  
 const Home: React.FC<HomeProps> = () => {
-  const [warpgateOpen, setWarpgateOpen] = useState<boolean>(true);
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
-
   /**
    * @note make sure that the labels aren't duplicates.
+   * and that we are able to pass props to these components.
    */
   const navbarItems: NavbarItem[] = useMemo(() => [
-    { label: 'nasd', component: <Social /> },
-    { label: '12nasd', component: <>{'aldjba;skjbdas'}</> },
-    { label: '2olna', component: <>{'osgflnfkjbldf'}</> },
-    { label: 'oaljaf', component: <>{'iyhqwnaskjb'}</> },
+    { label: './social', component: <Social /> },
+    { label: './projects', component: <Projects /> },
   ], []);
+
+  const [warpgateOpen, setWarpgateOpen] = useState<boolean>(true);
+  const [selectedItem, setSelectedItem] = useState<string>(navbarItems[0].label);
+  const [clickedItem, setClickedItem] = useState<ClickedItem>({
+    label: selectedItem,
+    done: true,
+  });
 
   const displayComponent = useMemo(() => {
     const _item = navbarItems.find((item) => item.label === selectedItem);
@@ -32,24 +39,52 @@ const Home: React.FC<HomeProps> = () => {
     return <></>
   }, [selectedItem, navbarItems]);
 
+
+  const liClassName = useCallback(({ label, done }, otherLabel) => {
+    return ([] as string[])
+      .concat(label === otherLabel ? ['active'] : [])
+      .concat(!done ? ['disabled'] : [])
+      .join(' ');
+  }, []);
+
+
+  useEffect(() => {
+    let t: any = null;
+    if (!clickedItem.done) {
+      setWarpgateOpen(false);
+      t = setTimeout(() => { setSelectedItem(clickedItem.label); }, 500);
+    }
+
+    return () => { clearTimeout(t); };
+  }, [clickedItem]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setWarpgateOpen(true);
+      setClickedItem((clickedItem) => ({...clickedItem, ...{ done: true }}));
+    }, 150);
+  }, [selectedItem]);
+
   return (<>
     <div id={'home'} className={'container'}>
       <Nav>
         <ul>
-          {navbarItems.map((item, key) => (
+          {navbarItems.map(({ label }, key) => (
             <li
               key={key}
-              onClick={() => { setSelectedItem(item.label) }}
-              className={selectedItem === item.label ? 'active' : ''}
+              onClick={() => {
+                if (selectedItem !== label) {
+                  setClickedItem({ label, done: false });
+                }
+              }}
+              className={liClassName(clickedItem, label)}
             >
-              {item.label}
+              {label}
             </li>
           ))}
         </ul>
       </Nav>
-
-      <br /><br />
-
+      <hr />
       <div
         style={{
           width: '100%',

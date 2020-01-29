@@ -7,7 +7,6 @@ import Footer from './components/Footer/footer.component';
 
 import { AppContext } from './context';
 import ThemeProvider from './components/ThemeProvider/themeProvider.component';
-import FloatingButton from './components/__pure__/FloatingButton/floatingButton.component';
 import Warpgate from './components/__pure__/Warpgate/warpgate.component';
 
 
@@ -15,6 +14,7 @@ const App: React.FC = () => {
   const [title, setTitle] = useState<string>('Home | Abhishek Kadam');
   const [warped_v, setWarped_v] = useState<boolean>(false);
   const [warped_h, setWarped_h] = useState<boolean>(false);
+  const [showWarpLoader, setShowWarpLoader] = useState<boolean>(true);
 
   // setting title on page load or title change.
   useEffect(() => { document.title = title; }, [title]);
@@ -28,15 +28,25 @@ const App: React.FC = () => {
     }
   }, [warped_h]);
 
+  useEffect(() => {
+    if (warped_h && warped_v) {
+      setTimeout(() => { setShowWarpLoader(false); }, 600);
+    }
+  }, [warped_v, warped_h]);
+
+
   return (
     <AppContext.Provider value={{ setTitle }}>
       <div id={'wrapper'}>
-        <Warpgate open={warped_v} orientation={'vertical'} />
-        <Warpgate open={warped_h} orientation={'horizontal'} />
+
+        {showWarpLoader && (<>
+          <Warpgate open={warped_v} orientation={'vertical'} />
+          <Warpgate open={warped_h} orientation={'horizontal'} />
+        </>)}
+
         <ThemeProvider />
         <Header />
         <Home />
-        <FloatingButton>{'Github'}</FloatingButton>
         <Footer />
       </div>
     </AppContext.Provider>
