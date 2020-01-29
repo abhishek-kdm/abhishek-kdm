@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './themeProvider.style.css';
 
-import { THEME } from '../../constants';
+import { THEME } from '../../configs';
 import Toggler from '../__pure__/Toggler/toggler.component';
 
 

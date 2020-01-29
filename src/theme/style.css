@@ -45,11 +45,20 @@ body.dark {
 body.light {
   --font-family: "Ubuntu";
 
-  --color-primary: rgb(29, 161, 242);
+  /* --color-primary: rgb(29, 161, 242);
   --color-secondary: rgb(77, 19, 209);
 
   --color-bg-primary: rgb(255, 255, 255);
-  --color-bg-secondary: rgb(244, 244, 249);
+  --color-bg-secondary: rgb(244, 244, 249); */
+  
+  --color-primary: white;
+  --color-secondary: rgb(25, 25, 25);
+
+  --color-bg-secondary: rgb(32, 151, 201);
+  --color-bg-primary: rgb(166, 213, 233);
+
+  /* --color-bg-primary: rgb(248, 249, 250);
+  --color-bg-secondary: rgb(255, 255, 255); */
   
   --hover-bg-primary: rgba(244, 244, 249, .8);
   --hover-bg-secondary: rgba(255, 255, 255, .8);

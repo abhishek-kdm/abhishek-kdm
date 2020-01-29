@@ -13,6 +13,7 @@
   list-style-type: none;
   list-style-position: inside;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .nav ul li {
@@ -23,6 +24,7 @@
   padding: 7.5px 15px;
   border-radius: 3px;
   border: 1.5px outset var(--color-bg-secondary);
+  flex: 1;
 }
 
 .nav ul li:hover {
@@ -33,7 +35,7 @@
   border: 1.5px inset var(--color-bg-secondary);
   background-color: var(--color-bg-primary);
 }
-
+/* 
 .nav ul li:not(:last-child)::after {
   --nav--divider-height: 65%;
 
@@ -44,4 +46,4 @@
   top: calc((100% - var(--nav--divider-height)) / 2);
   width: 1px;
   background-color: var(--color-secondary);
-}
+} */

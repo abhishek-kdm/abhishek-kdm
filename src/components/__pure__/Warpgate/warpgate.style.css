@@ -16,9 +16,8 @@
   content: '';
   cursor: pointer;
   transition: .5s;
-  transition-timing-function: ease-out;
+  transition-timing-function: ease;
   position: absolute;
-  background: repeating-linear-gradient(45deg, yellow 0, yellow 5%, black 5%, black 10%);
 
   display: flex;
   align-items: center;
@@ -44,20 +43,24 @@
 .warpgate .door.right {
   height: 100%;
   width: 57.25%;
+  background: repeating-linear-gradient(45deg, yellow 0, yellow 5%, black 5%, black 10%);
 }
 
 .warpgate .door.top,
 .warpgate .door.bottom {
   height: 57.25%;
   width: 100%;
+  background: repeating-linear-gradient(-45deg, yellow 0, yellow 5%, black 5%, black 10%);
 }
 
 
 /* door css and path clipping */
-.warpgate .door.left::before {
+.warpgate .door::before {
   content: '';
   background: linear-gradient(120deg, #303030 0%, #222222 100%);
 }
+
+
 .warpgate .door.left,
 .warpgate .door.left:before { left: 0 }
 .warpgate .door.left {
@@ -74,22 +77,12 @@
   );
 }
 
-
-.warpgate .door.right::before {
-  content: '';
-  background: linear-gradient(-120deg, #252525 0%, #242424 100%);
-}
 .warpgate .door.right,
 .warpgate .door.right:before {
   right: 0;
   clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 60%, 25% 40%);
 }
 
-
-.warpgate .door.top::before {
-  content: '';
-  background: linear-gradient(60deg, #303030 0%, #222222 100%);
-}
 .warpgate .door.top,
 .warpgate .door.top:before { top: 0 }
 .warpgate .door.top {
@@ -107,10 +100,6 @@
 }
 
 
-.warpgate .door.bottom::before {
-  content: '';
-  background: linear-gradient(-60deg, #252525 0%, #242424 100%);
-}
 .warpgate .door.bottom,
 .warpgate .door.bottom::before {
   bottom: 0;
@@ -182,7 +171,7 @@
 }
 
 
-/* screws for left door */
+/* screws for right door */
 .warpgate .door.right .screw.one {
   top: var(--warpgate--screw-offset);
   right: var(--warpgate--screw-offset);
@@ -228,7 +217,7 @@
 }
 
 
-/* screws for left door */
+/* screws for bottom door */
 .warpgate .door.bottom .screw.one {
   top: var(--warpgate--screw-offset);
   left: var(--warpgate--screw-offset);

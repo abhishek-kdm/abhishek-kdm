@@ -3,6 +3,9 @@
 * {
   font-family: var(--font-family);
   font-weight: 900;
+}
+
+*:not(svg):not(path) {
   color: var(--color-primary);
 }
 
@@ -21,6 +24,11 @@ a { text-decoration: none; }
 
 a:hover { text-decoration: underline; }
 
+hr {
+  border: 0;
+  width: 95%;
+  border-top: 1px dashed var(--color-primary);
+}
 
 /* scrollbar */
 ::-webkit-scrollbar { width: .3rem; }
@@ -41,6 +49,12 @@ a:hover { text-decoration: underline; }
   text-align: center;
   margin-right: auto;
   margin-left: auto;
+}
+
+@media (max-width: 576px) {
+  .container {
+    width: 90%;
+  }
 }
 
 @media (min-width: 576px) {
@@ -66,3 +80,10 @@ a:hover { text-decoration: underline; }
     width: 1170px;
   }
 }
+
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .6;
+}
+
