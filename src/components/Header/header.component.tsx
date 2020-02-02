@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.style.css';
+import ThemeProvider from '../ThemeProvider/themeProvider.component';
 
 
 interface HeaderProps { }
@@ -7,7 +8,8 @@ interface HeaderProps { }
 const Header: React.FC<HeaderProps> = () => {
   return (<>
     <header className={'container'}>
-      <h1><b>{'$> QUBITRON'}</b></h1>
+      <h1 className={'header-title'}><strong>{'$> QUBITRON'}</strong></h1>
+      <ThemeProvider />
     </header>
   </>);
 }
