@@ -10,18 +10,39 @@ import {
   faDiscord,
 } from '@fortawesome/free-brands-svg-icons';
 
+// right now its just for styling the hyperdrive canvas.
+export const FULL_SCREEN_STYLE: React.CSSProperties = {
+  position: 'absolute',
+  width: '100vw',
+  height: '100vh',
+  zIndex: 10000,
+};
 
-// type for the list of social links.
-interface Link {
-  title: string
-  href: string
-  iconProps: { color: string, icon: IconDefinition }
-}
-
+// reference for theme.
 export const THEME: { [name: string]: Theme } = {
   dark: 'dark',
   light: 'light'
 };
+
+// reference for warp states.
+export const WARPSTATE: { [name: string]: WarpState } = {
+  explore: 'explore',
+  warpin: 'warpin',
+}
+
+// time (in ms) taken by a single warpgate to open.
+export const WARPGATE_ACTION_TIME = 500;
+
+// time (in ms) delay between opening multiple warpgates.
+export const WARPGATES_OPEN_DELAY = 300;
+
+
+// type for the list of social links.
+export interface Link {
+  title: string
+  href: string
+  iconProps: { color: string, icon: IconDefinition }
+}
 
 export const SOCIAL_LINKS = (): Link[] => [
   {
