@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import './themeProvider.style.css';
 
 import { THEME } from '../../configs';
 import Toggler from '../__pure__/Toggler/toggler.component';
@@ -20,7 +19,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = () => {
       <Toggler
         active={togglerActive}
         size={10}
-        color={togglerActive ? 'rgb(29, 161, 242)' : 'rgb(38, 192, 128)'}
+        style={{ backgroundColor: 'var(--color-primary)' }}
         onToggle={() => {
           togglerActive ? setTheme(THEME.dark) : setTheme(THEME.light)
         }}
