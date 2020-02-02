@@ -2,30 +2,33 @@ import React, { useMemo } from 'react';
 import './toggler.style.css';
 
 
-interface TogglerProps {
+interface TogglerProps extends React.HTMLAttributes<HTMLSpanElement> {
   active?: boolean
-  color?: string
   /**
    * required `height` in pixels.
    * rest would be responsive accordingly.
    */
   size?: number
   // its actually onClick
-  onToggle: (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+  onToggle: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
 }
  
 const Toggler: React.FC<TogglerProps> = ({
   active,
-  color,
-  onToggle
+  onToggle,
+  className,
+  ...rest
 }) => {
 
-  const classes = useMemo(() => (
-    ['toggler'].concat(active ? ['active'] : [])
-  ), [active]);
+  const _class = className || '';
+
+  const classes = useMemo(() => (['toggler']
+    .concat(active ? ['active'] : [])
+    .concat(_class.trim().length > 0 ? [_class.trim()] : [])
+  ), [active, _class]);
 
   return <span
-    style={{ backgroundColor: color || 'transparent' }}
+    {...rest}
     className={classes.join(' ')}
     onClick={onToggle}
   />
