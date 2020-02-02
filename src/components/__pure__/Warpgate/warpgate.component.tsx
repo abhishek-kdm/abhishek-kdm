@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import './warpgate.style.css';
+import { WARPGATES_OPEN_DELAY } from '../../../configs';
 
 
 interface WarpgateProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -49,5 +50,34 @@ const Warpgate: React.FC<WarpgateProps> = ({
   </>);
 }
  
+
+interface DualWarpGateProps { open: boolean }
+ 
+export const DualWarpGate: React.FC<DualWarpGateProps> = ({ open }) => {
+  const [warp_v, setWarp_v] = useState<boolean>(open);
+  const [warp_h, setWarp_h] = useState<boolean>(open);
+
+  useEffect(() => {
+    switch (open) {
+      case true:
+        setWarp_h(open);
+        setTimeout(() => { setWarp_v(open); }, WARPGATES_OPEN_DELAY);
+        break;
+    
+      default:
+        setWarp_v(open);
+        setTimeout(() => { setWarp_h(open); }, WARPGATES_OPEN_DELAY);
+        break;
+    }
+  }, [open]);
+
+
+  return (<>
+    <Warpgate open={warp_v} orientation={'vertical'} />
+    <Warpgate open={warp_h} orientation={'horizontal'} />
+  </>);
+}
+ 
+
 export default Warpgate;
 
