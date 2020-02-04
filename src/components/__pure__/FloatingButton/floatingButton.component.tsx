@@ -2,10 +2,19 @@ import React from 'react';
 import './floatingButton.style.css';
 
 
-interface FloatButtonProps extends React.HTMLAttributes<HTMLButtonElement> { }
+interface FloatButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  vintage?: boolean
+}
  
-const FloatButton: React.FC<FloatButtonProps> = (props) => (
-  <button {...props} className={'floating'} type={'button'} />
+const FloatButton: React.FC<FloatButtonProps> = ({
+  vintage = false,
+  ...rest
+}) => (
+  <button
+    {...rest}
+    type={'button'}
+    className={vintage ? 'floating-vintage' : 'floating'}
+  />
 );
  
 export default FloatButton;
