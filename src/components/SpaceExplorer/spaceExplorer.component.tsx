@@ -47,21 +47,27 @@ const SpaceExplorer: React.FC<SpaceExplorerProps> = ({ warpState }) => {
 
 
   useEffect(() => {
+    let t1: any, t2: any;
     // time reference for opening warpgates after closing them
     // and the close delay.
     const warpgatesDelay = WARPGATES_OPEN_DELAY + (WARPGATE_ACTION_TIME * 2);
     switch (warpState) {
       case WARPSTATE.warpin:
         setWarpGateOpen(false);
-        setTimeout(() => { setActiveComponent('body') }, WARPGATE_ACTION_TIME);
-        setTimeout(() => { setWarpGateOpen(true); }, warpgatesDelay);
+        t1 = setTimeout(() => { setActiveComponent('body') }, WARPGATE_ACTION_TIME);
+        t2 = setTimeout(() => { setWarpGateOpen(true); }, warpgatesDelay);
         break;
     
       default:
         setWarpGateOpen(false);
-        setTimeout(() => { setActiveComponent('hyperdrive') }, WARPGATE_ACTION_TIME);
-        setTimeout(() => { setWarpGateOpen(true); }, warpgatesDelay);
+        t1 = setTimeout(() => { setActiveComponent('hyperdrive') }, WARPGATE_ACTION_TIME);
+        t2 = setTimeout(() => { setWarpGateOpen(true); }, warpgatesDelay);
         break;
+    }
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
     }
   }, [warpState]);
 
