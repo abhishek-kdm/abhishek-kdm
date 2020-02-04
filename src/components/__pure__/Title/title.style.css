@@ -1,0 +1,9 @@
+.title {
+  width: 100%;
+  text-align: left;
+  margin: 1rem .5rem;
+}
+
+.title .prompt {
+  color: white;
+}
