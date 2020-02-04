@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useContext } from 'react';
 
 import { THEME } from '../../configs';
 import Toggler from '../__pure__/Toggler/toggler.component';
+import { AppContext } from '../../context';
 
 
-interface ThemeProviderProps { }
+interface ThemeTogglerProps { }
  
-const ThemeProvider: React.FC<ThemeProviderProps> = () => {
-  const [theme, setTheme] = useState<Theme>(THEME.dark);
+const ThemeToggler: React.FC<ThemeTogglerProps> = () => {
+
+  const { theme, setTheme } = useContext(AppContext);
 
   const togglerActive = useMemo(() => theme === THEME.light, [theme]);
 
@@ -28,4 +30,4 @@ const ThemeProvider: React.FC<ThemeProviderProps> = () => {
   </>);
 }
  
-export default ThemeProvider;
+export default ThemeToggler;
