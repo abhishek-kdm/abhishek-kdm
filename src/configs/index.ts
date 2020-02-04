@@ -44,7 +44,7 @@ export interface Link {
   iconProps: { color: string, icon: IconDefinition }
 }
 
-export const SOCIAL_LINKS = (): Link[] => [
+export const SOCIAL_LINKS: Link[] = [
   {
     title: 'github',
     href: 'https://github.com/abhishek-kdm/',
@@ -77,3 +77,10 @@ export const SOCIAL_LINKS = (): Link[] => [
   },
 ];
 
+
+export const GITHUB = {
+  username: 'abhishek-kdm',
+  get user_url() {
+    return `https://api.github.com/users/${this.username}`;
+  },
+};
