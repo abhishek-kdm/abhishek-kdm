@@ -41,10 +41,10 @@ const Home: React.FC<HomeProps> = () => {
   });
 
   // returns the component that matches the selected item.
-  const displayComponent = useMemo(() => {
-    const _item = navbarItems.find((item) => item.label === selectedItem);
-    if (_item != null) {
-      return _item.component;
+  const displayComponent = useCallback(() => {
+    const item = navbarItems.find((item) => item.label === selectedItem);
+    if (item != null) {
+      return <item.component />;
     }
     return <></>
   }, [selectedItem, navbarItems]);
@@ -62,25 +62,25 @@ const Home: React.FC<HomeProps> = () => {
   // corresponding label value, and the selected item is set after a 
   // delay for the warpgate action.
   useEffect(() => {
-    let __timeout__: any = null;
-    if (!clickedItem.done) {
-      setWarpgateOpen(false);
+    let t: any = null;
+    setWarpgateOpen((state) => !clickedItem.done ? false : state);
 
-      __timeout__ = setTimeout(() => {
-        setSelectedItem(clickedItem.label);
-      }, WARPGATE_ACTION_TIME);
-    }
+    t = setTimeout(() => {
+      setSelectedItem((state) => !clickedItem.done ? clickedItem.label : state);
+    }, WARPGATE_ACTION_TIME);
 
-    return () => { clearTimeout(__timeout__); };
+    return () => { clearTimeout(t); };
   }, [clickedItem]);
 
   // as soon the `selectedItem` is set, we open warpgates and set 
   // cickedItem.done to `true`.
   useEffect(() => {
-    setTimeout(() => {
+    const t = setTimeout(() => {
       setWarpgateOpen(true);
       setClickedItem((clickedItem) => ({...clickedItem, ...{ done: true }}));
     }, WARPGATES_OPEN_DELAY);
+
+    return () => { clearTimeout(t); }
   }, [selectedItem]);
 
   return (<>
@@ -113,7 +113,7 @@ const Home: React.FC<HomeProps> = () => {
           orientation={'horizontal'}
           style={{ zIndex: 5, borderRadius: '6px' }}
         />
-        <InfoBox scrollable width={'100%'} height={'100%'}>
+        <InfoBox scrollable style={{ width: '100%', height: '100%' }}>
           {displayComponent()}
         </InfoBox>
       </div>

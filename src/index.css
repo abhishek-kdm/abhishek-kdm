@@ -2,7 +2,6 @@
 
 * {
   font-family: var(--font-family);
-  font-weight: 900;
 }
 
 *:not(svg):not(path) {
@@ -20,9 +19,14 @@ body {
   height: 100vh;
 }
 
-a { text-decoration: none; }
+a {
+  transition: none;
+}
 
-a:hover { text-decoration: underline; }
+a:hover {
+  text-decoration: underline;
+  color: rgb(18, 18, 197);
+}
 
 hr {
   border: 0;
@@ -87,3 +91,75 @@ hr {
   opacity: .6;
 }
 
+.blinking {
+  font-weight: 700;
+  color: white;
+
+  animation: blinking 1s ease infinite
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes vintage-display {
+	0% { transform: rotatey(90deg) scaleY(.01); }
+	50% { transform: rotatey(0deg) scaleY(.01); }
+	100% { transform: rotatey(0deg) scaleY(1); }
+}
+
+
+/* Tooltip */
+.tooltip-parent {
+	position: relative;
+}
+
+.tooltip-parent .tooltip-text {
+  visibility: hidden;
+  z-index: 99999;
+	background-color: var(--color-bg-primary);
+  color: #eee;
+  font-weight: 400;
+	text-align: center;
+	font-size: .8rem;
+	border-radius: 6px;
+	border: 1px solid #eee;
+	
+	position: absolute;
+	bottom: 125%;
+	left: 50%;
+	
+	opacity: 0;
+	transition: opacity 0.3s;
+	
+	box-shadow: 0 0 4px var(--g1);
+  padding: .4rem;
+}
+
+/* Tooltip arrow */
+.tooltip-parent .tooltip-text::after {
+  content: '';
+	position: absolute;
+	top: 100%;
+  left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: var(--color-primary) transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-parent:hover .tooltip-text {
+	visibility: visible;
+	opacity: 1;
+}

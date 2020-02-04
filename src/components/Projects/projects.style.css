@@ -1,5 +1,9 @@
 #projects {
+  box-sizing: border-box;
+  width: 100%;
 
+  display: flex;
+  flex-direction: column;
 }
 
 #projects ul.list {
@@ -9,7 +13,9 @@
 }
 
 #projects ul.list li {
-  margin: 10px auto;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #projects ul.list li::before {

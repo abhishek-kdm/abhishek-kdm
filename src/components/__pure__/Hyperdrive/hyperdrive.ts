@@ -19,6 +19,7 @@ export default class Hyperdrive {
   pilotSpeed!: number;
 
   starField!: Star[];
+  colors!: string[];
 
   speed: number = .1;
   static ACCELERATION: number = 1.04;
@@ -34,6 +35,13 @@ export default class Hyperdrive {
   }
 
   init() {
+    this.colors = [
+      'hsl(200, 100%, 50%)',
+      'hsl(225, 100%, 60}%)',
+      'hsl(250, 100%, 70%)',
+      'hsl(275, 100%, 80%)',
+    ];
+
     this.keyRegister = new Set();
     this.pilotSpeed = 10;
 
@@ -41,18 +49,31 @@ export default class Hyperdrive {
 
     window.addEventListener('keydown', (e) => this.handleKeyRegister('add', e));
     window.addEventListener('keyup', (e) => this.handleKeyRegister('delete', e));
-
     window.addEventListener('resize', this.resetCanvas);
 
+    let i = 0;
     this.starField = [];
-    for (let i = 0; i < ((this.width + this.height) / 5); i++) {
-      const star = new Star({ width: this.width, height: this.height });
+    const totalStars = (this.width + this.height) / 5;
+
+    for (let c = 0; c < this.colors.length; c++ /* kappa */) {
+      const color = this.colors[c];
+      while (i < (totalStars / this.colors.length) * (c + 1)) {
+        const star = new Star(this.dimensions, this.coordinates);
+        star.color = color;
+        this.starField.push(star);
+        i++;
+      }
+    }
+
+    // handling offsets.
+    while (i < totalStars) {
+      const star = new Star(this.dimensions, this.coordinates);
+      star.color = this.colors[0];
       this.starField.push(star);
     }
 
     window.requestAnimationFrame(this.mainloop);
   }
-
 
   fillScreen() {
     const alpha = Math.max(Hyperdrive.MAX_SPEED - this.speed + .075, 0);
@@ -129,7 +150,6 @@ export default class Hyperdrive {
   ]
 
 
-
   handleKeyRegister(func: any, { which }: KeyboardEvent) {
     if (func === 'add')
       this.keyRegister.add(which);
@@ -138,43 +158,43 @@ export default class Hyperdrive {
     this.keyPressEventHandlers.forEach((f) => f());
   }
 
-  drawCrossHeir() { }
-
   applyUpdate() {
+    let i = 0;
+
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 2;
 
-    for (const star of this.starField) {
-      star.update(this.coordinates);
-
-      if (star.dead(this.dimensions, this.coordinates))
-        star.setup(this.dimensions);
-
+    for (const color of this.colors) {
       this.ctx.beginPath();
-      this.ctx.strokeStyle = star.color;
+      this.ctx.strokeStyle = color;
 
-      const [startx, starty] = star.tail(this.coordinates);
-      this.ctx.moveTo(startx, starty);
-      this.ctx.lineTo(star.x, star.y)
+      while (i < this.starField.length && this.starField[i].color === color) {
+        const star = this.starField[i];
+
+        star.update(this.coordinates);
+
+        if (star.dead(this.dimensions)) {
+          star.setup(this.dimensions, this.coordinates);
+          star.color = color;
+        }
+
+        this.ctx.moveTo(star.px, star.py);
+        this.ctx.lineTo(star.x, star.y)
+        i++;
+      }
       this.ctx.stroke();
     }
-
   }
 
   mainloop = () => {
     this.fillScreen();
 
-    this.drawCrossHeir();
-
     this.applyUpdate();
     window.requestAnimationFrame(this.mainloop);
   }
 
-
   get dimensions() { return { width: this.width, height: this.height }; }
 
   get coordinates() { return { cx: this.cx, cy: this.cy }; }
-
-
 }
 

@@ -10,24 +10,27 @@ export default class Star {
 
   x!: number;
   y!: number;
+
+  // previous starting coordinates.
+  px!: number;
+  py!: number;
+  // delat (next starting coordinates).
   dx!: number;
   dy!: number;
 
   speed!: number;
   acceleration!: number;
 
-  tailLength!: number;
   color!: string;
 
   starOffset!: number;
 
-  constructor(dimensions: Dimensions) {
-    this.setup(dimensions);
+  constructor(dimensions: Dimensions, coordinates: Coordinates) {
+    this.setup(dimensions, coordinates);
   }
 
-  setup({ width, height }: Dimensions) {
-    const cx = width / 2, cy = height / 2;
-    this.starOffset = Math.max(width, height) * .05;
+  setup({ width, height }: Dimensions, { cx, cy }: Coordinates) {
+    this.starOffset = Math.max(width, height) * .025;
 
     this.x = randInt(0, width);
     this.y = randInt(0, height);
@@ -40,44 +43,31 @@ export default class Star {
       this.y = randInt(0, height);
     }
 
+    this.px = this.x;
+    this.py = this.y;
+
     this.speed = 0;
     this.dx = (this.x - (width / 2)) * this.speed;
     this.dy = (this.y - (height / 2)) * this.speed;
     this.acceleration = randInt(0.0005, 0.001);
 
-    this.tailLength = 0;
-    this.color = `hsl(${randInt(200, 275)}, 100%, ${randInt(50, 80)}%)`;
+    // this.color = `hsl(${randInt(200, 275)}, 100%, ${randInt(50, 80)}%)`;
   }
 
   update({ cx, cy }: Coordinates) {
     this.dx = (this.x - cx) * this.speed;
     this.dy = (this.y - cy) * this.speed;
-    this.tailLength += this.speed * 10;
     this.speed += this.acceleration;
+
+    this.px = this.x;
+    this.py = this.y;
 
     this.x += this.dx;
     this.y += this.dy;
   }
 
-  tail({ cx, cy }: Coordinates) {
-    const x1 = cx, y1 = cy, x0 = this.x, y0 = this.y;
-
-    const dx = x1 - x0, dy = y1 - y0;
-
-    const d0 = Math.sqrt((dx * dx) + (dy * dy));
-    const d1 = this.tailLength;
-
-    const t = d1 / d0;
-    const xt = (((1 - t) * x0) + (t * x1));
-    const yt = (((1 - t) * y0) + (t * y1));
-
-    return [xt, yt];
-  }
-
-
-  dead({ width, height }: Dimensions, center: Coordinates) {
-    const [x, y] = this.tail(center);
-    return x > width || x < 0 || y > height || y < 0;
+  dead({ width, height }: Dimensions) {
+    return this.px > width || this.px < 0 || this.py > height || this.py < 0;
   }
 
 }

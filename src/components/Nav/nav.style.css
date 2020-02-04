@@ -35,15 +35,3 @@
   border: 1.5px inset var(--color-bg-secondary);
   background-color: var(--color-bg-primary);
 }
-/* 
-.nav ul li:not(:last-child)::after {
-  --nav--divider-height: 65%;
-
-  position: absolute;
-  content: '';
-  height: var(--nav--divider-height);
-  right: -16.5px;
-  top: calc((100% - var(--nav--divider-height)) / 2);
-  width: 1px;
-  background-color: var(--color-secondary);
-} */
