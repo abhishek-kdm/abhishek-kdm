@@ -39,7 +39,6 @@ const StillInDevelopment: React.FC = () => {
 }
 
 
-
 const App: React.FC = () => {
   const [warpGateOpen, setWarpGateOpen] = useState<boolean>(false);
 
