@@ -4,40 +4,47 @@ import './projects.style.css';
 import { AppContext } from '../../context';
 
 import Title from '../__pure__/Title/title.component';
+import { Anchor } from '../../utils/components';
 
 
 interface ProjectsProps { }
- 
+
 const Projects: React.FC<ProjectsProps> = () => {
   const { user, repos } = useContext(AppContext);
 
+  if (!user || repos.length == 0)
+    return (
+      <span style={{ backgroundColor: 'red', color: 'white', padding: '5px 25px', width: '50%', borderRadius: '3px', alignSelf: 'center' }}>
+        {'Unable to fetch resources!.'}
+      </span>
+    );
+
   return (<>
     <Title>
-      <a href={user.html_url} target='_blank' rel="noopener noreferrer">
-        {user.html_url}
-      </a>
+      <Anchor href={user.html_url}>{user.html_url}</Anchor>
     </Title>
+
     <div id='projects'>
-
-
       <ul className={'list'}>
         {repos.map((repo: any) => (
           <li key={repo.id}>
-            <a
-              href={repo.html_url}
-              target='_blank'
-              rel="noopener noreferrer"
-              className={repo.description ? 'tooltip-parent' : ''}
-            >
-              {repo.description &&
-                <span className={'tooltip-text'}>{repo.description}</span>}
+            <Anchor href={repo.html_url} title={repo.description || null}>
               {repo.name}
-            </a>
+            </Anchor>
+            {(repo.homepage || '').length ?
+              <>&nbsp;&nbsp;&nbsp;
+              <Anchor style={{ borderBottom: 'none' }}  href={repo.homepage}>
+                <span style={{ fontSize: '20px', color: 'white' }}>
+                  {/* &#x1F3E0; */}
+                  &#x1f441;
+                </span>
+              </Anchor></> : null}
           </li>
         ))}
       </ul>
     </div>
   </>);
 }
- 
+
 export default Projects;
+

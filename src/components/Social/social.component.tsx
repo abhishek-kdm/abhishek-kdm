@@ -5,18 +5,19 @@ import { SOCIAL_LINKS } from '../../configs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Title from '../__pure__/Title/title.component';
+import { Anchor } from '../../utils/components';
 
 
 interface SocialProps { }
- 
+
 const Social: React.FC<SocialProps> = () => {
 
   return (<>
-    <Title>{'social'}</Title>
+    <Title>{'./social'}</Title>
     <div id='social'>
       <div className='link-container'>
         {SOCIAL_LINKS.map(({ title, href, iconProps }, i) => (
-          <a
+          <Anchor
             key={i}
             className={'link'}
             title={title}
@@ -24,11 +25,12 @@ const Social: React.FC<SocialProps> = () => {
             target='_blank' rel='noopener noreferrer'
           >
             <FontAwesomeIcon {...iconProps} size={'3x'} />
-          </a>
+          </Anchor>
         ))}
       </div>
     </div>
   </>);
 }
- 
+
 export default Social;
+

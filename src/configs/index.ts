@@ -10,6 +10,20 @@ import {
   faDiscord,
 } from '@fortawesome/free-brands-svg-icons';
 
+
+// reference for theme.
+export const THEME: { [name in Theme]: Theme } = {
+  zerg: 'zerg',
+  terran: 'terran',
+  protoss: 'protoss',
+};
+
+export const THEME_BACKGROUND_COLOR: { [name in Theme]: string } = {
+  zerg: '#2C483586',
+  terran: '#CAD3C818',
+  protoss: '#EEBAA59f',
+};
+
 // right now its just for styling the hyperdrive canvas.
 export const FULL_SCREEN_STYLE: React.CSSProperties = {
   position: 'absolute',
@@ -18,16 +32,10 @@ export const FULL_SCREEN_STYLE: React.CSSProperties = {
   zIndex: 10000,
 };
 
-// reference for theme.
-export const THEME: { [name: string]: Theme } = {
-  dark: 'dark',
-  light: 'light'
-};
-
-// reference for warp states.
-export const WARPSTATE: { [name: string]: WarpState } = {
-  explore: 'explore',
-  warpin: 'warpin',
+// reference for warpgates orientation.
+export const ORIENTATION: { [name in Orientation]: Orientation } = {
+  vertical: 'vertical',
+  horizontal: 'horizontal',
 }
 
 // time (in ms) taken by a single warpgate to open.
@@ -84,3 +92,5 @@ export const GITHUB = {
     return `https://api.github.com/users/${this.username}`;
   },
 };
+
+export const ABOUTME = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius accusantium, praesentium itaque iure aliquid, unde velit sit architecto assumenda illo iste, ad atque dolorum fugit natus asperiores exercitationem ipsa quia!At magni aliquid nemo quis! Vero ab, saepe ad temporibus culpa itaque nulla. Similique error ratione quibusdam quisquam aperiam odit? Labore laboriosam ad architecto blanditiis consequatur reiciendis ullam cupiditate rerum?`;

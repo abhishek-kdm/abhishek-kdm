@@ -1,37 +1,53 @@
 .nav {
-  --nav--border-radius: 6px;
-
+  --nav--border-radius: 10px;
   width: 100%;
 }
 
 .nav ul {
   margin: 0;
+  padding-left: 15px;
+  padding-right: 15px;
   outline: none;
-  background-color: var(--color-bg-secondary);
-  padding: 0;
-  border-radius: var(--nav--border-radius);
   list-style-type: none;
   list-style-position: inside;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  border-bottom-left-radius: var(--nav--border-radius);
+  border-bottom-right-radius: var(--nav--border-radius);
 }
 
 .nav ul li {
-  box-sizing: border-box;
-  position: relative;
-  cursor: pointer;
-  margin: 7.5px 15px;
-  padding: 7.5px 15px;
-  border-radius: 3px;
-  border: 1.5px outset var(--color-bg-secondary);
-  flex: 1;
-}
+  -webkit-user-select: none;
+  -moz-user-select:    none;
+  user-select:         none;
 
-.nav ul li:hover {
-  background-color: var(--color-bg-primary);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 17.5px 7.5px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  box-shadow: var(--neumorphic-shadow-small);
+  border: 1px soid var(--color-bg-primary);
+  border-radius: 6px;
 }
 
 .nav ul li.active {
-  border: 1.5px inset var(--color-bg-secondary);
-  background-color: var(--color-bg-primary);
+  box-shadow: var(--neumorphic-shadow-small-active);
 }
+
+.nav ul li:active {
+  box-shadow: var(--neumorphic-shadow-small-active);
+  transform: scale(.95);
+}
+

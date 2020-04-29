@@ -1,10 +1,10 @@
 .heart-container {
-  --heart--container-size: 20px;
+  --heart--container-size: 1.1rem;
 
   width: var(--heart--container-size);
   height: var(--heart--container-size);
 
-  display: flex;
+  display: grid;
   align-items: flex-end;
   justify-content: center;
 }

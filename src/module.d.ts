@@ -1,12 +1,20 @@
-type Theme = 'dark' | 'light';
+type Theme = 'terran' | 'protoss' | 'zerg';
 
 interface NavbarItem {
   label: string
-  component: any
+  component: React.FunctionComponent
 }
 
-// orientation of the warpgate doors.
-type Orientation = 'horizontal' | 'vertical' | undefined;
+interface LogoProps extends React.HTMLAttributes<SVGElement> {
+  color?: string
+  asImage?: boolean
+}
 
-// states for the warpgates and hyperdrive;
-type WarpState = 'warpin' | 'explore';
+/** orientation of the warpgate doors. */
+type Orientation = 'horizontal' | 'vertical';
+
+type DoorPosition = 'left' | 'right' | 'top' | 'bottom';
+
+type Maybe<T> = T | undefined;
+type Word = string | number;
+type Void = () => void

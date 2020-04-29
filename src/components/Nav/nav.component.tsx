@@ -4,8 +4,10 @@ import './nav.style.css';
 
 interface NavProps extends React.HTMLAttributes<HTMLElement> { }
  
-const Nav: React.FC<NavProps> = (props) => {
-  return <nav {...props} className={`nav${props.className ? ' ' + props.className : ''}`} />
+const Nav: React.FC<NavProps> = ({ className, ...rest }) => {
+  const classes = ['nav'].concat(className || []);
+
+  return <nav {...rest} className={classes.join(' ')} />
 }
  
 export default Nav;

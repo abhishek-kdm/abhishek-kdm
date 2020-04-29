@@ -1,9 +1,33 @@
 .title {
-  width: 100%;
   text-align: left;
-  margin: 1rem .5rem;
+  margin-bottom: 1rem;
+  font-size: .85rem;
 }
 
 .title .prompt {
-  color: white;
+  box-sizing: border-box;
+}
+
+.title .prompt > .user {
+  color: rgb(149, 175, 192);
+  font-weight: 700;
+}
+
+.title .prompt > .machine {
+  color: rgb(149, 175, 192);
+  font-weight: 700;
+}
+
+.title .prompt > .pwd {
+  color: teal;
+  margin-left: .5rem;
+}
+
+.title .prompt > .branch {
+  color: red;
+  margin-left: .5rem;
+}
+
+.title .prompt .branch .status {
+  color: turquoise;
 }

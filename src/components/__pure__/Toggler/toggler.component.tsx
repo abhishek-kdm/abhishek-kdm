@@ -1,37 +1,41 @@
-import React, { useMemo } from 'react';
+import React, { useContext } from 'react';
 import './toggler.style.css';
+
+import { getLogo } from '../../../utils';
+import { AppContext } from '../../../context';
+import { THEME } from '../../../configs';
 
 
 interface TogglerProps extends React.HTMLAttributes<HTMLSpanElement> {
-  active?: boolean
-  /**
-   * required `height` in pixels.
-   * rest would be responsive accordingly.
-   */
-  size?: number
-  // its actually onClick
-  onToggle: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+  onSwitch: (theme: Theme) => void
 }
- 
-const Toggler: React.FC<TogglerProps> = ({
-  active,
-  onToggle,
-  className,
-  ...rest
-}) => {
 
-  const _class = className || '';
+const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...rest }) => {
 
-  const classes = useMemo(() => (['toggler']
-    .concat(active ? ['active'] : [])
-    .concat(_class.trim().length > 0 ? [_class.trim()] : [])
-  ), [active, _class]);
+  const { theme } = useContext(AppContext);
 
-  return <span
-    {...rest}
-    className={classes.join(' ')}
-    onClick={onToggle}
-  />
+  return (<>
+    <div {...rest} className={'toggler'}>
+      {Object.values(THEME).map((themeName) => (<React.Fragment key={themeName}>
+        <input
+          onChange={() => onSwitch(themeName)}
+          checked={themeName === theme}
+          type='radio'
+          name='theme-toggler'
+          id={`switch-${themeName}`}
+        /> 
+        <label htmlFor={`switch-${themeName}`}>
+          <svg viewBox={'0 0 100 100'} className={'progress'}>
+            <circle cx={50} cy={50} r={48} strokeWidth={4} fill='none' />
+          </svg>
+          {getLogo(themeName)({
+            style: { height: '100%' },
+            color: 'var(--color-secondary)'
+          })}
+        </label>
+      </React.Fragment>))}
+    </div>
+  </>)
 }
  
 export default Toggler;

@@ -14,32 +14,34 @@ const Modal: React.FC<ModalProps> = ({
   closeFunc,
   children
 }) => {
-
   const handleClose = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) { closeFunc(); }
   }, [closeFunc]);
 
   const style = useMemo(() => ({
     backgroundColor: `rgba(0, 0, 0, ${opacity})`,
-    display: show ? 'block' : 'none'
-  }), [opacity, show]);
-
-  const keyDownHandler = useCallback((e) => {
-    if (e.which === 27 && show) { closeFunc(); }
-  }, [show, closeFunc]);
+  }), [opacity]);
 
   useEffect(() => {
+    const keyDownHandler = (e: KeyboardEvent) => {
+      if (e.which === 27 && show) { closeFunc(); }
+    };
+
     document.addEventListener('keydown', keyDownHandler);
     return () => {
       document.removeEventListener('keydown', keyDownHandler);
     }
-  });
+  }, [show, closeFunc]);
 
-  return (<>
-    <div className='modal' style={style} onClick={handleClose}>
-      <div className='modal-content'>{children}</div>
-    </div>
-  </>);
+  if (show) {
+    return (
+      <div className='modal' style={style} onClick={handleClose}>
+        <div className='modal-content'>{children}</div>
+      </div>
+    );
+  }
+
+  return null;
 }
  
 export default Modal;

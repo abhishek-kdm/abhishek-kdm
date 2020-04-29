@@ -1,39 +1,48 @@
 .toggler {
-  --toggler--height: 25px;
-
-  --toggler--width: calc(var(--toggler--height) * 1.5);
-  --toggler--offset: 4px;
-
-  cursor: pointer;
-  width: var(--toggler--width);
-  height: var(--toggler--height);
-  border-radius: calc(var(--toggler--height) / 2);
-  background-color: transparent;
-  box-shadow: 1px 1px 4px 2.75px rgba(0, 0, 0, .4) inset;
   display: flex;
-  align-items: center;
-  padding: 0 var(--toggler--offset);
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-
-.toggler::before {
-  --toggler--border: calc(var(--toggler--offset) / 2);
-
-  content: '';
-  width: calc(var(--toggler--height) - (3 * var(--toggler--border)));
-  height: calc(var(--toggler--height) - (3 * var(--toggler--border)));
-  border: var(--toggler--border) solid white;
-  transition-duration: .3s;
+.toggler label {
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  margin: 5px 5px;
+  padding: 10px;
+  width: 25px;
+  height: 25px;
+  box-shadow: var(--neumorphic-shadow-small);
   border-radius: 50%;
-  padding: 0;
+  background-color: var(--color-bg-primary);
 }
 
-.toggler.active::before {
-  transform: translateX(var(--toggler--width)) translateX(-100%);
+.toggler input[type=radio]:checked + label {
+  box-shadow: var(--neumorphic-shadow-small-active);
 }
 
-@media (max-width: 576px) {
-  .toggler {
-    --toggler--height: 20px;
-  }
+.toggler input[type=radio] {
+  display: none;
+  pointer-events: none;
 }
+
+
+.toggler svg.progress {
+  position: absolute;
+  display: block;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  transform: rotate(-90deg);
+  stroke: var(--color-secondary);
+  
+  stroke-dasharray: 0 314.159;
+  transition: .5s stroke-dasharray;
+}
+
+.toggler input:checked + label > svg.progress {
+  stroke-linecap: round;
+  stroke-dasharray: 314.159 314.159;
+}
+
