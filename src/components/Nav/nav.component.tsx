@@ -1,13 +1,9 @@
 import React from 'react';
-import './nav.style.css';
+import StyledNav from './nav.style';
 
 
 interface NavProps extends React.HTMLAttributes<HTMLElement> { }
  
-const Nav: React.FC<NavProps> = ({ className, ...rest }) => {
-  const classes = ['nav'].concat(className || []);
-
-  return <nav {...rest} className={classes.join(' ')} />
-}
+const Nav: React.FC<NavProps> = (props) => <StyledNav {...props} />;
  
 export default Nav;
