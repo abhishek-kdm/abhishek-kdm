@@ -10,10 +10,8 @@ const StyledHeader = styled.header`
   margin-bottom: 5vh;
 
   @media (max-width: 576px) {
-    & {
-      flex-direction: column;
-      margin-bottom: 2vh;
-    }
+    flex-direction: column;
+    margin-bottom: 2vh;
   }
 `;
 
@@ -25,10 +23,8 @@ export const HeaderTitle = styled.h1`
   align-items: center;
 
   @media (max-width: 576px) {
-    & {
-      margin-block-start: 0.4em;
-      margin-block-end: 0.4em;
-    }
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
   }
 `;
 

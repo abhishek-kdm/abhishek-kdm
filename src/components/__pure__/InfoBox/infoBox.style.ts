@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { vintageDisplay } from './infoBox.animations';
 
 
 export interface StyledInfoBoxProps {
@@ -8,7 +9,6 @@ export interface StyledInfoBoxProps {
   scrollable?: boolean
   animate?: boolean
 }
-
 
 const StyledInfoBox = styled.div<StyledInfoBoxProps>`
   box-sizing: border-box;
@@ -26,16 +26,10 @@ const StyledInfoBox = styled.div<StyledInfoBoxProps>`
     overflow-y: auto;
   ` : ''}
 
-  ${({ animate }) => animate ? `
+  ${({ animate }) => animate ? css`
     background-color: rgb(0, 0, 0);
     border: 2px solid var(--color-primary);
-    animation: .7s ease-out 0s 1 vintage-display;
-
-    @keyframes vintage-display {
-      0% { transform: rotatey(90deg) scaleY(.01); }
-      75% { transform: rotatey(0deg) scaleY(.01); }
-      100% { transform: scaleY(1); }
-    }
+    animation: ${vintageDisplay} .7s ease-out;
   ` : ''}
 `;
 

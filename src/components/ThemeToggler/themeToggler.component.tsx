@@ -11,12 +11,12 @@ const ThemeToggler: React.FC<ThemeTogglerProps> = () => {
   const { theme, setTheme } = useContext(AppContext) as IAppContext;
 
   // setting theme.
-  // This method is faster than using the  styled components' theming
+  // This method is faster than using the styled components' theming
   // due to slowness of javascript.
   useEffect(() => { document.body.className = theme; }, [theme]);
 
   return (<>
-    <div id={'theme-provider'}>
+    <div id={'theme-toggler'}>
       <Toggler onSwitch={(themeName) => { setTheme(themeName); }} />
     </div>
   </>);

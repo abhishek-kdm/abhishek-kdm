@@ -53,7 +53,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <WarpDoorSVGDefs />
             <GlobalSVGFilters />
           </svg>
-
           {children}
           <Modal
             show={modalShow}
