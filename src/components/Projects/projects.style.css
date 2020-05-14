@@ -19,9 +19,8 @@
 }
 
 #projects ul.list li::before {
-  content: '$';
+  content: '[ ]';
   font-weight: 100;
-  /* color: rgb(207, 0, 15); */
   color: var(--color-secondary);
   padding-right: 1rem;
   padding-left: .5rem;
@@ -29,6 +28,6 @@
 }
 
 #projects ul.list li:hover::before {
-  color: white;
+  content: '[x]';
 }
 

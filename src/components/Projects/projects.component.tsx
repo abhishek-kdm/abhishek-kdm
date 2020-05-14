@@ -31,14 +31,13 @@ const Projects: React.FC<ProjectsProps> = () => {
             <Anchor href={repo.html_url} title={repo.description || null}>
               {repo.name}
             </Anchor>
-            {(repo.homepage || '').length ?
+            {/* {(repo.homepage || '').length ?
               <>&nbsp;&nbsp;&nbsp;
               <Anchor style={{ borderBottom: 'none' }}  href={repo.homepage}>
                 <span style={{ fontSize: '20px', color: 'white' }}>
-                  {/* &#x1F3E0; */}
                   &#x1f441;
                 </span>
-              </Anchor></> : null}
+              </Anchor></> : (null)} */}
           </li>
         ))}
       </ul>

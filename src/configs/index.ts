@@ -24,14 +24,6 @@ export const THEME_BACKGROUND_COLOR: { [name in Theme]: string } = {
   protoss: '#EEBAA59f',
 };
 
-// right now its just for styling the hyperdrive canvas.
-export const FULL_SCREEN_STYLE: React.CSSProperties = {
-  position: 'absolute',
-  width: '100vw',
-  height: '100vh',
-  zIndex: 10000,
-};
-
 // reference for warpgates orientation.
 export const ORIENTATION: { [name in Orientation]: Orientation } = {
   vertical: 'vertical',

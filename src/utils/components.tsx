@@ -27,6 +27,32 @@ export const Cspan: React.SFC<CspanProps> = ({ color, style, ...rest }) => {
   return <span style={style} {...rest} />;
 }
  
+export const StillInDevelopment: React.FC = () => {
+  return (<>
+    <div style={{
+      position: 'absolute',
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <span style={{
+        padding: '5px 10px',
+        color: 'white',
+        backgroundColor: 'dodgerblue',
+        borderBottomLeftRadius: '10px',
+        borderBottomRightRadius: '10px',
+        width: '150px',
+        alignSelf: 'center',
+        fontSize: '11px',
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+        &#x26A0;&nbsp;&nbsp;&nbsp;{'Still in development!.'}
+      </span>
+    </div>
+  </>);
+}
 
 export const withLazy: (c: React.FC) => React.FC<{}> = (Child) => {
   return () => (
