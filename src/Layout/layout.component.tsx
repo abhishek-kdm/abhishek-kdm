@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './layout.style.css';
+import { ThemeProvider } from 'styled-components';
 
 import Modal from '../components/__pure__/Modal/modal.component';
 import InfoBox from '../components/__pure__/InfoBox/infoBox.component';
@@ -35,39 +36,48 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [user]);
 
   return (<>
-    <AppContext.Provider value={{ theme, setTheme, setModalShow, user, repos }}>
-      <div
-        id={'page-wrapper'}
-        style={{ backgroundImage: `url(${getBackground(theme)})` }}
-      >
-        <svg width={0} height={0}>
-          <WarpDoorSVGDefs />
-          <GlobalSVGFilters />
-        </svg>
-
-        {children}
-        <Modal
-          show={modalShow}
-          closeFunc={() => { setModalShow(false); }}
+    <ThemeProvider theme={() => {
+      switch(theme) {
+        case THEME.protoss:
+          return { patternColor: '#E7825978', name: theme }
+        default: 
+          return { patternColor: '#0D0D0D', name: theme }
+      }
+    }}>
+      <AppContext.Provider value={{ theme, setTheme, setModalShow, user, repos }}>
+        <div
+          id={'page-wrapper'}
+          style={{ backgroundImage: `url(${getBackground(theme)})` }}
         >
-          <InfoBox animate={true} style={{ textAlign: 'center' }}>
-            <div>
-              <Cspan color={'white'}>{'`arrows`.'}</Cspan><br />
-            </div>
-            <div>
-              To go faster in&nbsp;
-              <Cspan color={'white'}>{'`space`'}</Cspan>
-              , push it.<br />
-            </div>
-            <div>
-              to&nbsp;
-              <Cspan color={'white'}>{'`escape`'}</Cspan>
-              , just do so.<br />
-            </div>
-          </InfoBox>
-        </Modal>
-      </div>
-    </AppContext.Provider>
+          <svg width={0} height={0}>
+            <WarpDoorSVGDefs />
+            <GlobalSVGFilters />
+          </svg>
+
+          {children}
+          <Modal
+            show={modalShow}
+            closeFunc={() => { setModalShow(false); }}
+          >
+            <InfoBox animate={true} style={{ textAlign: 'center' }}>
+              <div>
+                <Cspan color={'white'}>{'`arrows`.'}</Cspan><br />
+              </div>
+              <div>
+                To go faster in&nbsp;
+                <Cspan color={'white'}>{'`space`'}</Cspan>
+                , push it.<br />
+              </div>
+              <div>
+                to&nbsp;
+                <Cspan color={'white'}>{'`escape`'}</Cspan>
+                , just do so.<br />
+              </div>
+            </InfoBox>
+          </Modal>
+        </div>
+      </AppContext.Provider>
+    </ThemeProvider>
   </>);
 }
 
