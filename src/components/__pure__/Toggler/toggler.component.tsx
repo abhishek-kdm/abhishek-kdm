@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './toggler.style.css';
+import StyledToggler, { TogglerInput, TogglerLabel, SVGActive } from './toggler.style';
 
 import { getLogo } from '../../../utils';
 import { AppContext } from '../../../context';
@@ -10,31 +10,28 @@ interface TogglerProps extends React.HTMLAttributes<HTMLSpanElement> {
   onSwitch: (theme: Theme) => void
 }
 
-const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...rest }) => {
-
+const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...props }) => {
   const { theme } = useContext(AppContext);
 
   return (<>
-    <div {...rest} className={'toggler'}>
+    <StyledToggler {...props}>
       {Object.values(THEME).map((themeName) => (<React.Fragment key={themeName}>
-        <input
+        <TogglerInput
           onChange={() => onSwitch(themeName)}
           checked={themeName === theme}
-          type='radio'
-          name='theme-toggler'
           id={`switch-${themeName}`}
         /> 
-        <label htmlFor={`switch-${themeName}`}>
-          <svg viewBox={'0 0 100 100'} className={'progress'}>
+        <TogglerLabel htmlFor={`switch-${themeName}`}>
+          <SVGActive viewBox={'0 0 100 100'} active={themeName === theme}>
             <circle cx={50} cy={50} r={48} strokeWidth={4} fill='none' />
-          </svg>
+          </SVGActive>
           {getLogo(themeName)({
             style: { height: '100%' },
             color: 'var(--color-secondary)'
           })}
-        </label>
+        </TogglerLabel>
       </React.Fragment>))}
-    </div>
+    </StyledToggler>
   </>)
 }
  
