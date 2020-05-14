@@ -1,5 +1,5 @@
 import React from 'react';
-import './statusbar.style.css';
+import StyledStatusbar, { Time, Info } from './statusbar.style';
 
 import { useCurrentDate } from '../../../utils/hooks';
 import { doubleDigit } from '../../../utils';
@@ -24,14 +24,14 @@ interface StatusbarProps extends React.HTMLAttributes<HTMLDivElement> {
   info: string
 }
  
-const Statusbar: React.FC<StatusbarProps> = ({ info, ...rest }) => {
+const Statusbar: React.FC<StatusbarProps> = ({ info, ...props }) => {
   const date = useCurrentDate();
 
   return (<>
-    <div id='statusbar' {...rest}>
-      <div className='time'>{toShellFormat(date)}</div>
-      <span className='info'>{info}</span>
-    </div>
+    <StyledStatusbar {...props}>
+      <Time>{toShellFormat(date)}</Time>
+      <Info>{info}</Info>
+    </StyledStatusbar>
   </>);
 }
  
