@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import './main.style.css';
+import StyledMain, { MainWrapper, ScreenWrapper, Screen, SVGDash } from './main.style';
 
 import Nav from '../Nav/nav.component';
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
@@ -7,16 +7,7 @@ import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
 import { WARPGATES_OPEN_DELAY } from '../../configs';
-// import { withLazy } from '../../utils/components';
-import { getLogo, toDataImageScheme } from '../../utils';
-import { AppContext } from '../../context';
 
-
-/*
- * @NOTE: remove this when `Suspense` is supported
- * and use B for `Suspense`
- */
-// :A
 import About from '../About/about.component';
 import Social from '../Social/social.component';
 import Projects from '../Projects/projects.component';
@@ -28,28 +19,9 @@ const navbarItems: NavbarItem[] = [
 ];
 
 
-/*
- * @NOTE: uncomment this for `Suspense`
- * and remove A
- */
-// :B
-// const About = React.lazy(() => import('../About/about.component'));
-// const Social = React.lazy(() => import('../Social/social.component'));
-// const Projects = React.lazy(() => import('../Projects/projects.component'));
+interface MainProps { }
 
-// const navbarItems: NavbarItem[] = [
-//   { label: 'about', component: withLazy(About) },
-//   { label: 'social', component: withLazy(Social) },
-//   { label: 'projects', component: withLazy(Projects) },
-// ];
-
-
-interface HomeProps { }
-
-const Home: React.FC<HomeProps> = () => {
-
-  const { theme } = useContext(AppContext);
-
+const Main: React.FC<MainProps> = () => {
   // controls open/close of the warpgaetes.
   const [warpgateOpen, setWarpgateOpen] = useState<boolean>(true);
   const [selectedItem, setSelectedItem] = useState<string>(navbarItems[0].label);
@@ -84,29 +56,23 @@ const Home: React.FC<HomeProps> = () => {
   useEffect(() => { setWarpgateOpen(false); }, [clickedItem, setWarpgateOpen]);
 
   return (<>
-    <main className={'container'}>
-      <div className={'main-wrapper'}>
-        <div className={'screen-wrapper'}>
+    <StyledMain className={'container'}>
+      <MainWrapper>
+        <ScreenWrapper>
           <Warpgate
             onClose={warpGatesOnClose}
             open={warpgateOpen}
             orientation={'horizontal'}
             style={{ zIndex: 5, borderRadius: '6px' }}
           />
-          <div className='screen'>
-            <InfoBox scrollable
-              style={{
-                backgroundImage: `url("${
-                  // @ts-ignore
-                  toDataImageScheme(getLogo(theme)({ asImage: true }))
-                }")`,
-              }}
-            >
+          <Screen>
+            <InfoBox scrollable id='screen-box'>
               {displayComponent()}
             </InfoBox>
-            <Statusbar info={selectedItem} />
-          </div>
-        </div>
+            <Statusbar id='statusbar' info={selectedItem} />
+          </Screen>
+        </ScreenWrapper>
+
         <Nav id={'screen-navigator'}>
           <ul>
             {navbarItems.map(({ label }, key) => (
@@ -116,16 +82,24 @@ const Home: React.FC<HomeProps> = () => {
                 className={liClassName(clickedItem, label)}
               >
                 {label}
-                <svg className={'dash'} viewBox={'0 0 40 1'}>
+                <SVGDash viewBox={'0 0 40 1'}>
                   <path d={'M0 1 H40'}></path>
-                </svg>
+                </SVGDash>
               </li>
             ))}
           </ul>
         </Nav>
-      </div>
-    </main>
+      </MainWrapper>
+
+      <svg width='0' height='0'>
+        <defs>
+          <clipPath id='screen-curve' clipPathUnits='objectBoundingBox'>
+            <path d='M0.05 0.05 Q0.5 0, 0.95 0.05 Q1 0.5, 0.95 0.95 Q0.5 1, 0.05 0.95 Q0 0.5, 0.05 0.05' />
+          </clipPath>
+        </defs>
+      </svg>
+    </StyledMain>
   </>);
 }
 
-export default Home;
+export default Main;
