@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './footer.style.css';
+import StyledFooter from './footer.style';
 
 import { Cspan } from '../../utils/components';
 import { AppContext } from '../../context';
@@ -14,7 +14,7 @@ interface FooterProps { }
 const Footer: React.FC<FooterProps> = () => {
   const { theme } = useContext(AppContext);
   return (<>
-    <footer>
+    <StyledFooter>
       <strong>
         <Cspan color={theme === THEME.protoss ? '#000' : '#fff'}>
           {'</>'}
@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = () => {
       &nbsp;&nbsp;{'&'}&nbsp;&nbsp;
 
       <ReactLogo />
-    </footer>
+    </StyledFooter>
   </>);
 }
  
