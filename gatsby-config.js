@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Abhishek Kadam`,
-    description: `Software developer with a huge appetite for video games.`,
+    description: `Simply computers, video games, food etc.`,
     author: `@abhishek_kdm`,
   },
   plugins: [

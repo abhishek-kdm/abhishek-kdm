@@ -26,6 +26,10 @@ export const doubleDigit = (x: Word) => `0${x}`.trim().slice(-2);
 
 export const randInt = (min: number, max: number) => Math.floor(min + Math.random() * (max - min));
 
+export const range = (n: number, fn: (v: null, i: number, a: any[]) => Word) => Array(n)
+  .fill(null)
+  .map(fn)
+
 export const getLogo = (theme: Theme) => {
   switch (theme) {
     case THEME.zerg: return ZergLogo;

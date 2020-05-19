@@ -1,8 +1,14 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
-import StyledMain, { MainWrapper, ScreenWrapper, Screen, SVGDash } from './main.style';
+import React, { useState, useEffect, useCallback } from 'react';
+import StyledMain, {
+  MainWrapper,
+  ScreenWrapper,
+  Screen,
+  ScreenDisplay,
+  SVGDash,
+  Radiator
+} from './main.style';
 
 import Nav from '../Nav/nav.component';
-import InfoBox from '../__pure__/InfoBox/infoBox.component';
 import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
@@ -17,7 +23,6 @@ const navbarItems: NavbarItem[] = [
   { label: 'social', component: Social },
   { label: 'projects', component: Projects },
 ];
-
 
 interface MainProps { }
 
@@ -66,9 +71,9 @@ const Main: React.FC<MainProps> = () => {
             style={{ zIndex: 5, borderRadius: '6px' }}
           />
           <Screen>
-            <InfoBox scrollable id='screen-box'>
+            <ScreenDisplay scrollable>
               {displayComponent()}
-            </InfoBox>
+            </ScreenDisplay>
             <Statusbar id='statusbar' info={selectedItem} />
           </Screen>
         </ScreenWrapper>
@@ -88,6 +93,7 @@ const Main: React.FC<MainProps> = () => {
               </li>
             ))}
           </ul>
+          <Radiator />
         </Nav>
       </MainWrapper>
 
