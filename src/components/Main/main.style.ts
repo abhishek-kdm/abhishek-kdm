@@ -93,6 +93,11 @@ export const Screen = styled.div`
     font-family: 'IBM Plex Mono';
     font-size: .8rem;
   }
+
+  #statusbar {
+    padding-left: 3%!important;
+    padding-right: 3%!important;
+  }
 `;
 
 export const ScreenDisplay = styled(InfoBox)`
@@ -102,7 +107,6 @@ export const ScreenDisplay = styled(InfoBox)`
 
   background-image: url("${({ theme }) => jsSUCKS(theme.name)}");
 
-  background-size: contain;
   background-position: right;
   background-repeat: no-repeat;
   background-clip: content-box;
@@ -120,11 +124,6 @@ export const ScreenDisplay = styled(InfoBox)`
   ::-webkit-scrollbar-thumb:hover {
     border-left: .3rem solid var(--color-secondary);
     background-color: transparent;
-  }
-
-  #statusbar {
-    padding-left: 3%;
-    padding-right: 3%;
   }
 `;
 

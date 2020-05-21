@@ -18,10 +18,19 @@ export const THEME: { [name in Theme]: Theme } = {
   protoss: 'protoss',
 };
 
-export const THEME_BACKGROUND_COLOR: { [name in Theme]: string } = {
-  zerg: '#2C483586',
-  terran: '#CAD3C818',
-  protoss: '#EEBAA59f',
+export const THEME_PROPS: { [name in Theme]: any } = {
+  zerg: {
+    patternColor: '#0A0A0AA0',
+    backgroundColor: '#2C483586',
+  },
+  terran: {
+    patternColor: '#0A0A0AA0',
+    backgroundColor: '#CAD3C818',
+  },
+  protoss: {
+    patternColor: '#E7825970',
+    backgroundColor: '#EEBAA59f',
+  },
 };
 
 // reference for warpgates orientation.

@@ -1,5 +1,5 @@
 import { renderToStaticMarkup } from 'react-dom/server';
-import { THEME, THEME_BACKGROUND_COLOR } from '../configs';
+import { THEME } from '../configs';
 
 import BackgroundImage from '../components/__pure__/SVG/Background';
 
@@ -38,9 +38,9 @@ export const getLogo = (theme: Theme) => {
   }
 }
 
-export const getBackground = (theme: Theme) => {
+export const getBackground = (color: string) => {
   // @ts-ignore
-  return toDataImageScheme(BackgroundImage({ color: THEME_BACKGROUND_COLOR[theme] }));
+  return toDataImageScheme(BackgroundImage({ color }));
 }
 
 export const toDataImageScheme = (component: React.ReactElement) => {
