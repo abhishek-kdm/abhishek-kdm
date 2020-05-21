@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './layout.style.css';
+import { PageWrapper } from './layout.style';
 import { ThemeProvider } from 'styled-components';
 
 import Modal from '../components/__pure__/Modal/modal.component';
@@ -7,8 +7,8 @@ import InfoBox from '../components/__pure__/InfoBox/infoBox.component';
 import WarpDoorSVGDefs from '../components/__pure__/Warpgate/WarpDoors/terran.warpdoors';
 
 import { AppContext } from '../context';
-import { GITHUB, THEME } from '../configs';
-import { fetchJson, getBackground } from '../utils';
+import { GITHUB, THEME, THEME_PROPS } from '../configs';
+import { fetchJson } from '../utils';
 import { Cspan } from '../utils/components';
 import GlobalSVGFilters from '../components/__pure__/SVG/Filters';
 
@@ -38,17 +38,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (<>
     <ThemeProvider theme={() => {
       switch(theme) {
-        case THEME.protoss:
-          return { patternColor: '#E7825978', name: theme }
-        default: 
-          return { patternColor: '#0D0D0D', name: theme }
+        case THEME.zerg: return { name: theme, ...THEME_PROPS.zerg }
+        case THEME.terran: return { name: theme, ...THEME_PROPS.terran }
+        default: return { name: theme, ...THEME_PROPS.protoss }
       }
     }}>
       <AppContext.Provider value={{ theme, setTheme, setModalShow, user, repos }}>
-        <div
-          id={'page-wrapper'}
-          style={{ backgroundImage: `url(${getBackground(theme)})` }}
-        >
+        <PageWrapper>
           <svg width={0} height={0}>
             <WarpDoorSVGDefs />
             <GlobalSVGFilters />
@@ -74,7 +70,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </InfoBox>
           </Modal>
-        </div>
+        </PageWrapper>
       </AppContext.Provider>
     </ThemeProvider>
   </>);
