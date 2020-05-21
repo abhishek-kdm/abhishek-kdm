@@ -48,7 +48,7 @@ export const MainWrapper = styled.div`
 
   display: grid;
   grid-template-columns: 1fr 200px;
-  grid-template-rows: minmax(60vh, 400px);
+  grid-template-rows: minmax(60vh, var(--aspect-ratio-height));
 
   @media (max-width: 768px) {
     grid-template-columns: 100%;

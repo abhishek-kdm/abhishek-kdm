@@ -3,6 +3,8 @@
 @import "theme.css";
 
 * {
+  --aspect-ratio-width: 50rem;
+  --aspect-ratio-height: calc(((var(--aspect-ratio-width) - 100px) / 16) * 9);
   font-family: 'Montserrat', 'Courier New', Courier, monospace;
   color: var(--color-primary);
 }
@@ -62,7 +64,7 @@ hr {
   text-align: center;
   margin-right: auto;
   margin-left: auto;
-  max-width: 50rem;
+  max-width: var(--aspect-ratio-width);
 }
 
 @media (max-width: 576px) {
