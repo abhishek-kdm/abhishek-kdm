@@ -20,7 +20,7 @@ const ZergLogo: React.FC<LogoProps> = ({
     </svg>
   );
 }
- 
+
 export default ZergLogo;
 
 

@@ -21,7 +21,7 @@ const TerranLogo: React.FC<LogoProps> = ({
     </svg>
   );
 }
- 
+
 export default TerranLogo;
 
 

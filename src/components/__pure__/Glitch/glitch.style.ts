@@ -19,13 +19,13 @@ const StyledGlitch = styled.span<{ text: string }>`
   }
 
   &::before {
-    left: 1px;
+    left: 2px;
     text-shadow: -1px -1px red;
     animation: ${glitchAnimationBefore} 2s infinite linear;
   }
 
   &::after {
-    left: -1px;
+    left: -2px;
     text-shadow: 1px 1px blue;
     animation: ${glitchAnimationAfter} 2s infinite linear;
   }

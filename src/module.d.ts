@@ -15,6 +15,6 @@ type Orientation = 'horizontal' | 'vertical';
 
 type DoorPosition = 'left' | 'right' | 'top' | 'bottom';
 
-type Maybe<T> = T | undefined;
+type Maybe<T> = T | null;
 type Word = string | number;
 type Void = () => void

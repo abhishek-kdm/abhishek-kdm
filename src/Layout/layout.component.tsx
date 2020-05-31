@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         default: return { name: theme, ...THEME_PROPS.protoss }
       }
     }}>
-      <AppContext.Provider value={{ theme, setTheme, setModalShow, user, repos }}>
+      <AppContext.Provider value={{ setTheme, setModalShow, user, repos }}>
         <PageWrapper>
           <svg width={0} height={0}>
             <WarpDoorSVGDefs />

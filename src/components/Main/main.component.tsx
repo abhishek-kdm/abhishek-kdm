@@ -5,7 +5,7 @@ import StyledMain, {
   Screen,
   ScreenDisplay,
   SVGDash,
-  Radiator
+  Speaker
 } from './main.style';
 
 import Nav from '../Nav/nav.component';
@@ -93,7 +93,7 @@ const Main: React.FC<MainProps> = () => {
               </li>
             ))}
           </ul>
-          <Radiator />
+          <Speaker />
         </Nav>
       </MainWrapper>
 

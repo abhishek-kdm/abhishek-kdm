@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { toDataImageScheme, getLogo, range } from '../../utils';
+import { toDataImageScheme, range } from '../../utils';
 
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
 
 // @ts-ignore
-const jsSUCKS = (t) => toDataImageScheme(getLogo(t)({ asImage: true }));
+const jsSUCKS = (fn) => toDataImageScheme(fn({ asImage: true }));
 
 export const SVGDash = styled.svg`
   width: 90%;
@@ -43,7 +43,7 @@ export const MainWrapper = styled.div`
   width: 100%;
 
   box-sizing: border-box;
-  box-shadow: var(--neumorphic-shadow-small);
+  box-shadow: var(--neumorphic-shadow-large);
   border-radius: 10px;
 
   display: grid;
@@ -105,7 +105,7 @@ export const ScreenDisplay = styled(InfoBox)`
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 
-  background-image: url("${({ theme }) => jsSUCKS(theme.name)}");
+  background-image: url("${({ theme }) => jsSUCKS(theme.logo)}");
 
   background-position: right;
   background-repeat: no-repeat;
@@ -127,10 +127,11 @@ export const ScreenDisplay = styled(InfoBox)`
   }
 `;
 
-export const Radiator = styled.div`
+export const Speaker = styled.div`
   padding: .5rem;
-  padding-top: 0;
-  border-radius: 6px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: var(--neumorphic-shadow-large);
 
   background-clip: content-box;
   background-image: ${({ theme }) => {

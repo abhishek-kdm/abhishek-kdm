@@ -1,7 +1,19 @@
 import styled from 'styled-components';
 
 
+export const SVGFill = styled.svg`
+  position: absolute;
+  height: 100%;
+  transition: all .25s ease-out;
+
+  circle {
+    fill: var(--color-secondary);
+  }
+`;
+
 const StyledToggler = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,7 +50,7 @@ export const SVGActive = styled.svg<{ active: boolean }>`
   height: 100%;
   left: 0;
   top: 0;
-  
+
   transform: rotate(-90deg);
   stroke: var(--color-secondary);
   transition: .5s stroke-dasharray;

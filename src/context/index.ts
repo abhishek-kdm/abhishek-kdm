@@ -1,7 +1,6 @@
 import { createContext } from 'react';
 
 export interface IAppContext {
-  theme: Theme
   setTheme: React.Dispatch<React.SetStateAction<Theme>>
   setModalShow: React.Dispatch<React.SetStateAction<boolean>>
   user: any

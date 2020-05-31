@@ -19,7 +19,7 @@ const ProtossLogo: React.FC<LogoProps> = ({
     </svg>
   );
 }
- 
+
 export default ProtossLogo;
 
 

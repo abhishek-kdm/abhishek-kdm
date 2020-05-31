@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { HomeContext, AppContext, IAppContext } from '../context';
-import { WARPGATE_ACTION_TIME, THEME } from '../configs';
+import { HomeContext } from '../context';
+import { WARPGATE_ACTION_TIME } from '../configs';
 
 import { DualWarpGate } from '../components/__pure__/Warpgate/warpgate.component';
 

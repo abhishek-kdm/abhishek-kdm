@@ -4,11 +4,11 @@ import styled from 'styled-components';
 const locals = { borderRadius: '10px' };
 
 const StyledNav = styled.nav`
-  box-shadow: var(--neumorphic-shadow-small);
+  box-shadow: var(--neumorphic-shadow-large);
   border-radius: 4px;
 
   ul {
-    margin: 0;
+    margin: 10px 0;
     padding-left: 15px;
     padding-right: 15px;
     outline: none;
@@ -36,7 +36,7 @@ const StyledNav = styled.nav`
 
     box-sizing: border-box;
     cursor: pointer;
-    margin: 17.5px 7.5px;
+    margin: 7.5px;
     font-weight: 700;
     font-size: 14px;
     text-transform: uppercase;

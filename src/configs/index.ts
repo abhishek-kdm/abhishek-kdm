@@ -10,6 +10,10 @@ import {
   faDiscord,
 } from '@fortawesome/free-brands-svg-icons';
 
+import ZergLogo from '../components/__pure__/SVG/Logo/zerg.logo';
+import TerranLogo from '../components/__pure__/SVG/Logo/terran.logo';
+import ProtossLogo from '../components/__pure__/SVG/Logo/protoss.logo';
+
 
 // reference for theme.
 export const THEME: { [name in Theme]: Theme } = {
@@ -20,16 +24,19 @@ export const THEME: { [name in Theme]: Theme } = {
 
 export const THEME_PROPS: { [name in Theme]: any } = {
   zerg: {
-    patternColor: '#0A0A0AA0',
-    backgroundColor: '#2C483586',
+    patternColor: '#0a0a0aa0',
+    backgroundColor: '#2c483586',
+    logo: ZergLogo,
   },
   terran: {
-    patternColor: '#0A0A0AA0',
-    backgroundColor: '#CAD3C818',
+    patternColor: '#0a0a0aa0',
+    backgroundColor: '#cad3c818',
+    logo: TerranLogo,
   },
   protoss: {
-    patternColor: '#E7825970',
-    backgroundColor: '#EEBAA59f',
+    patternColor: '#e7825970',
+    backgroundColor: '#eebaa59F',
+    logo: ProtossLogo,
   },
 };
 
@@ -56,39 +63,39 @@ export interface Link {
 export const SOCIAL_LINKS: Link[] = [
   {
     title: 'github',
-    href: 'https://github.com/abhishek-kdm/',
-    iconProps: { color: 'white', icon: faGithub }
+    href: 'https://github.com/lycuid/',
+    iconProps: { color: '#ffffff', icon: faGithub }
   },
   {
     title: 'stackoverflow',
-    href: 'https://stackoverflow.com/users/3065657/abhishek-kdm/',
-    iconProps: { color: '#F48024', icon: faStackOverflow }
+    href: 'https://stackoverflow.com/users/3065657/lycuid/',
+    iconProps: { color: '#f48024', icon: faStackOverflow }
   },
   {
     title: 'linkedin',
     href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170/',
-    iconProps: { color: '#0077BB', icon: faLinkedin }
+    iconProps: { color: '#0077bb', icon: faLinkedin }
   },
   {
     title: 'twitter',
-    href: 'https://twitter.com/abhishek_kdm/',
-    iconProps: { color: '#1DA1F2', icon: faTwitter }
+    href: 'https://twitter.com/lycuid/',
+    iconProps: { color: '#1da1f2', icon: faTwitter }
   },
   {
     title: 'reddit',
     href: 'https://www.reddit.com/user/sudo-tux/',
-    iconProps: { color: '#FF4500', icon: faReddit }
+    iconProps: { color: '#ff4500', icon: faReddit }
   },
   {
     title: 'discord',
     href: 'https://www.discordapp.com/channels/~sudo/',
-    iconProps: { color: '#7289DA', icon: faDiscord }
+    iconProps: { color: '#7289da', icon: faDiscord }
   },
 ];
 
 
 export const GITHUB = {
-  username: 'abhishek-kdm',
+  username: 'lycuid',
   get user_url() {
     return `https://api.github.com/users/${this.username}`;
   },
