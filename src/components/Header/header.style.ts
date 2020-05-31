@@ -22,6 +22,11 @@ export const HeaderTitle = styled.h1`
   justify-content: flex-start;
   align-items: center;
 
+  & * {
+    font-family: 'Rock Salt';
+    text-shadow: 2px 2px 50px var(--color-primary);
+  }
+
   @media (max-width: 576px) {
     margin-block-start: 0.4em;
     margin-block-end: 0.4em;

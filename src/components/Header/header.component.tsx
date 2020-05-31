@@ -20,11 +20,8 @@ const Header: React.FC<HeaderProps> = () => {
   return (<>
     <StyledHeader className='container'>
       <HeaderTitle>
-
         <span style={{ marginRight: '1rem' }}>
-          <Glitch text={'abh'} />
-          <Glitch text={'\u2148'} />
-          <Glitch text={'shek.'} />
+          <Glitch text={'lycuid'} />
         </span>
 
         <span style={{ transform: 'rotate(45deg)', display: 'grid', alignItems: 'center', justifyContent: 'center' }}>
