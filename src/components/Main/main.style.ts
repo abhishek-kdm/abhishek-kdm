@@ -43,7 +43,7 @@ export const MainWrapper = styled.div`
   width: 100%;
 
   box-sizing: border-box;
-  box-shadow: var(--neumorphic-shadow-large);
+  box-shadow: var(--neumorphic-shadow-small);
   border-radius: 10px;
 
   display: grid;
@@ -131,7 +131,7 @@ export const Speaker = styled.div`
   padding: .5rem;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  box-shadow: var(--neumorphic-shadow-large);
+  box-shadow: var(--neumorphic-shadow-small);
 
   background-clip: content-box;
   background-image: ${({ theme }) => {

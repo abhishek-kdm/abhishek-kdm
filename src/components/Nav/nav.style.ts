@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const locals = { borderRadius: '10px' };
 
 const StyledNav = styled.nav`
-  box-shadow: var(--neumorphic-shadow-large);
+  box-shadow: var(--neumorphic-shadow-small);
   border-radius: 4px;
 
   ul {
