@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Abhishek Kadam`,
+    title: `LycuiD`,
     description: `Simply computers, video games, food etc.`,
-    author: `@abhishek_kdm`,
+    author: `@lycuid`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,7 +19,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Abhishek's personal website.`,
-        short_name: `abhishek`,
+        short_name: `lycuid`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
