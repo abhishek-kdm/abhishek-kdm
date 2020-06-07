@@ -28,6 +28,6 @@
 }
 
 #projects ul.list li:hover::before {
-  content: '[x]';
+  content: '[*]';
 }
 
