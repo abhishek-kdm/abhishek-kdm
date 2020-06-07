@@ -1,24 +1,11 @@
 import styled from 'styled-components';
 import { toDataImageScheme, range } from '../../utils';
 
+import StyledStatusbar from '../__pure__/Statusbar/statusbar.style';
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
 
 // @ts-ignore
 const jsSUCKS = (fn) => toDataImageScheme(fn({ asImage: true }));
-
-export const SVGDash = styled.svg`
-  width: 90%;
-  position: absolute;
-  bottom: 3px;
-
-  path {
-    stroke: var(--color-primary);
-    fill: none;
-    stroke-dasharray: 0, 21;
-    stroke-dashoffset: -20;
-    transition: stroke-dasharray .5s, stroke-dashoffset .5s;
-  }
-`;
 
 const StyledMain = styled.main`
   display: flex;
@@ -26,16 +13,6 @@ const StyledMain = styled.main`
   align-items: center;
   flex: auto;
   box-sizing: border-box;
-
-  nav li.active ${SVGDash} path {
-    stroke-dasharray: 40, 0;
-    stroke-dashoffset: 0;
-  }
-
-  nav {
-    display: grid;
-    grid-template-rows: auto minmax(50px, 100%);
-  }
 `;
 
 export const MainWrapper = styled.div`
@@ -43,17 +20,22 @@ export const MainWrapper = styled.div`
   width: 100%;
 
   box-sizing: border-box;
-  box-shadow: var(--neumorphic-shadow-small);
+  box-shadow: var(--retro-shadow);
   border-radius: 10px;
 
   display: grid;
-  grid-template-columns: 1fr 200px;
-  grid-template-rows: minmax(60vh, var(--aspect-ratio-height));
+  grid-template-columns: 1fr var(--side-panel-width);
+  grid-template-rows: auto;
 
   @media (max-width: 768px) {
     grid-template-columns: 100%;
-    grid-template-rows: 50vh auto;
+    grid-template-rows: repeat(2, auto);
   }
+`;
+
+export const ScreenNavigation = styled.div`
+  display: grid;
+  grid-template-rows: 1fr auto;
 `;
 
 export const ScreenWrapper = styled.div`
@@ -61,9 +43,10 @@ export const ScreenWrapper = styled.div`
   box-sizing: border-box;
   -webkit-clip-path: url(#screen-curve);
   clip-path:         url(#screen-curve);
+  box-shadow: var(--neumorphic-shadow-small);
 
   display: grid;
-  grid-template-rows: minmax(40vh, 1fr);
+  grid-template-rows: var(--aspect-ratio-height);
 
   background-image:
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
@@ -94,7 +77,7 @@ export const Screen = styled.div`
     font-size: .8rem;
   }
 
-  #statusbar {
+  ${StyledStatusbar} {
     padding-left: 3%!important;
     padding-right: 3%!important;
   }
@@ -127,11 +110,58 @@ export const ScreenDisplay = styled(InfoBox)`
   }
 `;
 
+export const SidePanel = styled.div`
+  box-shadow: var(--retro-shadow);
+  display: grid;
+  grid-template-rows: auto minmax(50px, 100%) 0px;
+  grid-template-columns: none;
+  overflow: hidden;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0px;
+
+  @media (max-width: 768px) {
+    grid-template-rows: none;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 10px;
+
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 10px;
+  }
+`;
+
+export const VolumeButtonContainer = styled.div`
+  --button-size: 80px;
+  margin: 15px;
+  padding: 15px;
+  box-shadow: var(--retro-shadow);
+  border-radius: 10px;
+
+  display: grid;
+  justify-content: center;
+  grid-template-rows: repeat(2, var(--button-size));
+  grid-template-columns: var(--button-size);
+  grid-gap: 25px;
+
+  @media (max-width: 768px) {
+    --button-size: 40px;
+    margin: 5px;
+    padding: 5px;
+    grid-template-columns: var(--button-size) 0;
+    grid-template-rows: var(--button-size);
+    grid-gap: 0;
+    box-shadow: none;
+  }
+`;
+
+export const VolumeButton = styled.div`
+  box-shadow: var(--retro-shadow);
+  border-radius: 50%;
+`;
+
 export const Speaker = styled.div`
   padding: .5rem;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow: var(--neumorphic-shadow-small);
+  box-shadow: var(--retro-shadow);
 
   background-clip: content-box;
   background-image: ${({ theme }) => {

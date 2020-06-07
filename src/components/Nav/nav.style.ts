@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-
 const locals = { borderRadius: '10px' };
 
 const StyledNav = styled.nav`
-  box-shadow: var(--neumorphic-shadow-small);
   border-radius: 4px;
 
   ul {
@@ -41,18 +39,18 @@ const StyledNav = styled.nav`
     font-size: 14px;
     text-transform: uppercase;
 
-    box-shadow: var(--neumorphic-shadow-small);
+    box-shadow: var(--neu-shadow-small);
     border: 1px soid var(--color-bg-primary);
     border-radius: 6px;
     background-color: var(--color-bg-primary);
   }
 
   ul li.active {
-    box-shadow: var(--neumorphic-shadow-small-active);
+    box-shadow: var(--neu-shadow-small-active);
   }
 
   ul li:active {
-    box-shadow: var(--neumorphic-shadow-small-active);
+    box-shadow: var(--neu-shadow-small-active);
     transform: scale(.95);
   }
 `;

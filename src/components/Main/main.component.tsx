@@ -4,8 +4,11 @@ import StyledMain, {
   ScreenWrapper,
   Screen,
   ScreenDisplay,
-  SVGDash,
-  Speaker
+  Speaker,
+  VolumeButtonContainer,
+  VolumeButton,
+  SidePanel,
+  ScreenNavigation
 } from './main.style';
 
 import Nav from '../Nav/nav.component';
@@ -13,6 +16,7 @@ import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
 import { WARPGATES_OPEN_DELAY } from '../../configs';
+import { range } from '../../utils';
 
 import About from '../About/about.component';
 import Social from '../Social/social.component';
@@ -63,44 +67,51 @@ const Main: React.FC<MainProps> = () => {
   return (<>
     <StyledMain className={'container'}>
       <MainWrapper>
-        <ScreenWrapper>
-          <Warpgate
-            onClose={warpGatesOnClose}
-            open={warpgateOpen}
-            orientation={'horizontal'}
-            style={{ zIndex: 5, borderRadius: '6px' }}
-          />
-          <Screen>
-            <ScreenDisplay scrollable>
-              {displayComponent()}
-            </ScreenDisplay>
-            <Statusbar id='statusbar' info={selectedItem} />
-          </Screen>
-        </ScreenWrapper>
+        <ScreenNavigation>
+          <ScreenWrapper>
+            <Warpgate
+              onClose={warpGatesOnClose}
+              open={warpgateOpen}
+              orientation={'horizontal'}
+              style={{ zIndex: 5, borderRadius: '6px' }}
+            />
+            <Screen>
+              <ScreenDisplay scrollable>
+                {displayComponent()}
+              </ScreenDisplay>
+              <Statusbar id='statusbar' info={selectedItem} />
+            </Screen>
+          </ScreenWrapper>
+          <Nav>
+            <ul>
+              {navbarItems.map(({ label }, key) => (
+                <li
+                  key={key}
+                  onClick={() => { setClickedItem(label); }}
+                  className={liClassName(clickedItem, label)}
+                >
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </Nav>
+        </ScreenNavigation>
 
-        <Nav id={'screen-navigator'}>
-          <ul>
-            {navbarItems.map(({ label }, key) => (
-              <li
-                key={key}
-                onClick={() => { setClickedItem(label); }}
-                className={liClassName(clickedItem, label)}
-              >
-                {label}
-                <SVGDash viewBox={'0 0 40 1'}>
-                  <path d={'M0 1 H40'}></path>
-                </SVGDash>
-              </li>
-            ))}
-          </ul>
+        <SidePanel>
+          <VolumeButtonContainer>
+            {range(2, (_, i) => <VolumeButton key={'vol-1-' + String(i)} />)}
+          </VolumeButtonContainer>
           <Speaker />
-        </Nav>
+          <VolumeButtonContainer>
+            {range(2, (_, i) => <VolumeButton key={'vol-2-' + String(i)} />)}
+          </VolumeButtonContainer>
+        </SidePanel>
       </MainWrapper>
 
       <svg width='0' height='0'>
         <defs>
-          <clipPath id='screen-curve' clipPathUnits='objectBoundingBox'>
-            <path d='M0.05 0.05 Q0.5 0, 0.95 0.05 Q1 0.5, 0.95 0.95 Q0.5 1, 0.05 0.95 Q0 0.5, 0.05 0.05' />
+          <clipPath id='screen-curve' stroke='black' strokeWidth={3} clipPathUnits='objectBoundingBox'>
+            <path stroke='black' strokeWidth={3} d='M0.05 0.05 Q0.5 0, 0.95 0.05 Q1 0.5, 0.95 0.95 Q0.5 1, 0.05 0.95 Q0 0.5, 0.05 0.05' />
           </clipPath>
         </defs>
       </svg>
