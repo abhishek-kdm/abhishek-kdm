@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const StyledStatusbar = styled.div`
   box-sizing: border-box;
   display: flex;

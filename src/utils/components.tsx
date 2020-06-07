@@ -5,7 +5,7 @@ import Loader from '../components/__pure__/Loader/loader.component';
 
 interface AnchorProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> { }
- 
+
 export const Anchor: React.SFC<AnchorProps> = ({ children, ...rest }) => (
   <a {...rest} target='_blank' rel="noopener noreferrer">
     {children}
@@ -26,7 +26,7 @@ export const Cspan: React.SFC<CspanProps> = ({ color, style, ...rest }) => {
   }
   return <span style={style} {...rest} />;
 }
- 
+
 export const StillInDevelopment: React.FC = () => {
   return (<>
     <div style={{
@@ -42,7 +42,7 @@ export const StillInDevelopment: React.FC = () => {
         backgroundColor: 'dodgerblue',
         borderBottomLeftRadius: '10px',
         borderBottomRightRadius: '10px',
-        width: '150px',
+        width: '20em',
         alignSelf: 'center',
         fontSize: '11px',
         display: 'flex',
