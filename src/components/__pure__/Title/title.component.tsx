@@ -4,7 +4,7 @@ import { Cspan } from '../../../utils/components';
 
 
 interface TitleProps extends React.HTMLAttributes<HTMLSpanElement> { }
- 
+
 const Title: React.FC<TitleProps> = ({ children }) => {
   return (<>
     <span className={'title'}>
@@ -20,5 +20,5 @@ const Title: React.FC<TitleProps> = ({ children }) => {
     </span>
   </>);
 }
- 
+
 export default Title;
