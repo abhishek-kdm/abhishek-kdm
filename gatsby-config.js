@@ -31,6 +31,7 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         displayName: true,
+        fileName: false,
       },
     },
     `gatsby-plugin-typescript`,
