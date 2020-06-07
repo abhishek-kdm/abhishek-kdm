@@ -3,9 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 @import "theme.css";
 
+
+:root {
+  --aspect-ratio-width: 52.5rem;
+  --side-panel-width: 175px;
+  --aspect-ratio-height: calc(((var(--aspect-ratio-width) - var(--side-panel-width)) / 16) * 9);
+}
+
 * {
-  --aspect-ratio-width: 50rem;
-  --aspect-ratio-height: calc(((var(--aspect-ratio-width) - 100px) / 16) * 9);
   font-family: 'Montserrat', 'Courier New', Courier, monospace;
   color: var(--color-primary);
 }

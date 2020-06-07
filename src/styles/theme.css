@@ -23,7 +23,7 @@
 
 body.zerg {
   --color-primary: rgb(177, 122, 204);
-  --color-secondary: rgb(75, 48, 133);
+  --color-secondary: rgb(117, 68, 222);
   --color-primary-opacity: rgba(177, 122, 204, .075);
 
   --color-bg-primary: rgb(19, 18, 23);
@@ -31,18 +31,20 @@ body.zerg {
 
   --link-color: rgb(202, 211, 200);
 
-  --neumorphic-shadow-small:
+  --neu-shadow-small:
     2px 2px 10px rgba(0, 0, 0, .75),
     -2px -2px 10px rgba(255, 255, 255, .075);
-  --neumorphic-shadow-small-active:
+  --neu-shadow-small-active:
     inset 2px 2px 10px rgba(0, 0, 0, .75),
     inset -2px -2px 10px rgba(255, 255, 255, .075);
 
-  --neumorphic-shadow-large:
+  --neu-shadow-large:
     6px 6px 16px rgba(0, 0, 0, .5),
     inset 6px 6px 16px rgba(0, 0, 0, .15),
     -6px -6px 16px rgba(185, 144, 206, .035),
     inset -6px -6px 16px rgba(255, 255, 255, .03);
+
+  --retro-shadow: -2.5px -2.5px rgb(9, 6, 16), 2.5px 2.5px rgb(9, 6, 16);
 
   --screen-shadow: rgba(0, 0, 0, .25);
 }
@@ -57,18 +59,20 @@ body.terran {
 
   --link-color: rgb(69, 221, 158);
 
-  --neumorphic-shadow-small:
+  --neu-shadow-small:
     2px 2px 10px rgba(0, 0, 0, .85),
     -2px -2px 10px rgba(255, 255, 255, .075);
-  --neumorphic-shadow-small-active:
+  --neu-shadow-small-active:
     inset 2px 2px 10px rgba(0, 0, 0, .85),
     inset -2px -2px 10px rgba(255, 255, 255, .06);
 
-  --neumorphic-shadow-large:
+  --neu-shadow-large:
     6px 6px 16px rgba(0, 0, 0, .5),
     inset 6px 6px 16px rgba(0, 0, 0, .25),
     -6px -6px 16px rgba(255, 255, 255, .025),
     inset -6px -6px 16px rgba(255, 255, 255, .01);
+
+  --retro-shadow: -2.5px -2.5px rgb(5, 5, 5), 2.5px 2.5px rgb(5, 5, 5);
 
   --screen-shadow: rgba(0, 0, 0, .25);
 }
@@ -83,21 +87,23 @@ body.protoss {
 
   --link-color: rgb(240, 147, 43);
 
-  --neumorphic-shadow-small:
+  --neu-shadow-small:
     -2px -2px 10px rgba(255, 255, 255, .5),
     2px 2px 10px rgba(185, 165, 52, .5),
     inset -2px -2px 10px rgba(255, 255, 255, .25),
     inset 2px 2px 10px rgba(223, 208, 119, .3);
 
-  --neumorphic-shadow-small-active:
+  --neu-shadow-small-active:
     inset -2px -2px 10px rgba(255, 255, 255, .5),
     inset 2px 2px 10px rgba(185, 165, 52, .5);
 
-  --neumorphic-shadow-large:
+  --neu-shadow-large:
     -6px -6px 16px rgba(255, 255, 255, .5),
     inset 3px 3px 12px rgba(185, 165, 52, .2),
     6px 6px 16px rgba(185, 165, 52, .35),
     inset -3px -3px 12px rgba(255, 255, 255, .5);
+
+  --retro-shadow: -2.5px -2.5px rgb(231, 130, 89), 2.5px 2.5px rgb(231, 130, 89);
 
   --screen-shadow: rgba(0, 0, 0, .075);
 }
