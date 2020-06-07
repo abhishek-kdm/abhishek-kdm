@@ -1,17 +1,14 @@
 import styled from 'styled-components';
 import { prepareLaunch, launchReady } from './header.animations';
 
-
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   flex-direction: row;
-  padding: .7rem 0;
-  margin-bottom: 5vh;
+  margin-bottom: 20px;
 
   @media (max-width: 576px) {
     flex-direction: column;
-    margin-bottom: 2vh;
   }
 `;
 
