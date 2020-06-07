@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const SVGFill = styled.svg`
   position: absolute;
   height: 100%;
@@ -35,12 +34,12 @@ export const TogglerLabel = styled.label`
   padding: 10px;
   width: 25px;
   height: 25px;
-  box-shadow: var(--neumorphic-shadow-small);
+  box-shadow: var(--neu-shadow-small);
   border-radius: 50%;
   background-color: var(--color-bg-primary);
 
   ${TogglerInput}:checked + & {
-    box-shadow: var(--neumorphic-shadow-small-active);
+    box-shadow: var(--neu-shadow-small-active);
   }
 `;
 

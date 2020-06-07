@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import StyledToggler, { TogglerInput, TogglerLabel, SVGActive, SVGFill } from './toggler.style';
+import React, { useContext, useMemo } from 'react';
+import StyledToggler, { TogglerInput, TogglerLabel, SVGFill } from './toggler.style';
 
 import { ThemeContext } from 'styled-components';
-import { AppContext, IAppContext } from '../../../context';
 import { THEME, THEME_PROPS } from '../../../configs';
 
 
@@ -13,7 +12,7 @@ interface TogglerProps extends React.HTMLAttributes<HTMLSpanElement> {
 const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...props }) => {
   const theme = useContext(ThemeContext);
 
-  const index = Object.values(THEME).indexOf(theme.name);
+  const index = useMemo(() => Object.values(THEME).indexOf(theme.name), [theme]);
 
   return (<>
     <StyledToggler {...props}>
@@ -30,11 +29,6 @@ const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...props }) => {
             id={`switch-${themeName}`}
           />
           <TogglerLabel htmlFor={`switch-${themeName}`}>
-            {/*
-            <SVGActive viewBox={'0 0 100 100'} active={themeName === theme}>
-              <circle cx={50} cy={50} r={48} strokeWidth={4} fill='none' />
-            </SVGActive>
-              */}
             {THEME_PROPS[themeName].logo({
               style: { height: '100%' },
               color: 'var(--color-secondary)'
