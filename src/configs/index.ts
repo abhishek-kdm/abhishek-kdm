@@ -16,13 +16,13 @@ import ProtossLogo from '../components/__pure__/SVG/Logo/protoss.logo';
 
 
 // reference for theme.
-export const THEME: { [name in Theme]: Theme } = {
+export const RACE: { [name in Race]: Race } = {
   zerg: 'zerg',
   terran: 'terran',
   protoss: 'protoss',
 };
 
-export const THEME_PROPS: { [name in Theme]: any } = {
+export const THEME_PROPS: { [name in Race]: RaceThemeProps } = {
   zerg: {
     patternColor: '#0a0a0aa0',
     backgroundColor: '#2c483586',

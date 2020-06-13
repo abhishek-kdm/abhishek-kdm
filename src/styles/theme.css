@@ -103,7 +103,7 @@ body.protoss {
     6px 6px 16px rgba(185, 165, 52, .35),
     inset -3px -3px 12px rgba(255, 255, 255, .5);
 
-  --retro-shadow: -2.5px -2.5px rgb(231, 130, 89), 2.5px 2.5px rgb(231, 130, 89);
+  --retro-shadow: -2.5px -2.5px rgb(255, 99, 72), 2.5px 2.5px rgb(255, 127, 80);
 
   --screen-shadow: rgba(0, 0, 0, .075);
 }

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { renderToStaticMarkup } from 'react-dom/server';
 import BackgroundImage from '../components/__pure__/SVG/Background';
 

@@ -1,4 +1,10 @@
-type Theme = 'terran' | 'protoss' | 'zerg';
+type Race = 'terran' | 'protoss' | 'zerg';
+
+interface RaceThemeProps {
+  patternColor: string
+  backgroundColor: string
+  logo: React.FC<LogoProps>
+}
 
 interface NavbarItem {
   label: string

@@ -3,7 +3,7 @@ import './warpgate.style.css';
 
 import { WARPGATE_ACTION_TIME, ORIENTATION } from '../../../configs';
 import { getWarpDoor } from './WarpDoors';
-import { AppContext } from '../../../context';
+import { ThemeContext } from 'styled-components';
 
 interface WarpgateProps extends React.HTMLAttributes<HTMLDivElement> {
   orientation?: Orientation
@@ -12,7 +12,7 @@ interface WarpgateProps extends React.HTMLAttributes<HTMLDivElement> {
   onOpen?: () => void | Void
   onClose?: () => void | Void
 }
- 
+
 const Warpgate: React.FC<WarpgateProps> = ({
   orientation,
   open,
@@ -22,13 +22,13 @@ const Warpgate: React.FC<WarpgateProps> = ({
   ...rest
 }) => {
 
-  const { theme } = useContext(AppContext);
+  const theme = useContext(ThemeContext);
 
   const Style = useMemo(() => ({
     visibility: open ? 'hidden' : 'visible',
     ...(style || {})
   } as React.CSSProperties), [open, style]);
-  
+
   const className = useMemo(() => ['warpgate'].concat(open ? ['open'] : []).join(' '), [open]);
 
   let orients = useMemo(() => {
@@ -60,7 +60,7 @@ const Warpgate: React.FC<WarpgateProps> = ({
   return (<>
     <div {...rest} style={Style} className={className}>
       {orients.map((orient, i1) => {
-        const doors = getWarpDoor(theme, orient);
+        const doors = getWarpDoor(theme.race, orient);
         return doors.map(({ Component, attrs }, i2) => {
           const key = `${orient}-${i1}-${i2}`;
           return <Component key={key} {...attrs} />
@@ -69,10 +69,10 @@ const Warpgate: React.FC<WarpgateProps> = ({
     </div>
   </>);
 }
- 
+
 
 interface DualWarpGateProps { open: boolean }
- 
+
 export const DualWarpGate: React.FC<DualWarpGateProps> = ({ open }) => {
   const [openV, setOpenV] = useState<boolean>(open);
   const [openH, setOpenH] = useState<boolean>(open);

@@ -50,6 +50,8 @@ export const ScreenWrapper = styled.div`
 
   background-image:
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
+
+  bakground-color: black;
 `;
 
 export const Screen = styled.div`

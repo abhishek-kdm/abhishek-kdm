@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { getBackground } from "../utils";
+import styled from 'styled-components';
+import { getBackground } from '../utils';
 
 export const PageWrapper = styled.div`
   display: flex;

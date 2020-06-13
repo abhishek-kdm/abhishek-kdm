@@ -7,16 +7,23 @@ import InfoBox from '../components/__pure__/InfoBox/infoBox.component';
 import WarpDoorSVGDefs from '../components/__pure__/Warpgate/WarpDoors/terran.warpdoors';
 
 import { AppContext } from '../context';
-import { GITHUB, THEME, THEME_PROPS } from '../configs';
+import { GITHUB, RACE, THEME_PROPS } from '../configs';
 import { fetchJson } from '../utils';
 import { Cspan } from '../utils/components';
 import GlobalSVGFilters from '../components/__pure__/SVG/Filters';
 
+import 'styled-components';
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends RaceThemeProps {
+    race: Race
+  }
+}
 
 interface LayoutProps { }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(THEME.terran);
+  const [race, setRace] = useState<Race>(RACE.terran);
 
   // github links and info etc.
   const [user, setUser] = useState<any>(null);
@@ -37,13 +44,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (<>
     <ThemeProvider theme={() => {
-      switch(theme) {
-        case THEME.zerg: return { name: theme, ...THEME_PROPS.zerg }
-        case THEME.terran: return { name: theme, ...THEME_PROPS.terran }
-        default: return { name: theme, ...THEME_PROPS.protoss }
+      switch(race) {
+        case RACE.zerg: return { race, ...THEME_PROPS.zerg }
+        case RACE.terran: return { race, ...THEME_PROPS.terran }
+        default: return { race, ...THEME_PROPS.protoss }
       }
     }}>
-      <AppContext.Provider value={{ setTheme, setModalShow, user, repos }}>
+      <AppContext.Provider value={{ setRace, setModalShow, user, repos }}>
         <PageWrapper>
           <svg width={0} height={0}>
             <WarpDoorSVGDefs />

@@ -24,12 +24,12 @@ const HyperdriveComponent: React.FC<HyperdriveProps> = (props) => {
   return (<>
     <FloatButton
       style={{ width: '30px', height: '30px', zIndex: 10001 }}
-      onClick={() => { setModalShow(true); }}
+      onClick={() => { setModalShow && setModalShow(true); }}
     >
       {'?'}
     </FloatButton>
     <canvas {...props} id="canvas" ref={canvasRef} />
   </>);
 }
- 
+
 export default HyperdriveComponent;

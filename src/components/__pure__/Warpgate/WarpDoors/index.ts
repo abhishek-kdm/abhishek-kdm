@@ -6,12 +6,12 @@ export interface WarpDoorProps extends React.HTMLAttributes<SVGElement> {
 }
 
 type GetWarpDoor = (
-  theme: Theme,
+  race: Race,
   orientation: Orientation
 ) => { Component: React.FC<WarpDoorProps>, attrs: WarpDoorProps }[]
 
-export const getWarpDoor: GetWarpDoor = (theme, orientation) => {
-  switch (theme) {
+export const getWarpDoor: GetWarpDoor = (race, orientation) => {
+  switch (race) {
     default:
       switch (orientation) {
         case ORIENTATION.horizontal: return [

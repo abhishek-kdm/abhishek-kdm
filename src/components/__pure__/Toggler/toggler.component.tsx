@@ -2,17 +2,17 @@ import React, { useContext, useMemo } from 'react';
 import StyledToggler, { TogglerInput, TogglerLabel, SVGFill } from './toggler.style';
 
 import { ThemeContext } from 'styled-components';
-import { THEME, THEME_PROPS } from '../../../configs';
+import { RACE, THEME_PROPS } from '../../../configs';
 
 
 interface TogglerProps extends React.HTMLAttributes<HTMLSpanElement> {
-  onSwitch: (theme: Theme) => void
+  onSwitch: (race: Race) => void
 }
 
 const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...props }) => {
   const theme = useContext(ThemeContext);
 
-  const index = useMemo(() => Object.values(THEME).indexOf(theme.name), [theme]);
+  const index = useMemo(() => Object.values(RACE).indexOf(theme.race), [theme]);
 
   return (<>
     <StyledToggler {...props}>
@@ -21,15 +21,15 @@ const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...props }) => {
       }}>
         <circle cx='5' cy='5' r='5' />
       </SVGFill>
-      {Object.values(THEME).map((themeName) => (
-        <React.Fragment key={themeName}>
+      {Object.values(RACE).map((race) => (
+        <React.Fragment key={race}>
           <TogglerInput
-            onChange={() => onSwitch(themeName)}
-            checked={themeName === theme.name}
-            id={`switch-${themeName}`}
+            onChange={() => onSwitch(race)}
+            checked={race === theme.race}
+            id={`switch-${race}`}
           />
-          <TogglerLabel htmlFor={`switch-${themeName}`}>
-            {THEME_PROPS[themeName].logo({
+          <TogglerLabel htmlFor={`switch-${race}`}>
+            {THEME_PROPS[race].logo({
               style: { height: '100%' },
               color: 'var(--color-secondary)'
             })}
