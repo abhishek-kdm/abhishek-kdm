@@ -21,6 +21,8 @@ type Orientation = 'horizontal' | 'vertical';
 
 type DoorPosition = 'left' | 'right' | 'top' | 'bottom';
 
+type Flavor = 'success' | 'danger' | 'info' | 'warning';
+
 type Maybe<T> = T | null;
 type Word = string | number;
 type Void = () => void

@@ -4,7 +4,7 @@ import './social.style.css';
 import { SOCIAL_LINKS } from '../../configs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Title from '../__pure__/Title/title.component';
+import Prompt from '../__pure__/Prompt/prompt.component';
 import { Anchor } from '../../utils/components';
 
 
@@ -13,7 +13,7 @@ interface SocialProps { }
 const Social: React.FC<SocialProps> = () => {
 
   return (<>
-    <Title>{'./social'}</Title>
+    <Prompt>{'./social'}</Prompt>
     <div id='social'>
       <div className='link-container'>
         {SOCIAL_LINKS.map(({ title, href, iconProps }, i) => (

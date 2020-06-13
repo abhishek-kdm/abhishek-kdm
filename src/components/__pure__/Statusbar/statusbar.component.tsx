@@ -23,7 +23,7 @@ const toShellFormat = function(date: Date) {
 interface StatusbarProps extends React.HTMLAttributes<HTMLDivElement> {
   info: string
 }
- 
+
 const Statusbar: React.FC<StatusbarProps> = ({ info, ...props }) => {
   const date = useCurrentDate();
 
@@ -34,5 +34,5 @@ const Statusbar: React.FC<StatusbarProps> = ({ info, ...props }) => {
     </StyledStatusbar>
   </>);
 }
- 
+
 export default Statusbar;

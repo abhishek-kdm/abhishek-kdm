@@ -40,7 +40,7 @@ const StyledNav = styled.nav`
     text-transform: uppercase;
 
     box-shadow: var(--neu-shadow-small);
-    border: 1px soid var(--color-bg-primary);
+    border: 1px solid var(--color-bg-primary);
     border-radius: 6px;
     background-color: var(--color-bg-primary);
   }

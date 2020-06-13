@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import styled from 'styled-components';
 
 import Loader from '../components/__pure__/Loader/loader.component';
 
@@ -11,6 +12,25 @@ export const Anchor: React.SFC<AnchorProps> = ({ children, ...rest }) => (
     {children}
   </a>
 );
+
+type LabelProps = { [name in Flavor]?: Maybe<boolean> };
+
+export const Label = styled.label<LabelProps>`
+  background-color: ${(props) => {
+    if (props.success) return 'green';
+    if (props.danger) return 'red';
+    if (props.info) return 'dodgerblue';
+    return 'yellow';
+  }};
+  color: ${(props) => {
+    if (props.warning) return 'black';
+    return 'white';
+  }};
+  padding: 5px 25px;
+  width: 50%;
+  border-radius: 3px;
+  align-self: center;
+`;
 
 
 interface CspanProps
