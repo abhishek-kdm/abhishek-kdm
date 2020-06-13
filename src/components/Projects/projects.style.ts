@@ -6,13 +6,11 @@ const StyledProjects = styled.div`
 
   display: flex;
   flex-direction: column;
-
 `;
 
 
 export const ProjectsList = styled.ul`
   padding: 0;
-  margin: 0;
   list-style-type: none;
 
   li {

@@ -5,11 +5,13 @@ import { AppContext } from '../../context';
 
 import Prompt from '../__pure__/Prompt/prompt.component';
 import { Anchor, Label } from '../../utils/components';
+import Title from '../__pure__/Title/title.component';
 
 
-const displayRepo = (repo: any) => (
+// @TODO: implement `repo` type.
+const displayRepo = (repo: any, href: string = 'name') => (
   <li key={repo.id}>
-    <Anchor href={repo.html_url} title={repo.description || null}>
+    <Anchor href={repo[href]} title={repo.description || null}>
       {repo.name}
     </Anchor>&nbsp;&nbsp;&nbsp;
     ({repo.language})
@@ -35,8 +37,20 @@ const Projects: React.FC<ProjectsProps> = () => {
     </Prompt>
 
     <StyledProjects>
+      <hr />
+      <Title>Live Projects:</Title>
       <ProjectsList>
-        {repos.filter((a: any) => a.has_pages).map(displayRepo)}
+        {repos
+          .filter((a: any) => a.has_pages)
+          .map((repo: any) => displayRepo(repo, 'homepage'))}
+      </ProjectsList>
+
+      <hr />
+      <Title>Other Projects:</Title>
+      <ProjectsList>
+        {repos
+          .filter((a: any) => a.homepage?.trim()?.length > 0 && !a.has_pages)
+          .map((repo: any) => displayRepo(repo, 'homepage'))}
       </ProjectsList>
     </StyledProjects>
   </>);
