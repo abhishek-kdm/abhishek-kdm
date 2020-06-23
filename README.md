@@ -1,4 +1,4 @@
-# Personal Webpage.
+Personal Webpage.
 
-![build](https://github.com/lycuid/lycuid.github.io/workflows/Ghpages%20build%20and%20deploy./badge.svg)
+![build](https://github.com/lycuid/lycuid.github.io/workflows/build/badge.svg)
 
