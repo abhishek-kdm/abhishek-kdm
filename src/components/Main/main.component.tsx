@@ -19,13 +19,13 @@ import { WARPGATES_OPEN_DELAY } from '../../configs';
 import { range } from '../../utils';
 
 import About from '../About/about.component';
-import Social from '../Social/social.component';
 import Projects from '../Projects/projects.component';
+import Social from '../Social/social.component';
 
 const navbarItems: NavbarItem[] = [
   { label: 'about', component: About },
-  { label: 'social', component: Social },
   { label: 'projects', component: Projects },
+  { label: 'social', component: Social },
 ];
 
 interface MainProps { }

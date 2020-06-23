@@ -16,7 +16,7 @@ const StyledMain = styled.main`
 `;
 
 export const MainWrapper = styled.div`
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-screen);
   width: 100%;
 
   box-sizing: border-box;

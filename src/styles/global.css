@@ -115,14 +115,5 @@ hr {
 .blinking {
   font-weight: 900;
   color: white;
-
-  animation: blinking 1s ease infinite
 }
-
-@keyframes blinking {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
 

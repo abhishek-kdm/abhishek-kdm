@@ -1,5 +1,5 @@
 import React from 'react';
-import './reactLogo.style.css';
+import { ReactLogoContainer } from './reactLogo.style';
 
 
 interface ReactLogoProps { }
@@ -13,26 +13,17 @@ const reactRingProps = {
 };
 
 const ReactLogo: React.FC<ReactLogoProps> = () => (<>
-  <div className='react-logo-container'>
+  <ReactLogoContainer>
     <svg viewBox='0 0 100 100'>
       <circle cx='50' cy='50' r='9' fill={ReactLogoBlue} stroke='none' />
       <g>
-        <animateTransform
-          attributeName="transform"
-          attributeType="XML"
-          type='rotate'
-          from='0 50 50'
-          to='360 50 50'
-          dur='5s'
-          repeatCount='indefinite'
-        />
 
         <ellipse {...reactRingProps} />
         <ellipse {...reactRingProps} transform='rotate(60 50 50)' />
         <ellipse {...reactRingProps} transform='rotate(-60 50 50)' />
       </g>
     </svg>
-  </div>
+  </ReactLogoContainer>
 </>);
 
 export default ReactLogo;

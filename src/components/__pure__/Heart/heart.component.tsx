@@ -1,15 +1,13 @@
 import React from 'react';
-import './heart.style.css';
+import StyledHeart, { HeartContainer } from './heart.style';
 
 
-interface HeartProps { beating?: boolean }
+interface HeartProps { }
  
-const Heart: React.FC<HeartProps> = ({ beating }) => (<>
-  <div className='heart-container'>
-    <div
-      className={`heart${beating != null ? ' beating' : ''}`}
-    />
-  </div>
+const Heart: React.FC<HeartProps> = () => (<>
+  <HeartContainer>
+    <StyledHeart />
+  </HeartContainer>
 </>);
  
 export default Heart;

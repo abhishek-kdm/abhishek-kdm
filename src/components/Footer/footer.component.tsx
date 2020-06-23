@@ -21,11 +21,8 @@ const Footer: React.FC<FooterProps> = () => {
         </Cspan>
       </strong>
       &nbsp;&nbsp;{'with'}&nbsp;&nbsp;
-
-      <Heart beating />
-
+      <Heart />
       &nbsp;&nbsp;{'&'}&nbsp;&nbsp;
-
       <ReactLogo />
     </StyledFooter>
   </>);

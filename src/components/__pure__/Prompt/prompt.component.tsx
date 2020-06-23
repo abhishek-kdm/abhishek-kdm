@@ -17,7 +17,6 @@ const Prompt: React.FC<PromptProps> = ({ children }) => {
       &nbsp;&nbsp;
       {children}&nbsp;
 
-      <span className={'blinking'}>_</span>
     </StyledPrompt>
   </>);
 }
