@@ -65,7 +65,7 @@ const Main: React.FC<MainProps> = () => {
   useEffect(() => { setWarpgateOpen(false); }, [clickedItem, setWarpgateOpen]);
 
   return (<>
-    <StyledMain className={'container'}>
+    <StyledMain>
       <MainWrapper>
         <ScreenNavigation>
           <ScreenWrapper>
@@ -99,11 +99,15 @@ const Main: React.FC<MainProps> = () => {
 
         <SidePanel>
           <VolumeButtonContainer>
-            {range(2, (_, i) => <VolumeButton key={'vol-1-' + String(i)} />)}
+            {range(2, (_, i) => (
+              <VolumeButton
+                angle={i == 0 ? 45 : null}
+                key={'vol-1-' + String(i)}
+            />))}
           </VolumeButtonContainer>
           <Speaker />
           <VolumeButtonContainer>
-            {range(2, (_, i) => <VolumeButton key={'vol-2-' + String(i)} />)}
+            <VolumeButton />
           </VolumeButtonContainer>
         </SidePanel>
       </MainWrapper>

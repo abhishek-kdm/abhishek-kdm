@@ -42,7 +42,7 @@ const StyledNav = styled.nav`
     box-shadow: var(--neu-shadow-small);
     border: 1px solid var(--color-bg-primary);
     border-radius: 6px;
-    background-color: var(--color-bg-primary);
+    background-color: var(--color-bg-screen);
   }
 
   ul li.active {

@@ -6,7 +6,7 @@ import { WARPGATE_ACTION_TIME } from '../configs';
 import { DualWarpGate } from '../components/__pure__/Warpgate/warpgate.component';
 
 import { StillInDevelopment } from '../utils/components';
-import Head from '../Head/head.component';
+import Head from '../head';
 import Header from '../components/Header/header.component';
 import Main from '../components/Main/main.component';
 import Footer from '../components/Footer/footer.component';

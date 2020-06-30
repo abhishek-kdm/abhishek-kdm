@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import { toDataImageScheme, range } from '../../utils';
+import { Spin } from '../../styles/global.animations';
 
 import StyledStatusbar from '../__pure__/Statusbar/statusbar.style';
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
+import { Container } from '../../styles/global.style';
 
 // @ts-ignore
 const jsSUCKS = (fn) => toDataImageScheme(fn({ asImage: true }));
 
-const StyledMain = styled.main`
+const StyledMain = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,9 +158,29 @@ export const VolumeButtonContainer = styled.div`
   }
 `;
 
-export const VolumeButton = styled.div`
+export const VolumeButton = styled.div<{ angle?: Maybe<number> }>`
   box-shadow: var(--retro-shadow);
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  :hover ::before {
+    animation: ${Spin} 1.5s infinite linear;
+  }
+
+  ::before {
+    content: '';
+    width: 10%;
+    height: 95%;
+    border-radius: 50px;
+    box-shadow: var(--retro-shadow);
+
+    ${({ angle }) => angle ? `
+      transform: rotate(${angle}deg);
+    ` : ''}
+  }
 `;
 
 export const Speaker = styled.div`

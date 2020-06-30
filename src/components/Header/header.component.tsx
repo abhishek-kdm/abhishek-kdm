@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = () => {
   const { setWarpGateOpen } = useContext(HomeContext);
 
   return (<>
-    <StyledHeader className='container'>
+    <StyledHeader>
       <HeaderTitle>
         <span style={{ marginRight: '1rem' }}>
           lycuid

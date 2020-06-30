@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import GlobalStyle from '../styles/global.style';
+import RaceStyle from '../styles/race.style';
+
 import { PageWrapper } from './layout.style';
 import { ThemeProvider } from 'styled-components';
 
@@ -51,6 +54,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       }
     }}>
       <AppContext.Provider value={{ setRace, setModalShow, user, repos }}>
+
+        <GlobalStyle />
+        <RaceStyle />
+
         <PageWrapper>
           <svg width={0} height={0}>
             <WarpDoorSVGDefs />

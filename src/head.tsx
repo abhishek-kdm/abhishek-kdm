@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import Helmet, { HelmetProps } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -45,6 +46,11 @@ const Head: React.FC<HeadProps> = ({
       <meta name={`twitter:creator`} content={site.siteMetadata.author} />
       <meta name={`twitter:title`} content={title} />
       <meta name={`twitter:description`} content={description} />
+
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap' />
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap' />
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap' />
+
       {children}
     </Helmet>
   )

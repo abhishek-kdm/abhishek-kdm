@@ -5,7 +5,7 @@ import HyperdriveComponent from '../components/__pure__/Hyperdrive/hyperdrive.co
 import { DualWarpGate } from '../components/__pure__/Warpgate/warpgate.component';
 
 import { WARPGATE_ACTION_TIME, WARPGATES_OPEN_DELAY } from '../configs';
-import Head from '../Head/head.component';
+import Head from '../head';
 
 
 interface ExploreProps { }

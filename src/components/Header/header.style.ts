@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { prepareLaunch, launchReady } from './header.animations';
 
-const StyledHeader = styled.header`
+import { Container } from '../../styles/global.style';
+
+
+const StyledHeader = styled(Container)`
   display: flex;
   align-items: center;
   flex-direction: row;
