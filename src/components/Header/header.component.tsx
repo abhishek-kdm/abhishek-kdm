@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import StyledHeader, { HeaderTitle, RocketImg } from './header.style';
+import StyledHeader, { HeaderTitle, Brand, RocketImg } from './header.style';
 
 import { navigate } from '@reach/router';
 
@@ -19,9 +19,7 @@ const Header: React.FC<HeaderProps> = () => {
   return (<>
     <StyledHeader>
       <HeaderTitle>
-        <span style={{ marginRight: '1rem' }}>
-          lycuid
-        </span>
+        <Brand style={{ marginRight: '1rem' }}>lycuid</Brand>
 
         <span style={{ transform: 'rotate(45deg)', display: 'grid', alignItems: 'center', justifyContent: 'center' }}>
           <RocketImg

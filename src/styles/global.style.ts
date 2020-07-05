@@ -86,5 +86,18 @@ export const Container = styled.div`
   @media (min-width: 1200px) { width: 1170px; }
 `;
 
+export const BlockCursor = styled.span`
+  position: relative;
+
+  ::before {
+    content: '\u2588';
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+
 export default GlobalStyle;
 

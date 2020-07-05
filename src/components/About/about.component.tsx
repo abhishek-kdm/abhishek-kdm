@@ -1,6 +1,7 @@
 import React from 'react';
-import './about.style.css';
+import StyledAbout, { Pre } from './about.style';
 
+import { BlockCursor } from '../../styles/global.style';
 import { useAutoTyper } from '../../utils/hooks';
 import { WARPGATE_ACTION_TIME, ABOUTME } from '../../configs';
 
@@ -14,11 +15,11 @@ const About: React.FC<AboutProps> = () => {
 
   return (<>
     <Prompt>{'./aboutme'}</Prompt>
-    <div id={'about'}>
-      <pre>
-        {promptText} <span className='blinking'>&#x2588;</span>
-      </pre>
-    </div>
+    <StyledAbout id={'about'}>
+      <Pre>
+        {promptText} <BlockCursor />
+      </Pre>
+    </StyledAbout>
   </>);
 }
 

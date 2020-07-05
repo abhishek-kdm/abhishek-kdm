@@ -22,14 +22,29 @@ export const HeaderTitle = styled.h1`
   justify-content: flex-start;
   align-items: center;
 
-  & * {
-    font-family: 'Rock Salt';
-    text-shadow: 2px 2px 50px var(--color-primary);
-  }
-
   @media (max-width: 576px) {
     margin-block-start: 0.4em;
     margin-block-end: 0.4em;
+  }
+`;
+
+export const Brand = styled.label`
+  font-family: 'Rock Salt';
+  text-shadow: 2px 2px 50px var(--color-primary);
+  position: relative;
+
+  ::after {
+    content: 'lycuid';
+    font-family: 'Rock Salt';
+    background: linear-gradient(transparent 42.5%, var(--color-primary) 100%);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    position: absolute;
+    left: 0;
+    top: .7em;
+    transform: rotateX(155deg);
   }
 `;
 

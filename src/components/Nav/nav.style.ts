@@ -39,18 +39,12 @@ const StyledNav = styled.nav`
     font-size: 14px;
     text-transform: uppercase;
 
-    box-shadow: var(--neu-shadow-small);
-    border: 1px solid var(--color-bg-primary);
+    box-shadow: var(--retro-shadow);
     border-radius: 6px;
     background-color: var(--color-bg-screen);
   }
 
-  ul li.active {
-    box-shadow: var(--neu-shadow-small-active);
-  }
-
   ul li:active {
-    box-shadow: var(--neu-shadow-small-active);
     transform: scale(.95);
   }
 `;

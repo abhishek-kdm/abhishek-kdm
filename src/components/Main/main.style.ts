@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { toDataImageScheme, range } from '../../utils';
-import { Spin } from '../../styles/global.animations';
 
 import StyledStatusbar from '../__pure__/Statusbar/statusbar.style';
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
@@ -45,7 +44,8 @@ export const ScreenWrapper = styled.div`
   box-sizing: border-box;
   -webkit-clip-path: url(#screen-curve);
   clip-path:         url(#screen-curve);
-  box-shadow: var(--neumorphic-shadow-small);
+
+  border: 2px solid black;
 
   display: grid;
   grid-template-rows: var(--aspect-ratio-height);
@@ -112,6 +112,8 @@ export const ScreenDisplay = styled(InfoBox)`
     border-left: .3rem solid var(--color-secondary);
     background-color: transparent;
   }
+
+  @media (max-width: 768px) { background-position: center; }
 `;
 
 export const SidePanel = styled.div`
@@ -165,10 +167,6 @@ export const VolumeButton = styled.div<{ angle?: Maybe<number> }>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
-  :hover ::before {
-    animation: ${Spin} 1.5s infinite linear;
-  }
 
   ::before {
     content: '';

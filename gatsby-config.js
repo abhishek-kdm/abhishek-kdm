@@ -21,8 +21,8 @@ module.exports = {
         name: `Abhishek's personal website.`,
         short_name: `lycuid`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#131313`,
+        theme_color: `#131313`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },

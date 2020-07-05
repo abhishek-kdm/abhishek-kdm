@@ -1,15 +1,20 @@
-#about {
+import styled from 'styled-components';
+
+const StyledAbout = styled.div`
   display: flex;
   flex-direction: column;
-}
+`;
 
-#about pre {
+export const Pre = styled.pre`
   box-sizing: border-box;
-  
+
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   word-wrap: break-word;
 
   text-align: left;
   margin: 0;
-}
+`;
+
+export default StyledAbout;
+

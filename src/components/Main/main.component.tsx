@@ -114,8 +114,8 @@ const Main: React.FC<MainProps> = () => {
 
       <svg width='0' height='0'>
         <defs>
-          <clipPath id='screen-curve' stroke='black' strokeWidth={3} clipPathUnits='objectBoundingBox'>
-            <path stroke='black' strokeWidth={3} d='M0.05 0.05 Q0.5 0, 0.95 0.05 Q1 0.5, 0.95 0.95 Q0.5 1, 0.05 0.95 Q0 0.5, 0.05 0.05' />
+          <clipPath id='screen-curve' clipPathUnits='objectBoundingBox'>
+            <path d='M0.05 0.05 Q0.5 0, 0.95 0.05 Q1 0.5, 0.95 0.95 Q0.5 1, 0.05 0.95 Q0 0.5, 0.05 0.05' />
           </clipPath>
         </defs>
       </svg>
