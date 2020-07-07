@@ -2,7 +2,7 @@ name: build
 on:
   push:
     branches:
-      - development
+      - master
     paths:
       # actual source code and gatsby config files.
       - 'src/**'
@@ -11,9 +11,9 @@ on:
       - README.md
       - .gitignore
 jobs:
-  ghpages-build-deploy:
+  build:
     env:
-      DEPLOY_BRANCH: master
+      DEPLOY_BRANCH: deploy
       DEPLOY_DIRECTORY: public
     runs-on: ubuntu-latest
     steps:
@@ -43,5 +43,3 @@ jobs:
           BRANCH: ${{ env.DEPLOY_BRANCH }}
           FOLDER: ${{ env.DEPLOY_DIRECTORY }}
           COMMIT_MESSAGE: ${{ format('Deploying to {0} from {1} -- ({2})', env.DEPLOY_BRANCH, github.ref, github.sha) }}
-          NAME: Abhishek Kadam
-          EMAIL: abhishekk19@gmail.com
