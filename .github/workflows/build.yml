@@ -10,6 +10,7 @@ on:
       # other required files.
       - README.md
       - .gitignore
+      - ".github/workflows/build.yml"
 jobs:
   build:
     env:
