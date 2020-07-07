@@ -44,7 +44,12 @@ const StyledNav = styled.nav`
     background-color: var(--color-bg-screen);
   }
 
+  ul li.active {
+    box-shadow: var(--retro-shadow-active);
+  }
+
   ul li:active {
+    box-shadow: var(--retro-shadow-active);
     transform: scale(.95);
   }
 `;

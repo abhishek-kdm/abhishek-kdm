@@ -27,7 +27,7 @@ export const useAutoTyper = (
   const [index, setIndex] = useState<number>(0);
 
   useEffect(() => {
-    const delay = randInt(10, 150);
+    const delay = randInt(10, 50);
     let t = setTimeout(() => {
       setText((t) => (
         index < completeText.length ? t + completeText[index] : t

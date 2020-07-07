@@ -36,6 +36,9 @@ const RaceStyling = createGlobalStyle`
 
     --retro-shadow:           -2.5px -2.5px rgb(9, 6, 16)
                               , 2.5px 2.5px rgb(9, 6, 16);
+    --retro-shadow-active:    inset -1.5px -1.5px rgb(9, 6, 16)
+                              , inset 2.5px 4px rgb(9, 6, 16);
+
     --screen-shadow:          rgba(0, 0, 0, .25);
 
     --neu-shadow-small:
@@ -59,6 +62,9 @@ const RaceStyling = createGlobalStyle`
 
     --retro-shadow:           -2.5px -2.5px rgb(5, 5, 5)
                               , 2.5px 2.5px rgb(5, 5, 5);
+    --retro-shadow-active:    inset -1.5px -1.5px rgb(5, 5, 5)
+                              , inset 2.5px 4px rgb(5, 5, 5);
+
     --screen-shadow:          rgba(0, 0, 0, .25);
 
     --neu-shadow-small:
@@ -82,6 +88,9 @@ const RaceStyling = createGlobalStyle`
 
     --retro-shadow:           -2.5px -2.5px rgb(255, 99, 72)
                               , 2.5px 2.5px rgb(255, 127, 80);
+    --retro-shadow-active:    inset -1.5px -1.5px rgb(255, 99, 72)
+                              , inset 2.5px 4px rgb(255, 99, 72);
+
     --screen-shadow:          rgba(0, 0, 0, .075);
 
     --neu-shadow-small:

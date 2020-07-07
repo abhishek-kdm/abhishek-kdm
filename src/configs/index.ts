@@ -101,4 +101,7 @@ export const GITHUB = {
   },
 };
 
-export const ABOUTME = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius accusantium, praesentium itaque iure aliquid, unde velit sit architecto assumenda illo iste, ad atque dolorum fugit natus asperiores exercitationem ipsa quia!At magni aliquid nemo quis! Vero ab, saepe ad temporibus culpa itaque nulla. Similique error ratione quibusdam quisquam aperiam odit? Labore laboriosam ad architecto blanditiis consequatur reiciendis ullam cupiditate rerum?`;
+export const ABOUTME = `:: A Minimalist, old school software developer
+:: love computers and video games.
+:: open source enthusiast.`;
+
