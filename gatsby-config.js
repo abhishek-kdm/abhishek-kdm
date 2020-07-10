@@ -4,6 +4,7 @@ module.exports = {
     description: `Simply computers, video games, food etc.`,
     author: `@lycuid`,
   },
+  assetPrefix: `https://${process.env.BUCKETNAME}.s3.amazonaws.com/`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     {

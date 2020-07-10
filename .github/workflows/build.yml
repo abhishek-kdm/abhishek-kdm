@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies and build website.
         run: |
           npm install
-          npm run build
-      
+          npm run build -- --prefix-paths
+
       - name: Copy necessary files to build directory.
         run: cp .gitignore README.md $DEPLOY_DIRECTORY
 
