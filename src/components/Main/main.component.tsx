@@ -5,15 +5,18 @@ import StyledMain, {
   Screen,
   ScreenDisplay,
   Speaker,
+  FullscreenButton,
   VolumeButtonContainer,
   VolumeButton,
   SidePanel,
-  ScreenNavigation
+  ScreenNavigation,
+  FullscreenModal,
 } from './main.style';
 
 import Nav from '../Nav/nav.component';
 import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
+import Modal from '../__pure__/Modal/modal.component';
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
 import { WARPGATES_OPEN_DELAY } from '../../configs';
 import { range } from '../../utils';
@@ -35,6 +38,8 @@ const Main: React.FC<MainProps> = () => {
   const [warpgateOpen, setWarpgateOpen] = useState<boolean>(true);
   const [selectedItem, setSelectedItem] = useState<string>(navbarItems[0].label);
   const [clickedItem, setClickedItem] = useState<string>(selectedItem);
+  const [fullscreen, setFullscreen] = useState<boolean>(false);
+
 
   // returns the component that matches the selected item.
   const displayComponent = useCallback(() => {
@@ -82,6 +87,7 @@ const Main: React.FC<MainProps> = () => {
               <Statusbar id='statusbar' info={selectedItem} />
             </Screen>
           </ScreenWrapper>
+          <FullscreenButton onClick={() => { setFullscreen(true); }} />
           <Nav>
             <ul>
               {navbarItems.map(({ label }, key) => (
@@ -111,6 +117,14 @@ const Main: React.FC<MainProps> = () => {
           </VolumeButtonContainer>
         </SidePanel>
       </MainWrapper>
+
+      <Modal
+        show={fullscreen}
+        offset={'50px'}
+        closeFunc={() => { setFullscreen(false); }}
+      >
+        <FullscreenModal animate={true}>{displayComponent()}</FullscreenModal>
+      </Modal>
 
       <svg width='0' height='0'>
         <defs>

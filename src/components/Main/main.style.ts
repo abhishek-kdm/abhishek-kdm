@@ -37,7 +37,23 @@ export const MainWrapper = styled.div`
 export const ScreenNavigation = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
+  position: relative;
 `;
+
+export const FullscreenButton = styled.button`
+  --size: 20px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: red;
+  border: 4px solid var(--retro-border-color);
+  position: absolute;
+  right: 20px;
+  top: calc(var(--aspect-ratio-height) - var(--size) / 2);
+  z-index: 9999;
+  cursor: pointer;
+`;
+
 
 export const ScreenWrapper = styled.div`
   position: relative;
@@ -166,7 +182,6 @@ export const VolumeButton = styled.div<{ angle?: Maybe<number> }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 
   ::before {
     content: '';
@@ -199,6 +214,15 @@ export const Speaker = styled.div`
     `);
     return `url("data:image/svg+xml,${svg}");`;
   }}
+`;
+
+export const FullscreenModal = styled(InfoBox)`
+  height: calc(100vh - 100px);
+  overflow: auto;
+
+  & * {
+    font-family: "IBM Plex Mono";
+  }
 `;
 
 export default StyledMain;
