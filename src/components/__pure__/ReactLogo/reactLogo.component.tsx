@@ -18,9 +18,9 @@ const ReactLogo: React.FC<ReactLogoProps> = () => (<>
       <circle cx='50' cy='50' r='9' fill={ReactLogoBlue} stroke='none' />
       <g>
 
-        <ellipse {...reactRingProps} />
-        <ellipse {...reactRingProps} transform='rotate(60 50 50)' />
-        <ellipse {...reactRingProps} transform='rotate(-60 50 50)' />
+        <ellipse {...reactRingProps} transform={'rotate(90 50 50)'} />
+        <ellipse {...reactRingProps} transform={'rotate(35 50 50)'} />
+        <ellipse {...reactRingProps} transform={'rotate(-35 50 50)'} />
       </g>
     </svg>
   </ReactLogoContainer>

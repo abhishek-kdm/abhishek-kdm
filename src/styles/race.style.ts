@@ -34,8 +34,9 @@ const RaceStyling = createGlobalStyle`
 
     --link-color:             rgb(202, 211, 200);
 
-    --retro-shadow:           -2.5px -2.5px rgb(9, 6, 16)
-                              , 2.5px 2.5px rgb(9, 6, 16);
+    --retro-border-color:     rgb(9, 6, 16);
+    --retro-shadow:           -2.5px -2.5px var(--retro-border-color)
+                              , 2.5px 2.5px var(--retro-border-color);
     --retro-shadow-active:    inset -1.5px -1.5px rgb(9, 6, 16)
                               , inset 2.5px 4px rgb(9, 6, 16);
 
@@ -58,10 +59,11 @@ const RaceStyling = createGlobalStyle`
     --color-bg-secondary:     rgb(13, 13, 13);
     --color-bg-screen:        rgb(30, 30, 30);
 
-    --link-color:             rgb(69, 221, 158);
+    --link-color:             rgb(202, 211, 200);
 
-    --retro-shadow:           -2.5px -2.5px rgb(5, 5, 5)
-                              , 2.5px 2.5px rgb(5, 5, 5);
+    --retro-border-color:     rgb(5, 5, 5);
+    --retro-shadow:           -2.5px -2.5px var(--retro-border-color)
+                              , 2.5px 2.5px var(--retro-border-color);
     --retro-shadow-active:    inset -1.5px -1.5px rgb(5, 5, 5)
                               , inset 2.5px 4px rgb(5, 5, 5);
 
@@ -86,8 +88,9 @@ const RaceStyling = createGlobalStyle`
 
     --link-color:             rgb(240, 147, 43);
 
-    --retro-shadow:           -2.5px -2.5px rgb(255, 99, 72)
-                              , 2.5px 2.5px rgb(255, 127, 80);
+    --retro-border-color:     rgb(255, 99, 72);
+    --retro-shadow:           -2.5px -2.5px var(--retro-border-color)
+                              , 2.5px 2.5px var(--retro-border-color);
     --retro-shadow-active:    inset -1.5px -1.5px rgb(255, 99, 72)
                               , inset 2.5px 4px rgb(255, 99, 72);
 

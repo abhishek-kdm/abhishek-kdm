@@ -51,6 +51,7 @@ export const FullscreenButton = styled.button`
   right: 20px;
   top: calc(var(--aspect-ratio-height) - var(--size) / 2);
   z-index: 9999;
+  outline: none;
   cursor: pointer;
 `;
 
@@ -216,9 +217,35 @@ export const Speaker = styled.div`
   }}
 `;
 
+export const CloseButton = styled.button`
+  font-family: "IBM Plex Mono";
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: calc(-1 * (20px + .75rem));
+  margin-right: calc(-1 * (20px + .75rem));
+  padding: 0;
+
+  align-self: flex-end;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--retro-border-color);
+  border: 2px solid var(--color-primary);
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+`;
+
+
 export const FullscreenModal = styled(InfoBox)`
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 100px);
-  overflow: auto;
 
   & * {
     font-family: "IBM Plex Mono";

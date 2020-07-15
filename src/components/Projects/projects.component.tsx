@@ -9,12 +9,12 @@ import Title from '../__pure__/Title/title.component';
 
 
 // @TODO: implement `repo` type.
-const displayRepo = (repo: any, href: string = 'name') => (
+const displayRepo = (repo: any) => (
   <li key={repo.id}>
-    <Anchor href={repo[href]} title={repo.description || null}>
+    <Anchor href={repo.html_url} title={repo.description || null}>
       {repo.name}
-    </Anchor>&nbsp;&nbsp;&nbsp;
-    ({repo.language})
+    </Anchor>
+    {repo.language ? ` -- ${repo.language}` : ''}
   </li>
 );
 
@@ -38,19 +38,19 @@ const Projects: React.FC<ProjectsProps> = () => {
 
     <StyledProjects>
       <hr />
-      <Title>Live Projects:</Title>
+      <Title>Live Web Apps:</Title>
       <ProjectsList>
-        {repos
-          .filter((a: any) => a.has_pages)
-          .map((repo: any) => displayRepo(repo, 'homepage'))}
+        <li>
+          <Anchor href={'/p'} title={'Live Web Apps'}>
+            {'https://lycuid.dev/p/'}
+          </Anchor>
+        </li>
       </ProjectsList>
 
       <hr />
-      <Title>Other Projects:</Title>
+      <Title>All Projects:</Title>
       <ProjectsList>
-        {repos
-          .filter((a: any) => a.homepage?.trim()?.length > 0 && !a.has_pages)
-          .map((repo: any) => displayRepo(repo, 'homepage'))}
+        {repos.map((repo: any) => displayRepo(repo))}
       </ProjectsList>
     </StyledProjects>
   </>);

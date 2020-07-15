@@ -10,13 +10,16 @@ import StyledMain, {
   VolumeButton,
   SidePanel,
   ScreenNavigation,
+  CloseButton,
   FullscreenModal,
 } from './main.style';
 
 import Nav from '../Nav/nav.component';
 import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
+import InfoBox from '../__pure__/InfoBox/infoBox.component';
 import Modal from '../__pure__/Modal/modal.component';
+
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
 import { WARPGATES_OPEN_DELAY } from '../../configs';
 import { range } from '../../utils';
@@ -123,7 +126,14 @@ const Main: React.FC<MainProps> = () => {
         offset={'50px'}
         closeFunc={() => { setFullscreen(false); }}
       >
-        <FullscreenModal animate={true}>{displayComponent()}</FullscreenModal>
+        <FullscreenModal animate={true}>
+          <CloseButton onClick={() => { setFullscreen(false); }}>
+            &times;
+          </CloseButton>
+          <InfoBox style={{ overflow: 'auto' }}>
+            {displayComponent()}
+          </InfoBox>
+        </FullscreenModal>
       </Modal>
 
       <svg width='0' height='0'>

@@ -1,15 +1,3 @@
-import {
-  // eslint-disable-next-line no-unused-vars
-  IconDefinition,
-
-  faGithub,
-  faStackOverflow,
-  faLinkedin,
-  faTwitter,
-  faReddit,
-  faDiscord,
-} from '@fortawesome/free-brands-svg-icons';
-
 import ZergLogo from '../components/__pure__/SVG/Logo/zerg.logo';
 import TerranLogo from '../components/__pure__/SVG/Logo/terran.logo';
 import ProtossLogo from '../components/__pure__/SVG/Logo/protoss.logo';
@@ -57,39 +45,36 @@ export const WARPGATES_OPEN_DELAY = 300;
 export interface Link {
   title: string
   href: string
-  iconProps: { color: string, icon: IconDefinition }
 }
 
 export const SOCIAL_LINKS: Link[] = [
   {
-    title: 'github',
-    href: 'https://github.com/lycuid/',
-    iconProps: { color: '#ffffff', icon: faGithub }
+    title: 'Github',
+    href: 'https://github.com/lycuid',
   },
   {
-    title: 'stackoverflow',
-    href: 'https://stackoverflow.com/users/3065657/lycuid/',
-    iconProps: { color: '#f48024', icon: faStackOverflow }
+    title: 'Personal Git Server',
+    href: 'https://git.lycuid.dev',
   },
   {
-    title: 'linkedin',
-    href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170/',
-    iconProps: { color: '#0077bb', icon: faLinkedin }
+    title: 'Linkedin',
+    href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170',
   },
   {
-    title: 'twitter',
-    href: 'https://twitter.com/lycuid/',
-    iconProps: { color: '#1da1f2', icon: faTwitter }
+    title: 'Stackoverflow',
+    href: 'https://stackoverflow.com/users/3065657/lycuid',
   },
   {
-    title: 'reddit',
-    href: 'https://www.reddit.com/user/sudo-tux/',
-    iconProps: { color: '#ff4500', icon: faReddit }
+    title: 'Twitter',
+    href: 'https://twitter.com/lycuid',
   },
   {
-    title: 'discord',
-    href: 'https://www.discordapp.com/channels/~sudo/',
-    iconProps: { color: '#7289da', icon: faDiscord }
+    title: 'Reddit',
+    href: 'https://www.reddit.com/user/sudo-tux',
+  },
+  {
+    title: 'Discord',
+    href: 'https://www.discordapp.com/channels/lycuid',
   },
 ];
 
@@ -101,7 +86,6 @@ export const GITHUB = {
   },
 };
 
-export const ABOUTME = `:: A Minimalist, old school software developer
-:: love computers and video games.
-:: open source enthusiast.`;
+export const ABOUTME = `:: A Minimalist, software developer, old school zoomer.
+:: love computers, video games (that sort of stuff).`;
 
