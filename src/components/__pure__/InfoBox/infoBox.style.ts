@@ -28,7 +28,7 @@ const StyledInfoBox = styled.div<StyledInfoBoxProps>`
 
   ${({ animate }) => animate ? css`
     background-color: rgb(0, 0, 0);
-    border: 2px solid var(--color-primary);
+    border: 5px solid var(--color-primary);
     animation: ${vintageDisplay} .7s ease-out;
   ` : ''}
 `;

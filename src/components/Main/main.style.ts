@@ -41,7 +41,7 @@ export const ScreenNavigation = styled.div`
 `;
 
 export const FullscreenButton = styled.button`
-  --size: 20px;
+  --size: 22px;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
@@ -221,16 +221,16 @@ export const CloseButton = styled.button`
   font-family: "IBM Plex Mono";
   width: 2.5rem;
   height: 2.5rem;
-  margin-top: calc(-1 * (20px + .75rem));
-  margin-right: calc(-1 * (20px + .75rem));
+  margin-top: calc(-1 * 1rem);
+  margin-right: calc(-1 * 1rem);
   padding: 0;
 
   align-self: flex-end;
-  border-radius: 6px;
+  border-radius: 50%;
   outline: none;
   cursor: pointer;
-  background-color: var(--retro-border-color);
-  border: 2px solid var(--color-primary);
+  background-color: rgb(0, 0, 0);
+  border: 5px solid var(--color-primary);
 
   display: grid;
   align-items: center;
@@ -241,11 +241,11 @@ export const CloseButton = styled.button`
   font-weight: 700;
 `;
 
-
 export const FullscreenModal = styled(InfoBox)`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 100px);
+  padding: 0;
 
   & * {
     font-family: "IBM Plex Mono";

@@ -10,7 +10,6 @@ const StyledModal = styled.div<{ opacity: number, offset: string }>`
   height: 100%!important;
   overflow: auto;
   background-color: ${({ opacity }) => `rgba(0, 0, 0, ${opacity})`};
-
 `;
 
 export const ModalContent = styled.div`
