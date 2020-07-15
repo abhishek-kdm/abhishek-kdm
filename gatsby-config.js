@@ -4,6 +4,7 @@ module.exports = {
     description: `Simply computers, video games, food etc.`,
     author: `@lycuid`,
   },
+  assetPrefix: `https://cdn.lycuid.dev`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
