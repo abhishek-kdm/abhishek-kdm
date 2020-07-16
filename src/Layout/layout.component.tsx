@@ -10,7 +10,7 @@ import InfoBox from '../components/__pure__/InfoBox/infoBox.component';
 import WarpDoorSVGDefs from '../components/__pure__/Warpgate/WarpDoors/terran.warpdoors';
 
 import { AppContext } from '../context';
-import { GITHUB, RACE, THEME_PROPS } from '../configs';
+import { GITHUB, RACE, RACE_PROPS } from '../configs';
 import { fetchJson } from '../utils';
 import { Cspan } from '../utils/components';
 import GlobalSVGFilters from '../components/__pure__/SVG/Filters';
@@ -18,7 +18,7 @@ import GlobalSVGFilters from '../components/__pure__/SVG/Filters';
 import 'styled-components';
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends RaceThemeProps {
+  export interface DefaultTheme extends RaceProps {
     race: Race
   }
 }
@@ -45,12 +45,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   }, [user]);
 
+  console.log(race);
   return (<>
     <ThemeProvider theme={() => {
       switch(race) {
-        case RACE.zerg: return { race, ...THEME_PROPS.zerg }
-        case RACE.terran: return { race, ...THEME_PROPS.terran }
-        default: return { race, ...THEME_PROPS.protoss }
+        case RACE.zerg: return { race, ...RACE_PROPS.zerg }
+        case RACE.terran: return { race, ...RACE_PROPS.terran }
+        default: return { race, ...RACE_PROPS.protoss }
       }
     }}>
       <AppContext.Provider value={{ setRace, setModalShow, user, repos }}>

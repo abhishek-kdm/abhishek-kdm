@@ -10,7 +10,7 @@ export const RACE: { [name in Race]: Race } = {
   protoss: 'protoss',
 };
 
-export const THEME_PROPS: { [name in Race]: RaceThemeProps } = {
+export const RACE_PROPS: { [name in Race]: RaceProps } = {
   zerg: {
     patternColor: '#0a0a0aa0',
     backgroundColor: '#2c483586',
@@ -86,6 +86,6 @@ export const GITHUB = {
   },
 };
 
-export const ABOUTME = `:: A Minimalist, software developer, old school zoomer.
+export const ABOUTME = `:: A Minimalist, old school, software developer.
 :: love computers, video games (that sort of stuff).`;
 

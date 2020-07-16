@@ -1,6 +1,6 @@
 type Race = 'terran' | 'protoss' | 'zerg';
 
-interface RaceThemeProps {
+interface RaceProps {
   patternColor: string
   backgroundColor: string
   logo: React.FC<LogoProps>

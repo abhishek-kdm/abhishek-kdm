@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Anchor } from '../../utils/components';
 
 const StyledSocial = styled.div`
   width: 100%;

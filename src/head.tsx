@@ -37,6 +37,7 @@ const Head: React.FC<HeadProps> = ({
     <Helmet {...rest}
       title={title}
       titleTemplate={absoluteTitle ? '%s' : `%s | ${description}`}
+      htmlAttributes={{ lang: 'en' }}
     >
       <meta name={`description`} content={description} />
       <meta property={`og:title`} content={title} />

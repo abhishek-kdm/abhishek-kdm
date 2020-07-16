@@ -19,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Abhishek's personal website.`,
-        short_name: `lycuid`,
+        name: `LycuiD's personal website.`,
+        short_name: `LycuiD`,
         start_url: `/`,
         background_color: `#131313`,
         theme_color: `#131313`,

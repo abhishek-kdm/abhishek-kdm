@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import StyledToggler, { TogglerInput, TogglerLabel, SVGFill } from './toggler.style';
 
 import { ThemeContext } from 'styled-components';
-import { RACE, THEME_PROPS } from '../../../configs';
+import { RACE, RACE_PROPS } from '../../../configs';
 
 
 interface TogglerProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -29,7 +29,7 @@ const Toggler: React.FC<TogglerProps> = ({ onSwitch, ...props }) => {
             id={`switch-${race}`}
           />
           <TogglerLabel htmlFor={`switch-${race}`}>
-            {THEME_PROPS[race].logo({
+            {RACE_PROPS[race].logo({
               style: { height: '100%' },
               color: 'var(--color-secondary)'
             })}

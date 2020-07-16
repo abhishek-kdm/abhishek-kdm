@@ -217,27 +217,15 @@ export const Speaker = styled.div`
   }}
 `;
 
-export const CloseButton = styled.button`
-  font-family: "IBM Plex Mono";
+export const CloseButton = styled.span`
   width: 2.5rem;
-  height: 2.5rem;
-  margin-top: calc(-1 * 1rem);
-  margin-right: calc(-1 * 1rem);
-  padding: 0;
 
   align-self: flex-end;
-  border-radius: 50%;
   outline: none;
   cursor: pointer;
   background-color: rgb(0, 0, 0);
-  border: 5px solid var(--color-primary);
 
-  display: grid;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
 `;
 
