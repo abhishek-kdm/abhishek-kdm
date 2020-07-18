@@ -12,17 +12,15 @@ import StyledMain, {
   ScreenNavigation,
   CloseButton,
   FullscreenModal,
+  NoSignalScreen,
 } from './main.style';
 
 import Nav from '../Nav/nav.component';
-import Warpgate from '../__pure__/Warpgate/warpgate.component';
 
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
 import Modal from '../__pure__/Modal/modal.component';
 
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
-import { WARPGATES_OPEN_DELAY } from '../../configs';
-import { range } from '../../utils';
 
 import About from '../About/about.component';
 import Projects from '../Projects/projects.component';
@@ -38,11 +36,11 @@ interface MainProps { }
 
 const Main: React.FC<MainProps> = () => {
   // controls open/close of the warpgaetes.
-  const [warpgateOpen, setWarpgateOpen] = useState<boolean>(true);
+  const [noSignal, setNoSignal] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<string>(navbarItems[0].label);
+  const [angle, setAngle] = useState<number>(45);
   const [clickedItem, setClickedItem] = useState<string>(selectedItem);
   const [fullscreen, setFullscreen] = useState<boolean>(false);
-
 
   // returns the component that matches the selected item.
   const displayComponent = useCallback(() => {
@@ -53,37 +51,38 @@ const Main: React.FC<MainProps> = () => {
     return null;
   }, [selectedItem]);
 
-  // adding `disabled` for avoiding clicks before warpgates action is completed.
+  // adding `disabled` for avoiding clicks before 'no signal' action is completed.
   const liClassName = useCallback((label, otherLabel) => {
     return ([] as string[])
       .concat(label === otherLabel ? ['active'] : [])
-      .concat(clickedItem !== selectedItem ? ['disabled'] : [])
+      .concat(noSignal ? ['disabled'] : [])
       .join(' ');
-  }, [clickedItem, selectedItem]);
+  }, [noSignal]);
 
-  const warpGatesOnClose = useCallback(() => {
-    setSelectedItem(clickedItem);
+  useEffect(() => {
+    setSelectedItem((c) => noSignal ? clickedItem : c);
+  }, [setSelectedItem, noSignal, clickedItem]);
+
+  useEffect(() => {
     let t = setTimeout(() => {
-      setWarpgateOpen(true);
-    }, WARPGATES_OPEN_DELAY);
+      setNoSignal(false);
+    }, 300);
+    return () => { clearTimeout(t); }
+  }, [selectedItem, setNoSignal]);
 
-    return () => { clearTimeout(t); };
-  }, [clickedItem, setSelectedItem, setWarpgateOpen]);
-
-  useEffect(() => { setWarpgateOpen(false); }, [clickedItem, setWarpgateOpen]);
+  useEffect(() => { setNoSignal(true); }, [clickedItem, setNoSignal]);
 
   return (<>
-    <StyledMain>
+    <StyledMain as='main'>
       <MainWrapper>
         <ScreenNavigation>
           <ScreenWrapper>
-            <Warpgate
-              onClose={warpGatesOnClose}
-              open={warpgateOpen}
-              orientation={'horizontal'}
-              style={{ zIndex: 5, borderRadius: '6px' }}
-            />
             <Screen>
+              {noSignal && <NoSignalScreen>
+                <span />
+                <span />
+                <span />
+              </NoSignalScreen>}
               <ScreenDisplay scrollable>
                 {displayComponent()}
               </ScreenDisplay>
@@ -96,7 +95,10 @@ const Main: React.FC<MainProps> = () => {
               {navbarItems.map(({ label }, key) => (
                 <li
                   key={key}
-                  onClick={() => { setClickedItem(label); }}
+                  onClick={() => {
+                    setClickedItem(label);
+                    setAngle(45 + key * 20);
+                  }}
                   className={liClassName(clickedItem, label)}
                 >
                   {label}
@@ -108,11 +110,8 @@ const Main: React.FC<MainProps> = () => {
 
         <SidePanel>
           <VolumeButtonContainer>
-            {range(2, (_, i) => (
-              <VolumeButton
-                angle={i == 0 ? 45 : null}
-                key={'vol-1-' + String(i)}
-            />))}
+            <VolumeButton angle={angle} />
+            <VolumeButton />
           </VolumeButtonContainer>
           <Speaker />
           <VolumeButtonContainer>
