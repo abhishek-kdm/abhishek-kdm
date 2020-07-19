@@ -16,15 +16,21 @@ const About: React.FC<AboutProps> = () => {
   return (<>
     <Prompt>{'./aboutme'}</Prompt>
     <StyledAbout id={'about'}>
-      <pre style={{ margin: '0', textAlign: 'left', fontSize: '7px', fontFamily: 'monospace' }}>
-{`
+      <pre
+        style={{
+          margin: '0',
+          textAlign: 'left',
+          fontSize: '7px',
+          fontFamily: 'monospace'
+        }}
+        dangerouslySetInnerHTML={{ __html: `
 ██╗  ██╗   ██╗ ██████╗██╗   ██╗██╗██████╗ 
 ██║  ╚██╗ ██╔╝██╔════╝██║   ██║██║██╔══██╗
 ██║   ╚████╔╝ ██║     ██║   ██║██║██║  ██║
 ██║    ╚██╔╝  ██║     ██║   ██║██║██║  ██║
 ███████╗██║   ╚██████╗╚██████╔╝██║██████╔╝
-╚══════╝╚═╝    ╚═════╝ ╚═════╝ ╚═╝╚═════╝ `}
-      </pre>
+╚══════╝╚═╝    ╚═════╝ ╚═════╝ ╚═╝╚═════╝ `}}
+      />
       <hr />
       <Pre>
         {promptText} <BlockCursor />
