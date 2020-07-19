@@ -127,7 +127,7 @@ const Main: React.FC<MainProps> = () => {
       >
         <FullscreenModal animate={true}>
           <CloseButton onClick={() => { setFullscreen(false); }}>
-            &times;
+            [&times;]
           </CloseButton>
           <InfoBox style={{ overflow: 'auto' }}>
             {displayComponent()}

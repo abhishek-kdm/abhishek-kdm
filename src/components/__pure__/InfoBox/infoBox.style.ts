@@ -15,8 +15,8 @@ const StyledInfoBox = styled.div<StyledInfoBoxProps>`
   padding: 20px;
   border-radius: 6px;
   position: relative;
-  width: 'auto';
-  height: 'auto';
+  width: auto;
+  height: auto;
 
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ const StyledInfoBox = styled.div<StyledInfoBoxProps>`
 
   ${({ animate }) => animate ? css`
     background-color: rgb(0, 0, 0);
-    border: 5px solid var(--color-primary);
+    border: 1px solid var(--color-primary);
     animation: ${vintageDisplay} .7s ease-out;
   ` : ''}
 `;

@@ -219,15 +219,12 @@ export const Speaker = styled.div`
 `;
 
 export const CloseButton = styled.span`
-  width: 2.5rem;
-
   align-self: flex-end;
   outline: none;
   cursor: pointer;
   background-color: rgb(0, 0, 0);
-
-  font-size: 2rem;
-  font-weight: 700;
+  margin-top: .5em;
+  margin-right: .5em;
 `;
 
 export const FullscreenModal = styled(InfoBox)`
