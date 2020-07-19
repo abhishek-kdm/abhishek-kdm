@@ -42,40 +42,55 @@ export const WARPGATES_OPEN_DELAY = 300;
 
 
 // type for the list of social links.
-export interface Link {
-  title: string
+export interface LINK {
+  label: string
   href: string
 }
 
-export const SOCIAL_LINKS: Link[] = [
+export const SOCIAL_LINKS: { title: string, sub: LINK[] }[] = [
   {
-    title: 'Github',
-    href: 'https://github.com/lycuid',
+    title: 'SCM',
+    sub: [
+      {
+        label: 'Github',
+        href: 'https://github.com/lycuid',
+      },
+      {
+        label: 'Personal Git Server',
+        href: 'https://git.lycuid.dev',
+      },
+    ]
   },
   {
-    title: 'Personal Git Server',
-    href: 'https://git.lycuid.dev',
+    title: 'work',
+    sub: [
+      {
+        label: 'Linkedin',
+        href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170',
+      },
+      {
+        label: 'Stackoverflow',
+        href: 'https://stackoverflow.com/users/3065657/lycuid',
+      },
+    ]
   },
   {
-    title: 'Linkedin',
-    href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170',
-  },
-  {
-    title: 'Stackoverflow',
-    href: 'https://stackoverflow.com/users/3065657/lycuid',
-  },
-  {
-    title: 'Twitter',
-    href: 'https://twitter.com/lycuid',
-  },
-  {
-    title: 'Reddit',
-    href: 'https://www.reddit.com/user/sudo-tux',
-  },
-  {
-    title: 'Discord',
-    href: 'https://www.discordapp.com/channels/lycuid',
-  },
+    title: 'Others:',
+    sub: [
+      {
+        label: 'Twitter',
+        href: 'https://twitter.com/lycuid',
+      },
+      {
+        label: 'Reddit',
+        href: 'https://www.reddit.com/user/sudo-tux',
+      },
+      {
+        label: 'Discord',
+        href: 'https://www.discordapp.com/channels/lycuid',
+      },
+    ]
+  }
 ];
 
 
