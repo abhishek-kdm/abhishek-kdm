@@ -14,7 +14,7 @@ interface FooterProps { }
 const Footer: React.FC<FooterProps> = () => {
   const theme = useContext(ThemeContext);
   return (<>
-    <StyledFooter>
+    <StyledFooter as='footer'>
       <strong>
         <Cspan color={theme.race === RACE.protoss ? '#000' : '#fff'}>
           {'</>'}

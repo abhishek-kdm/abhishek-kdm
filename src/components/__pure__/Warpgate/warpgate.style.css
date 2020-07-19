@@ -36,8 +36,6 @@
 .warpdoor.top { top: 0; left: 0; }
 .warpdoor.bottom { bottom: 0; left: 0; }
 
-
-
 .warpgate.open .warpdoor.left {
   transform: translateX(-100%);
 }

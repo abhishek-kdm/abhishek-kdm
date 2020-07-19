@@ -45,7 +45,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   }, [user]);
 
-  console.log(race);
   return (<>
     <ThemeProvider theme={() => {
       switch(race) {

@@ -7,7 +7,9 @@ export const Spin = keyframes`
 
 export const Blink = keyframes`
   0% { opacity: 0; }
+  49% { opacity: 0; }
   50% { opacity: 1; }
   100% { opacity: 0; }
+  99% { opacity: 1; }
 `;
 

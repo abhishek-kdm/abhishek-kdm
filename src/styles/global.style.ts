@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { Blink } from '../styles/global.animations';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -95,6 +96,8 @@ export const BlockCursor = styled.span`
     position: absolute;
     width: 100%;
     height: 100%;
+    text-shadow: none!important;
+    animation: ${Blink} .75s linear infinite;
   }
 `;
 
