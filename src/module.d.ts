@@ -9,6 +9,8 @@ interface RaceProps {
 interface NavbarItem {
   label: string
   component: React.FunctionComponent
+  args?: any
+  titlePrompt: string
 }
 
 interface LogoProps extends React.HTMLAttributes<SVGElement> {

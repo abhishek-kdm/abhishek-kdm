@@ -47,10 +47,10 @@ export interface LINK {
   href: string
 }
 
-export const SOCIAL_LINKS: { title: string, sub: LINK[] }[] = [
+export const SOCIAL_LINKS: { title: string, subs: LINK[] }[] = [
   {
     title: 'SCM',
-    sub: [
+    subs: [
       {
         label: 'Github',
         href: 'https://github.com/lycuid',
@@ -62,8 +62,8 @@ export const SOCIAL_LINKS: { title: string, sub: LINK[] }[] = [
     ]
   },
   {
-    title: 'work',
-    sub: [
+    title: 'Work',
+    subs: [
       {
         label: 'Linkedin',
         href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170',
@@ -75,8 +75,8 @@ export const SOCIAL_LINKS: { title: string, sub: LINK[] }[] = [
     ]
   },
   {
-    title: 'Others:',
-    sub: [
+    title: 'Others',
+    subs: [
       {
         label: 'Twitter',
         href: 'https://twitter.com/lycuid',
@@ -101,6 +101,8 @@ export const GITHUB = {
   },
 };
 
-export const ABOUTME = `:: A Minimalist, old school, software developer.
-:: love computers, video games (that sort of stuff).`;
+export const ABOUTME = `A Minimalist, software developer, old school, boomer.
+love computers, video games (that sort of stuff).
+Web developer by profession (although not a big fan of modern web technologies).
+system software and game development, by interest.`;
 
