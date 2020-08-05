@@ -11,47 +11,42 @@ import StyledMain, {
   SidePanel,
   ScreenNavigation,
   CloseButton,
+  NavButtonContainer,
+  NavButton,
   FullscreenModal,
-  NoSignalScreen,
 } from './main.style';
+
+import { navigate } from '@reach/router';
+
+import { useNavigationTabs } from '../../utils/hooks';
+import { navbarItems } from '../../Layout/configs';
 
 import Nav from '../Nav/nav.component';
 
 import InfoBox from '../__pure__/InfoBox/infoBox.component';
 import Modal from '../__pure__/Modal/modal.component';
+import NoSignal from '../__pure__/NoSignal/noSignal.component';
 
+import Prompt from '../__pure__/Prompt/prompt.component';
 import Statusbar from '../__pure__/Statusbar/statusbar.component';
-
-import About from '../About/about.component';
-import Projects from '../Projects/projects.component';
-import Social from '../Social/social.component';
-
-const navbarItems: NavbarItem[] = [
-  { label: 'about', component: About },
-  { label: 'projects', component: Projects },
-  { label: 'social', component: Social },
-];
 
 interface MainProps { }
 
 const Main: React.FC<MainProps> = () => {
   // controls open/close of the warpgaetes.
+  const {
+    selectedItem,
+    selection,
+    setSelection
+  } = useNavigationTabs<NavbarItem>(navbarItems, 'label');
+
   const [noSignal, setNoSignal] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<string>(navbarItems[0].label);
   const [angle, setAngle] = useState<number>(45);
-  const [clickedItem, setClickedItem] = useState<string>(selectedItem);
+  const [clickedItem, setClickedItem] = useState<string>(selection);
   const [fullscreen, setFullscreen] = useState<boolean>(false);
 
-  // returns the component that matches the selected item.
-  const displayComponent = useCallback(() => {
-    const item = navbarItems.find((item) => item.label === selectedItem);
-    if (item != null) {
-      return <item.component />;
-    }
-    return null;
-  }, [selectedItem]);
-
-  // adding `disabled` for avoiding clicks before 'no signal' action is completed.
+  // adding `disabled` for avoiding clicks before 'no signal'
+  // action is completed.
   const liClassName = useCallback((label, otherLabel) => {
     return ([] as string[])
       .concat(label === otherLabel ? ['active'] : [])
@@ -60,15 +55,15 @@ const Main: React.FC<MainProps> = () => {
   }, [noSignal]);
 
   useEffect(() => {
-    setSelectedItem((c) => noSignal ? clickedItem : c);
-  }, [setSelectedItem, noSignal, clickedItem]);
+    setSelection((c) => noSignal ? clickedItem : c);
+  }, [setSelection, noSignal, clickedItem]);
 
   useEffect(() => {
     let t = setTimeout(() => {
       setNoSignal(false);
     }, 300);
     return () => { clearTimeout(t); }
-  }, [selectedItem, setNoSignal]);
+  }, [selection, setNoSignal]);
 
   useEffect(() => { setNoSignal(true); }, [clickedItem, setNoSignal]);
 
@@ -78,22 +73,30 @@ const Main: React.FC<MainProps> = () => {
         <ScreenNavigation>
           <ScreenWrapper>
             <Screen>
-              {noSignal && <NoSignalScreen>
-                <span />
-                <span />
-                <span />
-              </NoSignalScreen>}
+              {noSignal && <NoSignal />}
               <ScreenDisplay scrollable>
-                {displayComponent()}
+                <Prompt>
+                  {selectedItem && selectedItem.titlePrompt}
+                </Prompt>
+                {selectedItem && <selectedItem.component {...selectedItem.args} />}
               </ScreenDisplay>
-              <Statusbar id='statusbar' info={selectedItem} />
+              <Statusbar id='statusbar' info={selection} />
             </Screen>
           </ScreenWrapper>
-          <FullscreenButton onClick={() => { setFullscreen(true); }} />
+          <div style={{ margin: '0 20px', position: 'relative' }}>
+            <FullscreenButton
+              style={{ left: '0', backgroundColor: '#000080' }}
+              onClick={() => { setFullscreen(true); }}
+            />
+            <FullscreenButton
+              style={{ right: '0' }}
+              onClick={() => { navigate('/tty'); }}
+            />
+          </div>
           <Nav>
-            <ul>
+            <NavButtonContainer>
               {navbarItems.map(({ label }, key) => (
-                <li
+                <NavButton
                   key={key}
                   onClick={() => {
                     setClickedItem(label);
@@ -102,9 +105,9 @@ const Main: React.FC<MainProps> = () => {
                   className={liClassName(clickedItem, label)}
                 >
                   {label}
-                </li>
+                </NavButton>
               ))}
-            </ul>
+            </NavButtonContainer>
           </Nav>
         </ScreenNavigation>
 
@@ -130,7 +133,10 @@ const Main: React.FC<MainProps> = () => {
             [&times;]
           </CloseButton>
           <InfoBox style={{ overflow: 'auto' }}>
-            {displayComponent()}
+            <Prompt>
+              {selectedItem && selectedItem.titlePrompt}
+            </Prompt>
+            {selectedItem && <selectedItem.component {...selectedItem.args}/>}
           </InfoBox>
         </FullscreenModal>
       </Modal>

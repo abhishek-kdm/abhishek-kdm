@@ -6,9 +6,9 @@ import { Cspan } from '../../../utils/components';
 
 interface PromptProps extends React.HTMLAttributes<HTMLSpanElement> { }
 
-const Prompt: React.FC<PromptProps> = ({ children }) => {
+const Prompt: React.FC<PromptProps> = ({ children, ...props }) => {
   return (<>
-    <StyledPrompt>
+    <StyledPrompt {...props}>
       &lambda;&nbsp;
       <PromptUser>root</PromptUser>
       <Cspan color={'rgb(83, 92, 104)'}>@</Cspan>

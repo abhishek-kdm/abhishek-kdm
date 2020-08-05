@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Glitch1, Glitch2 } from './main.animations';
 import { toDataImageScheme, range } from '../../utils';
 
 import StyledStatusbar from '../__pure__/Statusbar/statusbar.style';
@@ -49,13 +48,11 @@ export const FullscreenButton = styled.button`
   background-color: red;
   border: 4px solid var(--retro-border-color);
   position: absolute;
-  right: 20px;
-  top: calc(var(--aspect-ratio-height) - var(--size) / 2);
+  top: -12px;
   z-index: 9999;
   outline: none;
   cursor: pointer;
 `;
-
 
 export const ScreenWrapper = styled.div`
   box-sizing: border-box;
@@ -95,7 +92,7 @@ export const Screen = styled.div`
   clip-path:         url(#screen-curve);
 
   *:not(svg):not(path) {
-    font-family: 'IBM Plex Mono';
+    font-family: "Roboto Mono";
     font-size: .8rem;
   }
 
@@ -227,6 +224,35 @@ export const CloseButton = styled.span`
   margin-right: .5em;
 `;
 
+export const NavButtonContainer = styled.ul`
+  margin: 10px 15px;
+`;
+
+export const NavButton = styled.li`
+  -webkit-user-select: none;
+  -moz-user-select:    none;
+  user-select:         none;
+
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  box-shadow: var(--retro-shadow);
+  border-radius: 6px;
+  background-color: var(--color-bg-screen);
+
+  cursor: pointer;
+
+  &.active {
+    box-shadow: var(--retro-shadow-active);
+  }
+
+  :active {
+    box-shadow: var(--retro-shadow-active);
+    transform: scale(.95);
+  }
+`;
+
 export const FullscreenModal = styled(InfoBox)`
   display: flex;
   flex-direction: column;
@@ -234,92 +260,7 @@ export const FullscreenModal = styled(InfoBox)`
   padding: 0;
 
   & * {
-    font-family: "IBM Plex Mono";
-  }
-`;
-
-export const NoSignalScreen = styled.div`
-  display: grid;
-  grid-template-rows: 65% 7.5% 27.5%;
-
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-
-  span { position: relative; }
-
-  span,
-  span::before,
-  span::after {
-    box-shadow:
-      inset 5px 0 25px 25px rgba(0, 0, 0, .2),
-      inset -5px 0 25px 25px rgba(0, 0, 0, .2);
-  }
-
-  span:nth-child(1),
-  span:nth-child(1)::before,
-  span:nth-child(1)::after {
-    background: linear-gradient(
-      to right,
-      #c3bdad 0 14%,
-      #e9e625 14% 28%,
-      #66e5d0 28% 42%,
-      #70e82f 42% 56%,
-      #f540e5 56% 70%,
-      #f44025 70% 84%,
-      #311fd7 84% 100%
-    );
-  }
-  span:nth-child(2),
-  span:nth-child(2)::before,
-  span:nth-child(2)::after {
-    background: linear-gradient(
-      to right,
-      #291ed2 0 14%,
-      #3a3024 14% 28%,
-      #ed18c8 28% 42%,
-      #473626 42% 56%,
-      #73e8e0 56% 70%,
-      #54482e 70% 84%,
-      #aea699 84% 100%
-    );
-  }
-  span:nth-child(3),
-  span:nth-child(3)::before,
-  span:nth-child(3)::after {
-    background: linear-gradient(
-      to right,
-      #415259 0 17.5%,
-      #ebe7cc 17.5% 35%,
-      #5c1a72 35% 52.5%,
-      #50442c 52.5% 70%,
-      #3d331a 70% 76%,
-      #524733 76% 82%,
-      #484035 82% 88%,
-      #1D1C17 88% 94%,
-      #11100b 94% 100%
-    );
-  }
-  span::before,
-  span::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    color: inherit;
-    clip-path: polygon(0 33%, 100% 33%, 100% 0, 0 0);
-  }
-
-  span::before {
-    left: 3px;
-    animation: ${Glitch1} 1s linear alternate-reverse;
-  }
-  span::after {
-    left: -3px;
-    animation: ${Glitch2} 1s linear alternate-reverse;
+    font-family: "DOS VGA 437";
   }
 `;
 

@@ -29,13 +29,13 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const Brand = styled.label`
-  font-family: 'Rock Salt';
+  font-family: "Rock Salt";
   text-shadow: 2px 2px 50px var(--color-primary);
   position: relative;
 
   ::after {
-    content: 'lycuid';
-    font-family: 'Rock Salt';
+    content: "lycuid";
+    font-family: "Rock Salt";
     background: linear-gradient(transparent 42.5%, var(--color-primary) 100%);
 
     -webkit-background-clip: text;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledSocial = styled.div`
+const StyledSocial = styled.section`
   width: 100%;
   box-sizing: border-box;
 

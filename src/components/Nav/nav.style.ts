@@ -6,9 +6,7 @@ const StyledNav = styled.nav`
   border-radius: 4px;
 
   ul {
-    margin: 10px 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0;
     outline: none;
     list-style-type: none;
     list-style-position: inside;
@@ -19,10 +17,6 @@ const StyledNav = styled.nav`
   }
 
   ul li {
-    -webkit-user-select: none;
-    -moz-user-select:    none;
-    user-select:         none;
-
     position: relative;
 
     display: flex;
@@ -33,24 +27,7 @@ const StyledNav = styled.nav`
     padding-bottom: 10px;
 
     box-sizing: border-box;
-    cursor: pointer;
     margin: 7.5px;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-
-    box-shadow: var(--retro-shadow);
-    border-radius: 6px;
-    background-color: var(--color-bg-screen);
-  }
-
-  ul li.active {
-    box-shadow: var(--retro-shadow-active);
-  }
-
-  ul li:active {
-    box-shadow: var(--retro-shadow-active);
-    transform: scale(.95);
   }
 `;
 

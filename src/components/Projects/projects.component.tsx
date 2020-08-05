@@ -3,7 +3,6 @@ import StyledProjects, { ProjectsList } from './projects.style';
 
 import { AppContext } from '../../context';
 
-import Prompt from '../__pure__/Prompt/prompt.component';
 import { Anchor, Label } from '../../utils/components';
 import Title from '../__pure__/Title/title.component';
 
@@ -18,26 +17,11 @@ const displayRepo = (repo: any) => (
   </li>
 );
 
-interface ProjectsProps { }
+interface ProjectsProps extends React.HTMLAttributes<HTMLElement>{ }
 
-const Projects: React.FC<ProjectsProps> = () => {
-  const { user, repos } = useContext(AppContext);
-
-  if (!user || repos.length == 0) {
-    return (
-      <Label danger>
-        {'Unable to fetch resources!.'}
-      </Label>
-    );
-  }
-
+const Projects: React.FC<ProjectsProps> = (props) => {
   return (<>
-    <Prompt>
-      <Anchor href={user.html_url}>{user.html_url}</Anchor>
-    </Prompt>
-
-    <StyledProjects>
-      <hr />
+    <StyledProjects {...props} id={'projects'}>
       <Title>Live Web Apps:</Title>
       <ProjectsList>
         <li>
@@ -45,12 +29,6 @@ const Projects: React.FC<ProjectsProps> = () => {
             {'https://lycuid.dev/p/'}
           </Anchor>
         </li>
-      </ProjectsList>
-
-      <hr />
-      <Title>All Projects:</Title>
-      <ProjectsList>
-        {repos.map((repo: any) => displayRepo(repo))}
       </ProjectsList>
     </StyledProjects>
   </>);

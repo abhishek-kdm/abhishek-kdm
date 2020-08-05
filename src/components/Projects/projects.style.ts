@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledProjects = styled.div`
+const StyledProjects = styled.section`
   box-sizing: border-box;
   width: 100%;
 

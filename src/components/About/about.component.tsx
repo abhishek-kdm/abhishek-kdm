@@ -5,35 +5,33 @@ import { BlockCursor } from '../../styles/global.style';
 import { useAutoTyper } from '../../utils/hooks';
 import { WARPGATE_ACTION_TIME, ABOUTME } from '../../configs';
 
-import Prompt from '../__pure__/Prompt/prompt.component';
 
+interface AboutProps extends React.HTMLAttributes<HTMLElement> {
+  autoType?: boolean
+}
 
-interface AboutProps { }
-
-const About: React.FC<AboutProps> = () => {
-  const promptText = useAutoTyper(ABOUTME, (WARPGATE_ACTION_TIME * 2) + 1000);
+const About: React.FC<AboutProps> = ({ autoType = false, ...props }) => {
+  const promptText = useAutoTyper(
+    ABOUTME,
+    (WARPGATE_ACTION_TIME * 2) + 1000,
+    autoType ? 0 : ABOUTME.length - 1
+  );
 
   return (<>
-    <Prompt>{'./aboutme'}</Prompt>
-    <StyledAbout id={'about'}>
-      <pre
-        style={{
-          margin: '0',
-          textAlign: 'left',
-          fontSize: '7px',
-          fontFamily: 'monospace'
-        }}
-        dangerouslySetInnerHTML={{ __html: `
-██╗  ██╗   ██╗ ██████╗██╗   ██╗██╗██████╗ 
-██║  ╚██╗ ██╔╝██╔════╝██║   ██║██║██╔══██╗
-██║   ╚████╔╝ ██║     ██║   ██║██║██║  ██║
-██║    ╚██╔╝  ██║     ██║   ██║██║██║  ██║
-███████╗██║   ╚██████╗╚██████╔╝██║██████╔╝
-╚══════╝╚═╝    ╚═════╝ ╚═════╝ ╚═╝╚═════╝ `}}
-      />
-      <hr />
+    <StyledAbout {...props} id={'about'}>
       <Pre>
-        {promptText} <BlockCursor />
+        <h2 style={{ margin: '0' }}>
+          <pre style={{ fontFamily: 'monospace', margin: '0' }}>
+{` __                _ ____    
+|  |   _ _ ___ _ _|_|    \\   
+|  |__| | |  _| | | |  |  |  
+|_____|_  |___|___|_|____/   
+      |___|                  
+`}
+          </pre>
+        </h2>
+        <hr />
+        {promptText}{autoType && <BlockCursor />}
       </Pre>
     </StyledAbout>
   </>);

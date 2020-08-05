@@ -20,7 +20,6 @@ const Header: React.FC<HeaderProps> = () => {
     <StyledHeader as='header'>
       <HeaderTitle>
         <Brand style={{ marginRight: '1rem' }}>lycuid</Brand>
-
         <span style={{ transform: 'rotate(45deg)', display: 'grid', alignItems: 'center', justifyContent: 'center' }}>
           <RocketImg
             src={Rocket}

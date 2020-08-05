@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledAbout = styled.div`
+const StyledAbout = styled.section`
   display: flex;
   flex-direction: column;
 `;
