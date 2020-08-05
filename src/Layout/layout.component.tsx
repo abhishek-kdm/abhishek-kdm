@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import GlobalStyle from '../styles/global.style';
-import RaceStyle from '../styles/race.style';
 
 import { PageWrapper } from './layout.style';
 import { ThemeProvider } from 'styled-components';
@@ -28,22 +27,7 @@ interface LayoutProps { }
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [race, setRace] = useState<Race>(RACE.terran);
 
-  // github links and info etc.
-  const [user, setUser] = useState<any>(null);
-  const [repos, setRepos] = useState<any[]>([]);
-
   const [modalShow, setModalShow] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (user === null) {
-      fetchJson(GITHUB.user_url)
-      .then((_user) => {
-        setUser(_user);
-        return fetchJson(_user.repos_url);
-      })
-      .then((repos) => { setRepos(repos); });
-    }
-  }, [user]);
 
   return (<>
     <ThemeProvider theme={() => {
@@ -53,10 +37,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         default: return { race, ...RACE_PROPS.protoss }
       }
     }}>
-      <AppContext.Provider value={{ setRace, setModalShow, user, repos }}>
+      <AppContext.Provider value={{ setRace, setModalShow }}>
 
         <GlobalStyle />
-        <RaceStyle />
 
         <PageWrapper>
           <svg width={0} height={0}>

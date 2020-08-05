@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RaceStyle from '../styles/race.style';
 
 import { HomeContext } from '../context';
 import { WARPGATE_ACTION_TIME } from '../configs';
@@ -22,6 +23,7 @@ const App: React.FC = () => {
   return (<>
     <HomeContext.Provider value={{ setWarpGateOpen }}>
       <Head />
+      <RaceStyle />
 
       <DualWarpGate open={warpGateOpen} />
       <StillInDevelopment />
