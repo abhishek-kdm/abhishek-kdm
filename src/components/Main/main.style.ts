@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { ScanLines } from './main.animations';
 import { toDataImageScheme, range } from '../../utils';
 
 import StyledStatusbar from '../__pure__/Statusbar/statusbar.style';
@@ -91,7 +92,7 @@ export const Screen = styled.div`
   -webkit-clip-path: url(#screen-curve);
   clip-path:         url(#screen-curve);
 
-  *:not(svg):not(path) {
+  *:not(svg) {
     font-family: "Roboto Mono";
     font-size: .8rem;
   }
@@ -259,9 +260,23 @@ export const FullscreenModal = styled(InfoBox)`
   height: calc(100vh - 100px);
   padding: 0;
 
-  & * {
-    font-family: "DOS VGA 437";
+  *:not(svg) {
+    font-family: "Roboto Mono";
+    font-size: .8rem;
   }
+`;
+
+export const CRTScanLines = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, .05)
+  );
+  animation: ${ScanLines} 5s linear infinite;
 `;
 
 export default StyledMain;

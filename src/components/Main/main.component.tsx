@@ -3,6 +3,7 @@ import StyledMain, {
   MainWrapper,
   ScreenWrapper,
   Screen,
+  CRTScanLines,
   ScreenDisplay,
   Speaker,
   FullscreenButton,
@@ -74,6 +75,7 @@ const Main: React.FC<MainProps> = () => {
           <ScreenWrapper>
             <Screen>
               {noSignal && <NoSignal />}
+              <CRTScanLines />
               <ScreenDisplay scrollable>
                 <Prompt>
                   {selectedItem && selectedItem.titlePrompt}
