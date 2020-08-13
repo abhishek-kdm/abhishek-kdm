@@ -5,15 +5,23 @@ const StyledTitle = styled.div`
   background-color: var(--color-primary);
   color: var(--color-bg-primary);
   font-weight: 700;
-
   display: flex;
-  text-transform: uppercase;
 
-  &::before {
-    content: '::';
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-right: 1rem;
+  ::before,
+  ::after {
+    content: '';
+    height: 0;
+    align-self: center;
+    border: 1px solid var(--color-bg-primary);
+  }
+
+  ::before {
+    width: 1.75rem;
+    margin-right: 5px;
+  }
+  ::after {
+    flex: 1;
+    margin-left: 5px;
   }
 `;
 

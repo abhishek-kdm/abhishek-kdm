@@ -6,7 +6,7 @@ interface TitleProps {  }
 
 const Title: React.FC<TitleProps> = ({ children }) => {
   return (<>
-    <StyledTitle>{children}</StyledTitle>
+    <StyledTitle>[{children}]</StyledTitle>
   </>);
 }
 
