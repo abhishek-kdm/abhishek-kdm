@@ -23,6 +23,12 @@ const RaceStyling = createGlobalStyle`
     transition-timing-function: var(--transition-time-fuinction);
   } */
 
+  body {
+    --title-fg:               var(--color-bg-primary);
+    --title-bg:               var(--color-primary);
+    --title-pseudo:           var(--color-bg-primary);
+  }
+
   body.zerg {
     --color-primary:          rgb(177, 122, 204);
     --color-secondary:        rgb(117, 68, 222);
@@ -55,7 +61,7 @@ const RaceStyling = createGlobalStyle`
    * Doing this to make 'terran' the default race.
    * adding the default value in 'useState' has a bit of a delay when
    * page loads, and the document looks unstyled for about a second,
-   * as javascript sucks dick.
+   * because javascript sucks dick.
    */
   body, body.terran {
     --color-primary:          rgb(38, 192, 128);
@@ -90,8 +96,8 @@ const RaceStyling = createGlobalStyle`
     --color-primary-opacity:  rgb(231, 130, 89, .1);
 
     --color-bg-primary:       rgb(248, 239, 186);
-    --color-bg-secondary:     rgb(243, 232, 166);
-    --color-bg-screen:        rgb(243, 232, 166);
+    --color-bg-secondary:     rgb(245, 215, 144);
+    --color-bg-screen:        #f5d790;
 
     --link-color:             rgb(240, 147, 43);
 
@@ -101,7 +107,7 @@ const RaceStyling = createGlobalStyle`
     --retro-shadow-active:    inset -1.5px -1.5px rgb(255, 99, 72)
                               , inset 2.5px 4px rgb(255, 99, 72);
 
-    --screen-shadow:          rgba(0, 0, 0, .075);
+    --screen-shadow:          rgba(255, 255, 255, .05);
 
     --neu-shadow-small:
       -2px -2px 10px rgba(255, 255, 255, .5),

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import GlobalIndexStyle from './index.style';
 import RaceStyle from '../styles/race.style';
 
 import { HomeContext } from '../context';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
   return (<>
     <HomeContext.Provider value={{ setWarpGateOpen }}>
       <Head />
+      <GlobalIndexStyle />
       <RaceStyle />
 
       <DualWarpGate open={warpGateOpen} />
