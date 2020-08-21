@@ -276,7 +276,7 @@ export const CRTScanLines = styled.div`
     transparent,
     rgba(255, 255, 255, .05)
   );
-  animation: ${ScanLines} 5s linear infinite;
+  animation: ${ScanLines} 3s linear infinite;
 `;
 
 export default StyledMain;

@@ -22,7 +22,7 @@ interface ProjectsProps extends React.HTMLAttributes<HTMLElement>{ }
 const Projects: React.FC<ProjectsProps> = (props) => {
   return (<>
     <StyledProjects {...props} id={'projects'}>
-      <Title>Live Web Apps:</Title>
+      <Title>Live Web Apps</Title>
       <ProjectsList>
         <li>
           <Anchor href={'/p'} title={'Live Web Apps'}>

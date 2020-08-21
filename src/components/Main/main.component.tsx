@@ -92,7 +92,7 @@ const Main: React.FC<MainProps> = () => {
             />
             <FullscreenButton
               style={{ right: '0' }}
-              onClick={() => { navigate('/tty'); }}
+              onClick={() => { navigate('/redpillout'); }}
             />
           </div>
           <Nav>

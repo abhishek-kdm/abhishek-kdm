@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const StyledTitle = styled.div`
   box-sizing: border-box;
-  background-color: var(--color-primary);
-  color: var(--color-bg-primary);
+  background-color: var(--title-bg);
+  color: var(--title-fg);
   font-weight: 700;
   display: flex;
 
@@ -12,7 +12,7 @@ const StyledTitle = styled.div`
     content: '';
     height: 0;
     align-self: center;
-    border: 1px solid var(--color-bg-primary);
+    border-top: 2px solid var(--title-pseudo);
   }
 
   ::before {

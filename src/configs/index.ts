@@ -1,7 +1,18 @@
+import {
+  // eslint-disable-next-line no-unused-vars
+  IconDefinition,
+
+  faGithub,
+  faStackOverflow,
+  faLinkedin,
+  faTwitter,
+  faReddit,
+  faDiscord,
+} from '@fortawesome/free-brands-svg-icons';
+
 import ZergLogo from '../components/__pure__/SVG/Logo/zerg.logo';
 import TerranLogo from '../components/__pure__/SVG/Logo/terran.logo';
 import ProtossLogo from '../components/__pure__/SVG/Logo/protoss.logo';
-
 
 // reference for theme.
 export const RACE: { [name in Race]: Race } = {
@@ -40,57 +51,44 @@ export const WARPGATE_ACTION_TIME = 500;
 // time (in ms) delay between opening multiple warpgates.
 export const WARPGATES_OPEN_DELAY = 300;
 
-
 // type for the list of social links.
-export interface LINK {
-  label: string
+export interface Link {
+  title: string
   href: string
+  iconProps: { color: string, icon: IconDefinition }
 }
 
-export const SOCIAL_LINKS: { title: string, subs: LINK[] }[] = [
+export const SOCIAL_LINKS: Link[] = [
   {
-    title: 'SCM',
-    subs: [
-      {
-        label: 'Github',
-        href: 'https://github.com/lycuid',
-      },
-      {
-        label: 'Personal Git Server',
-        href: 'https://git.lycuid.dev',
-      },
-    ]
+    title: 'github',
+    href: 'https://github.com/lycuid/',
+    iconProps: { color: '#ffffff', icon: faGithub }
   },
   {
-    title: 'Work',
-    subs: [
-      {
-        label: 'Linkedin',
-        href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170',
-      },
-      {
-        label: 'Stackoverflow',
-        href: 'https://stackoverflow.com/users/3065657/lycuid',
-      },
-    ]
+    title: 'stackoverflow',
+    href: 'https://stackoverflow.com/users/3065657/lycuid/',
+    iconProps: { color: '#f48024', icon: faStackOverflow }
   },
   {
-    title: 'Others',
-    subs: [
-      {
-        label: 'Twitter',
-        href: 'https://twitter.com/lycuid',
-      },
-      {
-        label: 'Reddit',
-        href: 'https://www.reddit.com/user/sudo-tux',
-      },
-      {
-        label: 'Discord',
-        href: 'https://www.discordapp.com/channels/lycuid',
-      },
-    ]
-  }
+    title: 'linkedin',
+    href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170/',
+    iconProps: { color: '#0077bb', icon: faLinkedin }
+  },
+  {
+    title: 'twitter',
+    href: 'https://twitter.com/lycuid/',
+    iconProps: { color: '#1da1f2', icon: faTwitter }
+  },
+  {
+    title: 'reddit',
+    href: 'https://www.reddit.com/user/lycuid/',
+    iconProps: { color: '#ff4500', icon: faReddit }
+  },
+  {
+    title: 'discord',
+    href: 'https://www.discordapp.com/channels/~sudo/',
+    iconProps: { color: '#7289da', icon: faDiscord }
+  },
 ];
 
 
