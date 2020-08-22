@@ -30,7 +30,6 @@ const About: React.FC<AboutProps> = ({ autoType = false, ...props }) => {
 `}
           </pre>
         </h2>
-        <br />
         {promptText}{autoType && <BlockCursor />}
       </Pre>
     </StyledAbout>

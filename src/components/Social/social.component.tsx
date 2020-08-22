@@ -1,9 +1,13 @@
 import React from 'react';
-import StyledSocial, { LinkContainer, Link } from './social.style';
+import StyledSocial, {
+  SocialLinks,
+  IconLinkContainer,
+  IconLink
+} from './social.style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { SOCIAL_LINKS } from '../../configs';
 
-import Title from '../__pure__/Title/title.component';
 import { Anchor } from '../../utils/components';
 
 interface SocialProps extends React.HTMLAttributes<HTMLElement> { }
@@ -12,19 +16,25 @@ const Social: React.FC<SocialProps> = (props) => {
 
   return (<>
     <StyledSocial {...props} id={'social'}>
-      {SOCIAL_LINKS.map(({ title, subs }, i) => (<React.Fragment key={i}>
-      <Title>{title}</Title>
-      <LinkContainer>
-        {subs.map(({ label, href }, j) => (
-          <Link key={j}>
-            <Anchor title={label} href={href}>
-              {label}
+      <SocialLinks>
+        <li>
+          <Anchor
+            title={'personal git server'}
+            href={'https://git.lycuid.dev'}
+          >
+            Personal Git Server
+          </Anchor>
+        </li>
+      </SocialLinks>
+      <IconLinkContainer>
+        {SOCIAL_LINKS.map(({ title, href, iconProps }, i) => (
+          <IconLink key={i}>
+            <Anchor title={title} href={href}>
+              <FontAwesomeIcon {...iconProps} size={'1x'} />
             </Anchor>
-          </Link>
+          </IconLink>
         ))}
-      </LinkContainer>
-      <hr />
-      </React.Fragment>))}
+      </IconLinkContainer>
     </StyledSocial>
   </>);
 }

@@ -5,21 +5,22 @@ const StyledSocial = styled.section`
   box-sizing: border-box;
 
   display: flex;
+  flex: 1;
   flex-direction: column;
-}
 `;
 
-export const LinkContainer = styled.ul`
+export const SocialLinks = styled.ul`
   padding: 0;
   list-style-type: none;
-`;
+  flex: 1;
 
-export const Link = styled.li`
+  li {
     text-align: left;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
 
-  ::before {
+  li::before {
     content: '[ ]';
     font-weight: 100;
     color: var(--color-secondary);
@@ -28,9 +29,23 @@ export const Link = styled.li`
     text-shadow: none;
   }
 
-  :hover::before {
+  li:hover::before {
     content: '[*]';
   }
+`;
+
+export const IconLinkContainer = styled.ul`
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const IconLink = styled.li`
+  text-decoration: none;
+  margin: 0 2.5px;
+
+  a { border: none; }
 `;
 
 export default StyledSocial;

@@ -31,6 +31,7 @@ const GlobalCommStyle = createGlobalStyle`
   a {
     text-decoration: none;
     padding: 2.5px;
+    color: var(--color-primary);
 
     :hover {
       background-color: var(--link-hl-color);
