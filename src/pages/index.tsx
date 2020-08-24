@@ -27,7 +27,7 @@ const App: React.FC = () => {
       <GlobalIndexStyle />
       <RaceStyle />
 
-      <DualWarpGate open={warpGateOpen} />
+      {/* <DualWarpGate open={warpGateOpen} /> */}
       <StillInDevelopment />
 
       <Header />
