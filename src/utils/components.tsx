@@ -56,7 +56,7 @@ export const StillInDevelopment: React.FC = () => {
       alignItems: 'center',
       justifyContent: 'center',
     }}>
-      <span style={{
+      <aside style={{
         padding: '5px 10px',
         color: 'white',
         backgroundColor: 'dodgerblue',
@@ -69,7 +69,7 @@ export const StillInDevelopment: React.FC = () => {
         justifyContent: 'center',
       }}>
         &#x26A0;&nbsp;&nbsp;&nbsp;{'Still in development!.'}
-      </span>
+      </aside>
     </div>
   </>);
 }

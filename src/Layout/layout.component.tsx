@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import GlobalStyle from '../styles/global.style';
 
 import { PageWrapper } from './layout.style';
 import { ThemeProvider } from 'styled-components';
@@ -26,8 +25,15 @@ interface LayoutProps { }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [race, setRace] = useState<Race>(RACE.terran);
+  const [repos, setRepos] = useState(null);
 
   const [modalShow, setModalShow] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchJson(GITHUB.user_url)
+      .then(({ repos_url }) => fetchJson(repos_url))
+      .then(repos => setRepos(repos));
+  }, []);
 
   return (<>
     <ThemeProvider theme={() => {
@@ -37,9 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         default: return { race, ...RACE_PROPS.protoss }
       }
     }}>
-      <AppContext.Provider value={{ setRace, setModalShow }}>
-
-        <GlobalStyle />
+      <AppContext.Provider value={{ repos, setRace, setModalShow }}>
 
         <PageWrapper>
           <svg width={0} height={0}>
@@ -73,4 +77,5 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   </>);
 }
 
-export default ({ element }: { element: any }) => <Layout>{element}</Layout>;
+export default Layout;
+
