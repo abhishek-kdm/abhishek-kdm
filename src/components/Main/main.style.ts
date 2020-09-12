@@ -41,8 +41,8 @@ export const ScreenNavigation = styled.div`
   position: relative;
 `;
 
-export const FullscreenButton = styled.button`
-  --size: 22px;
+export const FullscreenButton = styled.span`
+  --size: 15px;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;

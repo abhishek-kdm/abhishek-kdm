@@ -91,6 +91,7 @@ const Main: React.FC<MainProps> = () => {
               onClick={() => { setFullscreen(true); }}
             />
             <FullscreenButton
+              as={'a'}
               style={{ right: '0' }}
               onClick={() => { navigate('/redpillout'); }}
             />

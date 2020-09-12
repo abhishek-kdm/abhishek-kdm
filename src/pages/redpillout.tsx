@@ -22,9 +22,7 @@ const Comm: React.FC<{}> = () => {
       <CommHeader as='header'>
         <small>
           [<Link to={'/'}>
-            <span style={{ textDecoration: 'line-through' }}>
-              bloated
-            </span> default version
+            back to bloat
           </Link>]
         </small>
       </CommHeader>
@@ -32,13 +30,13 @@ const Comm: React.FC<{}> = () => {
       <CommMain as='main'>
         <About /><br />
         <CommDetails open>
-          <CommSummary><strong>PROJECTS</strong></CommSummary>
-          <Projects />
-        </CommDetails><br />
-        <CommDetails open>
           <CommSummary><strong>SOCIAL</strong></CommSummary>
           <Social />
         </CommDetails>
+        <CommDetails open>
+          <CommSummary><strong>PROJECTS</strong></CommSummary>
+          <Projects />
+        </CommDetails><br />
       </CommMain>
     </CommWrapper>
   </>);

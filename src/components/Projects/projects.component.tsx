@@ -20,6 +20,8 @@ const displayRepo = (repo: any) => (
 interface ProjectsProps extends React.HTMLAttributes<HTMLElement>{ }
 
 const Projects: React.FC<ProjectsProps> = (props) => {
+  const { repos } = useContext(AppContext);
+
   return (<>
     <StyledProjects {...props} id={'projects'}>
       <Title>Live Web Apps</Title>
@@ -29,6 +31,15 @@ const Projects: React.FC<ProjectsProps> = (props) => {
             {'https://lycuid.dev/p/'}
           </Anchor>
         </li>
+      </ProjectsList>
+      <hr />
+      <Title>Github repos</Title>
+      <ProjectsList>
+      {repos && repos.map(({ name, description, language, html_url }) => (<>
+        <li>
+          <Anchor href={html_url} title={description}>{name}</Anchor> -- {language}
+        </li>
+      </>))}
       </ProjectsList>
     </StyledProjects>
   </>);
