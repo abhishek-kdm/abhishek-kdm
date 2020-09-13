@@ -28,10 +28,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Installing Yarn
+        run: curl -o- -L https://yarnpkg.com/install.sh | bash
+
       - name: Install dependencies and build website.
-        run: |
-          npm install
-          npm run build -- --prefix-paths
+        run: yarn install && yarn build --prefix-paths
 
       - name: Copy necessary files to build directory.
         run: cp .gitignore README.md $DEPLOY_DIRECTORY
