@@ -25,11 +25,11 @@ const Projects: React.FC<ProjectsProps> = (props) => {
       <hr />
       <Title>Github repos</Title>
       <ProjectsList>
-      {repos && repos.map(({ name, description, language, html_url }) => (<>
-        <li>
-          <Anchor key={name} href={html_url} title={description}>{name}</Anchor> -- {language}
+      {repos && repos.map(({ name, description, language, html_url }) => (
+        <li key={name}>
+          <Anchor href={html_url} title={description}>{name}</Anchor> -- {language}
         </li>
-      </>))}
+      ))}
       </ProjectsList>
     </StyledProjects>
   </>);
