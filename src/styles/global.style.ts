@@ -1,31 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Blink } from '../styles/global.animations';
 
 const GlobalStyle = createGlobalStyle(() => {
-  const { allFile } = useStaticQuery(graphql`
-    query {
-      allFile(filter: {sourceInstanceName: {eq: "fonts"}}) {
-        edges {
-          node {
-            name
-            publicURL
-            extension
-          }
-        }
-      }
-    }
-  `);
-
   return `
-    ${allFile.edges.map(({ node }: any) => `
-      @font-face {
-        font-family: "${node.name}";
-        src: local("${node.publicURL}"),
-          url("${node.publicURL}") format("${node.extension}");
-      }
-    `)}
-
     * {
       --container-max-width: 52.5rem;
     }

@@ -3,7 +3,6 @@ import React from 'react';
 import Helmet, { HelmetProps } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-
 interface HeadProps extends HelmetProps {
   description?: string
   absoluteTitle?: boolean
@@ -47,10 +46,6 @@ const Head: React.FC<HeadProps> = ({
       <meta name={`twitter:creator`} content={site.siteMetadata.author} />
       <meta name={`twitter:title`} content={title} />
       <meta name={`twitter:description`} content={description} />
-
-      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat&display=swap' />
-      <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap' />
-      <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap' />
 
       {children}
     </Helmet>

@@ -103,6 +103,5 @@ export const ABOUTME = `
 A Minimalist, software developer, old school boomer. Love Computers, video games (that sorta stuff).
 Believe in writing software, as if it is the 80's.
 Not a big fan of the current state of web development, yet a web developer I am (by profession).
-Coding hobbies (other than coding competitions) includes, system software dev and game development.
-`;
+Coding hobbies (other than coding competitions) includes, system software dev and game development.`;
 

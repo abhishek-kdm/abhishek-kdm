@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from '@reach/router';
 
-import HyperdriveComponent from '../components/__pure__/Hyperdrive/hyperdrive.component';
-import { DualWarpGate } from '../components/__pure__/Warpgate/warpgate.component';
+import HyperdriveComponent from '../../components/__pure__/Hyperdrive/hyperdrive.component';
+import { DualWarpGate } from '../../components/__pure__/Warpgate/warpgate.component';
 
-import { WARPGATE_ACTION_TIME, WARPGATES_OPEN_DELAY } from '../configs';
-import Head from '../head';
+import { WARPGATE_ACTION_TIME, WARPGATES_OPEN_DELAY } from '../../configs';
+import Head from '../../head';
 
 
 interface ExploreProps { }
