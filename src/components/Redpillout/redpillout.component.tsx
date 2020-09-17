@@ -10,9 +10,9 @@ import GlobalCommStyle, {
 } from './redpillout.style';
 
 import Head from '../../head';
-import About from '../../components/About/about.component';
-import Projects from '../../components/Projects/projects.component';
-import Social from '../../components/Social/social.component';
+import About from '../About/about.component';
+import Projects from '../Projects/projects.component';
+import Social from '../Social/social.component';
 
 const Comm: React.FC<{}> = () => {
   const { allFile } = useStaticQuery(

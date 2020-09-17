@@ -1,3 +1,2 @@
-export { default } from './home/home.component';
-
+export { default } from '../components/Home/home.component';
 

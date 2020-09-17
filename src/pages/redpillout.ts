@@ -1,2 +1,2 @@
-export { default } from './redpillout/redpillout.component';
+export { default } from '../components/Redpillout/redpillout.component';
 

@@ -5,13 +5,13 @@ import RaceStyle from '../../styles/race.style';
 import { HomeContext } from '../../context';
 import { WARPGATE_ACTION_TIME } from '../../configs';
 
-import { DualWarpGate } from '../../components/__pure__/Warpgate/warpgate.component';
+import { DualWarpGate } from '../__pure__/Warpgate/warpgate.component';
 
 import { StillInDevelopment } from '../../utils/components';
 import Head from '../../head';
-import Header from '../../components/Header/header.component';
-import Main from '../../components/Main/main.component';
-import Footer from '../../components/Footer/footer.component';
+import Header from '../Header/header.component';
+import Main from '../Main/main.component';
+import Footer from '../Footer/footer.component';
 
 
 const Home: React.FC = () => {

@@ -1,2 +1,2 @@
-export { default } from './explore/explore.component';
+export { default } from '../components/Explore/explore.component';
 
