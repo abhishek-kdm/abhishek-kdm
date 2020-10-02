@@ -7,7 +7,7 @@ import GlobalCommStyle, {
   CommMain,
   CommDetails,
   CommSummary,
-} from './redpillout.style';
+} from './redpilled.style';
 
 import Head from '../../head';
 import About from '../About/about.component';
@@ -30,7 +30,6 @@ const Comm: React.FC<{}> = () => {
       }
     `
   );
-
 
   return (<>
   <Head
