@@ -10,6 +10,13 @@ interface AboutProps extends React.HTMLAttributes<HTMLElement> {
   autoType?: boolean
 }
 
+// {` __                _ ____
+// |  |   _ _ ___ _ _|_|    \\
+// |  |__| | |  _| | | |  |  |
+// |_____|_  |___|___|_|____/
+//       |___|
+// `}
+
 const About: React.FC<AboutProps> = ({ autoType = false, ...props }) => {
   const promptText = useAutoTyper(
     ABOUTME,
@@ -22,12 +29,6 @@ const About: React.FC<AboutProps> = ({ autoType = false, ...props }) => {
       <Pre>
         <h2 style={{ margin: '0' }}>
           <pre style={{ fontFamily: 'monospace', margin: '0' }}>
-{` __                _ ____    
-|  |   _ _ ___ _ _|_|    \\   
-|  |__| | |  _| | | |  |  |  
-|_____|_  |___|___|_|____/   
-      |___|                  
-`}
           </pre>
         </h2>
         {promptText}{autoType && <BlockCursor />}
