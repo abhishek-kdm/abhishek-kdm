@@ -54,16 +54,3 @@ export const useCurrentDate = () => {
   return time;
 }
 
-export const useNavigationTabs = <T extends { [index: string]: any }>(
-  items: T[],
-  selector: string
-) => {
-  const [selection, setSelection] = useState<string>(items[0][selector]);
-
-  const selectedItem = useMemo(() => (
-    items.find((i: T) => i[selector] === selection)
-  ), [selector, items, selection]);
-
-  return { selectedItem, selection, setSelection };
-}
-

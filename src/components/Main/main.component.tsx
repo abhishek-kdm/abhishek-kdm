@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import StyledMain, {
   MainWrapper,
   ScreenWrapper,
@@ -19,7 +19,6 @@ import StyledMain, {
 
 import { navigate } from '@reach/router';
 
-import { useNavigationTabs } from '../../utils/hooks';
 import { navbarItems } from '../../Layout/configs';
 
 import Nav from '../Nav/nav.component';
@@ -34,17 +33,16 @@ import Statusbar from '../__pure__/Statusbar/statusbar.component';
 interface MainProps { }
 
 const Main: React.FC<MainProps> = () => {
-  // controls open/close of the warpgaetes.
-  const {
-    selectedItem,
-    selection,
-    setSelection
-  } = useNavigationTabs<NavbarItem>(navbarItems, 'label');
-
   const [noSignal, setNoSignal] = useState<boolean>(false);
   const [angle, setAngle] = useState<number>(45);
-  const [clickedItem, setClickedItem] = useState<string>(selection);
   const [fullscreen, setFullscreen] = useState<boolean>(false);
+
+  const [clickedItem, setClickedItem] = useState<string>(navbarItems[0].label);
+  const [selectedScreen, setSelectedScreen] = useState<string>(navbarItems[0].label);
+
+  const selectedItem = useMemo(() => (
+    navbarItems.filter(({ label }) => label === selectedScreen)[0]
+  ), [selectedScreen]);
 
   // adding `disabled` for avoiding clicks before 'no signal'
   // action is completed.
@@ -56,15 +54,15 @@ const Main: React.FC<MainProps> = () => {
   }, [noSignal]);
 
   useEffect(() => {
-    setSelection((c) => noSignal ? clickedItem : c);
-  }, [setSelection, noSignal, clickedItem]);
+    setSelectedScreen((c) => noSignal ? clickedItem : c);
+  }, [setSelectedScreen, noSignal, clickedItem]);
 
   useEffect(() => {
     let t = setTimeout(() => {
       setNoSignal(false);
     }, 300);
     return () => { clearTimeout(t); }
-  }, [selection, setNoSignal]);
+  }, [clickedItem, setNoSignal]);
 
   useEffect(() => { setNoSignal(true); }, [clickedItem, setNoSignal]);
 
@@ -76,13 +74,18 @@ const Main: React.FC<MainProps> = () => {
             <Screen>
               {noSignal && <NoSignal />}
               <CRTScanLines />
-              <ScreenDisplay scrollable>
-                <Prompt>
-                  {selectedItem && selectedItem.titlePrompt}
-                </Prompt>
-                {selectedItem && <selectedItem.component {...selectedItem.args} />}
-              </ScreenDisplay>
-              <Statusbar id='statusbar' info={selection} />
+              {navbarItems.map(({label, component, args, titlePrompt}, k) => (
+                <ScreenDisplay scrollable
+                  key={k}
+                  style={{
+                    display: label === selectedScreen ? 'flex' : 'None'
+                  }}
+                >
+                  <Prompt>{titlePrompt}</Prompt>
+                  {component(args)}
+                </ScreenDisplay>
+              ))}
+              <Statusbar id='statusbar' info={selectedScreen} />
             </Screen>
           </ScreenWrapper>
           <div style={{ margin: '0 20px', position: 'relative' }}>
