@@ -15,10 +15,10 @@ import Projects from '../Projects/projects.component';
 import Social from '../Social/social.component';
 
 const Comm: React.FC<{}> = () => {
-  const { allFile } = useStaticQuery(
+  const { fonts } = useStaticQuery(
     graphql`
       query {
-        allFile(filter: {sourceInstanceName: {eq: "fonts"}}) {
+        fonts: allFile(filter: {sourceInstanceName: {eq: "fonts"}}) {
           edges {
             node {
               name
@@ -32,27 +32,27 @@ const Comm: React.FC<{}> = () => {
   );
 
   return (<>
-  <Head
-    style={[{
-      cssText: `
-        ${allFile.edges.map(({ node }: any) => `
-          @font-face {
-            font-family: "${node.name}";
-            src: local("${node.publicURL}"),
-              url("${node.publicURL}") format("${node.extension}");
-          }
-        `)}
-      `
-    }]}
-  />
+    <Head
+      style={[{
+        cssText: `
+          ${fonts.edges.map(({ node }: any) => `
+            @font-face {
+              font-family: "${node.name}";
+              src: local("${node.publicURL}"),
+                url("${node.publicURL}") format("${node.extension}");
+            }
+          `)}
+        `
+      }]}
+    />
     <GlobalCommStyle />
 
     <CommWrapper>
-      <CommHeader as='header'>
+      <CommHeader>
         <small>
-          [<Link to={'/'}>
-            back to bloat
-          </Link>]
+          <Link to={'/'}>
+            [bloated version]
+          </Link>
         </small>
       </CommHeader>
       <br />

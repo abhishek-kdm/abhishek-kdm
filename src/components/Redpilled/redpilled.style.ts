@@ -3,24 +3,25 @@ import { Container } from '../../styles/global.style';
 
 const GlobalCommStyle = createGlobalStyle(() => {
   return `
+    ::selection {
+      background-color: orange;
+    }
+
     :root {
-      --color-primary:      #a0a0f7;
+      --color-primary:      #e4d8b4;
       --color-secondary:    #202020;
-      --color-bg-primary:   #4638a6;
+      --color-bg-primary:   #3867d6;
       --color-bg-secondary: #c5c5c5;
 
-      --link-hl-color:      #00b894;
+      --link-hl-color:      mediumaquamarine;
 
       --title-fg:           var(--color-secondary);
       --title-bg:           var(--color-bg-secondary);
       --title-pseudo:       var(--color-bg-secondary);
-
-      --aspect-ratio
     }
 
     * {
       font-family: DOS_VGA_437;
-      font-weight: 700;
     }
 
     hr {
@@ -44,7 +45,6 @@ const GlobalCommStyle = createGlobalStyle(() => {
 
 export const CommWrapper = styled.div`
   flex: 1;
-  padding: 10px;
   color: var(--color-primary);
   background-color: var(--color-bg-primary);
 `;
@@ -106,9 +106,14 @@ export const CommSummary = styled.summary`
   }
 `;
 
-export const CommHeader = styled(Container)`
+export const CommHeader = styled.header`
   text-align: right;
+  padding: 3px;
+  background-color: var(--color-secondary);
+
+  * { color: var(--color-primary); }
 `;
+
 export const CommMain = styled(Container)`
   & *:not(svg):not(path) {
     line-height: 1.2rem;
