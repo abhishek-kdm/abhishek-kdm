@@ -11,4 +11,3 @@ export const PageWrapper = styled.div`
   background-image: url("${({ theme }) => getBackground(theme.backgroundColor)}");
 `;
 
-

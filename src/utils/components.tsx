@@ -1,9 +1,6 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 
-import Loader from '../components/__pure__/Loader/loader.component';
-
-
 interface AnchorProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> { }
 
@@ -72,13 +69,5 @@ export const StillInDevelopment: React.FC = () => {
       </aside>
     </div>
   </>);
-}
-
-export const withLazy: (c: React.FC) => React.FC<{}> = (Child) => {
-  return () => (
-    <Suspense fallback={<Loader />}>
-      <Child />
-    </Suspense>
-  );
 }
 

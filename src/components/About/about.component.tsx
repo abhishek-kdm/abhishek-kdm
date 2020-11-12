@@ -10,13 +10,6 @@ interface AboutProps extends React.HTMLAttributes<HTMLElement> {
   autoType?: boolean
 }
 
-// {` __                _ ____
-// |  |   _ _ ___ _ _|_|    \\
-// |  |__| | |  _| | | |  |  |
-// |_____|_  |___|___|_|____/
-//       |___|
-// `}
-
 const About: React.FC<AboutProps> = ({ autoType = false, ...props }) => {
   const promptText = useAutoTyper(
     ABOUTME,
