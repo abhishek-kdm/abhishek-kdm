@@ -55,5 +55,31 @@ export const BlockCursor = styled.span`
   }
 `;
 
+export const RetroList = styled.ul`
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  li::before {
+    content: '[ ]';
+    font-weight: 100;
+    color: var(--color-secondary);
+    padding-right: 1rem;
+    padding-left: .5rem;
+    text-shadow: none;
+  }
+
+  li:hover::before {
+    content: '[*]';
+  }
+`;
+
 export default GlobalStyle;
 

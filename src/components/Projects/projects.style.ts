@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RetroList } from '../../styles/global.style';
 
 const StyledProjects = styled.section`
   box-sizing: border-box;
@@ -8,31 +9,7 @@ const StyledProjects = styled.section`
   flex-direction: column;
 `;
 
-
-export const ProjectsList = styled.ul`
-  padding: 0;
-  list-style-type: none;
-
-  li {
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  li::before {
-    content: '[ ]';
-    font-weight: 100;
-    color: var(--color-secondary);
-    padding-right: 1rem;
-    padding-left: .5rem;
-    text-shadow: none;
-  }
-
-  li:hover::before {
-    content: '[*]';
-  }
-`;
-
+export const ProjectsList = styled(RetroList)``;
 
 export default StyledProjects;
 
