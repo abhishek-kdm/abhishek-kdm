@@ -1,5 +1,6 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import CommHead from './redpilled.head';
+import { Link } from 'gatsby';
 
 import GlobalCommStyle, {
   CommWrapper,
@@ -9,43 +10,14 @@ import GlobalCommStyle, {
   CommSummary,
 } from './redpilled.style';
 
-import Head from '../../head';
 import About from '../About/about.component';
 import Projects from '../Projects/projects.component';
 import Social from '../Social/social.component';
 
 const Comm: React.FC<{}> = () => {
-  const { fonts } = useStaticQuery(
-    graphql`
-      query {
-        fonts: allFile(filter: {sourceInstanceName: {eq: "fonts"}}) {
-          edges {
-            node {
-              name
-              publicURL
-              extension
-            }
-          }
-        }
-      }
-    `
-  );
-
   return (<>
-    <Head
-      style={[{
-        cssText: `
-          ${fonts.edges.map(({ node }: any) => `
-            @font-face {
-              font-family: "${node.name}";
-              src: local("${node.publicURL}"),
-                url("${node.publicURL}") format("${node.extension}");
-            }
-          `)}
-        `
-      }]}
-    />
     <GlobalCommStyle />
+    <CommHead />
 
     <CommWrapper>
       <CommHeader>

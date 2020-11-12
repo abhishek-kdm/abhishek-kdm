@@ -90,11 +90,11 @@ const Main: React.FC<MainProps> = () => {
           </ScreenWrapper>
           <div style={{ margin: '0 20px', position: 'relative' }}>
             <FullscreenButton
-              style={{ left: '0', backgroundColor: '#000080' }}
+              color={'#000080'}
+              style={{ left: '0' }}
               onClick={() => { setFullscreen(true); }}
             />
             <FullscreenButton
-              as={'a'}
               style={{ right: '0' }}
               onClick={() => { navigate('/redpilled'); }}
             />

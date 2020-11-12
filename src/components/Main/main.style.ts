@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { ScanLines } from './main.animations';
 import { toDataImageScheme, range } from '../../utils';
 
@@ -41,12 +41,12 @@ export const ScreenNavigation = styled.div`
   position: relative;
 `;
 
-export const FullscreenButton = styled.span`
+export const FullscreenButton = styled.span<{ color?: string }>`
   --size: 15px;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  background-color: red;
+  background-color: ${({ color }) => color || 'red'};
   border: 4px solid var(--retro-border-color);
   position: absolute;
   top: -12px;
@@ -92,9 +92,13 @@ export const Screen = styled.div`
   -webkit-clip-path: url(#screen-curve);
   clip-path:         url(#screen-curve);
 
-  *:not(svg) {
-    font-family: "Roboto Mono";
+  * {
+    font-family: "RobotoMono";
     font-size: .8rem;
+  }
+
+  * svg {
+    font-size: 1rem;
   }
 
   ${StyledStatusbar} {

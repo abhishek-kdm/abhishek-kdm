@@ -33,3 +33,12 @@ export const getBackground = (color: string) => {
 export const toDataImageScheme = (component: React.ReactElement) => {
   return `data:image/svg+xml,${encodeURIComponent(renderToStaticMarkup(component))}`;
 }
+
+export const fontFaceString = ({ node }: any) => `
+@font-face {
+  font-family: "${node.name}";
+  src: local("${node.publicURL}"),
+    url("${node.publicURL}") format("${node.extension}");
+}
+`;
+

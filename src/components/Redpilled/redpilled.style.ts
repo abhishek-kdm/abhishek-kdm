@@ -61,7 +61,7 @@ export const CommDetails = styled.details`
   & > section {
     border: 2px solid var(--color-secondary);
     border-top: none;
-    padding: 10px 10px 0;
+    padding: 10px 10px;
   }
 
   &[open] {
