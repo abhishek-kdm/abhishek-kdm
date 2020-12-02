@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         default: return { race, ...RACE_PROPS.protoss }
       }
     }}>
-      <AppContext.Provider value={{ repos, setRace, setModalShow }}>
+      <AppContext.Provider value={{ repos, race, setRace, setModalShow }}>
 
         <PageWrapper>
           <svg width={0} height={0}>

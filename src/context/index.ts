@@ -1,7 +1,8 @@
 import { createContext } from 'react';
 
 export interface IAppContext {
-  repos: Maybe<any[]>,
+  repos: Maybe<any[]>
+  race: Race
   setRace: React.Dispatch<React.SetStateAction<Race>>
   setModalShow: React.Dispatch<React.SetStateAction<boolean>>
 }

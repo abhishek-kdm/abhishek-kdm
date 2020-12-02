@@ -82,7 +82,6 @@ export const DualWarpGate: React.FC<DualWarpGateProps> = ({ open }) => {
     setOpenV((state) => open && state);
   }, [open]);
 
-
   const onVerticalClose = useCallback(() => { setOpenH(false); }, [setOpenH]);
   const onHorizonatlOpen = useCallback(() => { setOpenV(true); }, [setOpenV]);
 
@@ -96,7 +95,6 @@ export const DualWarpGate: React.FC<DualWarpGateProps> = ({ open }) => {
     <Warpgate {...attrs('horizontal')} onOpen={onHorizonatlOpen} />
   </>);
 }
-
 
 export default Warpgate;
 

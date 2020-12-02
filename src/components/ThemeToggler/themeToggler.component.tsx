@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
+import StyledThemeToggler from './themeToggler.style';
 
 import { ThemeContext } from 'styled-components';
 import Toggler from '../__pure__/Toggler/toggler.component';
 import { AppContext } from '../../context';
-
 
 interface ThemeTogglerProps { }
 
@@ -19,9 +19,9 @@ const ThemeToggler: React.FC<ThemeTogglerProps> = () => {
   useEffect(() => { document.body.className = theme.race; }, [theme.race]);
 
   return (<>
-    <div id={'theme-toggler'}>
+    <StyledThemeToggler id={'theme-toggler'}>
       <Toggler onSwitch={(themeName) => { setRace && setRace(themeName); }} />
-    </div>
+    </StyledThemeToggler>
   </>);
 }
 

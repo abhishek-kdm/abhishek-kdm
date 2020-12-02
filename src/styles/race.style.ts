@@ -1,28 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const RaceStyling = createGlobalStyle`
-  /* * {
-    --transition-properties: color, background-color, box-shadow, background-image, border;
-
-    --transition-duration: .15s;
-    --transition-time-function: ease-out;
-
-    -webkit-transition-property: var(--transition-properties);
-    -moz-transition-property:    var(--transition-properties);
-    -o-transition-property:      var(--transition-properties);
-    transition-property:         var(--transition-properties);
-
-    -webkit-transition-duration: var(--transition-duration);
-    -moz-transition-duration: var(--transition-duration);
-    -o-transition-duration: var(--transition-duration);
-    transition-duration: var(--transition-duration);
-
-    -webkit-transition-timing-function: var(--transition-time-fuinction);
-    -moz-transition-timing-function: var(--transition-time-fuinction);
-    -o-transition-timing-function: var(--transition-time-fuinction);
-    transition-timing-function: var(--transition-time-fuinction);
-  } */
-
   body {
     --title-fg:               var(--color-bg-primary);
     --title-bg:               var(--color-primary);

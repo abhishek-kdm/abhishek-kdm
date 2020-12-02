@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import HomeHead from './home.head';
 import GlobalIndexStyle from './home.style';
 import RaceStyle from '../../styles/race.style';
 
-import { HomeContext } from '../../context';
-import { WARPGATE_ACTION_TIME } from '../../configs';
+import { AppContext, HomeContext } from '../../context';
+import { RACE, WARPGATE_ACTION_TIME } from '../../configs';
 
 import { DualWarpGate } from '../__pure__/Warpgate/warpgate.component';
 
@@ -13,8 +13,8 @@ import Header from '../Header/header.component';
 import Main from '../Main/main.component';
 import Footer from '../Footer/footer.component';
 
-
 const Home: React.FC = () => {
+  const { race } = useContext(AppContext);
   const [warpGateOpen, setWarpGateOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       <RaceStyle />
 
       <DualWarpGate open={warpGateOpen} />
-      <StillInDevelopment />
+      {race === RACE.protoss && <StillInDevelopment />}
 
       <Header />
       <Main />

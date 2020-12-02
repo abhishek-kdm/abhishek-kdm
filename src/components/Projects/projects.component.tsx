@@ -17,9 +17,11 @@ const Projects: React.FC<ProjectsProps> = (props) => {
       <Title>Live Web Apps</Title>
       <ProjectsList>
         <li>
-          <Anchor href={'/p'} title={'Live Web Apps'}>
-            {'https://lycuid.dev/p/'}
-          </Anchor>
+          <span>
+            <Anchor href={'/p'} title={'Live Web Apps'}>
+              {'https://lycuid.dev/p/'}
+            </Anchor>
+          </span>
         </li>
       </ProjectsList>
       <hr />

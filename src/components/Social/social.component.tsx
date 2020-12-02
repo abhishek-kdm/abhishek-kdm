@@ -20,32 +20,38 @@ const Social: React.FC<SocialProps> = (props) => {
       <Title>Important</Title>
       <SocialLinks>
         <li>
-          <Anchor
-            title={'personal git server'}
-            href={'https://git.lycuid.dev'}
-          >
-            Personal Git Server
-          </Anchor>
+          <span>
+            <Anchor
+              title={'personal git server'}
+              href={'https://git.lycuid.dev'}
+            >
+              Personal Git Server.
+            </Anchor>
+          </span>
         </li>
         <li>
-          <Anchor
-            title={'Professional experience.'}
-            href={'/p/aboutme'}
-          >
-            Professional experience.
-          </Anchor>
+          <span>
+            <Anchor
+              title={'Professional experience.'}
+              href={'/p/aboutme'}
+            >
+              Professional experience.
+            </Anchor>
+          </span>
         </li>
       </SocialLinks>
 
       <Title>Alternatives</Title>
       <SocialLinks>
         <li>
-          <Anchor
-            title={'My Gopherspace'}
-            href={`https://gopher.floodgap.com/gopher/gw?a=${encodeURIComponent('gopher://lycuid.dev')}`}
-          >
-            gopher://lycuid.dev:70
-          </Anchor>
+          <span>
+            <Anchor
+              title={'My Gopherspace'}
+              href={`https://gopher.floodgap.com/gopher/gw?a=${encodeURIComponent('gopher://lycuid.dev')}`}
+            >
+              gopher://lycuid.dev:70
+            </Anchor>
+          </span>
         </li>
         <li>telnet lycuid.dev:23</li>
       </SocialLinks>
@@ -57,9 +63,11 @@ const Social: React.FC<SocialProps> = (props) => {
         <IconLinkContainer>
           {SOCIAL_LINKS.map(({ title, href, iconProps }, i) => (
             <IconLink key={i}>
-              <Anchor title={title} href={href}>
-                <FontAwesomeIcon {...iconProps} size={'1x'} />
-              </Anchor>
+              <span>
+                <Anchor title={title} href={href}>
+                  <FontAwesomeIcon {...iconProps} size={'1x'} />
+                </Anchor>
+              </span>
             </IconLink>
           ))}
         </IconLinkContainer>
