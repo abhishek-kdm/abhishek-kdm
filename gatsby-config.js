@@ -1,10 +1,16 @@
 const { resolve } = require('path');
 
+const description = `A Minimalist, software developer, old school boomer. Love Computers, video games (that sorta stuff).
+Believe in writing software, as if it is the 80's.
+Not a big fan of the current state of web development, yet a web developer I am (by profession).
+Coding hobbies (other than coding competitions) includes, system software dev and game development.`;
+
 module.exports = {
   siteMetadata: {
     title: `LycuiD`,
-    description: `Simply computers, video games, food etc.`,
+    subtitle: `Simply computers, video games, food etc.`,
     author: `@lycuid`,
+    description,
   },
   assetPrefix: `https://cdn.lycuid.dev`,
   plugins: [

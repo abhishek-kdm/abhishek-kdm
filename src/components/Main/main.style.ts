@@ -79,6 +79,7 @@ export const Screen = styled.div`
 
   background-color: var(--color-primary-opacity);
   background-image:
+    linear-gradient(to bottom, ${range(50, (_, i) => i % 2 == 0 ? 'transparent' : 'rgba(255, 255, 255, .025)' ).join(', ')}),
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow)),
     linear-gradient(to right, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
   text-shadow: 1px 1px 3px var(--color-primary);

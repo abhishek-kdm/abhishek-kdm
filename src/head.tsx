@@ -21,6 +21,7 @@ const Head: React.FC<HeadProps> = ({
         site {
           siteMetadata {
             title
+            subtitle
             description
             author
           }
@@ -30,7 +31,7 @@ const Head: React.FC<HeadProps> = ({
   );
 
   title = title || site.siteMetadata.title
-  description = description || site.siteMetadata.description;
+  description = description || site.siteMetadata.subtitle;
 
   return (
     <Helmet {...rest}

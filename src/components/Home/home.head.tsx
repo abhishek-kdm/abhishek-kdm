@@ -20,7 +20,7 @@ const HomeHead: React.FC = () => {
   `);
 
   return (<>
-    <Head style={[{ cssText: fonts.map(fontFaceString).join("") }]} />
+    <Head style={[{ cssText: fonts.map(fontFaceString).join('') }]} />
   </>);
 }
 

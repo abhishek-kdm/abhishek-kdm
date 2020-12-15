@@ -8,7 +8,6 @@ import { Cspan } from '../../utils/components';
 import { RACE } from '../../configs';
 import { ThemeContext } from 'styled-components';
 
-
 interface FooterProps { }
 
 const Footer: React.FC<FooterProps> = () => {
