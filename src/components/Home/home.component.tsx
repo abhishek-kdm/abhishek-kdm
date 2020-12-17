@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { PageProps as GatsbyPageProps, navigate } from 'gatsby';
+
 import HomeHead from './home.head';
 import GlobalIndexStyle from './home.style';
 import RaceStyle from '../../styles/race.style';
@@ -13,9 +15,18 @@ import Header from '../Header/header.component';
 import Main from '../Main/main.component';
 import Footer from '../Footer/footer.component';
 
-const Home: React.FC = () => {
+
+interface HomeProps extends GatsbyPageProps { }
+
+const Home: React.FC<HomeProps> = ({ location }) => {
   const { race } = useContext(AppContext);
-  const [warpGateOpen, setWarpGateOpen] = useState<boolean>(false);
+  const [warpGateOpen, setWarpGateOpen] = useState<boolean>(
+    !(location.state as any)?.dock
+  );
+
+  useEffect(() => {
+    if ((location.state as any)?.dock) navigate('.', { replace: true });
+  }, [location.state]);
 
   useEffect(() => {
     setTimeout(() => { setWarpGateOpen(true); }, WARPGATE_ACTION_TIME);

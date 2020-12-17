@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-
-import { PageWrapper } from './layout.style';
 import { ThemeProvider } from 'styled-components';
 
-import Modal from '../components/__pure__/Modal/modal.component';
-import InfoBox from '../components/__pure__/InfoBox/infoBox.component';
+import { PageWrapper } from './layout.style';
+
 import WarpDoorSVGDefs from '../components/__pure__/Warpgate/WarpDoors/terran.warpdoors';
+import GlobalSVGFilters from '../components/__pure__/SVG/Filters';
 
 import { AppContext } from '../context';
 import { GITHUB, RACE, RACE_PROPS } from '../configs';
 import { fetchJson } from '../utils';
-import { Cspan } from '../utils/components';
-import GlobalSVGFilters from '../components/__pure__/SVG/Filters';
 
 import 'styled-components';
 
@@ -25,9 +22,7 @@ interface LayoutProps { }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [race, setRace] = useState<Race>(RACE.terran);
-  const [repos, setRepos] = useState(null);
-
-  const [modalShow, setModalShow] = useState<boolean>(false);
+  const [repos, setRepos] = useState<any>(null);
 
   useEffect(() => {
     fetchJson(GITHUB.user_url)
@@ -43,34 +38,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         default: return { race, ...RACE_PROPS.protoss }
       }
     }}>
-      <AppContext.Provider value={{ repos, race, setRace, setModalShow }}>
-
+      <AppContext.Provider value={{ repos, race, setRace }}>
         <PageWrapper>
           <svg width={0} height={0}>
             <WarpDoorSVGDefs />
             <GlobalSVGFilters />
           </svg>
           {children}
-          <Modal
-            show={modalShow}
-            closeFunc={() => { setModalShow(false); }}
-          >
-            <InfoBox animate={true} style={{ textAlign: 'center' }}>
-              <div>
-                <Cspan color={'white'}>{'`arrows`.'}</Cspan><br />
-              </div>
-              <div>
-                To go faster in&nbsp;
-                <Cspan color={'white'}>{'`space`'}</Cspan>
-                , push it.<br />
-              </div>
-              <div>
-                to&nbsp;
-                <Cspan color={'white'}>{'`escape`'}</Cspan>
-                , just do so.<br />
-              </div>
-            </InfoBox>
-          </Modal>
         </PageWrapper>
       </AppContext.Provider>
     </ThemeProvider>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { navigate } from 'gatsby';
+
 import StyledMain, {
   MainWrapper,
   ScreenWrapper,
@@ -16,8 +18,6 @@ import StyledMain, {
   NavButton,
   FullscreenModal,
 } from './main.style';
-
-import { navigate } from '@reach/router';
 
 import { navbarItems } from '../../Layout/configs';
 

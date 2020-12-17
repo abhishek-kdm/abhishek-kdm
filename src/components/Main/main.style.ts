@@ -266,7 +266,7 @@ export const FullscreenModal = styled(InfoBox)`
   padding: 0;
 
   *:not(svg) {
-    font-family: "Roboto Mono";
+    font-family: "Roboto Mono"!important;
     font-size: .8rem;
   }
 `;

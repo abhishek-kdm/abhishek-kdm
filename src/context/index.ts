@@ -4,7 +4,6 @@ export interface IAppContext {
   repos: Maybe<any[]>
   race: Race
   setRace: React.Dispatch<React.SetStateAction<Race>>
-  setModalShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const AppContext = createContext<Partial<IAppContext>>({});
 
