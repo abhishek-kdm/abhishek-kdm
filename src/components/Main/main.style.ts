@@ -79,7 +79,7 @@ export const Screen = styled.div`
 
   background-color: var(--color-primary-opacity);
   background-image:
-    linear-gradient(to bottom, ${range(50, (_, i) => i % 2 == 0 ? 'transparent' : 'rgba(255, 255, 255, .025)' ).join(', ')}),
+    linear-gradient(to bottom, ${range(50, (_, i) => i % 2 == 0 ? 'transparent' : 'rgba(255, 255, 255, .025)').join(', ')}),
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow)),
     linear-gradient(to right, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
   text-shadow: 1px 1px 3px var(--color-primary);
@@ -94,7 +94,7 @@ export const Screen = styled.div`
   clip-path:         url(#screen-curve);
 
   * {
-    font-family: "RobotoMono";
+    font-family: RobotoMono;
     font-size: .8rem;
   }
 
@@ -195,9 +195,7 @@ export const VolumeButton = styled.div<{ angle?: Maybe<number> }>`
     border-radius: 50px;
     box-shadow: var(--retro-shadow);
 
-    ${({ angle }) => angle ? `
-      transform: rotate(${angle}deg);
-    ` : ''}
+    ${({ angle }) => angle ? `transform: rotate(${angle}deg);` : ''}
   }
 `;
 
@@ -266,7 +264,7 @@ export const FullscreenModal = styled(InfoBox)`
   padding: 0;
 
   *:not(svg) {
-    font-family: "Roboto Mono"!important;
+    font-family: RobotoMono;
     font-size: .8rem;
   }
 `;

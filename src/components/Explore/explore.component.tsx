@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { PageProps as GatsbyPageProps, navigate } from 'gatsby';
 
 import HyperdriveComponent from '../__pure__/Hyperdrive/hyperdrive.component';
@@ -28,7 +29,7 @@ const Explore: React.FC<ExploreProps> = () => {
         e.preventDefault();
 
         const navigateDelay = WARPGATE_ACTION_TIME + (WARPGATES_OPEN_DELAY * 2);
-        setTimeout(() => { navigate('/', { state: { dock: true } }); }, navigateDelay);
+        setTimeout(() => { navigate('/', { state: { docking: true } }); }, navigateDelay);
         setWarpGateOpen(false);
       }
     }
@@ -51,21 +52,22 @@ const Explore: React.FC<ExploreProps> = () => {
 
     <Modal
       show={modalShow}
+      opacity={.75}
       closeFunc={() => { setModalShow(false); }}
     >
-      <InfoBox animate={true} style={{ textAlign: 'center' }}>
+      <InfoBox animate={true} style={{ textAlign: 'center', border: '1px solid dodgerblue' }}>
         <div>
           <Cspan color={'white'}>{'`arrows`.'}</Cspan><br />
         </div>
         <div>
-          To go faster in&nbsp;
+          <Cspan color={'dodgerblue'}>To go faster in&nbsp;</Cspan>
           <Cspan color={'white'}>{'`space`'}</Cspan>
-          , push it.<br />
+          <Cspan color={'dodgerblue'}>, push it.</Cspan><br />
         </div>
         <div>
-          to&nbsp;
+          <Cspan color={'dodgerblue'}>to&nbsp;</Cspan>
           <Cspan color={'white'}>{'`escape`'}</Cspan>
-          , just do so.<br />
+          <Cspan color={'dodgerblue'}>, just do so.</Cspan><br />
         </div>
       </InfoBox>
     </Modal>

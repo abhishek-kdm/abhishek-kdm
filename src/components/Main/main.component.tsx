@@ -44,8 +44,7 @@ const Main: React.FC<MainProps> = () => {
     navbarItems.filter(({ label }) => label === selectedScreen)[0]
   ), [selectedScreen]);
 
-  // adding `disabled` for avoiding clicks before 'no signal'
-  // action is completed.
+  // adding `disabled` for avoiding clicks before 'no signal' action is completed.
   const liClassName = useCallback((label, otherLabel) => {
     return ([] as string[])
       .concat(label === otherLabel ? ['active'] : [])

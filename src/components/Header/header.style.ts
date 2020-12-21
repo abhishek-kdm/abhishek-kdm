@@ -29,13 +29,13 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const Brand = styled.label`
-  font-family: "RockSalt";
+  font-family: RockSalt;
   text-shadow: 2px 2px 50px var(--color-primary);
   position: relative;
 
   ::after {
     content: "lycuid";
-    font-family: "RockSalt";
+    font-family: RockSalt;
     background: linear-gradient(transparent 42.5%, var(--color-primary) 100%);
 
     -webkit-background-clip: text;
@@ -46,6 +46,13 @@ export const Brand = styled.label`
     top: .7em;
     transform: rotateX(155deg);
   }
+`;
+
+export const RocketImgWrapper = styled.span`
+  transform: rotate(45deg);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const RocketImg = styled.img`

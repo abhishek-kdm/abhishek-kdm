@@ -6,6 +6,7 @@ const StyledTitle = styled.div`
   color: var(--title-fg);
   font-weight: 700;
   display: flex;
+  text-shadow: none!important;
 
   ::before,
   ::after {

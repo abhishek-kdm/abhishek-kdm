@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 const RaceStyling = createGlobalStyle`
   body {
     --title-fg:               var(--color-bg-primary);
-    --title-bg:               var(--color-primary);
     --title-pseudo:           var(--color-bg-primary);
   }
 
@@ -16,6 +15,7 @@ const RaceStyling = createGlobalStyle`
     --color-bg-secondary:     rgb(32, 22, 50);
     --color-bg-screen:        rgb(29, 26, 38);
 
+    --title-bg:               rgba(177, 122, 204, .5);
     --link-color:             rgb(202, 211, 200);
 
     --retro-border-color:     rgb(9, 6, 16);
@@ -50,6 +50,7 @@ const RaceStyling = createGlobalStyle`
     --color-bg-secondary:     rgb(13, 13, 13);
     --color-bg-screen:        rgb(30, 30, 30);
 
+    --title-bg:               rgba(38, 192, 128, 1);
     --link-color:             rgb(202, 211, 200);
 
     --retro-border-color:     rgb(5, 5, 5);
@@ -77,6 +78,7 @@ const RaceStyling = createGlobalStyle`
     --color-bg-secondary:     rgb(245, 215, 144);
     --color-bg-screen:        #f5d790;
 
+    --title-bg:               rgba(231, 130, 89, .5);
     --link-color:             rgb(240, 147, 43);
 
     --retro-border-color:     rgb(255, 99, 72);

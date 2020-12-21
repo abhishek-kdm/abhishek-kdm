@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
-
 export const borderColor = '#111111';
 
 export const useEllipseCircularRadius = (svgRef: React.RefObject<SVGSVGElement>) => {

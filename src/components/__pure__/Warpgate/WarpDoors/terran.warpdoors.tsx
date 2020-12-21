@@ -4,7 +4,6 @@ import { useEllipseCircularRadius, borderColor, MetallicLinearGradient } from '.
 // eslint-disable-next-line no-unused-vars
 import { WarpDoorProps } from '.';
 
-
 export const HorizontalDoor: React.FC<WarpDoorProps> = ({ position = 'left' }) => {
   const warpGate = useRef<SVGSVGElement>(null);
   const radii = useEllipseCircularRadius(warpGate);
@@ -25,7 +24,7 @@ export const HorizontalDoor: React.FC<WarpDoorProps> = ({ position = 'left' }) =
           <polygon points='126.9,200 126.19,200 144.39,200 145.1,200' />
           <polygon points='164.9,200 164.19,200 182.39,200 183.1,200' />
         </g>
-        <g fill='#FF0'>
+        <g fill='#FFFF00'>
           <polygon points='1.39,0 0,0 0,2.1' />
           <polygon points='107.1,200 188.81,118.29 177.89,111.01 88.9,200' />
           <polygon points='0,41.1 39.41,0 21.22,0 0,22.9' />
@@ -100,7 +99,7 @@ export const VerticalDoor: React.FC<WarpDoorProps> = ({ position = 'top' }) => {
           <polygon points='0 126.97 0 126.26 0 144.46 0 145.17 0 126.97' />
           <polygon points='0 164.97 0 164.26 0 182.46 0 183.17 0 164.97' />
         </g>
-        <g fill='#FF0'>
+        <g fill='#FFFF00'>
           <polygon points='200 1.46 200 0 198.61 0 200 1.46' />
           <polygon points='0 107.17 82.42 188.88 89.7 177.96 0 88.97 0 107.17' />
           <polygon points='159.61 0 200 39.48 200 21.29 177.81 0 159.61 0' />
@@ -155,7 +154,6 @@ export const VerticalDoor: React.FC<WarpDoorProps> = ({ position = 'top' }) => {
     </div>
   </>);
 }
-
 
 const WarpDoorSVGDefs: React.FC = () => (<>
   <MetallicLinearGradient id={'terran-metallic-horizontal'} gradientTransform='rotate(20)' />

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { PageProps as GatsbyPageProps, navigate } from 'gatsby';
 
 import HomeHead from './home.head';
@@ -15,22 +16,23 @@ import Header from '../Header/header.component';
 import Main from '../Main/main.component';
 import Footer from '../Footer/footer.component';
 
-
-interface HomeProps extends GatsbyPageProps { }
+type HistoryLocationState = { docking: boolean };
+interface HomeProps extends GatsbyPageProps<object, object, HistoryLocationState> { }
 
 const Home: React.FC<HomeProps> = ({ location }) => {
   const { race } = useContext(AppContext);
   const [warpGateOpen, setWarpGateOpen] = useState<boolean>(
-    !(location.state as any)?.dock
+    !location.state?.docking
   );
 
   useEffect(() => {
-    if ((location.state as any)?.dock) navigate('.', { replace: true });
+    if (location.state?.docking) navigate('.', { replace: true });
   }, [location.state]);
 
   useEffect(() => {
-    setTimeout(() => { setWarpGateOpen(true); }, WARPGATE_ACTION_TIME);
-  }, []);
+    if (!warpGateOpen)
+      setTimeout(() => { setWarpGateOpen(true); }, WARPGATE_ACTION_TIME);
+  }, [warpGateOpen]);
 
   return (<>
     <HomeContext.Provider value={{ setWarpGateOpen }}>
