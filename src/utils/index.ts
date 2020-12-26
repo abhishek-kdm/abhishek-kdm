@@ -37,6 +37,7 @@ export const toDataImageScheme = (component: React.ReactElement) => {
 export const fontFaceString = ({ node }: any) => `
 @font-face {
   font-family: "${node.name}";
+  font-display: swap;
   src: local("${node.publicURL}"),
     url("${node.publicURL}") format("${node.extension}");
 }
