@@ -34,14 +34,7 @@ const RaceStyling = createGlobalStyle`
       inset -2px -2px 10px rgba(255, 255, 255, .075);
   }
 
-  /*
-   * Styling for 'body' and 'body.terran'.
-   * Doing this to make 'terran' the default race.
-   * adding the default value in 'useState' has a bit of a delay when
-   * page loads, and the document looks unstyled for about a second,
-   * because javascript sucks dick.
-   */
-  body, body.terran {
+  body.terran {
     --color-primary:          rgb(38, 192, 128);
     --color-secondary:        rgb(144, 198, 149);
     --color-primary-opacity:  rgba(38, 192, 128, .05);

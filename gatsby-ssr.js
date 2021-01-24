@@ -13,3 +13,8 @@ export const wrapPageElement = ({ element }) => {
   </>);
 }
 
+export const onRenderBody = ({ setBodyAttributes, setHtmlAttributes }) => {
+  setHtmlAttributes({ lang: 'en' });
+  setBodyAttributes({ className: 'terran' });
+}
+
