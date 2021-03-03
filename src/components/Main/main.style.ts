@@ -94,12 +94,7 @@ export const Screen = styled.div`
   clip-path:         url(#screen-curve);
 
   * {
-    font-family: RobotoMono;
-    font-size: .8rem;
-  }
-
-  * svg {
-    font-size: 1rem;
+    font-family: ShareTechMono;
   }
 
   ${StyledStatusbar} {
@@ -238,7 +233,6 @@ export const NavButton = styled.li`
   user-select:         none;
 
   font-weight: 700;
-  font-size: 14px;
   text-transform: uppercase;
 
   box-shadow: var(--retro-shadow);
@@ -263,9 +257,8 @@ export const FullscreenModal = styled(InfoBox)`
   height: calc(100vh - 100px);
   padding: 0;
 
-  *:not(svg) {
-    font-family: RobotoMono;
-    font-size: .8rem;
+  * {
+    font-family: ShareTechMono;
   }
 `;
 
