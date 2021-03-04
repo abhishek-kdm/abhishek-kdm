@@ -233,7 +233,6 @@ export const NavButton = styled.li`
   user-select:         none;
 
   font-weight: 700;
-  text-transform: uppercase;
 
   box-shadow: var(--retro-shadow);
   border-radius: 6px;

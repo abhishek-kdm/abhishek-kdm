@@ -109,7 +109,7 @@ const Main: React.FC<MainProps> = () => {
                   }}
                   className={liClassName(clickedItem, label)}
                 >
-                  {label}
+                  {label.toUpperCase()}
                 </NavButton>
               ))}
             </NavButtonContainer>

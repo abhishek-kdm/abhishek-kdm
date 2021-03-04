@@ -12,7 +12,7 @@ const Prompt: React.FC<PromptProps> = ({ children, ...props }) => {
       &lambda;&nbsp;
       <PromptUser>root</PromptUser>
       <Cspan color={'rgb(83, 92, 104)'}>@</Cspan>
-      <PromptHostname>root</PromptHostname>:&nbsp;
+      <PromptHostname>root</PromptHostname>:~&nbsp;
       {children}&nbsp;
     </StyledPrompt>
   </>);

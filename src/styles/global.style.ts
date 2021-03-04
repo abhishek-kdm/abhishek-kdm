@@ -51,7 +51,7 @@ export const BlockCursor = styled.span`
     width: 100%;
     height: 100%;
     text-shadow: none!important;
-    /* animation: ${Blink} .75s linear infinite; */
+    animation: ${Blink} .75s linear infinite;
   }
 `;
 

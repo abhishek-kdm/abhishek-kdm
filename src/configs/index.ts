@@ -55,39 +55,39 @@ export const WARPGATES_OPEN_DELAY = 300;
 export interface Link {
   title: string
   href: string
-  iconProps: { color: string, icon: IconDefinition }
+  iconProps: { icon: IconDefinition }
 }
 
 export const SOCIAL_LINKS: Link[] = [
   {
     title: 'github',
     href: 'https://github.com/lycuid/',
-    iconProps: { color: '#ffffff', icon: faGithub }
+    iconProps: { icon: faGithub },
   },
   {
     title: 'stackoverflow',
     href: 'https://stackoverflow.com/users/3065657/lycuid/',
-    iconProps: { color: '#f48024', icon: faStackOverflow }
+    iconProps: { icon: faStackOverflow },
   },
   {
     title: 'linkedin',
     href: 'https://www.linkedin.com/in/abhishek-kadam-26a06170/',
-    iconProps: { color: '#0077bb', icon: faLinkedin }
+    iconProps: { icon: faLinkedin },
   },
   {
     title: 'twitter',
     href: 'https://twitter.com/lycuid/',
-    iconProps: { color: '#1da1f2', icon: faTwitter }
+    iconProps: { icon: faTwitter },
   },
   {
     title: 'reddit',
     href: 'https://www.reddit.com/user/lycuid/',
-    iconProps: { color: '#ff4500', icon: faReddit }
+    iconProps: { icon: faReddit },
   },
   {
     title: 'discord',
     href: 'https://www.discordapp.com/channels/~sudo/',
-    iconProps: { color: '#7289da', icon: faDiscord }
+    iconProps: { icon: faDiscord },
   },
 ];
 
@@ -98,4 +98,9 @@ export const GITHUB = {
     return `https://api.github.com/users/${this.username}`;
   },
 };
+
+export const aboutme = `
+A Software Engineer and a minimalist (of sorts).
+Love programming languages and working/experimenting with different kinds.
+Currently dabbling with web technologies (professionally) for a significant period of time.`;
 

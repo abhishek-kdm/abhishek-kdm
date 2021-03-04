@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const locals = {
-  color: 'rgb(149, 175, 192)',
+  color: 'rgb(192, 192, 192)',
 }
 
 const StyledPrompt = styled.span`

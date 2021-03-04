@@ -34,7 +34,7 @@ const Comm: React.FC<{}> = () => {
           <CommSummary><strong>SOCIAL</strong></CommSummary>
           <Social />
         </CommDetails>
-        <CommDetails open>
+        <CommDetails>
           <CommSummary><strong>PROJECTS</strong></CommSummary>
           <Projects />
         </CommDetails><br />

@@ -24,7 +24,6 @@ const Projects: React.FC<ProjectsProps> = (props) => {
           </span>
         </li>
       </ProjectsList>
-      <hr />
       <Title>Github repos</Title>
       <ProjectsList>
       {repos && repos.map(({ name, description, language, html_url }) => (
