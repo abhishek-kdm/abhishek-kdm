@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import Link from 'gatsby-link';
+
 import { ScanLines } from './main.animations';
 import { toDataImageScheme, range } from '../../utils';
 
@@ -39,21 +41,36 @@ export const ScreenNavigation = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   position: relative;
+  background-image: linear-gradient(var(--retro-border-shade-color), transparent);
 `;
 
-export const FullscreenButton = styled.span<{ color?: string }>`
+const ScreenButtonMixin = css`
   --size: 15px;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  background-color: ${({ color }) => color || 'red'};
-  border: 4px solid var(--retro-border-color);
+  border: 2px solid var(--retro-border-color);
   position: absolute;
   top: -12px;
   z-index: 9999;
   outline: none;
   cursor: pointer;
 `;
+
+export const FullscreenButton = styled.span`
+  ${ScreenButtonMixin}
+  background-color: #000080;
+`;
+
+export const RedpilledButton = styled(Link)`
+  ${ScreenButtonMixin}
+  background-color: red;
+
+  :hover {
+    border-bottom: 4px solid var(--retro-border-color)!important;
+  }
+`;
+
 
 export const ScreenWrapper = styled.div`
   box-sizing: border-box;
@@ -65,10 +82,9 @@ export const ScreenWrapper = styled.div`
   display: grid;
   grid-template-rows: var(--aspect-ratio-height);
 
+  background-color: black;
   background-image:
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
-
-  bakground-color: black;
 `;
 
 export const Screen = styled.div`
@@ -82,7 +98,7 @@ export const Screen = styled.div`
     linear-gradient(to bottom, ${range(50, (_, i) => i % 2 == 0 ? 'transparent' : 'rgba(255, 255, 255, .025)').join(', ')}),
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow)),
     linear-gradient(to right, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
-  text-shadow: 1px 1px 3px var(--color-primary);
+  text-shadow: 1px 1px 6px var(--color-primary);
   box-shadow:
     inset 5px 5px 25px 25px rgba(0, 0, 0, .2),
     inset -5px -5px 25px 25px rgba(0, 0, 0, .2);
@@ -94,7 +110,7 @@ export const Screen = styled.div`
   clip-path:         url(#screen-curve);
 
   * {
-    font-family: ShareTechMono;
+    font-family: Quantico;
   }
 
   ${StyledStatusbar} {
@@ -164,6 +180,7 @@ export const VolumeButtonContainer = styled.div`
   grid-template-rows: repeat(2, var(--button-size));
   grid-template-columns: var(--button-size);
   grid-gap: 25px;
+  background-image: linear-gradient(var(--retro-border-shade-color), transparent);
 
   @media (max-width: 768px) {
     --button-size: 40px;
@@ -256,9 +273,7 @@ export const FullscreenModal = styled(InfoBox)`
   height: calc(100vh - 100px);
   padding: 0;
 
-  * {
-    font-family: ShareTechMono;
-  }
+  * { font-family: Quantico; }
 `;
 
 export const CRTScanLines = styled.div`

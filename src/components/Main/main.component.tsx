@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { navigate } from 'gatsby';
 
 import StyledMain, {
   MainWrapper,
@@ -9,6 +8,7 @@ import StyledMain, {
   ScreenDisplay,
   Speaker,
   FullscreenButton,
+  RedpilledButton,
   VolumeButtonContainer,
   VolumeButton,
   SidePanel,
@@ -57,9 +57,7 @@ const Main: React.FC<MainProps> = () => {
   }, [setSelectedScreen, noSignal, clickedItem]);
 
   useEffect(() => {
-    let t = setTimeout(() => {
-      setNoSignal(false);
-    }, 300);
+    let t = setTimeout(() => { setNoSignal(false); }, 300);
     return () => { clearTimeout(t); }
   }, [clickedItem, setNoSignal]);
 
@@ -89,14 +87,11 @@ const Main: React.FC<MainProps> = () => {
           </ScreenWrapper>
           <div style={{ margin: '0 20px', position: 'relative' }}>
             <FullscreenButton
-              color={'#000080'}
+              color={''}
               style={{ left: '0' }}
               onClick={() => { setFullscreen(true); }}
             />
-            <FullscreenButton
-              style={{ right: '0' }}
-              onClick={() => { navigate('/redpilled'); }}
-            />
+            <RedpilledButton to={'/redpilled'} style={{ right: '0' }} />
           </div>
           <Nav>
             <NavButtonContainer>
@@ -141,7 +136,7 @@ const Main: React.FC<MainProps> = () => {
             <Prompt>
               {selectedItem && selectedItem.titlePrompt}
             </Prompt>
-            {selectedItem && <selectedItem.component {...selectedItem.args}/>}
+            {selectedItem && <selectedItem.component {...selectedItem.args} />}
           </InfoBox>
         </FullscreenModal>
       </Modal>

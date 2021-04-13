@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle(() => {
       margin: 0;
       padding: 0;
       height: 100%;
+      background-color: black;
     }
 
     /* gatsby specific css */
@@ -69,7 +70,7 @@ export const RetroList = styled.ul`
 
   li::before {
     content: '[ ]';
-    font-weight: 100;
+    font-family: monospace;
     color: var(--color-secondary);
     padding-right: 1rem;
     padding-left: .5rem;

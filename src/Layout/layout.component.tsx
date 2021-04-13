@@ -40,7 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }}>
       <AppContext.Provider value={{ repos, race, setRace }}>
         <PageWrapper>
-          <svg width={0} height={0}>
+          <svg width={0} height={0} style={{ position: 'absolute' }}>
             <WarpDoorSVGDefs />
             <GlobalSVGFilters />
           </svg>
