@@ -82,7 +82,6 @@ export const ScreenWrapper = styled.div`
   display: grid;
   grid-template-rows: var(--aspect-ratio-height);
 
-  background-color: black;
   background-image:
     linear-gradient(to bottom, var(--screen-shadow), var(--color-primary-opacity), var(--screen-shadow));
 `;
