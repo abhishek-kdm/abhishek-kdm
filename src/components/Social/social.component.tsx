@@ -49,10 +49,10 @@ const Social: React.FC<SocialProps> = (props) => {
       <div style={{ display: 'flex' }}>
         <span>Other stuff:</span>
         <IconLinkContainer>
-          {SOCIAL_LINKS.map(({ title, href, iconProps }, i) => (
+          {SOCIAL_LINKS.map(({ iconProps, ...props }, i) => (
             <IconLink key={i}>
               <span>
-                <Anchor title={title} href={href}>
+                <Anchor {...props}>
                   <FontAwesomeIcon {...iconProps} size={'1x'} />
                 </Anchor>
               </span>
