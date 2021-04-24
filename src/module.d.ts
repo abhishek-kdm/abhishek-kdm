@@ -1,30 +1,48 @@
-type Race = 'terran' | 'protoss' | 'zerg';
-
-interface RaceProps {
-  patternColor: string
-  backgroundColor: string
-  logo: React.FC<LogoProps>
-}
-
-interface NavbarItem {
-  label: string
-  component: React.FunctionComponent
-  args?: any
-  titlePrompt: string
-}
-
-interface LogoProps extends React.HTMLAttributes<SVGElement> {
-  color?: string
-  asImage?: boolean
-}
-
-/** orientation of the warpgate doors. */
-type Orientation = 'horizontal' | 'vertical';
-
-type DoorPosition = 'left' | 'right' | 'top' | 'bottom';
-
-type Flavor = 'success' | 'danger' | 'info' | 'warning';
-
 type Maybe<T> = T | null;
-type Word = string | number;
-type Void = () => void
+type Point = { x: number, y: number };
+
+type WindowType = 'file' | 'dir';
+type WindowAttributes = {
+  windowId: string,
+  name?: string,
+  windowType?: WindowType
+} & React.HTMLAttributes<HTMLElement>;
+
+type WindowState = {
+  windows: WindowAttributes[],
+  active: Maybe<string>,
+  index: number
+};
+
+interface DesktopState extends WindowState {
+  updateWindowState: React.Dispatch<React.SetStateAction<WindowState>>
+  offset: Point
+}
+
+interface RootState {
+  repos: GithubRespository[]
+}
+
+interface GithubRespository {
+  description: string
+  id: string
+  name: string
+  url: string
+  language: Maybe<string>
+}
+
+type GithubRespositoryLanguage = {
+  languages: {
+    nodes: { name: string }[]
+  }
+};
+
+type GithubGraphqlData = {
+  github: {
+    user: {
+      repositories: {
+        nodes: (Omit<GithubRespository, 'language'> & GithubRespositoryLanguage)[]
+      }
+    }
+  }
+};

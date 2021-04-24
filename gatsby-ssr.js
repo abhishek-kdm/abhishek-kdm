@@ -1,10 +1,5 @@
 import React from 'react';
-import GlobalStyle from './src/styles/global.style';
-import Layout from './src/Layout/layout.component';
-
-export const wrapRootElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>;
-}
+import GlobalStyle from './src/Styles/global.style';
 
 export const wrapPageElement = ({ element }) => {
   return (<>
@@ -12,9 +7,3 @@ export const wrapPageElement = ({ element }) => {
     {element}
   </>);
 }
-
-export const onRenderBody = ({ setBodyAttributes, setHtmlAttributes }) => {
-  setHtmlAttributes({ lang: 'en' });
-  setBodyAttributes({ className: 'terran' });
-}
-
