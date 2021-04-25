@@ -24,17 +24,16 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setting up node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      - name: Installing Yarn
+        run: curl -o- -L https://yarnpkg.com/install.sh | bash
 
       - name: Install dependencies and build website.
         env:
           GRAPHQL_GITHUB_TOKEN: ${{ secrets.GRAPHQL_GITHUB_TOKEN }}
         run: |
-          npm install
-          npm run build -- --prefix-paths
+          yarn install
+          yarn clean
+          yarn build --prefix-paths
 
       - name: Setup Python v3.8
         uses: actions/setup-python@v2
