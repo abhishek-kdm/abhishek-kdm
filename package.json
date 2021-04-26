@@ -1,9 +1,20 @@
 {
-  "name": "lycuid-portfolio",
+  "name": "lycuid",
   "private": true,
-  "description": "",
+  "description": "More or less, a portfolio site.",
   "version": "0.1.0",
   "author": "Abhishek Kadam <lycuid@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lycuid/lycuid"
+  },
+  "bugs": {
+    "url": "https://github.com/lycuid/lycuid/issues"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "GPL3",
   "dependencies": {
     "gatsby": "^3.2.1",
     "gatsby-plugin-gatsby-cloud": "^2.2.0",
@@ -20,10 +31,24 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/react": "^17.0.3",
+    "@types/react-helmet": "^6.1.1",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "node-fetch": "^2.6.1",
+    "styled-components": "^5.2.3",
+    "typescript": "^4.2.4"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop --verbose --host 0.0.0.0",
@@ -31,27 +56,10 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lycuid/lycuid"
-  },
-  "bugs": {
-    "url": "https://github.com/lycuid/lycuid/issues"
-  },
-  "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@types/react": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "eslint": "^7.24.0",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "node-fetch": "^2.6.1",
-    "styled-components": "^5.2.3",
-    "typescript": "^4.2.4"
+  "siteCDN": "https://cdn.lycuid.dev",
+  "siteMetadata": {
+    "title": "LycuiD",
+    "description": "Computers, video games, food and sleep advocate.",
+    "author": "@lycuid"
   }
 }

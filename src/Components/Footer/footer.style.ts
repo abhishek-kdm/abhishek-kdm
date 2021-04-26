@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { GlobalToggler } from '../PageWrapper/pageWrapper.style';
+import { GlobalToggler } from '../../Wrapper';
 
 const StyledFooter = styled.footer`
   display: flex;

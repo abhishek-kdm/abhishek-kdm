@@ -86,3 +86,12 @@ export const getSVGIcon = (language: string): React.FC => {
   }
 }
 
+export const sanitizeRepoData = (data: GithubGraphqlData): GithubRepository[] => data
+  .github
+  .user
+  .repositories
+  .nodes
+  .map(({ languages, ...node }) => ({
+    ...node,
+    languages: languages.nodes.map(n => n.name)
+  }));

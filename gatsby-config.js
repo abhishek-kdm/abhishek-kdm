@@ -1,12 +1,11 @@
+require('dotenv').config();
+const { siteMetadata, siteCDN } = require('./package.json');
+
 module.exports = {
-  siteMetadata: {
-    title: `LycuiD`,
-    description: `Computers, video games, food and sleep advocate.`,
-    author: `@lycuid`,
-  },
-  assetPrefix: `https://cdn.lycuid.dev`,
+  siteMetadata,
+  assetPrefix: siteCDN,
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,

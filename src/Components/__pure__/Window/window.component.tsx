@@ -9,7 +9,7 @@ import StyledWindow, {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileAlt, faFolder } from '@fortawesome/free-solid-svg-icons';
 
-import { DesktopStateContext } from '../../../Context';
+import { DesktopStateContext } from '../../Desktop/desktop.utils';
 import { newPoint } from '../../../Utils';
 
 interface WindowProps extends WindowAttributes { }

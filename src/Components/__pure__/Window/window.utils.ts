@@ -1,10 +1,10 @@
 import { useCallback, useContext } from 'react';
-import { DesktopStateContext } from '../../../Context';
+import { DesktopStateContext } from '../../Desktop/desktop.utils';
 
-export const useNavigate = (windowId: Maybe<string> = null, props: Partial<WindowAttributes>): () => void => {
+export const useNavigate = (windowId: Maybe<string> = null): (props: Partial<WindowAttributes>) => void => {
   const { updateWindowState } = useContext(DesktopStateContext) as DesktopState;
 
-  return useCallback(() => {
+  return useCallback((props) => {
     updateWindowState((state) => ({
       ...state,
       windows: state.windows.reduce((acc, w) => [
@@ -12,5 +12,5 @@ export const useNavigate = (windowId: Maybe<string> = null, props: Partial<Windo
         windowId && w.windowId === windowId ? { ...w, ...props } : w
       ], [] as WindowAttributes[]),
     }));
-  }, [updateWindowState, windowId, props]);
+  }, [updateWindowState, windowId]);
 }

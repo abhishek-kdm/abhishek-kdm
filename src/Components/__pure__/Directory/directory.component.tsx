@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 
 import File, { FileProps } from '../File/file.component';
 import { faFolder, faFolderOpen } from '@fortawesome/free-regular-svg-icons';
-import { DesktopStateContext } from '../../../Context';
+import { DesktopStateContext } from '../../Desktop/desktop.utils';
 import { Open } from '../../../Utils';
 
 interface DirectoryProps extends Omit<FileProps, 'faIcon' | 'Svg'> { }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledProjects = styled.section`
+const StyledRepositories = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, auto));
   grid-template-rows: repeat(auto-fill, minmax(2.75rem, auto));
@@ -8,4 +8,12 @@ const StyledProjects = styled.section`
   min-width: 375px;
 `;
 
-export default StyledProjects;
+export const StyledRepositoryFile = styled.section`
+  min-width: 400px;
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+`;
+
+export default StyledRepositories;

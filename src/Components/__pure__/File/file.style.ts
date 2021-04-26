@@ -26,6 +26,7 @@ const StyledFile = styled.span`
 export const FileName = styled.span`
   display: flex;
   justify-content: center;
+  user-select: none;
   word-break: break-all;
 `;
 

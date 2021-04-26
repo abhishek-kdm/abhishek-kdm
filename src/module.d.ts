@@ -19,19 +19,15 @@ interface DesktopState extends WindowState {
   offset: Point
 }
 
-interface RootState {
-  repos: GithubRespository[]
-}
-
-interface GithubRespository {
+interface GithubRepository {
   description: string
   id: string
   name: string
   url: string
-  language: Maybe<string>
+  languages: string[]
 }
 
-type GithubRespositoryLanguage = {
+type GithubRepositoryLanguage = {
   languages: {
     nodes: { name: string }[]
   }
@@ -41,7 +37,7 @@ type GithubGraphqlData = {
   github: {
     user: {
       repositories: {
-        nodes: (Omit<GithubRespository, 'language'> & GithubRespositoryLanguage)[]
+        nodes: (Omit<GithubRepository, 'language'> & GithubRepositoryLanguage)[]
       }
     }
   }

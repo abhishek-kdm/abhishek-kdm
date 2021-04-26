@@ -1,9 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import StyledDesktop from './desktop.style';
-
-import About from '../About/about.component';
-import Social from '../Social/social.component';
-import Projects from '../Projects/projects.component';
+import { DesktopItems, DesktopStateContext } from './desktop.utils';
 
 import Window from '../__pure__/Window/window.component';
 import File, { FileProps } from '../__pure__/File/file.component';
@@ -13,36 +10,14 @@ import Noscript from '../NoScript/noscript.component';
 
 import { newPoint } from '../../Utils';
 import { useStateReducer } from '../../Utils/hooks';
-import { DesktopStateContext } from '../../Context';
 
 interface DesktopProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 const Desktop: React.FC<DesktopProps> = (props) => {
-  // This is a static value. Although using state hook here, because, I only need
-  // this to render if javascript is enabled.
-  const [desktopItems, setDesktopItems] = useState<FileProps[]>([
-    {
-      windowId: 'about',
-      name: 'About me',
-      windowType: 'file',
-      children: <About />,
-    },
-    {
-      windowId: 'social',
-      name: 'Social',
-      windowType: 'file',
-      children: <Social />,
-      title: 'Social',
-    },
-    ((): FileProps => ({
-      windowId: 'projects',
-      name: 'Projects',
-      windowType: 'dir',
-      get children() { return <Projects windowId={this.windowId || ''} /> },
-
-      get title() { return this.name },
-    }))(),
-  ]);
+  // The only reason this is here is because desktopItems are not be rendered
+  // staticly,just so that we can have a proper interface for non javascript browsers.
+  const [desktopItems, setDesktopItems] = useState<FileProps[]>([]);
+  useEffect(() => { setDesktopItems(DesktopItems); }, []);
 
   const [windowState, updateWindowState] = useState<WindowState>({
     windows: [],
@@ -80,8 +55,8 @@ const Desktop: React.FC<DesktopProps> = (props) => {
 
         {/* desktop items. */}
         {desktopItems.map((props) => (props.windowType === 'file')
-          ? <File key={`file-${props.windowId}`} {...props} draggable />
-          : <Directory key={`directory-${props.windowId}`} {...props} draggable />
+          ? <File {...props} draggable key={`file-${props.windowId}`} />
+          : <Directory {...props} draggable key={`directory-${props.windowId}`} />
         )}
         {/* actively open windows. */}
         {windowState.windows.map((props) => (

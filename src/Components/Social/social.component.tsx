@@ -27,6 +27,14 @@ const Social: React.FC<SocialProps> = () => {
             git.lycuid.dev
           </Anchor>
         </dd>
+        <dd>
+          <Anchor
+            title='Live Web Apps'
+            href='https://lycuid.dev/p/'
+          >
+            live web apps
+          </Anchor>
+        </dd>
       </dl>
       <dl>
         <dt>Alternatives</dt>
@@ -39,7 +47,7 @@ const Social: React.FC<SocialProps> = () => {
           </Anchor>
         </dd>
       </dl>
-      <br /><hr />
+      <hr />
       <MiscLinks>
         {SocialLinks.map((props, index) => (
           <li key={`social-link-${index}`}>

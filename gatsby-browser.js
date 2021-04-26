@@ -1,9 +1,13 @@
-import React from 'react';
-import GlobalStyle from './src/Styles/global.style';
+import './src/Styles/global.css';
+import { createElement } from 'react';
+import Wrapper, { TogglerRoot } from './src/Wrapper';
 
-export const wrapPageElement = ({ element }) => {
-  return (<>
-    <GlobalStyle />
-    {element}
-  </>);
+const el = createElement;
+
+export const wrapPageElement = ({ element, props }) => {
+  const defaultChecked = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return [
+    el(TogglerRoot, { defaultChecked }),
+    el(Wrapper, props, element),
+  ];
 }
