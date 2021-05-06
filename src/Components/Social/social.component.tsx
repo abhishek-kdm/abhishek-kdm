@@ -18,6 +18,7 @@ const Social: React.FC<SocialProps> = () => {
           >
             aboutme.lycuid.dev
         </Anchor>
+        &nbsp;&nbsp;&nbsp;<sub>(resume)</sub>
         </dd>
         <dd>
           <Anchor
@@ -26,14 +27,16 @@ const Social: React.FC<SocialProps> = () => {
           >
             git.lycuid.dev
           </Anchor>
+          &nbsp;&nbsp;&nbsp;<sub>(personal git server)</sub>
         </dd>
         <dd>
           <Anchor
             title='Live Web Apps'
-            href='https://lycuid.dev/p/'
+            href='/p/'
           >
-            live web apps
+            lycuid.dev/p/
           </Anchor>
+          &nbsp;&nbsp;&nbsp;<sub>(live web apps)</sub>
         </dd>
       </dl>
       <dl>

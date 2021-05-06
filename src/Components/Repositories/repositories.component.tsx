@@ -1,4 +1,6 @@
 import React, { useCallback } from 'react';
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import StyledRepositories, { StyledRepositoryFile } from './repositories.style';
 import { getSVGIcon, sanitizeRepoData } from './repositories.utils';
 
@@ -42,17 +44,30 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({ window
         </small>
       </header>
       <hr />
-      <dl>
-        <dt style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Description</dt>
-        <dd>{props.description}</dd>
-      </dl>
+      {props.description}
       <br />
-      {props.languages.length
-        ? props
-            .languages
-            .map((lang, i) => <kbd key={`${lang}-${i}`}>{lang}</kbd>)
-        : <small>--unknown--</small>
-      }
+
+      <dl>
+        <dt style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Languages used:</dt>
+        <dd>
+          {props.languages.length
+            ? props
+                .languages
+                .map((lang, i) => <kbd key={`${lang}-${i}`}>{lang}</kbd>)
+            : <small>--unknown--</small>
+          }
+        </dd>
+      </dl>
+
+      <dl>
+        <dt style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Description:</dt>
+        <dd>
+          {props.readme_md?.text
+            ? <ReactMarkdown remarkPlugins={[gfm]}>{props.readme_md?.text}</ReactMarkdown>
+            : <pre>{props.readme_txt?.text}</pre>
+          }
+        </dd>
+      </dl>
     </StyledRepositoryFile>
   </>);
 }
@@ -61,7 +76,7 @@ const Repositories: React.FC<RepositoriesProps> = ({ windowId }) => {
   const repos = sanitizeRepoData(useStaticQuery(query));
   const navigate = useNavigate(windowId);
 
-  const handleDoubleClick = useCallback((repo) => {
+  const handleOpen = useCallback((repo) => {
     return () => navigate({
       name: repo.name,
       windowType: 'file',
@@ -80,7 +95,8 @@ const Repositories: React.FC<RepositoriesProps> = ({ windowId }) => {
           <File {...props} key={repo.id}
             title={repo.description}
             name={repo.name}
-            onDoubleClick={handleDoubleClick(repo)}
+            onDoubleClick={handleOpen(repo)}
+            onKeyPress={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
           />
         );
       })}
@@ -98,9 +114,19 @@ const query = graphql`
             name
             url
             description
-            languages(first: 100, orderBy: {field: SIZE, direction: DESC}) {
+            languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
               nodes {
                 name
+              }
+            }
+            readme_md: object(expression: "HEAD:README.md") {
+              ... on Github_Blob {
+                text
+              }
+            }
+            readme_txt: object(expression: "HEAD:readme") {
+              ... on Github_Blob {
+                text
               }
             }
           }
@@ -109,4 +135,5 @@ const query = graphql`
     }
   }
 `;
+
 export default Repositories;

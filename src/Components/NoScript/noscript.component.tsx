@@ -9,7 +9,6 @@ const Noscript: React.FC = () => {
     <noscript>
       <Container as='main'>
         <About />
-        <h2>Social</h2>
         <Social />
       </Container>
     </noscript>

@@ -59,8 +59,7 @@ export const WindowControls = styled.span`
 `;
 
 export const WindowBody = styled.div`
-  overflow: hidden;
-  overflow-y: scroll;
+  overflow: scroll;
   padding: 1.25rem;
 
   border-bottom-left-radius: var(--border-radius);

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const StyledSocial = styled.section`
-  min-width: 25rem;
-
   dl {
     dt {
       display: flex;
@@ -20,8 +18,10 @@ const StyledSocial = styled.section`
       margin-top: 10px;
       ::before {
         content: " ";
+        font-family: monospace;
+        font-size: 1.1rem;
         position: absolute;
-        margin-left: -1.5rem;
+        margin-left: -1.25rem;
       }
       :hover {
         ::before {

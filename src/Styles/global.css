@@ -35,31 +35,38 @@ kbd {
   white-space: nowrap;
 }
 
-code {
-  display: block;
-  color: var(--color-primary);
-  background-color: var(--color-bg-primary);
-  margin-top: 5px;
-  padding: 10px;
-  border-radius: 6px;
-}
-
 dd {
   box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
   width: .5rem;
+  height: .5rem;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-left: .3rem solid var(--color-primary);
-  background-color: transparent;
-  border-radius: 0;
+  background-color: var(--color-primary);
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  border-left: .3rem solid grey;
-  background-color: transparent;
+  background-color: grey;
 }
 
+/* handling gfm rendering. */
+code {
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
+}
+
+pre > code {
+  box-sizing: border-box;
+  display: block;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+th, td {
+  border: 1px solid var(--color-primary);
+}

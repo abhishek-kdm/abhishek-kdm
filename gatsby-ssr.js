@@ -21,7 +21,7 @@ export const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) =>
     el('meta', { name: 'twitter:creator', content: author }),
     el('meta', { name: 'twitter:title', content: title }),
     el('meta', { name: 'twitter:description', content: description }),
-    el('link', { rel: 'preconnect', href: 'https://fonts.gstatic.com' }),
+    el('link', { href: 'https://fonts.gstatic.com', rel: 'preconnect' }),
     el('link', { href: 'https://fonts.googleapis.com/css2?family=Quantico&display=swap', rel: 'stylesheet' }),
     ...getHeadComponents()
   ]);

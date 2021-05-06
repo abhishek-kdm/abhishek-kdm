@@ -9,7 +9,7 @@ const StyledRepositories = styled.section`
 `;
 
 export const StyledRepositoryFile = styled.section`
-  min-width: 400px;
+  min-width: 350px;
   header {
     display: grid;
     grid-template-columns: 1fr auto;
