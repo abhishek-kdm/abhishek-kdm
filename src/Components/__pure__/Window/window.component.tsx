@@ -29,14 +29,16 @@ const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, .
     }));
   }, [updateWindowState, windowId])
 
+  const finalTransform = useCallback(() => {
+    setTransform(({ x, y }) => ({ x: x + wOffset.x, y: y + wOffset.y }));
+  }, [wOffset]);
+
   useEffect(() => {
     updateWindowState((state) => ({ ...state, index: zIndex }));
   }, [updateWindowState, zIndex]);
 
   return (<>
-    <StyledWindow {...props} retro animate
-      tabIndex={0}
-      fullscreen={fullscreen}
+    <StyledWindow {...props} retro animate tabIndex={0} fullscreen={fullscreen}
       onFocus={() => { setZIndex((z) => z == index ? z : index + 1 ); }}
       style={{
         zIndex,
@@ -48,13 +50,16 @@ const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, .
       <WindowHeader
         style={{ cursor: active ? 'grabbing' : 'grab' }}
         onDoubleClick={() => { setFullscreen(f => !f); }}
+        onTouchStart={() => {
+          updateWindowState((state) => !fullscreen
+            ? ({ ...state, active: windowId || null }) : state);
+        }}
         onMouseDown={({ nativeEvent: { button } }) => {
-          updateWindowState((state) => button === 0
+          updateWindowState((state) => button === 0 && !fullscreen
             ? { ...state, active: windowId || null } : state);
         }}
-        onMouseUp={() => {
-          setTransform(({ x, y }) => ({ x: x + wOffset.x, y: y + wOffset.y }));
-        }}
+        onTouchEnd={finalTransform}
+        onMouseUp={finalTransform}
       >
         <WindowTitle>
           <FontAwesomeIcon icon={windowType === 'file' ? faFileAlt : faFolder} />

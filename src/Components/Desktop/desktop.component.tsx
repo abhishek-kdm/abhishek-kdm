@@ -35,24 +35,30 @@ const Desktop: React.FC<DesktopProps> = (props) => {
     dispatchDragState({ start: { x: pageX, y: pageY }, offset: newPoint() });
   }, [dispatchDragState]);
 
-  const handleEnd = useCallback(() => {
-    updateWindowState((s) => ({ ...s, active: null }));
-    dispatchDragState({ start: newPoint() });
-  }, [dispatchDragState]);
-
   const handleMove = useCallback(({ pageX, pageY }) => {
     windowState.active != null && dispatchDragState({
       offset: { x: pageX - start.x, y: pageY - start.y }
     });
   }, [start, windowState.active, dispatchDragState]);
 
+  const handleEnd = useCallback(() => {
+    updateWindowState((s) => ({ ...s, active: null }));
+    dispatchDragState({ start: newPoint() });
+  }, [dispatchDragState]);
+
   return (<>
-    <StyledDesktop {...props} onMouseDown={handleStart} onMouseUp={handleEnd} onMouseMove={handleMove}>
+    <StyledDesktop {...props}
+      onMouseDown={handleStart}
+      onMouseMove={handleMove}
+      onMouseUp={handleEnd}
+      onTouchStart={({ targetTouches }) => handleStart(targetTouches[0])}
+      onTouchMove={({ targetTouches }) => handleMove(targetTouches[0])}
+      onTouchEnd={handleEnd}
+    >
+      {/* non javascript static content */}
+      <Noscript />
+
       <DesktopStateContext.Provider value={{ ...windowState, updateWindowState, offset }}>
-
-        {/* non javascript static content */}
-        <Noscript />
-
         {/* desktop items. */}
         {desktopItems.map((props) => (props.windowType === 'file')
           ? <File {...props} draggable key={`file-${props.windowId}`} />
