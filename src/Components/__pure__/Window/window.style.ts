@@ -1,26 +1,48 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import Infobox from '../Infobox/infobox.component';
+
+export const WindowBody = styled.div`
+  overflow: auto;
+  padding: 1.25rem;
+
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+`;
+
+const FullscreenCSS = css`
+  width: 100%!important;
+  height: 100%!important;
+  top: 0;
+  left: 0;
+  resize: none;
+`;
+
+const NonFullscreenCSS = css`
+  max-height: 100%;
+  min-height: 3rem;
+  min-width: 12rem;
+  overflow: hidden;
+  resize: both;
+`;
 
 const StyledWindow = styled(Infobox)<{ fullscreen: boolean }>`
   --border-radius: 4px;
   position: absolute;
-
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   outline: none;
+  border: 1px solid var(--color-secondary);
+  box-shadow: 0.3rem 0.3rem 0 var(--color-shadow);
 
-  width: ${(p) => p.fullscreen ? 'calc(100% - 12px)' : 'minmax(auto, 80%)'};
-  height: ${(p) => p.fullscreen ? 'calc(100% - 12px)' : 'auto'};
-
-  ${(p) => p.fullscreen && 'top: 0; left: 0;'}
-  ${(p) => !p.fullscreen && 'max-height: 70%; max-width: 60rem;'}
+  ${(p) => p.fullscreen ? FullscreenCSS : NonFullscreenCSS}
 `;
 
 export const WindowHeader = styled.header`
   background-color: var(--color-bg-primary);
   touch-action: none;
   user-select: none;
+  height: 3rem;
 
   border-bottom: 1px solid var(--color-secondary);
   border-top-left-radius: var(--border-radius);
@@ -28,13 +50,17 @@ export const WindowHeader = styled.header`
 
   display: grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
 `;
 
 export const WindowTitle = styled.span`
-  padding: 10px 1.5rem;
+  padding: 0 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
-export const WindowControls = styled.span`
+export const WindowControls = styled.label`
   cursor: pointer;
   display: grid;
   align-items: center;
@@ -56,14 +82,6 @@ export const WindowControls = styled.span`
     width: 100%;
     height: 100%;
   }
-`;
-
-export const WindowBody = styled.div`
-  overflow: scroll;
-  padding: 1.25rem;
-
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
 `;
 
 export default StyledWindow;

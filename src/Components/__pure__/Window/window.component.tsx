@@ -38,7 +38,7 @@ const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, .
   }, [updateWindowState, zIndex]);
 
   return (<>
-    <StyledWindow {...props} retro animate tabIndex={0} fullscreen={fullscreen}
+    <StyledWindow {...props} animate tabIndex={0} fullscreen={fullscreen}
       onFocus={() => { setZIndex((z) => z == index ? z : index + 1 ); }}
       style={{
         zIndex,
