@@ -1,5 +1,11 @@
 import React from 'react';
-import StyledModal, { ModalCloseButton, ModalContainer, ModalToggler } from './modal.style';
+import {
+  ModalToggler,
+  ModalContainer,
+  ModalContent,
+  ModalCloseButton
+} from './modal.style';
+
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -9,12 +15,12 @@ const Modal: React.FC<ModalProps> = ({ id, children }) => {
   return (<>
     <ModalToggler id={id} />
     <ModalContainer>
-      <StyledModal>
+      <ModalContent>
         <ModalCloseButton htmlFor={id}>
           <FontAwesomeIcon icon={faTimes} />
         </ModalCloseButton>
         {children}
-      </StyledModal>
+      </ModalContent>
     </ModalContainer>
   </>);
 }
