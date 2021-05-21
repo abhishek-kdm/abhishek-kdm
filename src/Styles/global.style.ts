@@ -50,7 +50,7 @@ export const RetroList = styled.ul`
   }
 `;
 
-export const ShadowButton = css`
+export const ShadowButtonCSS = css`
   display: flex;
   justify-content: center;
   box-shadow: .25rem .25rem 0 var(--color-shadow);

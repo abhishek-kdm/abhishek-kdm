@@ -7,24 +7,28 @@ import { FileProps } from '../__pure__/File/file.component';
 
 export const DesktopItems: FileProps[] = [
   {
+    title: 'About me',
+    children: <About />,
     windowId: 'about',
     name: 'About me',
-    windowType: 'file',
-    children: <About />,
+    fileType: 'file',
   },
   {
+    title: 'Social',
+    children: <Social />,
     windowId: 'social',
     name: 'Social',
-    windowType: 'file',
-    children: <Social />,
-    title: 'Social',
+    fileType: 'file',
   },
   {
+    title: 'Repositories',
+    children: <Repositories windowId={'repositories'} />,
     windowId: 'repositories',
     name: 'Repositories',
-    windowType: 'dir',
-    children: <Repositories windowId={'repositories'} />,
-    title: 'Repositories',
+    fileType: 'dir',
+    windowProps: {
+      style: { width: '425px', height: '70%' },
+    }
   },
 ];
 

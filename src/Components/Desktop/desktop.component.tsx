@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import StyledDesktop from './desktop.style';
+import Main from './desktop.style';
 import { DesktopItems, DesktopStateContext } from './desktop.utils';
 
 import Window from '../__pure__/Window/window.component';
 import File, { FileProps } from '../__pure__/File/file.component';
 import Directory from '../__pure__/Directory/directory.component';
-
 import Noscript from '../NoScript/noscript.component';
 
 import { newPoint } from '../../Utils';
@@ -47,7 +46,7 @@ const Desktop: React.FC<DesktopProps> = (props) => {
   }, [dispatchDragState]);
 
   return (<>
-    <StyledDesktop {...props}
+    <Main {...props}
       onMouseDown={handleStart}
       onMouseMove={handleMove}
       onMouseUp={handleEnd}
@@ -55,21 +54,18 @@ const Desktop: React.FC<DesktopProps> = (props) => {
       onTouchMove={({ targetTouches }) => handleMove(targetTouches[0])}
       onTouchEnd={handleEnd}
     >
-      {/* non javascript static content */}
       <Noscript />
 
       <DesktopStateContext.Provider value={{ ...windowState, updateWindowState, offset }}>
-        {/* desktop items. */}
-        {desktopItems.map((props) => (props.windowType === 'file')
+        {desktopItems.map((props) => (props.fileType === 'file')
           ? <File {...props} draggable key={`file-${props.windowId}`} />
           : <Directory {...props} draggable key={`directory-${props.windowId}`} />
         )}
-        {/* actively open windows. */}
         {windowState.windows.map((props) => (
           <Window key={`window-${props.windowId}`} {...props} />
         ))}
       </DesktopStateContext.Provider>
-    </StyledDesktop>
+    </Main>
   </>);
 }
 

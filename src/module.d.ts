@@ -1,16 +1,19 @@
 type Maybe<T> = T | null;
 type Point = { x: number, y: number };
 
-type WindowType = 'file' | 'dir';
-type WindowAttributes = {
-  windowId: string,
+type WindowID = string;
+
+interface FileWindowAttributes {
+  windowId?: WindowID,
   name?: string,
-  windowType?: WindowType
-} & React.HTMLAttributes<HTMLElement>;
+  fileType?: 'file' | 'dir'
+}
+
+type WindowProps = React.HTMLAttributes<HTMLElement> & Required<FileWindowAttributes>;
 
 type WindowState = {
-  windows: WindowAttributes[],
-  active: Maybe<string>,
+  windows: WindowProps[],
+  active: Maybe<WindowID>,
   index: number
 };
 

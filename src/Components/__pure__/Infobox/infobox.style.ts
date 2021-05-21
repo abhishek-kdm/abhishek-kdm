@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 import { RetroAnimation } from './infobox.animation';
 
-export interface StyledInfoboxProps extends React.HTMLAttributes<HTMLElement> {
+export type InfoboxElement = HTMLElement;
+
+export interface StyledInfoboxProps extends React.HTMLAttributes<InfoboxElement> {
   animate?: boolean
 }
 

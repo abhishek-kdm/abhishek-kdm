@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledDesktop = styled.main`
+const Main = styled.main`
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -10,4 +10,4 @@ const StyledDesktop = styled.main`
   padding: 1rem;
 `;
 
-export default StyledDesktop;
+export default Main;

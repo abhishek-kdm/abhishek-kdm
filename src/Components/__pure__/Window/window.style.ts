@@ -1,13 +1,5 @@
 import styled, {css} from 'styled-components';
-import Infobox from '../Infobox/infobox.component';
-
-export const WindowBody = styled.div`
-  overflow: auto;
-  padding: 1.25rem;
-
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-`;
+import InfoBox from '../Infobox/infobox.component';
 
 const FullscreenCSS = css`
   width: 100%!important;
@@ -25,12 +17,10 @@ const NonFullscreenCSS = css`
   resize: both;
 `;
 
-const StyledWindow = styled(Infobox)<{ fullscreen: boolean }>`
-  --border-radius: 4px;
+const StyledWindow = styled(InfoBox)<{ fullscreen: boolean }>`
   position: absolute;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 3rem auto;
   outline: none;
   border: 1px solid var(--color-secondary);
   box-shadow: 0.3rem 0.3rem 0 var(--color-shadow);
@@ -42,12 +32,8 @@ export const WindowHeader = styled.header`
   background-color: var(--color-bg-primary);
   touch-action: none;
   user-select: none;
-  height: 3rem;
 
   border-bottom: 1px solid var(--color-secondary);
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
-
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -78,10 +64,12 @@ export const WindowControls = styled.label`
     stroke: var(--color-primary);
     stroke-width: 1;
     stroke-linecap: round;
-
-    width: 100%;
-    height: 100%;
   }
+`;
+
+export const WindowContent = styled.div`
+  overflow: auto;
+  padding: 1.25rem;
 `;
 
 export default StyledWindow;

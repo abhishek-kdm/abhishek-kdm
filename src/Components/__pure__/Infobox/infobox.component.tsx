@@ -1,8 +1,8 @@
 import React from 'react';
-import StyledInfobox, { StyledInfoboxProps } from './infobox.style';
+import StyledInfobox, { StyledInfoboxProps, InfoboxElement } from './infobox.style';
 
-interface InfoboxProps extends StyledInfoboxProps {}
-
-const Infobox: React.FC<InfoboxProps> = (props) => <StyledInfobox {...props} />;
+const Infobox  = React.forwardRef<InfoboxElement, StyledInfoboxProps>((props, ref) => (
+  <StyledInfobox {...props} ref={ref} />
+));
 
 export default Infobox;

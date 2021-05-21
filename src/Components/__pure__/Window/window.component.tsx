@@ -3,7 +3,7 @@ import StyledWindow, {
   WindowHeader,
   WindowTitle,
   WindowControls,
-  WindowBody,
+  WindowContent,
 } from './window.style';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,9 +12,7 @@ import { faFileAlt, faFolder } from '@fortawesome/free-solid-svg-icons';
 import { DesktopStateContext } from '../../Desktop/desktop.utils';
 import { newPoint } from '../../../Utils';
 
-interface WindowProps extends WindowAttributes { }
-
-const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, ...props }) => {
+const Window: React.FC<WindowProps> = ({ windowId, fileType, name, children, style, ...props }) => {
   const { offset, active, index, updateWindowState } = useContext(DesktopStateContext) as DesktopState;
 
   const [transform, setTransform] = useState<Point>({ x: 0, y: 0 });
@@ -41,6 +39,7 @@ const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, .
     <StyledWindow {...props} animate tabIndex={0} fullscreen={fullscreen}
       onFocus={() => { setZIndex((z) => z == index ? z : index + 1 ); }}
       style={{
+        ...style,
         zIndex,
         transform: fullscreen
           ? 'scale(1)'
@@ -62,7 +61,7 @@ const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, .
         onMouseUp={finalTransform}
       >
         <WindowTitle>
-          <FontAwesomeIcon icon={windowType === 'file' ? faFileAlt : faFolder} />
+          <FontAwesomeIcon icon={fileType === 'file' ? faFileAlt : faFolder} />
           &nbsp;&nbsp;{name}
         </WindowTitle>
         <WindowControls>
@@ -72,7 +71,7 @@ const Window: React.FC<WindowProps> = ({ windowId, windowType, name, children, .
         </WindowControls>
       </WindowHeader>
 
-      <WindowBody>{children}</WindowBody>
+      <WindowContent>{children}</WindowContent>
     </StyledWindow>
   </>);
 }

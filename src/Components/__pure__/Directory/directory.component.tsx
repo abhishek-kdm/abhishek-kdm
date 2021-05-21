@@ -9,9 +9,9 @@ interface DirectoryProps extends Omit<FileProps, 'faIcon' | 'Svg'> { }
 
 const Directory: React.FC<DirectoryProps> = (props) => {
   const { windows } = useContext(DesktopStateContext) as DesktopState;
-  const faIcon = Open(props.windowId || '', windows) ? faFolderOpen : faFolder;
+  const faIcon = (props?.windowId && Open(props?.windowId, windows)) ? faFolderOpen : faFolder;
 
-  return <File {...props} windowType='dir' faIcon={faIcon} />;
+  return <File {...props} fileType='dir' faIcon={faIcon} />;
 }
 
 export default Directory;
