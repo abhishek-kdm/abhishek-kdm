@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { PluggableList } from 'react-markdown';
 import gfm from 'remark-gfm';
 import StyledRepositories, { StyledRepositoryFile } from './repositories.style';
 import { getSVGIcon, sanitizeRepoData } from './repositories.utils';
@@ -14,7 +14,7 @@ import { faArrowAltCircleLeft, faExternalLinkAlt } from '@fortawesome/free-solid
 import { faFileCode } from '@fortawesome/free-regular-svg-icons';
 
 interface RepositoriesProps extends React.HTMLAttributes<HTMLElement> {
-  windowId?: string
+  windowId: string
 }
 
 const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({ windowId, ...props }) => {
@@ -23,7 +23,7 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({ window
   const handleClick = useCallback(() => {
     navigate({
       name: 'Repositories',
-      windowType: 'dir',
+      fileType: 'dir',
       children: <Repositories windowId={windowId} />
     });
   }, [navigate, windowId]);
@@ -46,9 +46,8 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({ window
       <hr />
       {props.description}
       <br />
-
       <dl>
-        <dt style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Languages used:</dt>
+        <dt>Languages used:</dt>
         <dd>
           {props.languages.length
             ? props
@@ -58,12 +57,13 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({ window
           }
         </dd>
       </dl>
-
       <dl>
-        <dt style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Description:</dt>
+        <dt>Description:</dt>
         <dd>
           {props.readme_md?.text
-            ? <ReactMarkdown remarkPlugins={[gfm]}>{props.readme_md?.text}</ReactMarkdown>
+            ? (<ReactMarkdown remarkPlugins={[gfm] as PluggableList}>
+                {props.readme_md?.text}
+              </ReactMarkdown>)
             : <pre>{props.readme_txt?.text}</pre>
           }
         </dd>
@@ -72,20 +72,20 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({ window
   </>);
 }
 
-const Repositories: React.FC<RepositoriesProps> = ({ windowId }) => {
+const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
   const repos = sanitizeRepoData(useStaticQuery(query));
   const navigate = useNavigate(windowId);
 
   const handleOpen = useCallback((repo) => {
     return () => navigate({
       name: repo.name,
-      windowType: 'file',
+      fileType: 'file',
       children: <RepositoryFile windowId={windowId} {...repo} />
     });
   }, [navigate, windowId]);
 
   return (<>
-    <StyledRepositories>
+    <StyledRepositories {...props}>
       {repos.map((repo: GithubRepository) => {
         const props = repo.languages.length
           ? { Svg: getSVGIcon(repo.languages[0]) }
@@ -114,7 +114,7 @@ const query = graphql`
             name
             url
             description
-            languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
+            languages(first: 50, orderBy: {field: SIZE, direction: DESC}) {
               nodes {
                 name
               }
@@ -124,7 +124,7 @@ const query = graphql`
                 text
               }
             }
-            readme_txt: object(expression: "HEAD:readme") {
+            readme_txt: object(expression: "HEAD:README.txt") {
               ... on Github_Blob {
                 text
               }

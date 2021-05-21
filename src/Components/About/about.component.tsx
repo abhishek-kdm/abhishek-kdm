@@ -16,9 +16,9 @@ const About: React.FC<AboutProps> = () => {
 
       </pre>
       <hr /><br />
-      A Software Engineer and a minimalist (of sorts).<br />
+      Software Engineer and a minimalist (of sorts).<br />
       Love programming languages and working/experimenting with different kinds.<br />
-      Currently dabbling with web technologies (professionally) for a significant period of time.<br />
+      Currently have been dabbling with web technologies (professionally) for a significant period of time.<br />
     </StyledAbout>
   </>);
 }

@@ -37,12 +37,12 @@ export const TogglerRoot = styled.input.attrs({ type: 'checkbox', id: DarkModeID
     --color-shadow: #dddddd;
   }
 
-  & + ${Wrapper} ${GlobalToggler}::before {
-    transform: translate3d(0, 0, 0);
+  & + ${Wrapper} ${GlobalToggler}::after {
+    content: 'Dark';
   }
 
-  :checked + ${Wrapper} ${GlobalToggler}::before {
-    transform: translate3d(100%, 0, 0);
+  :checked + ${Wrapper} ${GlobalToggler}::after {
+    content: 'Light';
   }
 `;
 

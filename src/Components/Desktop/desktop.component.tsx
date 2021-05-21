@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Main from './desktop.style';
+import Main, { MenuToggler, Menu, ContactButton, ThemeToggler } from './desktop.style';
 import { DesktopItems, DesktopStateContext } from './desktop.utils';
 
 import Window from '../__pure__/Window/window.component';
 import File, { FileProps } from '../__pure__/File/file.component';
 import Directory from '../__pure__/Directory/directory.component';
 import Noscript from '../NoScript/noscript.component';
+import ContactForm from '../ContactForm/contactForm.component';
 
 import { newPoint } from '../../Utils';
 import { useStateReducer } from '../../Utils/hooks';
@@ -65,7 +66,14 @@ const Desktop: React.FC<DesktopProps> = (props) => {
           <Window key={`window-${props.windowId}`} {...props} />
         ))}
       </DesktopStateContext.Provider>
+
+      <MenuToggler />
+      <Menu>
+        <ContactButton>Contact Me</ContactButton>
+        <ThemeToggler />
+      </Menu>
     </Main>
+    <ContactForm />
   </>);
 }
 

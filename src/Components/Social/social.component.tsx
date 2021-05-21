@@ -10,7 +10,7 @@ const Social: React.FC<SocialProps> = () => {
   return (<>
     <StyledSocial>
       <dl>
-        <dt>Professional</dt>
+        <dt>Links</dt>
         <dd>
           <Anchor
             title='Professional Experience.'
@@ -18,7 +18,7 @@ const Social: React.FC<SocialProps> = () => {
           >
             aboutme.lycuid.dev
         </Anchor>
-        &nbsp;&nbsp;&nbsp;<sub>(resume)</sub>
+        <sub>(resume)</sub>
         </dd>
         <dd>
           <Anchor
@@ -27,7 +27,7 @@ const Social: React.FC<SocialProps> = () => {
           >
             git.lycuid.dev
           </Anchor>
-          &nbsp;&nbsp;&nbsp;<sub>(personal git server)</sub>
+          <sub>(personal git server)</sub>
         </dd>
         <dd>
           <Anchor
@@ -36,11 +36,11 @@ const Social: React.FC<SocialProps> = () => {
           >
             lycuid.dev/p/
           </Anchor>
-          &nbsp;&nbsp;&nbsp;<sub>(live web apps)</sub>
+          <sub>(live web apps)</sub>
         </dd>
       </dl>
       <dl>
-        <dt>Alternatives</dt>
+        <dt>Alternate spaces</dt>
         <dd>
           <Anchor
             title='My Gopherspace'
@@ -48,6 +48,7 @@ const Social: React.FC<SocialProps> = () => {
           >
             gopher://lycuid.dev:70
           </Anchor>
+          <sub>(gopher hole)</sub>
         </dd>
       </dl>
       <hr />

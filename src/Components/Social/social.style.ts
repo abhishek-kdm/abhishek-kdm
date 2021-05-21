@@ -28,6 +28,11 @@ const StyledSocial = styled.section`
           content: ">";
         }
       }
+
+      a + sub {
+        font-family: monospace;
+        margin-left: 1em;
+      }
     }
   }
 `;

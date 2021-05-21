@@ -1,5 +1,5 @@
 {
-  "name": "lycuid",
+  "name": "lycuid.dev",
   "private": true,
   "description": "More or less, a portfolio site.",
   "version": "0.1.0",
@@ -50,6 +50,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop --verbose --host 0.0.0.0",
     "start": "npm run develop",
+    "typecheck": "tsc",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
