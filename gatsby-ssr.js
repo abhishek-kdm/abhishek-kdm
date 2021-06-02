@@ -1,14 +1,11 @@
 import { createElement } from 'react';
-import Wrapper, { TogglerRoot } from './src/Wrapper';
-import { siteMetadata } from './package.json';
+import Wrapper from './src/Wrapper';
+import siteConfigs from './site_configs.json';
 
 const el = createElement;
-const { title, description, author } = siteMetadata;
+const { title, description, author } = siteConfigs.metadata;
 
-export const wrapPageElement = ({ element, props }) => [
-  el(TogglerRoot, null),
-  el(Wrapper, props, element),
-];
+export const wrapPageElement = ({ element, props }) => el(Wrapper, props, element);
 
 export const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   replaceHeadComponents([

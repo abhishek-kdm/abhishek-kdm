@@ -13,6 +13,7 @@ const Social: React.FC<SocialProps> = () => {
         <dt>Links</dt>
         <dd>
           <Anchor
+            target='_blank'
             title='Professional Experience.'
             href='https://aboutme.lycuid.dev'
           >
@@ -22,6 +23,7 @@ const Social: React.FC<SocialProps> = () => {
         </dd>
         <dd>
           <Anchor
+            target='_blank'
             title='Personal git server'
             href='https://git.lycuid.dev'
           >
@@ -31,6 +33,7 @@ const Social: React.FC<SocialProps> = () => {
         </dd>
         <dd>
           <Anchor
+            target='_blank'
             title='Live Web Apps'
             href='/p/'
           >
@@ -43,6 +46,7 @@ const Social: React.FC<SocialProps> = () => {
         <dt>Alternate spaces</dt>
         <dd>
           <Anchor
+            target='_blank'
             title='My Gopherspace'
             href='https://gopher.floodgap.com/gopher/gw?a=gopher%3A%2F%2Flycuid.dev'
           >
@@ -55,7 +59,7 @@ const Social: React.FC<SocialProps> = () => {
       <MiscLinks>
         {SocialLinks.map((props, index) => (
           <li key={`social-link-${index}`}>
-            <Anchor {...props} />
+            <Anchor target='_blank' {...props} />
           </li>
         ))}
       </MiscLinks>

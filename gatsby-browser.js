@@ -8,7 +8,7 @@ const el = createElement;
 export const wrapPageElement = ({ element, props }) => {
   const defaultChecked = window.matchMedia('(prefers-color-scheme: dark)').matches;
   return [
-    el(TogglerRoot, { defaultChecked }),
-    el(Wrapper, props, element),
+    el(TogglerRoot, { defaultChecked, key: 'toggler-root' }),
+    el(Wrapper, { ...props, key: 'wrapper' }, element)
   ];
 }

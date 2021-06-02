@@ -1,9 +1,9 @@
 require('dotenv').config();
-const { siteMetadata, siteCDN } = require('./package.json');
+const siteConfigs = require('./site_configs.json');
 
 module.exports = {
-  siteMetadata,
-  assetPrefix: siteCDN,
+  siteMetadata: siteConfigs.metadata,
+  assetPrefix: siteConfigs.cdn,
   plugins: [
     `gatsby-plugin-image`,
     {

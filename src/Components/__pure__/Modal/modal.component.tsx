@@ -11,7 +11,7 @@ const Modal = React.forwardRef<HTMLDialogElement, ModalProps>(
     return (
       <>
         <StyledModal ref={ref} {...props}>
-          <ModalContent method="dialog">
+          <ModalContent method='dialog'>
             <ModalCloseButton>
               <FontAwesomeIcon icon={faTimes} />
             </ModalCloseButton>

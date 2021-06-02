@@ -7,10 +7,10 @@ export interface StyledInfoboxProps extends React.HTMLAttributes<InfoboxElement>
   animate?: boolean
 }
 
-const Animate = css`animation: ${RetroAnimation} .3s ease-in;`;
+export const InfoboxAnimate = css`animation: ${RetroAnimation} .3s ease-in;`;
 
 const StyledInfobox = styled.section<StyledInfoboxProps>`
-  ${(p) => p.animate && Animate}
+  ${(p) => p.animate && InfoboxAnimate}
   background-color: var(--color-bg-secondary);
 `;
 
