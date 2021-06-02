@@ -1,43 +1,45 @@
 import styled from 'styled-components';
-import InfoBox from '../Infobox/infobox.component';
+import { InfoboxAnimate } from '../Infobox/infobox.style';
 
-export const ModalContent = styled(InfoBox).attrs({ animate: true })`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  position: relative;
+const StyledModal = styled.dialog`
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-primary);
+  padding: 2rem 1rem 1rem;
   margin-top: 15vh;
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-secondary);
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    ${InfoboxAnimate}
+  }
+
+  ::backdrop {
+    background-color: rgba(50, 50, 50, 0.5);
+    backdrop-filter: blur(5px);
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 `;
 
-export const ModalCloseButton = styled.label`
+export const ModalContent = styled.form``;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  border: none;
+  outline: none;
   border-radius: 3px;
   align-self: flex-end;
   cursor: pointer;
   color: var(--color-secondary);
+  background-color: var(--color-bg-secondary);
 `;
 
-export const ModalContainer = styled.div`
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  background-color: rgba(50, 50, 50, .5);
-  backdrop-filter: blur(5px);
-`;
-
-export const ModalToggler = styled.input.attrs({ type: 'checkbox' })`
-  display: none;
-
-  & + ${ModalContainer} {
-    display: none;
-  }
-
-  &:checked + ${ModalContainer} {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    pointer-events: auto;
-  }
-`;
+export default StyledModal;

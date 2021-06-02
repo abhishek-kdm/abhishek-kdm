@@ -1,28 +1,26 @@
 import React from 'react';
-import {
-  ModalToggler,
-  ModalContainer,
-  ModalContent,
-  ModalCloseButton
-} from './modal.style';
+import StyledModal, { ModalContent, ModalCloseButton } from './modal.style';
 
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-interface ModalProps extends React.HTMLAttributes<HTMLDivElement> { }
+interface ModalProps extends React.DialogHTMLAttributes<HTMLDialogElement> {}
 
-const Modal: React.FC<ModalProps> = ({ id, children }) => {
-  return (<>
-    <ModalToggler id={id} />
-    <ModalContainer>
-      <ModalContent>
-        <ModalCloseButton htmlFor={id}>
-          <FontAwesomeIcon icon={faTimes} />
-        </ModalCloseButton>
-        {children}
-      </ModalContent>
-    </ModalContainer>
-  </>);
-}
+const Modal = React.forwardRef<HTMLDialogElement, ModalProps>(
+  ({ children, ...props }, ref) => {
+    return (
+      <>
+        <StyledModal ref={ref} {...props}>
+          <ModalContent method="dialog">
+            <ModalCloseButton>
+              <FontAwesomeIcon icon={faTimes} />
+            </ModalCloseButton>
+            {children}
+          </ModalContent>
+        </StyledModal>
+      </>
+    );
+  }
+);
 
 export default Modal;
