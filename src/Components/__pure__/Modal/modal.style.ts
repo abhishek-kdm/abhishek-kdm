@@ -39,7 +39,7 @@ export const ModalCloseButton = styled.button`
   align-self: flex-end;
   cursor: pointer;
   color: var(--color-secondary);
-  background-color: var(--color-bg-secondary);
+  background-color: transparent;
 `;
 
 export default StyledModal;

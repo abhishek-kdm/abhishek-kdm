@@ -44,6 +44,10 @@ hr {
   border-top: 1px solid var(--color-bg-primary);
 }
 
+hr.inverted {
+  border-top: 1px solid var(--color-bg-secondary);
+}
+
 kbd {
   background-color: var(--color-special);
   border-radius: 3px;

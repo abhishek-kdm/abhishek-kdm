@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   --color-special: #8e44ad;
 `;
 
-const DarkModeID = 'darkmode';
+export const DarkModeID = 'darkmode';
 export const GlobalToggler = styled.label.attrs({ htmlFor: DarkModeID })``;
 export const TogglerRoot = styled.input.attrs({ type: 'checkbox', id: DarkModeID })`
   display: none;
@@ -37,12 +37,12 @@ export const TogglerRoot = styled.input.attrs({ type: 'checkbox', id: DarkModeID
     --color-shadow: #dddddd;
   }
 
-  & + ${Wrapper} ${GlobalToggler}::after {
-    content: 'Dark';
+  & + ${Wrapper} ${GlobalToggler}::before {
+    transform: translate3d(0, 0, 0);
   }
 
-  :checked + ${Wrapper} ${GlobalToggler}::after {
-    content: 'Light';
+  :checked + ${Wrapper} ${GlobalToggler}::before {
+    transform: translate3d(100%, 0, 0);
   }
 `;
 

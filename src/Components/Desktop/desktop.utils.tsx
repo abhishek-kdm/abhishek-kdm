@@ -28,8 +28,10 @@ export const DesktopItems: FileProps[] = [
     fileType: 'dir',
     windowProps: {
       style: { width: '425px', height: '70%' },
-    }
+    },
   },
 ];
 
-export const DesktopStateContext = React.createContext<Partial<DesktopState>>({});
+export const DesktopStateContext = React.createContext<Partial<DesktopState>>(
+  {}
+);
