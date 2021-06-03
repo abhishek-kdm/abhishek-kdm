@@ -7,7 +7,7 @@ const StyledSocial = styled.section`
       font-weight: bold;
       ::after {
         content: '';
-        height: .75em;
+        height: 0.75em;
         align-self: flex-end;
         flex: 1;
         margin-left: 0.5rem;
@@ -17,7 +17,7 @@ const StyledSocial = styled.section`
     dd {
       margin-top: 10px;
       ::before {
-        content: " ";
+        content: ' ';
         font-family: monospace;
         font-size: 1.1rem;
         position: absolute;
@@ -25,7 +25,7 @@ const StyledSocial = styled.section`
       }
       :hover {
         ::before {
-          content: ">";
+          content: '>';
         }
       }
 

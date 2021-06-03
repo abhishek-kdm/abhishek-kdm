@@ -28,8 +28,8 @@ interface GithubRepository {
   name: string
   url: string
   languages: string[]
-  readme_md: { text: string }
-  readme_txt: { text: string }
+  README: { text: string }
+  README_MD: { text: string }
 }
 
 type GithubRepositoryLanguage = {

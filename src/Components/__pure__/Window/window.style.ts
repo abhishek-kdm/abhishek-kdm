@@ -1,9 +1,9 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import InfoBox from '../Infobox/infobox.component';
 
 const FullscreenCSS = css`
-  width: 100%!important;
-  height: 100%!important;
+  width: 100% !important;
+  height: 100% !important;
   top: 0;
   left: 0;
   resize: none;
@@ -25,7 +25,7 @@ const StyledWindow = styled(InfoBox)<{ fullscreen: boolean }>`
   border: 1px solid var(--color-secondary);
   box-shadow: 0.3rem 0.3rem 0 var(--color-shadow);
 
-  ${(p) => p.fullscreen ? FullscreenCSS : NonFullscreenCSS}
+  ${(p) => (p.fullscreen ? FullscreenCSS : NonFullscreenCSS)}
 `;
 
 export const WindowHeader = styled.header`

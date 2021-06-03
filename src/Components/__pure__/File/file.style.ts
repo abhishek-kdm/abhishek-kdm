@@ -18,8 +18,8 @@ const StyledFile = styled.span`
   }
 
   svg {
-    width: 100%!important;
-    height: 90%!important;
+    width: 100% !important;
+    height: 90% !important;
   }
 `;
 
@@ -31,4 +31,3 @@ export const FileName = styled.span`
 `;
 
 export default StyledFile;
-

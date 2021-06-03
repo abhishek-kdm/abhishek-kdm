@@ -14,22 +14,25 @@ const Wrapper = styled.div`
 
 export const DarkModeID = 'darkmode';
 export const GlobalToggler = styled.label.attrs({ htmlFor: DarkModeID })``;
-export const TogglerRoot = styled.input.attrs({ type: 'checkbox', id: DarkModeID })`
+export const TogglerRoot = styled.input.attrs({
+  type: 'checkbox',
+  id: DarkModeID,
+})`
   display: none;
 
   & + ${Wrapper} {
     --color-primary: #2e2e2e;
     --color-secondary: #414141;
 
-    --color-bg-primary:   #efefef;
+    --color-bg-primary: #efefef;
     --color-bg-secondary: #dddddd;
 
     --color-shadow: #353535;
   }
 
   :checked + ${Wrapper} {
-    --color-primary:    #c3c3c3;
-    --color-secondary:  #d6d6d6;
+    --color-primary: #c3c3c3;
+    --color-secondary: #d6d6d6;
 
     --color-bg-primary: #1a1a1a;
     --color-bg-secondary: #131313;

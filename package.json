@@ -53,11 +53,5 @@
     "typecheck": "tsc",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
-  },
-  "siteCDN": "https://cdn.lycuid.dev",
-  "siteMetadata": {
-    "title": "LycuiD",
-    "description": "Computers, video games, food and sleep advocate.",
-    "author": "@lycuid"
   }
 }
