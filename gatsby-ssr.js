@@ -1,13 +1,19 @@
 import { createElement } from 'react';
-import Wrapper from './src/Wrapper';
+import Wrapper, { TogglerRoot } from './src/Wrapper';
 import siteConfigs from './site_configs.json';
 
 const el = createElement;
 const { title, description, author } = siteConfigs.metadata;
 
-export const wrapPageElement = ({ element, props }) => el(Wrapper, props, element);
+export const wrapPageElement = ({ element, props }) => [
+  el(TogglerRoot, null),
+  el(Wrapper, props, element),
+];
 
-export const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
   replaceHeadComponents([
     el('title', null, `${title} | ${description}`),
     el('meta', { name: 'description', content: description }),
@@ -19,7 +25,10 @@ export const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) =>
     el('meta', { name: 'twitter:title', content: title }),
     el('meta', { name: 'twitter:description', content: description }),
     el('link', { href: 'https://fonts.gstatic.com', rel: 'preconnect' }),
-    el('link', { href: 'https://fonts.googleapis.com/css2?family=Quantico&display=swap', rel: 'stylesheet' }),
-    ...getHeadComponents()
+    el('link', {
+      href: 'https://fonts.googleapis.com/css2?family=Quantico&display=swap',
+      rel: 'stylesheet',
+    }),
+    ...getHeadComponents(),
   ]);
-}
+};

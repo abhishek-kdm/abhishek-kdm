@@ -6,9 +6,12 @@ import Wrapper, { TogglerRoot } from './src/Wrapper';
 const el = createElement;
 
 export const wrapPageElement = ({ element, props }) => {
-  const defaultChecked = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const defaultChecked = window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .matches;
+
   return [
-    el(TogglerRoot, { defaultChecked, key: 'toggler-root' }),
-    el(Wrapper, { ...props, key: 'wrapper' }, element)
+    el(TogglerRoot, { key: 'toggler-root', defaultChecked }),
+    el(Wrapper, { key: 'wrapper', ...props }, element),
   ];
-}
+};

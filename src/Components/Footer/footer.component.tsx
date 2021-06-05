@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import StyledFooter, { ThemeToggler, ContactButton } from './footer.style';
 
 import Modal from '../__pure__/Modal/modal.component';
@@ -8,6 +8,10 @@ interface FooterProps extends React.HTMLAttributes<HTMLElement> {}
 
 const Footer: React.FC<FooterProps> = (props) => {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [runtime, setRuntime] = useState<boolean>(false);
+
+  useEffect(() => setRuntime(true), []);
+
   return (
     <>
       <StyledFooter {...props}>
@@ -17,9 +21,11 @@ const Footer: React.FC<FooterProps> = (props) => {
         <ThemeToggler />
       </StyledFooter>
 
-      <Modal ref={modalRef} style={{ maxWidth: '375px' }}>
-        <ContactInfo />
-      </Modal>
+      {runtime && (
+        <Modal ref={modalRef} style={{ maxWidth: '375px' }}>
+          <ContactInfo />
+        </Modal>
+      )}
     </>
   );
 };
