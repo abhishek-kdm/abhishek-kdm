@@ -15,10 +15,12 @@ const Footer: React.FC<FooterProps> = (props) => {
   return (
     <>
       <StyledFooter {...props}>
-        <ContactButton onClick={() => modalRef?.current?.showModal()}>
-          contact
-        </ContactButton>
         <ThemeToggler />
+        {runtime && (
+          <ContactButton onClick={() => modalRef?.current?.showModal()}>
+            contact
+          </ContactButton>
+        )}
       </StyledFooter>
 
       {runtime && (
