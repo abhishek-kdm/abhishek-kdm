@@ -1,20 +1,16 @@
 import React, { useCallback } from 'react';
 import ReactMarkdown, { PluggableList } from 'react-markdown';
 import gfm from 'remark-gfm';
-import StyledRepositories, { StyledRepositoryFile } from './repositories.style';
-import { getSVGIcon, sanitizeRepoData } from './repositories.utils';
+import RepositoryContainer, {
+  RepositoryFieldset,
+  StyledRepositoryFile,
+} from './repositories.style';
+import { getSVGIcon, sanitize } from './repositories.utils';
 
 import File from '../__pure__/File/file.component';
 import { useNavigate } from '../__pure__/Window/window.utils';
 import { Anchor } from '../../Styles/global.style';
 import { useStaticQuery, graphql } from 'gatsby';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowAltCircleLeft,
-  faExternalLinkAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { faFileCode } from '@fortawesome/free-regular-svg-icons';
 
 interface RepositoriesProps extends React.HTMLAttributes<HTMLElement> {
   windowId: string;
@@ -38,15 +34,29 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({
     <>
       <StyledRepositoryFile>
         <header>
-          <FontAwesomeIcon
+          <span
             style={{ cursor: 'pointer', fontSize: '24px' }}
             onClick={handleClick}
-            icon={faArrowAltCircleLeft}
           />
           <small>
-            <Anchor href={props.url}>
+            <Anchor
+              target='_blank'
+              href={props.url}
+              style={{ display: 'flex' }}
+            >
               view on github&nbsp;&nbsp;
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
+              <svg width='1.25em' height='1.25em' viewBox='0 0 24 24'>
+                <g
+                  stroke='currentColor'
+                  strokeWidth={1.5}
+                  fill='none'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <polyline points='17 13.5 17 19.5 5 19.5 5 7.5 11 7.5' />
+                  <path d='M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5' />
+                </g>
+              </svg>
             </Anchor>
           </small>
         </header>
@@ -83,7 +93,7 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({
 };
 
 const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
-  const repos = sanitizeRepoData(useStaticQuery(query));
+  const repos = sanitize(useStaticQuery(query));
   const navigate = useNavigate(windowId);
 
   const handleOpen = useCallback(
@@ -100,26 +110,60 @@ const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
 
   return (
     <>
-      <StyledRepositories {...props}>
-        {repos.map((repo: GithubRepository) => {
-          const props = repo.languages.length
-            ? { Svg: getSVGIcon(repo.languages[0]) }
-            : { faIcon: faFileCode };
+      <RepositoryFieldset>
+        <legend>Pinned</legend>
+        <RepositoryContainer {...props}>
+          {repos
+            .filter((repo) => repo.pinned)
+            .map((repo: GithubRepository) => {
+              const props = {
+                SubIcon: getSVGIcon(
+                  repo.languages.length ? repo.languages[0] : ''
+                ),
+              };
 
-          return (
-            <File
-              {...props}
-              key={repo.id}
-              title={repo.description}
-              name={repo.name}
-              onDoubleClick={handleOpen(repo)}
-              onKeyPress={(e) =>
-                e.key.toLowerCase() === 'enter' && handleOpen(repo)()
-              }
-            />
-          );
-        })}
-      </StyledRepositories>
+              return (
+                <File
+                  {...props}
+                  key={repo.id}
+                  title={repo.description}
+                  name={repo.name}
+                  onDoubleClick={handleOpen(repo)}
+                  onKeyPress={(e) =>
+                    e.key.toLowerCase() === 'enter' && handleOpen(repo)()
+                  }
+                />
+              );
+            })}
+        </RepositoryContainer>
+      </RepositoryFieldset>
+      <RepositoryFieldset>
+        <legend>Rest</legend>
+        <RepositoryContainer {...props}>
+          {repos
+            .filter((repo) => !repo.pinned)
+            .map((repo: GithubRepository) => {
+              const props = {
+                SubIcon: getSVGIcon(
+                  repo.languages.length ? repo.languages[0] : ''
+                ),
+              };
+
+              return (
+                <File
+                  {...props}
+                  key={repo.id}
+                  title={repo.description}
+                  name={repo.name}
+                  onDoubleClick={handleOpen(repo)}
+                  onKeyPress={(e) =>
+                    e.key.toLowerCase() === 'enter' && handleOpen(repo)()
+                  }
+                />
+              );
+            })}
+        </RepositoryContainer>
+      </RepositoryFieldset>
     </>
   );
 };
@@ -128,6 +172,13 @@ const query = graphql`
   query {
     github {
       user(login: "lycuid") {
+        pinnedItems(first: 100, types: REPOSITORY) {
+          nodes {
+            ... on Github_Repository {
+              id
+            }
+          }
+        }
         repositories(first: 100) {
           nodes {
             id

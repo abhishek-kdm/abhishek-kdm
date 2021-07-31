@@ -1,5 +1,4 @@
 import './src/Styles/global.css';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { createElement } from 'react';
 import Wrapper, { TogglerRoot } from './src/Wrapper';
 

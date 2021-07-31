@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 
-const StyledRepositories = styled.section`
+const RepositoryContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, auto));
   grid-gap: 10px;
+`;
 
-  dl {
-    dt {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  }
+export const RepositoryFieldset = styled.fieldset`
+  border: 1px solid var(--color-bg-primary);
 `;
 
 export const StyledRepositoryFile = styled.section`
@@ -20,4 +17,4 @@ export const StyledRepositoryFile = styled.section`
   }
 `;
 
-export default StyledRepositories;
+export default RepositoryContainer;

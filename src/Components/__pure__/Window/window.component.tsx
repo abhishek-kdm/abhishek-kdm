@@ -12,9 +12,7 @@ import StyledWindow, {
   WindowContent,
 } from './window.style';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileAlt, faFolder } from '@fortawesome/free-solid-svg-icons';
-
+import { IconFile, IconDirectory } from '../File/file.utils.tsx';
 import { DesktopStateContext } from '../../Desktop/desktop.utils';
 import { newPoint } from '../../../Utils';
 
@@ -95,9 +93,7 @@ const Window: React.FC<WindowProps> = ({
           onMouseUp={finalTransform}
         >
           <WindowTitle>
-            <FontAwesomeIcon
-              icon={fileType === 'file' ? faFileAlt : faFolder}
-            />
+            {fileType === 'file' ? <IconFile /> : <IconDirectory filled />}
             &nbsp;&nbsp;{name}
           </WindowTitle>
           <WindowControls>

@@ -40,6 +40,9 @@ export const WindowHeader = styled.header`
 `;
 
 export const WindowTitle = styled.span`
+  display: flex;
+  align-items: center;
+  justify-items: flex-start;
   padding: 0 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;

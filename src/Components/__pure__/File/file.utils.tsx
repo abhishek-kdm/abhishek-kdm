@@ -1,18 +1,61 @@
 import React, { useState } from 'react';
-import StyledFile, { FileName } from './file.style';
-
-import { faFileAlt } from '@fortawesome/free-regular-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import StyledFile, {
+  FileIconContainer,
+  FileIcon,
+  FileName,
+} from './file.style';
 import { newPoint } from '../../../Utils';
 
 type SpanAttributes = React.HTMLAttributes<HTMLSpanElement>;
-type FileMixinProps = { Svg?: React.FC; name: string; faIcon?: IconProp };
+type FileMixinProps = {
+  SubIcon?: React.FC;
+  name: string;
+} & FileWindowAttributes;
 
-export const FileMixin: React.FC<FileMixinProps> = ({ Svg, name, faIcon }) => {
+export const IconFile: React.FC<React.SVGAttirbutes<SVGElement>> = (props) => (
+  <FileIcon viewBox='-5 -5 110 110' {...props}>
+    <path d='M10 0 h60 L90 20 v80 h-80Z' />
+    <path d='M70 0 v20 h20' />
+  </FileIcon>
+);
+
+export const IconDirectory: React.FC<React.SVGAttirbutes<SVGElement>> = (
+  props
+) => (
+  <FileIcon viewBox='-5 -5 110 90' {...props}>
+    <path d='M0 0 h25 l20 10 h60 v70 h-105Z' />
+  </FileIcon>
+);
+
+const DefaultSubIcon = () => (
+  <svg viewBox='-1 -1 12 12'>
+    <g stroke='currentColor' strokeWidth={2} fill='none' strokeLinecap='round'>
+      <line x1={0} y1={1} x2={10} y2={1} />
+      <line x1={0} y1={5} x2={10} y2={5} />
+      <line x1={0} y1={9} x2={10} y2={9} />
+    </g>
+  </svg>
+);
+
+export const FileMixin: React.FC<FileMixinProps> = ({
+  fileType,
+  name,
+  SubIcon,
+}) => {
   return (
     <>
-      {Svg ? <Svg /> : <FontAwesomeIcon icon={faIcon || faFileAlt} />}
+      <FileIconContainer>
+        {fileType == 'dir' ? (
+          <IconDirectory />
+        ) : (
+          <>
+            <IconFile />
+            <span className='subicon'>
+              {SubIcon ? <SubIcon /> : <DefaultSubIcon />}
+            </span>
+          </>
+        )}
+      </FileIconContainer>
       <FileName>{name}</FileName>
     </>
   );
@@ -21,8 +64,8 @@ export const FileMixin: React.FC<FileMixinProps> = ({ Svg, name, faIcon }) => {
 export type FileOnlyProps = FileMixinProps & SpanAttributes;
 
 export const DraggableFile: React.FC<FileOnlyProps> = ({
-  Svg,
-  faIcon,
+  fileType,
+  SubIcon,
   ...props
 }) => {
   const [start, setStart] = useState<Point>(newPoint());
@@ -45,21 +88,21 @@ export const DraggableFile: React.FC<FileOnlyProps> = ({
           }));
         }}
       >
-        <FileMixin name={props.name} faIcon={faIcon} Svg={Svg} />
+        <FileMixin name={props.name} SubIcon={SubIcon} fileType={fileType} />
       </StyledFile>
     </>
   );
 };
 
 export const NonDraggableFile: React.FC<FileOnlyProps> = ({
-  Svg,
-  faIcon,
+  fileType,
+  SubIcon,
   ...props
 }) => {
   return (
     <>
       <StyledFile {...props}>
-        <FileMixin name={props.name} faIcon={faIcon} Svg={Svg} />
+        <FileMixin name={props.name} SubIcon={SubIcon} fileType={fileType} />
       </StyledFile>
     </>
   );

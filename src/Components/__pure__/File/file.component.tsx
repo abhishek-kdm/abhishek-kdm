@@ -4,15 +4,11 @@ import { DraggableFile, NonDraggableFile, FileOnlyProps } from './file.utils';
 import { DesktopStateContext } from '../../Desktop/desktop.utils';
 import { Open } from '../../../Utils';
 
-export type FileProps = FileOnlyProps &
-  FileWindowAttributes & { windowProps?: React.HTMLAttributes<HTMLElement> };
+export type FileProps = FileOnlyProps & {
+  windowProps?: React.HTMLAttributes<HTMLElement>;
+};
 
-const File: React.FC<FileProps> = ({
-  children,
-  fileType,
-  windowProps,
-  ...props
-}) => {
+const File: React.FC<FileProps> = ({ children, windowProps, ...props }) => {
   const { updateWindowState } = useContext(DesktopStateContext) as DesktopState;
 
   const openWindow = useCallback(() => {
@@ -26,7 +22,7 @@ const File: React.FC<FileProps> = ({
                   ...state.windows,
                   {
                     windowId: props.windowId,
-                    fileType: fileType || 'file',
+                    fileType: props.fileType || 'file',
                     name: props.name || '',
                     children,
                     ...windowProps,
@@ -35,7 +31,7 @@ const File: React.FC<FileProps> = ({
           }
         : state
     );
-  }, [updateWindowState, children, props, fileType, windowProps]);
+  }, [updateWindowState, children, props, windowProps]);
 
   if (props.windowId) {
     props.onDoubleClick = openWindow;
