@@ -6,6 +6,7 @@ on:
     paths:
       - 'src/**'
       - 'gatsby*'
+      - 'site_configs.json'
       - ".github/workflows/deploy.yml"
 jobs:
   build-and-deploy:
