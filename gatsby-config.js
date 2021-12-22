@@ -1,16 +1,23 @@
-require('dotenv').config();
-const siteConfigs = require('./site_configs.json');
-
 module.exports = {
-  siteMetadata: siteConfigs.metadata,
-  assetPrefix: siteConfigs.cdn,
+  siteMetadata: {
+    title: `LycuiD`,
+    description: `Busy in the matrix.`,
+    author: `@lycuid`,
+  },
+  assetPrefix: 'https://cdn.lycuid.dev',
   plugins: [
-    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `Images`,
         path: `${__dirname}/src/Images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `Fonts`,
+        path: `${__dirname}/src/Fonts`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -34,19 +41,8 @@ module.exports = {
         fileName: false,
       },
     },
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: 'Github',
-        fieldName: 'github',
-        url: `https://api.github.com/graphql`,
-        headers: {
-          Authorization: `Bearer ${process.env.GRAPHQL_GITHUB_TOKEN}`
-        },
-      }
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

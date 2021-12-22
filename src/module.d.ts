@@ -4,23 +4,28 @@ type Point = { x: number; y: number };
 type WindowID = string;
 
 interface FileWindowAttributes {
-  windowId?: WindowID;
-  name?: string;
+  windowId: WindowID;
+  name: string;
   fileType?: 'file' | 'dir';
+  minimized?: Maybe<boolean>;
 }
 
-type WindowProps = React.HTMLAttributes<HTMLElement> &
-  Required<FileWindowAttributes>;
+// props passed to the 'Window' component itself.
+type WindowProps = React.HTMLAttributes<HTMLElement> & FileWindowAttributes;
 
-type WindowState = {
+interface WindowState {
+  // visible windows on the screen.
   windows: WindowProps[];
-  active: Maybe<WindowID>;
-  index: number;
-};
+  // window being actively dragged across the screen.
+  dragWindow: Maybe<WindowID>;
+  // offset in (pixels) for the 'dragWinow', from its original position.
+  windowOffset: Point;
+}
 
-interface DesktopState extends WindowState {
+interface ScreenState {
+  windowState: WindowState;
   updateWindowState: React.Dispatch<React.SetStateAction<WindowState>>;
-  offset: Point;
+  bringToTop: (windowId: WindowID) => void;
 }
 
 interface GithubRepository {
@@ -34,24 +39,21 @@ interface GithubRepository {
   README_MD: { text: string };
 }
 
-type GithubRepositoryLanguage = {
+interface GithubRepositoryLanguage {
   languages: {
     nodes: { name: string }[];
   };
-};
+}
 
-type GithubGraphqlData = {
-  github: {
-    user: {
-      pinnedItems: {
-        nodes: {
-          id: string;
-        }[];
-      };
-      repositories: {
-        nodes: (Omit<GithubRepository, 'language'> &
-          GithubRepositoryLanguage)[];
-      };
-    };
+interface GithubGraphqlData {
+  pinnedItems: {
+    nodes: {
+      id: string;
+    }[];
   };
-};
+  repositories: {
+    nodes: (Omit<GithubRepository, 'pinned'> &
+      Omit<GithubRepository, 'language'> &
+      GithubRepositoryLanguage)[];
+  };
+}

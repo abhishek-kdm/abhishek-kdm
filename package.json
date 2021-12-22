@@ -1,53 +1,43 @@
 {
   "name": "lycuid.dev",
   "private": true,
-  "description": "More or less, a portfolio site.",
+  "description": "lycuid.dev",
   "version": "0.1.0",
-  "author": "Abhishek Kadam <lycuid@gmail.com>",
+  "author": "LycuiD <lycuid@gmail.com>",
+  "dependencies": {
+    "gatsby": "^4.4.0",
+    "gatsby-plugin-gatsby-cloud": "^4.4.0",
+    "gatsby-plugin-manifest": "^4.4.0",
+    "gatsby-plugin-offline": "^5.4.0",
+    "gatsby-plugin-sharp": "^4.4.0",
+    "gatsby-plugin-styled-components": "^5.4.0",
+    "gatsby-source-filesystem": "^4.4.0",
+    "gatsby-transformer-sharp": "^4.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.18",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.6",
+    "prettier": "^2.4.1",
+    "react-markdown": "^7.1.1",
+    "remark-gfm": "^3.0.1",
+    "styled-components": "^5.3.3",
+    "typescript": "^4.5.4"
+  },
+  "license": "GPLv3",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop --verbose --host 0.0.0.0",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lycuid/lycuid"
-  },
-  "bugs": {
-    "url": "https://github.com/lycuid/lycuid/issues"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "GPL3",
-  "dependencies": {
-    "gatsby": "^3.10.2",
-    "gatsby-plugin-image": "^1.10.1",
-    "gatsby-plugin-manifest": "^3.10.0",
-    "gatsby-plugin-offline": "^4.10.0",
-    "gatsby-plugin-sharp": "^3.10.2",
-    "gatsby-plugin-styled-components": "^4.10.0",
-    "gatsby-source-filesystem": "^3.10.0",
-    "gatsby-source-graphql": "^3.10.0",
-    "gatsby-transformer-sharp": "^3.10.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "@types/react": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.24.0",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "react-markdown": "^6.0.1",
-    "remark-gfm": "^1.0.0",
-    "styled-components": "^5.2.3",
-    "typescript": "^4.2.4"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop --verbose --host 0.0.0.0",
-    "start": "npm run develop",
-    "typecheck": "tsc",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
   }
 }

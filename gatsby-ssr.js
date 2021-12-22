@@ -1,34 +1,44 @@
-import { createElement } from 'react';
-import Wrapper, { TogglerRoot } from './src/Wrapper';
-import siteConfigs from './site_configs.json';
+const { createElement, Fragment } = require('react');
+const Wrapper = require('./src/Wrapper').default;
 
-const el = createElement;
-const { title, description, author } = siteConfigs.metadata;
+const configs = {
+  name: 'LycuiD',
+  description: 'Living large, in the matrix.',
+  author: '@lycuid',
+};
 
-export const wrapPageElement = ({ element, props }) => [
-  el(TogglerRoot, null),
-  el(Wrapper, props, element),
-];
+exports.wrapPageElement = ({ element, props }) =>
+  createElement(Wrapper, props, element);
 
-export const onPreRenderHTML = ({
-  getHeadComponents,
-  replaceHeadComponents,
-}) => {
-  replaceHeadComponents([
-    el('title', null, `${title} | ${description}`),
-    el('meta', { name: 'description', content: description }),
-    el('meta', { property: 'og:title', content: title }),
-    el('meta', { property: 'og:description', content: description }),
-    el('meta', { property: 'og:type', content: 'website' }),
-    el('meta', { name: 'twitter:card', content: 'summary' }),
-    el('meta', { name: 'twitter:creator', content: author }),
-    el('meta', { name: 'twitter:title', content: title }),
-    el('meta', { name: 'twitter:description', content: description }),
-    el('link', { href: 'https://fonts.gstatic.com', rel: 'preconnect' }),
-    el('link', {
-      href: 'https://fonts.googleapis.com/css2?family=Quantico&display=swap',
-      rel: 'stylesheet',
+exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
+  const headers = [
+    createElement('meta', { charSet: 'utf-8' }),
+    createElement('meta', { httpEquiv: 'x-ua-compatible', content: 'ie=edge' }),
+    createElement('meta', {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1, shrink-to-fit=no',
     }),
+    createElement('meta', {
+      name: 'description',
+      content: configs.description,
+    }),
+    createElement('meta', { property: 'og:title', content: configs.name }),
+    createElement('meta', {
+      property: 'og:description',
+      content: configs.description,
+    }),
+    createElement('meta', { property: 'og:type', content: 'website' }),
+    createElement('meta', { name: 'twitter:card', content: 'summary' }),
+    createElement('meta', { name: 'twitter:creator', content: configs.author }),
+    createElement('meta', { name: 'twitter:title', content: configs.name }),
+    createElement('meta', {
+      name: 'twitter:description',
+      content: configs.description,
+    }),
+  ];
+
+  replaceHeadComponents([
     ...getHeadComponents(),
+    ...headers.map((tag, key) => createElement(Fragment, { key }, tag)),
   ]);
 };

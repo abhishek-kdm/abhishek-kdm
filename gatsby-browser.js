@@ -1,16 +1,5 @@
-import './src/Styles/global.css';
-import { createElement } from 'react';
-import Wrapper, { TogglerRoot } from './src/Wrapper';
+const el = require('react').createElement;
+const Wrapper = require('./src/Wrapper').default;
 
-const el = createElement;
-
-export const wrapPageElement = ({ element, props }) => {
-  const defaultChecked = window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .matches;
-
-  return [
-    el(TogglerRoot, { key: 'toggler-root', defaultChecked }),
-    el(Wrapper, { key: 'wrapper', ...props }, element),
-  ];
-};
+export const wrapPageElement = ({ element, props }) =>
+  el(Wrapper, props, element);
