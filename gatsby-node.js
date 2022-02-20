@@ -38,7 +38,7 @@ const query = `
 `;
 
 exports.sourceNodes = async ({ actions, createContentDigest }) => {
-  if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+  require('dotenv').config();
 
   const response = await fetch('https://api.github.com/graphql', {
     body: JSON.stringify({ query }),

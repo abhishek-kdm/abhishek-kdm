@@ -3,7 +3,7 @@ const Wrapper = require('./src/Wrapper').default;
 
 const configs = {
   name: 'LycuiD',
-  description: 'Living large, in the matrix.',
+  description: 'Living large...in the matrix.',
   author: '@lycuid',
 };
 
@@ -12,6 +12,7 @@ exports.wrapPageElement = ({ element, props }) =>
 
 exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
   const headers = [
+    createElement('title', null, `${configs.name} | ${configs.description}`),
     createElement('meta', { charSet: 'utf-8' }),
     createElement('meta', { httpEquiv: 'x-ua-compatible', content: 'ie=edge' }),
     createElement('meta', {
