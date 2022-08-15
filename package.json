@@ -1,7 +1,7 @@
 {
-  "name": "lycuid.dev",
+  "name": "lycuid",
   "private": true,
-  "description": "lycuid.dev",
+  "description": "Personal Webpage",
   "version": "0.1.0",
   "author": "LycuiD <lycuid@gmail.com>",
   "dependencies": {
@@ -28,13 +28,11 @@
   },
   "license": "GPLv3",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --verbose",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop --verbose --host 0.0.0.0",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "typecheck": "tsc"
+    "start": "gatsby develop --verbose --no-colors --host 0.0.0.0",
+    "clean": "gatsby clean"
   },
   "repository": {
     "type": "git",

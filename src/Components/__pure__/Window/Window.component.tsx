@@ -23,7 +23,7 @@ const Window: React.FC<WindowProps> = ({
   const {
     windowState: { windowOffset, dragWindow },
     updateWindowState,
-    bringToTop,
+    raiseWindow,
   } = useContext(GlobalContext) as ScreenState;
 
   const [transform, setTransform] = useState<Point>({ x: 0, y: 0 });
@@ -52,24 +52,20 @@ const Window: React.FC<WindowProps> = ({
         animate
         tabIndex={0}
         fullscreen={fullscreen}
-        onFocus={() => bringToTop(windowId)}
+        onFocus={() => raiseWindow(windowId)}
         style={{
           ...style,
           transform: minimized
             ? 'scale(0)'
             : fullscreen
-            ? 'scale(1)'
-            : `translate3d(${transform.x + offset.x}px, ${
-                transform.y + offset.y
-              }px, 0px)`,
+              ? 'scale(1)'
+              : `translate3d(${transform.x + offset.x}px, ${transform.y + offset.y}px, 0px)`,
         }}
       >
         <WindowHeader>
           <WindowTitle
             style={{ cursor: dragWindow === windowId ? 'grabbing' : 'grab' }}
-            onDoubleClick={() => {
-              setFullscreen((f) => !f);
-            }}
+            onDoubleClick={() => setFullscreen((f) => !f)}
             onTouchStart={() => {
               updateWindowState((state) =>
                 !fullscreen ? { ...state, dragWindow: windowId } : state
@@ -103,11 +99,7 @@ const Window: React.FC<WindowProps> = ({
             >
               &#xff3f;
             </Button>
-            <Button
-              onClick={() => {
-                setFullscreen((f) => !f);
-              }}
-            >
+            <Button onClick={() => setFullscreen((f) => !f)}>
               &#x2610;
             </Button>
             <Button onClick={handleClose}>&times;</Button>

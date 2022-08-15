@@ -8,7 +8,7 @@ import File, { FileProps } from '../__pure__/File/File.component';
 import Directory from '../__pure__/Directory/Directory.component';
 import Noscript from '../Noscript/Noscript.component';
 
-interface DesktopProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DesktopProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 const Desktop: React.FC<DesktopProps> = (props) => {
   const { windowState } = useContext(GlobalContext) as ScreenState;
@@ -16,24 +16,16 @@ const Desktop: React.FC<DesktopProps> = (props) => {
   // staticly, just so that we can have a proper interface for non-javascript
   // browsers.
   const [desktopItems, setDesktopItems] = useState<FileProps[]>([]);
-  useEffect(() => {
-    setDesktopItems(DesktopItems);
-  }, []);
+  useEffect(() => { setDesktopItems(DesktopItems) }, []);
 
   return (
     <>
       <Main {...props}>
         <Noscript />
         {desktopItems.map((props) =>
-          props.fileType === 'file' ? (
-            <File {...props} draggable key={`file-${props.windowId}`} />
-          ) : (
-            <Directory
-              {...props}
-              draggable
-              key={`directory-${props.windowId}`}
-            />
-          )
+          props.fileType === 'file'
+            ? <File {...props} draggable key={`file-${props.windowId}`} />
+            : <Directory {...props} draggable key={`dir-${props.windowId}`} />
         )}
         {windowState.windows.map((props) => (
           <Window key={`window-${props.windowId}`} {...props} />

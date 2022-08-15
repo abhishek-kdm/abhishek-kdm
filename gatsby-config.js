@@ -4,7 +4,6 @@ module.exports = {
     description: `Busy in the matrix.`,
     author: `@lycuid`,
   },
-  assetPrefix: 'https://cdn.lycuid.dev',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,

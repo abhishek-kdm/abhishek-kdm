@@ -11,17 +11,17 @@ import { IconFile, IconDirectory } from '../__pure__/File/File.utils';
 import ContactInfo from '../ContactInfo/ContactInfo.component';
 import { GlobalContext } from '../../Utils';
 
-interface TaskbarProps extends React.HTMLAttributes<HTMLElement> {}
+interface TaskbarProps extends React.HTMLAttributes<HTMLElement> { }
 
 const Taskbar: React.FC<TaskbarProps> = (props) => {
-  const { windowState, updateWindowState, bringToTop } = useContext(
+  const { windowState, updateWindowState, raiseWindow } = useContext(
     GlobalContext
   ) as ScreenState;
   const [modalShow, setModalShow] = useState<boolean>(false);
 
   const handleClick = useCallback(
-    (windowId) => {
-      bringToTop(windowId);
+    (windowId: WindowID) => {
+      raiseWindow(windowId);
       updateWindowState((state) => ({
         ...state,
         windows: state.windows.map((w) =>
@@ -29,7 +29,7 @@ const Taskbar: React.FC<TaskbarProps> = (props) => {
         ),
       }));
     },
-    [updateWindowState, bringToTop]
+    [updateWindowState, raiseWindow]
   );
 
   return (

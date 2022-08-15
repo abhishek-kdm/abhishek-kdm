@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies and build website.
         env:
           GRAPHQL_GITHUB_TOKEN: ${{ secrets.GRAPHQL_GITHUB_TOKEN }}
-        run: npm install && npm run build
+        run: npm install && npm run build && cp pubkey.asc public
 
       - name: Uploading artifacts.
         uses: actions/upload-pages-artifact@v1

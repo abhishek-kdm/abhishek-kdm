@@ -23,8 +23,8 @@ const IndexPage: React.FC<IndexPageProps & PageProps> = ({ data }) => {
 
   const dragProps = useWindowDrag(windowState, updateWindowState);
 
-  const bringToTop = useCallback(
-    (windowId) => {
+  const raiseWindow = useCallback(
+    (windowId: WindowID) => {
       const maxindex = windowState.windows.reduce(
         (m, { style }) => Math.max(m, Number(style?.zIndex || 0)),
         999
@@ -47,7 +47,7 @@ const IndexPage: React.FC<IndexPageProps & PageProps> = ({ data }) => {
         value={{
           windowState,
           updateWindowState,
-          bringToTop,
+          raiseWindow,
           repos: data.github.repositories,
         }}
       >

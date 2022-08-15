@@ -68,6 +68,7 @@ const GlobalStyle = createGlobalStyle<{ fontFaces: FontFace[] }>`
     display: block;
     padding: 5px;
     border-radius: 6px;
+    background-color: #eeeeee;
   }
 
   th, td {

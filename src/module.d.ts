@@ -25,7 +25,7 @@ interface WindowState {
 interface ScreenState {
   windowState: WindowState;
   updateWindowState: React.Dispatch<React.SetStateAction<WindowState>>;
-  bringToTop: (windowId: WindowID) => void;
+  raiseWindow: (windowId: WindowID) => void;
 }
 
 interface GithubRepository {

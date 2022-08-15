@@ -45,9 +45,7 @@ export const FileMixin: React.FC<FileMixinProps> = ({
   return (
     <>
       <FileIconContainer>
-        {fileType == 'dir' ? (
-          <IconDirectory />
-        ) : (
+        {fileType == 'dir' ? <IconDirectory /> : (
           <>
             <IconFile />
             <span className='subicon'>
@@ -78,9 +76,7 @@ export const DraggableFile: React.FC<FileOnlyProps> = ({
         style={{
           transform: `translate3d(${transform.x}px, ${transform.y}px, 0px)`,
         }}
-        onDragStart={({ pageX, pageY }) => {
-          setStart({ x: pageX, y: pageY });
-        }}
+        onDragStart={({ pageX, pageY }) => setStart({ x: pageX, y: pageY })}
         onDragEnd={({ pageX, pageY }) => {
           setTransform(({ x, y }) => ({
             x: x + pageX - start.x,

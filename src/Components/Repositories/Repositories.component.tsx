@@ -21,7 +21,6 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({
   ...props
 }) => {
   const navigate = useNavigate(windowId);
-
   const handleClick = useCallback(() => {
     navigate({
       name: 'Repositories',
@@ -93,9 +92,8 @@ const RepositoryFile: React.FC<RepositoriesProps & GithubRepository> = ({
 const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
   const { repos } = useContext(GlobalContext);
   const navigate = useNavigate(windowId);
-
   const handleOpen = useCallback(
-    (repo) => {
+    (repo: GithubRepository) => {
       return () =>
         navigate({
           name: repo.name,
@@ -111,55 +109,31 @@ const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
       <RepositoryFieldset>
         <legend>Pinned</legend>
         <RepositoryContainer {...props}>
-          {repos
-            .filter((repo) => repo.pinned)
-            .map((repo: GithubRepository) => {
-              const props = {
-                SubIcon: getSVGIcon(
-                  repo.languages.length ? repo.languages[0] : ''
-                ),
-              };
-
-              return (
-                <File
-                  {...props}
-                  key={repo.id}
-                  title={repo.description}
-                  name={repo.name}
-                  onDoubleClick={handleOpen(repo)}
-                  onKeyPress={(e) =>
-                    e.key.toLowerCase() === 'enter' && handleOpen(repo)()
-                  }
-                />
-              );
-            })}
+          {repos.filter((r) => r.pinned).map((repo) => (
+            <File
+              key={repo.id}
+              SubIcon={getSVGIcon(repo.languages[0] || '')}
+              title={repo.description}
+              name={repo.name}
+              onDoubleClick={handleOpen(repo)}
+              onKeyPress={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
+            />
+          ))}
         </RepositoryContainer>
       </RepositoryFieldset>
       <RepositoryFieldset>
         <legend>Rest</legend>
         <RepositoryContainer {...props}>
-          {repos
-            .filter((repo) => !repo.pinned)
-            .map((repo: GithubRepository) => {
-              const props = {
-                SubIcon: getSVGIcon(
-                  repo.languages.length ? repo.languages[0] : ''
-                ),
-              };
-
-              return (
-                <File
-                  {...props}
-                  key={repo.id}
-                  title={repo.description}
-                  name={repo.name}
-                  onDoubleClick={handleOpen(repo)}
-                  onKeyPress={(e) =>
-                    e.key.toLowerCase() === 'enter' && handleOpen(repo)()
-                  }
-                />
-              );
-            })}
+          {repos.filter((r) => !r.pinned).map((repo) => (
+            <File
+              key={repo.id}
+              SubIcon={getSVGIcon(repo.languages[0] || '')}
+              title={repo.description}
+              name={repo.name}
+              onDoubleClick={handleOpen(repo)}
+              onKeyPress={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
+            />
+          ))}
         </RepositoryContainer>
       </RepositoryFieldset>
     </>
