@@ -33,6 +33,7 @@ interface GithubRepository {
   id: string;
   name: string;
   url: string;
+  isLive: boolean;
   languages: string[];
   pinned: boolean;
   README: { text: string };

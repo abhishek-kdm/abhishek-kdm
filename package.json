@@ -1,41 +1,27 @@
 {
-  "name": "lycuid",
-  "private": true,
-  "description": "Personal Webpage",
+  "name": "lycuid.github.io",
   "version": "0.1.0",
-  "author": "LycuiD <lycuid@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc"
+  },
   "dependencies": {
-    "gatsby": "^4.4.0",
-    "gatsby-plugin-gatsby-cloud": "^4.4.0",
-    "gatsby-plugin-manifest": "^4.4.0",
-    "gatsby-plugin-offline": "^5.4.0",
-    "gatsby-plugin-sharp": "^4.4.0",
-    "gatsby-plugin-styled-components": "^5.4.0",
-    "gatsby-source-filesystem": "^4.4.0",
-    "gatsby-transformer-sharp": "^4.4.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "next": "12.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.18",
-    "dotenv": "^10.0.0",
-    "node-fetch": "^2.6.6",
-    "prettier": "^2.4.1",
-    "react-markdown": "^7.1.1",
+    "@types/node": "18.7.18",
+    "@types/react": "18.0.20",
+    "@types/styled-components": "^5.1.26",
+    "eslint": "8.23.1",
+    "eslint-config-next": "12.3.0",
+    "react-markdown": "^8.0.3",
     "remark-gfm": "^3.0.1",
-    "styled-components": "^5.3.3",
-    "typescript": "^4.5.4"
-  },
-  "license": "GPLv3",
-  "scripts": {
-    "build": "gatsby build --verbose",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop --verbose --no-colors --host 0.0.0.0",
-    "clean": "gatsby clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lycuid/lycuid"
+    "styled-components": "^5.3.5"
   }
 }

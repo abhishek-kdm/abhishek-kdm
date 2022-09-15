@@ -1,18 +1,18 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
 
 type FontFace = {
-  name: string;
-  publicURL: string;
-  extension: string;
+  face: string;
+  url: string;
+  ext: string;
 };
 
 const GlobalStyle = createGlobalStyle<{ fontFaces: FontFace[] }>`
   ${({ fontFaces }) =>
     fontFaces.map(
-      ({ name, publicURL, extension }) => `
+      ({ face, url, ext }) => `
         @font-face {
-          font-family: "${name}";
-          src: url("${publicURL}") format("${extension}");
+          font-family: "${face}";
+          src: url("${url}") format("${ext}");
         }
   `
     )}
@@ -131,7 +131,7 @@ export const Anchor = styled.a.attrs((props) =>
   }
 `;
 
-export const RetroList = styled.ul`
+export const RetroList = styled.ul<{ hoverable?: boolean, bullet?: string }>`
   padding: 0;
   list-style-type: none;
 
@@ -139,8 +139,6 @@ export const RetroList = styled.ul`
     display: grid;
     grid-template-columns: auto auto 1fr;
     text-align: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   li::after {
@@ -148,17 +146,19 @@ export const RetroList = styled.ul`
   }
 
   li::before {
-    content: '[ ]';
-    font-family: monospace;
+    content: ${({ hoverable, bullet='*' }) => hoverable ? `'[ ]'` : `'[${bullet}]'`};
     color: var(--color-secondary);
     padding-right: 1rem;
     padding-left: 0.5rem;
     text-shadow: none;
   }
 
+  ${({ hoverable, bullet='*' }) => hoverable &&
+  `
   li:hover::before {
-    content: '[*]';
+    content: '[${bullet}]';
   }
+  `}
 `;
 
 export default GlobalStyle;

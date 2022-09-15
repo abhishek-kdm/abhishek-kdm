@@ -1,7 +1,7 @@
 import React from 'react';
 
 import About from '../About/About.component';
-import Social from '../Social/Social.component';
+import Online from '../Online/Online.component';
 import Repositories from '../Repositories/Repositories.component';
 import { FileProps } from '../__pure__/File/File.component';
 
@@ -14,10 +14,10 @@ export const DesktopItems: FileProps[] = [
     fileType: 'file',
   },
   {
-    title: 'Social',
-    children: <Social />,
-    windowId: 'social',
-    name: 'Social',
+    title: 'Online',
+    children: <Online />,
+    windowId: 'online',
+    name: 'Online',
     fileType: 'file',
   },
   {

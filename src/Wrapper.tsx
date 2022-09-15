@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import GlobalStyle from './Styles/global.style';
 
@@ -22,18 +21,14 @@ const StyledWrapper = styled.div`
   --color-bg-secondary: #afafaf;
 `;
 
-const Wrapper: React.FC = ({ children }) => {
-  const fontFaces = useStaticQuery(graphql`
-    {
-      allFile(filter: { sourceInstanceName: { eq: "Fonts" } }) {
-        nodes {
-          name
-          publicURL
-          extension
-        }
-      }
-    }
-  `)?.allFile?.nodes;
+const Wrapper: React.FC<React.HTMLAttributes<HTMLElement>> = ({ children }) => {
+  const fontFaces = [
+    { face: 'amstradpc1512-2y', url: '/fonts/amstradpc1512-2y.woff2', ext: 'woff2' },
+    { face: 'ibm_bios-2y', url: '/fonts/ibm_bios-2y.woff2', ext: 'woff2' },
+    { face: 'ibm_vga8', url: '/fonts/ibm_vga8.woff2', ext: 'woff2' },
+    { face: 'sperrypc8x16', url: '/fonts/sperrypc8x16.woff2', ext: 'woff2' },
+    { face: 'toshibasat8x14', url: '/fonts/toshibasat8x14.woff2', ext: 'woff2' },
+  ];
 
   return (
     <>

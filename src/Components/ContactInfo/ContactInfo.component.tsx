@@ -2,7 +2,7 @@ import React from 'react';
 import StyledContactInfo from './ContactInfo.style';
 import { Anchor } from '../../Styles/global.style';
 
-interface ContactInfoProps {}
+interface ContactInfoProps { }
 
 const ContactInfo: React.FC<ContactInfoProps> = () => {
   return (

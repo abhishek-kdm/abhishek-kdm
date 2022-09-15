@@ -21,9 +21,9 @@ const Modal: React.FC<ModalProps> = ({
     setZIndex((index) =>
       show
         ? windowState.windows.reduce(
-            (n, { style }) => Math.max(n, Number(style?.zIndex || 0)),
-            999
-          )
+          (n, { style }) => Math.max(n, Number(style?.zIndex || 0)),
+          999
+        )
         : index
     );
 
@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({
       document.addEventListener('keydown', handler);
       return () => document.removeEventListener('keydown', handler);
     }
-  }, [show]);
+  }, [windowState.windows, show, closeFunc]);
 
   return show ? (
     <>

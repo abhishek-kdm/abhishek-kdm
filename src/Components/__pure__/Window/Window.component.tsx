@@ -97,7 +97,7 @@ const Window: React.FC<WindowProps> = ({
                 }));
               }}
             >
-              &#xff3f;
+              _
             </Button>
             <Button onClick={() => setFullscreen((f) => !f)}>
               &#x2610;

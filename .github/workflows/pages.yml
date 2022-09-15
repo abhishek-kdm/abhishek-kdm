@@ -1,11 +1,13 @@
 name: pages
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
     paths:
       - "src/**"
-      - "gatsby*"
+      - "pages/**"
+      - "public/**"
       - ".github/workflows/pages.yml"
 jobs:
   build:
@@ -22,12 +24,12 @@ jobs:
       - name: Install dependencies and build website.
         env:
           GRAPHQL_GITHUB_TOKEN: ${{ secrets.GRAPHQL_GITHUB_TOKEN }}
-        run: npm install && npm run build && cp pubkey.asc public
+        run: npm install && npm run build && cp pubkey.asc out
 
       - name: Uploading artifacts.
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "public/"
+          path: "out"
 
   deploy:
     needs: build

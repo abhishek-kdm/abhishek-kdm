@@ -4,8 +4,7 @@ import StyledInfobox, {
   InfoboxElement,
 } from './Infobox.style';
 
-const Infobox = React.forwardRef<InfoboxElement, StyledInfoboxProps>(
-  (props, ref) => <StyledInfobox {...props} ref={ref} />
-);
+const Infobox: React.ForwardRefRenderFunction<HTMLElement, StyledInfoboxProps> =
+  (props, ref) => <StyledInfobox {...props} ref={ref} />;
 
-export default Infobox;
+export default React.forwardRef<InfoboxElement, StyledInfoboxProps>(Infobox);

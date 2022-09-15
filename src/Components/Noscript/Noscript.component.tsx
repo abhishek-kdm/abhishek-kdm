@@ -2,7 +2,7 @@ import React from 'react';
 import StyledNoscript, { Header } from './Noscript.style';
 
 import About from '../About/About.component';
-import Social from '../Social/Social.component';
+import Online from '../Online/Online.component';
 import ContactInfo from '../ContactInfo/ContactInfo.component';
 
 const Noscript: React.FC = () => {
@@ -11,7 +11,7 @@ const Noscript: React.FC = () => {
       <Header>
         <div>
           <About />
-          <Social />
+          <Online />
         </div>
         <small>
           <hr className='inverted' />

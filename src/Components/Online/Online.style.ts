@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledSocial = styled.section`
+const StyledOnline = styled.section`
   dl {
     dt {
       display: flex;
@@ -43,4 +43,4 @@ export const MiscLinks = styled.ul`
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 `;
 
-export default StyledSocial;
+export default StyledOnline;
