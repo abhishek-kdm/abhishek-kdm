@@ -1,5 +1,5 @@
 import React from 'react';
-import File, { FileProps } from '../File/File.component';
+import File, { FileProps } from '@/Components/__pure__/File/File.component';
 
 interface DirectoryProps extends FileProps { }
 
