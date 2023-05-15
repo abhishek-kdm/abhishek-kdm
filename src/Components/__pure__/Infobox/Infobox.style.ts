@@ -3,8 +3,7 @@ import { RetroAnimation } from './Infobox.animation';
 
 export type InfoboxElement = HTMLElement;
 
-export interface StyledInfoboxProps
-    extends React.HTMLAttributes<InfoboxElement> {
+export interface StyledInfoboxProps extends React.HTMLAttributes<InfoboxElement> {
     animate?: boolean;
 }
 

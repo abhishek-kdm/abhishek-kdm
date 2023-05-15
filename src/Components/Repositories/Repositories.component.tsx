@@ -118,7 +118,7 @@ const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
                             title={repo.description}
                             name={repo.name}
                             onDoubleClick={handleOpen(repo)}
-                            onKeyPress={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
+                            onKeyDown={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
                         />
                     ))}
                 </RepositoryContainer>
@@ -133,7 +133,7 @@ const Repositories: React.FC<RepositoriesProps> = ({ windowId, ...props }) => {
                             title={repo.description}
                             name={repo.name}
                             onDoubleClick={handleOpen(repo)}
-                            onKeyPress={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
+                            onKeyDown={(e) => e.key.toLowerCase() === 'enter' && handleOpen(repo)()}
                         />
                     ))}
                 </RepositoryContainer>

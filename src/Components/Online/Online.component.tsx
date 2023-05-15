@@ -16,8 +16,8 @@ const Online: React.FC<OnlineProps> = () => {
                     <dt>Live Web Apps</dt>
                     {repos
                         .filter(({ isLive }) => isLive)
-                        .map((repo, key) => (<>
-                            <dd key={`${repo.id}-${key}`}>
+                        .map((repo) => (<>
+                            <dd key={repo.id}>
                                 <Anchor target='_blank' href={`/${repo.name}`}>
                                     {repo.name}
                                 </Anchor>

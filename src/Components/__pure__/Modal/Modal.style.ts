@@ -1,20 +1,26 @@
 import styled from 'styled-components';
-import { InfoboxAnimate } from '@/Components/__pure__/Infobox/Infobox.style';
+import InfoBox from '@/Components/__pure__/Infobox/Infobox.style';
 import { ButtonCSS } from '@/Styles/global.style';
 
-const StyledModal = styled.div`
-    display: flex;
-    justify-content: center;
-    position: fixed;
+const StyledModal = styled.dialog`
     background-color: rgba(50, 50, 50, 0.5);
     backdrop-filter: blur(5px);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+    &[open] {
+        border: none;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 `;
 
-export const ModalContent = styled.section`
+export const ModalContent = styled(InfoBox)`
     color: var(--color-primary);
     background-color: var(--color-bg-secondary);
     border: 1px solid var(--color-primary);
@@ -24,7 +30,6 @@ export const ModalContent = styled.section`
 
     display: flex;
     flex-direction: column;
-    ${InfoboxAnimate}
 `;
 
 export const ModalCloseButton = styled.button`

@@ -17,7 +17,7 @@ const Taskbar: React.FC<TaskbarProps> = (props) => {
     const { windowState, updateWindowState, raiseWindow } = useContext(
         GlobalContext
     ) as ScreenState;
-    const [modalShow, setModalShow] = useState<boolean>(false);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
     const handleClick = useCallback(
         (windowId: WindowID) => {
@@ -47,14 +47,14 @@ const Taskbar: React.FC<TaskbarProps> = (props) => {
                     ))}
                 </MinimizeSection>
                 <Divider />
-                <ContactButton onClick={() => setModalShow(true)}>
+                <ContactButton onClick={() => setModalOpen(true)}>
                     contact
                 </ContactButton>
             </StyledTaskbar>
 
             <Modal
-                show={modalShow}
-                closeFunc={() => setModalShow(false)}
+                open={modalOpen}
+                close={() => setModalOpen(false)}
                 style={{ maxWidth: '375px' }}
             >
                 <ContactInfo />
